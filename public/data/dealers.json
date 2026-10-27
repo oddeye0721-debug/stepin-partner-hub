@@ -1,0 +1,35 @@
+{
+ "items": [
+  {
+   "region": "서울 · 경기 · 인천",
+   "name": "",
+   "contact": "",
+   "status": "확정 시 게시"
+  },
+  {
+   "region": "강원 · 충청",
+   "name": "",
+   "contact": "",
+   "status": "확정 시 게시"
+  },
+  {
+   "region": "경상 · 부산 · 울산",
+   "name": "",
+   "contact": "",
+   "status": "확정 시 게시"
+  },
+  {
+   "region": "전라 · 광주",
+   "name": "",
+   "contact": "",
+   "status": "확정 시 게시"
+  },
+  {
+   "region": "제주",
+   "name": "",
+   "contact": "",
+   "status": "확정 시 게시"
+  }
+ ],
+ "updatedAt": "2026-10-27T00:00:00.000Z"
+}

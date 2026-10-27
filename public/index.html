@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>STEPIN 파트너 허브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@500;700;800&display=swap">
+<style>
+/* Layout: 좌측 고정 내비 + 우측 작업 영역(뷰 단위 전환). 무대 바닥의 '플레이 위치 표시' 테이프를 모티프로 한 마젠타·시안 2색 체계 */
+:root{
+  --bg:#F3F4F9; --surface:#FFFFFF; --sunk:#E9EBF4; --ink:#15162B; --muted:#5A5E7A; --line:#D9DCEA;
+  --accent:#D61F73; --accent-ink:#FFFFFF; --accent-soft:#FCE4EF; --cyan:#00879E; --cyan-soft:#DDF4F7;
+  --ok:#1E8A55; --ok-soft:#E1F3EA; --warn:#B26A00; --warn-soft:#FBEFD9; --bad:#C2352B; --bad-soft:#FBE3E1;
+  --gate:#0C0D1A; --gate-ink:#F2F2FA;
+  --f-display:"Unbounded","IBM Plex Sans KR",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px; --nav-w:264px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E0F1C; --surface:#171829; --sunk:#1F2136; --ink:#ECEDF8; --muted:#A0A3BE; --line:#2C2E48;
+  --accent:#FF4F9C; --accent-ink:#1A0A12; --accent-soft:#3A1529; --cyan:#43DDEE; --cyan-soft:#10313A;
+  --ok:#53D394; --ok-soft:#123426; --warn:#F2B44C; --warn-soft:#3A2A0F; --bad:#FF7A70; --bad-soft:#3E1714;
+  --gate:#08090F; --gate-ink:#F2F2FA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E0F1C; --surface:#171829; --sunk:#1F2136; --ink:#ECEDF8; --muted:#A0A3BE; --line:#2C2E48;
+  --accent:#FF4F9C; --accent-ink:#1A0A12; --accent-soft:#3A1529; --cyan:#43DDEE; --cyan-soft:#10313A;
+  --ok:#53D394; --ok-soft:#123426; --warn:#F2B44C; --warn-soft:#3A2A0F; --bad:#FF7A70; --bad-soft:#3E1714;
+  --gate:#08090F; --gate-ink:#F2F2FA; color-scheme:dark}
+
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+h1,h2,h3,h4{line-height:1.3;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- GATE ---------- */
+#gate{position:fixed;inset:0;z-index:100;background:var(--gate);color:var(--gate-ink);display:grid;grid-template-columns:1.1fr 1fr;overflow:auto}
+#gate .gv{position:relative;min-height:100%;background:#000 center/cover no-repeat url("img/keyvisual_arcade_motion.jpg")}
+#gate .gv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,15,0) 40%,var(--gate) 100%)}
+#gate .gf{display:flex;flex-direction:column;justify-content:center;gap:28px;padding-block:48px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px));max-width:520px}
+.brand{font-family:var(--f-display);font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.brand .tape{display:inline-block;width:26px;height:26px;border-radius:7px;background:conic-gradient(from 200deg,#FF4F9C,#7B5CFF,#43DDEE,#FF4F9C)}
+#gate h1{font-family:var(--f-body);font-size:clamp(26px,3.4vw,34px);font-weight:700}
+#gate .lead{color:#B9BBD4;max-width:42ch}
+#gate form{display:flex;flex-direction:column;gap:10px}
+#gate label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9EA1BE;font-family:var(--f-display)}
+.code-row{display:flex;gap:8px}
+#codeInput{flex:1;min-width:0;background:#141526;border:1.5px solid #34365A;border-radius:10px;color:#fff;font-family:var(--f-mono);font-size:18px;letter-spacing:.08em;padding:14px 16px;text-transform:uppercase}
+#codeInput:focus{border-color:#43DDEE;outline:none}
+#codeBtn{background:#FF4F9C;color:#1A0A12;border:0;border-radius:10px;padding:0 20px;font-weight:700}
+#codeMsg{min-height:1.4em;font-size:13px;color:#FF9C95}
+#gate .small{font-size:12.5px;color:#8E91AE}
+#gate .small b{color:#D6D8EE;font-weight:600}
+@media (max-width:820px){#gate{grid-template-columns:1fr}#gate .gv{min-height:220px}#gate .gv::after{background:linear-gradient(180deg,rgba(8,9,15,0) 30%,var(--gate) 100%)}}
+
+/* ---------- SHELL ---------- */
+#app{display:grid;grid-template-columns:var(--nav-w) minmax(0,1fr);min-height:100%}
+nav#side{position:sticky;top:env(safe-area-inset-top,0px);height:calc(100vh - env(safe-area-inset-top,0px));overflow:auto;background:var(--surface);border-right:1px solid var(--line);padding:20px 14px 24px max(14px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:18px}
+nav#side .brand{font-size:15px;padding:4px 8px}
+nav#side .brand small{display:block;font-family:var(--f-body);font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:0}
+.navgrp{display:flex;flex-direction:column;gap:2px}
+.navgrp h6{margin:0 0 4px;padding:0 10px;font-family:var(--f-display);font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.navgrp a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:500;font-size:14.5px}
+.navgrp a .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);width:20px}
+.navgrp a:hover{background:var(--sunk)}
+.navgrp a[aria-current="page"]{background:var(--accent-soft);color:var(--accent)}
+.navgrp a[aria-current="page"] .k{color:var(--accent)}
+.whoami{margin-top:auto;border-top:1px solid var(--line);padding:14px 10px 0;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.whoami b{color:var(--ink)}
+.linkbtn{background:none;border:0;padding:0;color:var(--cyan);text-decoration:underline;font-size:13px;text-align:left}
+
+header#top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;gap:12px;align-items:center}
+#menuBtn{display:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-weight:600}
+.search{position:relative;flex:1;max-width:520px}
+#q{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px 10px 38px;font:inherit;color:var(--ink)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none}
+#results{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(10,10,30,.18);max-height:60vh;overflow:auto;padding:6px}
+#results button{display:block;width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:7px}
+#results button:hover,#results button:focus{background:var(--sunk)}
+#results small{display:block;color:var(--muted);font-size:12px}
+.top-meta{margin-left:auto;font-size:12.5px;color:var(--muted);white-space:nowrap}
+main{min-width:0}
+.view{padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+@media (min-width:900px){.view{padding-left:40px;padding-right:40px}}
+@media (max-width:999px){
+  #app{grid-template-columns:1fr}
+  nav#side{position:fixed;left:0;top:0;bottom:0;height:auto;width:min(300px,86vw);z-index:70;transform:translateX(-102%);transition:transform .2s ease;box-shadow:0 0 40px rgba(0,0,0,.3);padding-top:calc(20px + env(safe-area-inset-top,0px))}
+  body.nav-open nav#side{transform:none}
+  body.nav-open #scrim{display:block}
+  #menuBtn{display:inline-block}
+  .top-meta{display:none}
+}
+#scrim{display:none;position:fixed;inset:0;background:rgba(5,5,15,.45);z-index:65}
+
+/* ---------- CONTENT ---------- */
+.eyebrow{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.vh{display:flex;flex-direction:column;gap:10px}
+.vh h1{font-size:clamp(24px,3vw,32px);font-weight:700}
+.vh p{color:var(--muted);max-width:68ch}
+h2.sec{font-size:20px;font-weight:700;display:flex;align-items:baseline;gap:10px;scroll-margin-top:90px}
+h2.sec .tag{font-family:var(--f-mono);font-size:12px;color:var(--cyan);font-weight:600}
+h3{font-size:16.5px;font-weight:700;scroll-margin-top:90px}
+.block{display:flex;flex-direction:column;gap:14px}
+.prose{max-width:72ch;display:flex;flex-direction:column;gap:10px}
+.muted{color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.grid>*{min-width:0}
+ul.list{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+ul.list li::marker{color:var(--accent)}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px}
+ol.steps>li::before{content:counter(s);width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:12px;display:grid;place-items:center;margin-top:1px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:var(--sunk);font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.k{font-weight:600;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.p-req{background:var(--accent-soft);color:var(--accent)}
+.p-rec{background:var(--cyan-soft);color:var(--cyan)}
+.p-opt{background:var(--sunk);color:var(--muted)}
+.p-ok{background:var(--ok-soft);color:var(--ok)}
+.p-warn{background:var(--warn-soft);color:var(--warn)}
+.p-bad{background:var(--bad-soft);color:var(--bad)}
+.note{border-left:3px solid var(--cyan);background:var(--cyan-soft);padding:12px 14px;border-radius:0 8px 8px 0;font-size:14px}
+.note.warn{border-color:var(--warn);background:var(--warn-soft)}
+.note.hot{border-color:var(--accent);background:var(--accent-soft)}
+.note b{font-weight:700}
+.src{font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:9px;padding:9px 14px;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none}
+.btn:hover{border-color:var(--ink)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.sm{padding:6px 10px;font-size:13px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* tabs */
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:thin}
+.tabs button{background:none;border:0;border-bottom:2.5px solid transparent;padding:10px 14px;font-weight:600;color:var(--muted);white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--accent)}
+.tabpanel{display:flex;flex-direction:column;gap:26px;padding-top:4px}
+
+/* home */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0;border-radius:14px;overflow:hidden;background:var(--gate);color:var(--gate-ink)}
+.hero .hc{padding:30px 28px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.hero h1{font-size:clamp(24px,3vw,32px);font-weight:700}
+.hero p{color:#BFC1DA;max-width:46ch}
+.hero .hi{background:#000 center 30%/cover no-repeat url("img/keyvisual_stepin_score.jpg");min-height:240px}
+.hero .eyebrow{color:#FF7DB5}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hero .hi{min-height:180px;order:-1}}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;counter-reset:f}
+.flow a{position:relative;text-decoration:none;color:var(--ink);padding:14px 12px 14px 14px;border-top:3px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.flow a:hover{border-color:var(--accent)}
+.flow .d{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:600}
+.flow b{font-size:14.5px}
+.flow span{font-size:12.5px;color:var(--muted)}
+@media (max-width:900px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.qcard{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);text-decoration:none;color:var(--ink)}
+.qcard:hover{border-color:var(--accent)}
+.qcard .k{font-family:var(--f-mono);font-size:12px;color:var(--cyan)}
+.qcard b{font-size:16px}
+.qcard span{font-size:13.5px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.facts div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.facts .v{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.01em}
+.facts .l{font-size:12.5px;color:var(--muted)}
+
+/* status chain */
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chain .st{font-family:var(--f-mono);font-size:12px;font-weight:600;padding:5px 9px;border-radius:6px;background:var(--sunk);border:1px solid var(--line)}
+.chain .st.live{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.chain .ar{color:var(--muted);font-size:12px}
+
+/* ruler signature */
+.ruler{position:relative;height:74px;border-radius:10px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 10%) ,var(--surface);border:1px solid var(--line);overflow:hidden}
+.ruler .zone{position:absolute;top:0;bottom:0;left:73.3%;width:10%;background:var(--accent-soft);border-left:2px dashed var(--accent);border-right:2px dashed var(--accent)}
+.ruler .dev{position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--ink)}
+.ruler .lab{position:absolute;bottom:6px;font-family:var(--f-mono);font-size:11px;color:var(--muted);transform:translateX(-50%)}
+.ruler .zl{position:absolute;top:8px;left:78.3%;transform:translateX(-50%);font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--accent);white-space:nowrap}
+.ruler .dl{position:absolute;top:8px;left:18px;font-size:12px;font-weight:600}
+
+/* diagrams */
+.diagram{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:8px}
+.diagram svg{display:block;min-width:640px;width:100%;height:auto}
+svg .n{fill:var(--sunk);stroke:var(--line);stroke-width:1.2}
+svg .n.arc{fill:var(--accent-soft);stroke:var(--accent)}
+svg .n.ctl{fill:var(--cyan-soft);stroke:var(--cyan)}
+svg .n.out{fill:var(--surface);stroke:var(--ink)}
+svg .t{fill:var(--ink);font-family:var(--f-body);font-size:13px;font-weight:600}
+svg .ts{fill:var(--muted);font-family:var(--f-body);font-size:11px}
+svg .e{stroke:var(--muted);stroke-width:1.6;fill:none}
+svg .e.hd{stroke:var(--accent)}
+svg .e.net{stroke:var(--cyan);stroke-dasharray:5 4}
+svg .el{fill:var(--muted);font-family:var(--f-mono);font-size:10.5px}
+svg .ah{fill:var(--muted)}
+svg .ah.hd{fill:var(--accent)}
+svg .ah.net{fill:var(--cyan)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:22px;height:0;border-top:2px solid var(--muted);vertical-align:middle;margin-right:6px}
+.legend i.hd{border-color:var(--accent)} .legend i.net{border-top:2px dashed var(--cyan)}
+
+/* broadcast type cards */
+.typesel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.typesel button{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.typesel button b{font-size:14.5px}
+.typesel button span{font-size:12px;color:var(--muted)}
+.typesel button .k{font-family:var(--f-mono);font-size:11px;color:var(--cyan)}
+.typesel button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+@media (max-width:760px){.typesel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* figure */
+figure{margin:0;display:flex;flex-direction:column;gap:6px}
+figure img{border-radius:8px;border:1px solid var(--line);background:var(--sunk);display:block}
+figcaption{font-size:12.5px;color:var(--muted)}
+
+/* compare */
+.vs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.vs{grid-template-columns:1fr}}
+.vs .panel{display:flex;flex-direction:column;gap:12px}
+.vs h3{display:flex;gap:8px;align-items:center}
+.pc{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.pc li{list-style:none;padding-left:22px;position:relative}
+.pc li::before{position:absolute;left:0;top:0;font-family:var(--f-mono);font-weight:700}
+.pc.pro li::before{content:"+";color:var(--ok)}
+.pc.con li::before{content:"−";color:var(--bad)}
+.pc ul{margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.stat{display:flex;flex-direction:column;gap:4px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.stat .v{font-family:var(--f-display);font-weight:700;font-size:28px;letter-spacing:-.02em}
+.stat .v small{font-size:14px;font-family:var(--f-body);color:var(--muted);font-weight:500;margin-left:4px}
+.stat p{font-size:13.5px;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-weight:600;font-size:13.5px}
+.chips button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+#recOut{display:flex;flex-direction:column;gap:8px}
+
+/* assets */
+.vlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.vitem{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.vitem .play{width:46px;height:46px;border-radius:10px;background:var(--ink);display:grid;place-items:center}
+.vitem .play::after{content:"";border-left:13px solid var(--bg);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.vitem b{font-size:14px;display:block}
+.vitem small{color:var(--muted);font-size:12.5px;display:block}
+.vitem .cat{font-family:var(--f-mono);font-size:11px;color:var(--cyan)}
+.vitem>div{min-width:0}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.gitem{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.gitem .ph{aspect-ratio:4/5;background:var(--sunk) center/contain no-repeat;max-width:100%}
+.gitem .meta{padding:10px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.gitem b{font-size:13.5px}
+.gitem small{font-size:12px;color:var(--muted)}
+.gitem .row{margin-top:auto}
+.dlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.ditem{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.ditem:last-child{border-bottom:0}
+.ditem .ext{font-family:var(--f-mono);font-size:11px;font-weight:600;border:1.5px solid var(--ink);border-radius:6px;padding:8px 0;text-align:center}
+.ditem b{display:block;font-size:14.5px}
+.ditem small{color:var(--muted);font-size:12.5px}
+@media (max-width:560px){.ditem{grid-template-columns:44px minmax(0,1fr)}.ditem .act{grid-column:2}}
+
+/* checklist */
+.ck-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.ck-prog{flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px}
+.ck-phase{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.ck-phase>header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--sunk)}
+.ck-phase>header .d{font-family:var(--f-mono);font-weight:600;color:var(--accent);font-size:13px;min-width:54px}
+.ck-phase>header b{flex:1}
+.ck-phase>header small{font-family:var(--f-mono);color:var(--muted);font-size:12px}
+.ck-item{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:10px 16px;border-top:1px solid var(--line);cursor:pointer}
+.ck-item input{width:18px;height:18px;margin-top:3px;accent-color:var(--accent)}
+.ck-item.done span{color:var(--muted);text-decoration:line-through}
+.ck-item .who{font-size:11.5px}
+.confirm{display:flex;gap:8px;align-items:center;font-size:13px}
+
+/* mc */
+.script{display:flex;flex-direction:column;gap:10px}
+.sline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.sline b{font-size:14px;display:flex;gap:8px;align-items:center}
+.sline p{font-size:14.5px;margin-top:4px}
+.star{color:var(--accent);font-family:var(--f-mono);font-size:12px}
+
+/* faq */
+details.qa{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details.qa+details.qa{margin-top:8px}
+details.qa summary{cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;display:flex;gap:10px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::before{content:"Q";font-family:var(--f-mono);color:var(--accent)}
+details.qa[open] summary{border-bottom:1px solid var(--line)}
+details.qa .a{padding:12px 16px 14px 38px;font-size:14.5px;color:var(--ink)}
+.faq-cat{font-family:var(--f-mono);font-size:11px;color:var(--cyan);margin-left:auto;white-space:nowrap}
+#faqFilter{width:100%;max-width:420px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;color:var(--ink)}
+
+/* contact */
+.ccard{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.ccard .k{font-size:12.5px;color:var(--muted)}
+.ccard .v{font-family:var(--f-mono);font-size:15px;font-weight:600;word-break:break-all;user-select:all}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:13.5px;z-index:120;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+/* admin */
+.admin-enter{background:none;border:1.5px solid #43DDEE;color:#43DDEE;border-radius:10px;padding:10px 14px;font-weight:600;align-self:flex-start}
+.adm-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.adm-state{font-size:13px;color:var(--muted)}
+.adm-state.dirty{color:var(--warn);font-weight:600}
+.adm-list{display:flex;flex-direction:column;gap:10px}
+.adm-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.adm-row.off{opacity:.55}
+.adm-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.adm-fields>*{min-width:0}
+.adm-fields .wide{grid-column:1/-1}
+.fld{display:flex;flex-direction:column;gap:4px}
+.fld span{font-size:11.5px;color:var(--muted);font-weight:600}
+.fld input,.fld textarea,.fld select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit;font-size:14px;color:var(--ink)}
+.fld textarea{min-height:72px;resize:vertical}
+.adm-ops{display:flex;flex-direction:column;gap:6px}
+.adm-ops button{background:var(--sunk);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:12.5px}
+.adm-ops button.del{color:var(--bad)}
+.newcode{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 16px;border:1.5px dashed var(--accent);border-radius:10px;background:var(--accent-soft)}
+.newcode .v{font-family:var(--f-mono);font-size:18px;font-weight:600;letter-spacing:.06em;user-select:all}
+.log{font-size:13px;display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.log div{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line)}
+.log div:last-child{border-bottom:0}
+footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<!-- ================= APP ================= -->
+<div id="app" hidden>
+  <nav id="side" aria-label="가이드 메뉴">
+    <div class="brand"><span class="tape" aria-hidden="true"></span><span>STEPIN<small>Partner Hub · 2026</small></span></div>
+    <div class="navgrp"><h6>시작</h6>
+      <a href="#home" data-nav="home"><span class="k">00</span>홈 · 진행 흐름</a>
+      <a href="#about" data-nav="about"><span class="k">01</span>STEPIN 이해하기</a>
+    </div>
+    <div class="navgrp"><h6>운영</h6>
+      <a href="#operate" data-nav="operate"><span class="k">02</span>대회 운영 가이드</a>
+      <a href="#setup" data-nav="setup"><span class="k">03</span>아케이드 셋팅 · 중계</a>
+      <a href="#compare" data-nav="compare"><span class="k">04</span>온·오프라인 비교</a>
+      <a href="#checklist" data-nav="checklist"><span class="k">05</span>운영 체크리스트</a>
+      <a href="#mc" data-nav="mc"><span class="k">06</span>MC · 현장 진행</a>
+    </div>
+    <div class="navgrp"><h6>자료</h6>
+      <a href="#assets" data-nav="assets"><span class="k">07</span>홍보 소스 · 다운로드</a>
+      <a href="#policy" data-nav="policy"><span class="k">08</span>구매 · 렌탈 · A/S</a>
+      <a href="#faq" data-nav="faq"><span class="k">09</span>자주 묻는 질문</a>
+      <a href="#contact" data-nav="contact"><span class="k">10</span>문의 · 연락처</a>
+    </div>
+    <div class="navgrp" id="adminNav" hidden><h6>관리</h6>
+      <a href="#admin" data-nav="admin"><span class="k">AD</span>관리자 페이지</a>
+    </div>
+    <div class="whoami"><span>접속 파트너<br><b id="partnerName">-</b></span><button class="linkbtn" id="logout" type="button">로그아웃</button></div>
+  </nav>
+  <div id="scrim"></div>
+  <main>
+    <header id="top">
+      <button id="menuBtn" type="button" aria-label="메뉴 열기">메뉴</button>
+      <div class="search">
+        <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="가이드 검색 (예: HDMI, 브래킷 리셋, 렌탈)" aria-label="가이드 검색" autocomplete="off">
+        <div id="results" hidden></div>
+      </div>
+      <div class="top-meta">기준: 판매정책 V1.6 · 영업가이드 V1.2 · 대회 규정집 2026</div>
+    </header>
+
+<!-- ======== HOME ======== -->
+<section class="view" data-view="home">
+  <div class="hero">
+    <div class="hc">
+      <span class="eyebrow">Partner Support</span>
+      <h1><span id="helloName">파트너</span>님, 행사 준비를 시작해 볼까요?</h1>
+      <p>문의 접수부터 셋팅, 대회 당일 운영, 사후 홍보까지 STEPIN 행사·대회에 필요한 기준과 자료를 한 곳에 모았습니다. 왼쪽 메뉴나 상단 검색으로 바로 찾아보세요.</p>
+      <div class="row"><a class="btn pri" href="#operate">대회 운영 가이드 보기</a><a class="btn" href="#assets">자료 다운로드</a></div>
+    </div>
+    <div class="hi" role="img" aria-label="STEPIN AI 댄스 점수 화면 키비주얼"></div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">행사 진행 흐름 <span class="tag">D-30 → D+7</span></h2>
+    <div class="flow">
+      <a href="#policy"><span class="d">STEP 1</span><b>문의 · 견적</b><span>형태·대수·일정 확정, 렌탈/구매 견적</span></a>
+      <a href="#compare"><span class="d">STEP 2</span><b>대회 방식 결정</b><span>앱 예선 / 오프라인 본선 / 체험존</span></a>
+      <a href="#operate"><span class="d">STEP 3</span><b>규정 · 예선 개설</b><span>규정집, 송리스트, 앱 토너먼트 세팅</span></a>
+      <a href="#setup"><span class="d">STEP 4</span><b>현장 셋팅</b><span>공간·전원·LAN·중계 연결, 리허설</span></a>
+      <a href="#mc"><span class="d">STEP 5</span><b>당일 운영</b><span>MC 진행, 심판, 대진 운영</span></a>
+      <a href="#assets"><span class="d">STEP 6</span><b>사후 홍보</b><span>스케치 영상·사진 공유, 결과 공지</span></a>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">현장에서 꼭 기억할 숫자</h2>
+    <div class="facts">
+      <div><span class="v num">2.2–2.5m</span><span class="l">카메라 ↔ 플레이어 거리 (STANDARD)</span></div>
+      <div><span class="v num">6 × 3m</span><span class="l">아케이드 2대 대회 무대 최소 면적</span></div>
+      <div><span class="v num">500W</span><span class="l">STANDARD 1대 소비전력 · AC 220V</span></div>
+      <div><span class="v">유선 LAN</span><span class="l">배틀·대회·영상 다운로드에 필요</span></div>
+      <div><span class="v num">BO7 / BO9</span><span class="l">일반 라운드 / 결승 세트 수</span></div>
+      <div><span class="v num">80kg</span><span class="l">STANDARD 무게 · 성인 2인 세워서 운반</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">바로가기</h2>
+    <div class="grid g3">
+      <a class="qcard" href="#operate"><span class="k">02 · 요청 1</span><b>대회 운영 가이드</b><span>온라인 APP 예선과 오프라인 아케이드 본선의 진행 조건, 필수 조건, 경기 포맷</span></a>
+      <a class="qcard" href="#setup"><span class="k">03 · 요청 2</span><b>아케이드 셋팅 · 중계</b><span>기본 연결, 체험존부터 라이브 송출까지 중계 형태별 장비 구성도</span></a>
+      <a class="qcard" href="#compare"><span class="k">04 · 요청 3</span><b>온·오프라인 비교</b><span>장단점과 과거 토너먼트 데이터, 목적별 추천 방식</span></a>
+      <a class="qcard" href="#assets"><span class="k">07 · 요청 4</span><b>홍보 소스 · 다운로드</b><span>홍보 영상 URL, 포스터·키비주얼, 규정집·가이드 문서</span></a>
+      <a class="qcard" href="#checklist"><span class="k">05</span><b>운영 체크리스트</b><span>D-30부터 D+7까지 단계별 점검표 (진행 상태 저장)</span></a>
+      <a class="qcard" href="#mc"><span class="k">06</span><b>MC · 현장 진행</b><span>국문·영문 캐스터 멘트, 고득점 기준, 현장 이벤트</span></a>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">최근 업데이트</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>날짜</th><th>내용</th><th>위치</th></tr></thead>
+      <tbody id="noticeBody"></tbody>
+    </table></div>
+  </div>
+  <footer class="foot">본 페이지의 가격·정책·규정은 회사 배포 최신본을 기준으로 하며, 개별 계약 조건과 다를 경우 계약서가 우선합니다. 외부 무단 배포를 금지합니다.</footer>
+</section>
+
+<!-- ======== ABOUT ======== -->
+<section class="view" data-view="about" hidden>
+  <div class="vh"><span class="eyebrow">01 · Basics</span><h1>STEPIN 이해하기</h1><p>고객과 참가자에게 설명할 때 쓰는 기본 정의, 서비스 형태, 모델별 사양입니다.</p></div>
+  <div class="note hot"><b>한 문장 소개.</b> STEPIN은 카메라 기반 AI 동작 인식으로 K-POP 댄스를 배우고, 연습하고, 점수 결과로 배틀까지 즐기는 피지컬 e스포츠 플랫폼입니다. 발판이나 부착 센서 없이 전신 움직임을 카메라로 인식합니다.</div>
+
+  <div class="block">
+    <h2 class="sec">두 가지 서비스</h2>
+    <div class="grid g2">
+      <div class="panel block"><h3>STEPIN APP</h3><p class="muted">iOS·Android 무료 앱. 177개국, 11개 언어로 서비스 중이며 어디서나 연습하고 앱 토너먼트(온라인 예선)에 참가합니다.</p>
+        <ul class="list"><li>모드: 챌린지 · 프랙티스 · 랜덤플레이댄스(RPD) · 배틀</li><li>소셜: 피드, 랭킹, 영상 편집·업로드</li><li>토너먼트 개최·관리는 웹 <span class="mono">tournament.stepin.ai</span> (비즈니스 계정 필요)</li></ul></div>
+      <div class="panel block"><h3>STEPIN ARCADE</h3><p class="muted">대형 디스플레이·터치패드·카메라·스피커를 결합한 현장용 기기. 오프라인 본선과 체험존을 담당합니다.</p>
+        <ul class="list"><li>게임물관리위원회 ‘전체이용가’, 전기·전파 인증 완료</li><li>AI 자동 채점으로 1:1 배틀을 대형 화면에 시각화</li><li>결과 영상 QR 다운로드 (24시간 후 자동 만료)</li></ul></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">플레이 모드</h2>
+    <div class="grid g3">
+      <div class="panel block"><span class="pill p-opt">MODE 01</span><h3>Practice · 배우기</h3><p class="muted">3D 아바타(TEBI) 가이드로 구간 반복, 속도 조절 연습. 수업·동아리·쉬는시간용.</p></div>
+      <div class="panel block"><span class="pill p-rec">MODE 02</span><h3>Challenge · 점수 획득</h3><p class="muted">곡당 약 20~40초 하이라이트 구간을 추고 AI 점수와 레벨을 받습니다. 1대로 운영하는 랭킹전의 기본 모드.</p></div>
+      <div class="panel block"><span class="pill p-req">MODE 03</span><h3>Battle · 1:1 대결</h3><p class="muted">같은 곡을 동시에 추고 AI 점수로 승패를 가릅니다. STANDARD는 2대 연동, WIDE는 1대에서 2인.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec" id="models">모델별 사양</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>STANDARD</th><th>WIDE</th><th>PORTABLE (행사용)</th></tr></thead>
+      <tbody>
+        <tr><td class="k">조달 모델명</td><td class="mono">SA43-PB-01-20C</td><td class="mono">SA65-PB-01-20C</td><td class="muted">본사 행사 운영 장비</td></tr>
+        <tr><td class="k">디스플레이</td><td>43인치 강화유리 (일체형)</td><td>65인치 강화유리 (일체형)</td><td>외부 43인치 세로형 모니터 연결 (9:16, 1080×1920)</td></tr>
+        <tr><td class="k">외형 W×H×D</td><td class="mono">700 × 2,033 × 550mm</td><td class="mono">1,600 × 1,900 × 380mm</td><td class="mono">480 × 234 × 330mm</td></tr>
+        <tr><td class="k">무게</td><td class="mono">약 80kg</td><td class="mono">약 120kg</td><td class="mono">약 8kg</td></tr>
+        <tr><td class="k">전원</td><td>AC 220V 60Hz / 500W</td><td>AC 220V 60Hz / 600W</td><td>현지 멀티탭, 전체 20A 이상 확보</td></tr>
+        <tr><td class="k">네트워크</td><td>유선 LAN</td><td>유선 LAN</td><td>유선/무선 (없으면 챌린지만)</td></tr>
+        <tr><td class="k">배틀</td><td>2대 연동 시</td><td>1대에서 2인</td><td>2대 연동 시</td></tr>
+        <tr><td class="k">카메라 거리</td><td class="mono">2.2–2.5m</td><td class="mono">2.8–3.2m</td><td class="mono">2.2–2.5m</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid g4">
+      <figure><img src="img/arcade_product_front.jpg" alt="STEPIN 아케이드 스탠다드 정면" loading="lazy"><figcaption>STANDARD 정면</figcaption></figure>
+      <figure><img src="img/photo_arcade_gameplay.jpg" alt="아케이드 플레이 화면" loading="lazy"><figcaption>플레이 화면 (Challenge)</figcaption></figure>
+      <figure><img src="img/setup_portable_parts.jpg" alt="포터블 구성품" loading="lazy"><figcaption>PORTABLE 구성 · TV·테이블·스피커 별도</figcaption></figure>
+      <figure><img src="img/photo_popup_seongsu_inside.jpg" alt="성수 팝업스토어 현장" loading="lazy"><figcaption>2025 성수 팝업스토어</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">인터넷 연결 여부에 따른 기능</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>기능</th><th>인터넷 연결</th><th>미연결</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Practice · Challenge</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-ok">가능</span></td></tr>
+        <tr><td class="k">Battle · 대회 진행</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">불가</span> 대회용 오프라인 구성은 본사 협의</td></tr>
+        <tr><td class="k">플레이 영상 QR 다운로드</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">불가</span></td></tr>
+        <tr><td class="k">콘텐츠 인증·업데이트</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-warn">설치 시 필요</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">공공장소 운영 시 개인정보 사유로 영상 다운로드를 끄는 경우가 있습니다. 행사 성격에 맞춰 본사와 사전에 정해 주세요.</p>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">고객 유형별 설명 프레임</h2>
+    <p class="muted">“댄스 게임”이라는 말 대신 고객의 도입 목적에 맞는 이름으로 설명합니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>프레임</th><th>전달 메시지</th><th>주 대상</th></tr></thead>
+      <tbody>
+        <tr><td class="k">멀티미디어 학습장치</td><td>디스플레이·카메라·AI·체육 콘텐츠를 결합한 인터랙티브 학습장치</td><td>행정실, 학교장</td></tr>
+        <tr><td class="k">AI 댄스 학습시스템</td><td>K-POP 안무를 단계적으로 연습하고 AI 피드백으로 반복 학습</td><td>체육교사, 동아리·방과후</td></tr>
+        <tr><td class="k">스마트 체육시스템</td><td>게임형 피드백으로 전신 운동을 유도하는 실내 스마트체육 도구</td><td>체육교사, 스마트체육 사업</td></tr>
+        <tr><td class="k">K-POP 댄스교실</td><td>연습 → 도전 → 대결을 한 공간에서 운영하는 참여형 교실</td><td>늘봄·방과후 교사</td></tr>
+        <tr><td class="k">피지컬 e스포츠</td><td>점수·랭킹·1:1 배틀·토너먼트를 전신 움직임과 결합</td><td>학교 e스포츠, 축제, 지자체 행사</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ======== OPERATE ======== -->
+<section class="view" data-view="operate" hidden>
+  <div class="vh"><span class="eyebrow">02 · Tournament Ops</span><h1>대회 운영 가이드</h1><p>기본 구조는 <b>온라인 APP 예선 → 오프라인 아케이드 본선</b>입니다. 규모와 목적에 따라 예선 없이 본선만, 또는 체험존 랭킹전만 운영할 수도 있습니다.</p></div>
+  <div class="tabs" role="tablist" data-tabs="operate">
+    <button role="tab" data-tab="overview">개요 · 운영 형태</button>
+    <button role="tab" data-tab="required">대회별 필수 조건</button>
+    <button role="tab" data-tab="online">온라인 APP 예선</button>
+    <button role="tab" data-tab="offline">오프라인 아케이드 본선</button>
+    <button role="tab" data-tab="day">타임테이블 · 인력</button>
+  </div>
+
+  <div class="tabpanel" data-panel="operate:overview">
+    <div class="block">
+      <h2 class="sec">기본 구조</h2>
+      <div class="grid g3">
+        <div class="panel block"><span class="pill p-rec">PHASE 1 · STEPIN APP</span><h3>온라인 예선</h3><p class="muted">참가 신청과 랭킹전을 앱에서 진행합니다. 지역 제한 없이 참가자를 모으고 점수로 본선 진출자를 선발합니다.</p></div>
+        <div class="panel block"><span class="pill p-opt">PHASE 2 · WEB</span><h3>본선 진출자 확정</h3><p class="muted">예선 순위로 진출자를 정하고 개별 연락으로 현장 참석 의사를 확인합니다. 불참 인원만큼 차순위가 진출합니다.</p></div>
+        <div class="panel block"><span class="pill p-req">PHASE 3 · STEPIN ARCADE</span><h3>오프라인 본선</h3><p class="muted">아케이드 2대(또는 WIDE 1대)로 1:1 배틀을 진행합니다. 대형 중계 화면과 MC로 관람 콘텐츠를 만듭니다.</p></div>
+      </div>
+    </div>
+    <div class="block">
+      <h2 class="sec">운영 형태 3가지</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>형태</th><th>구성</th><th>적합한 행사</th><th>최소 장비</th></tr></thead>
+        <tbody>
+          <tr><td class="k">A. 체험존 · 챌린지 랭킹전</td><td>참가자가 순서대로 챌린지 플레이, 최고 점수 랭킹으로 시상</td><td>축제 부스, 학교 행사, 팝업</td><td>아케이드 1대 (2대 권장)</td></tr>
+          <tr><td class="k">B. 오프라인 단독 대회</td><td>현장 접수 또는 사전 선발 → 그룹 스테이지 → 토너먼트</td><td>학교 대항전, 지역 대회, 기업 행사</td><td>STANDARD 2대 또는 WIDE 1대, 중계 모니터</td></tr>
+          <tr><td class="k">C. 앱 예선 + 오프라인 본선 <span class="pill p-req">권장</span></td><td>앱 토너먼트 랭킹전 → TOP N 현장 초청 → 본선</td><td>지역 오픈 대회, 국가대표 선발전, 국제 대회</td><td>B 구성 + 앱 토너먼트 개설</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">1대만 있어도 대회는 가능합니다. 이용자별로 순차적으로 챌린지를 플레이하고 점수 랭킹으로 시상하는 방식입니다.</div>
+    </div>
+    <div class="block">
+      <h2 class="sec">운영 사례</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>행사</th><th>방식</th><th>규모</th><th>참고 포인트</th></tr></thead>
+        <tbody>
+          <tr><td class="k">2026 ECA 진주 (아시아 이스포츠 대회)</td><td>국가별 선발 → 개인전(그룹 스테이지 + 8강 더블 엘리미네이션) · 팀전(풀 리그 + 순위결정전)</td><td>개인 10인 · 5개국 팀</td><td>상금 개인 220만원 · 팀 380만원, SOOP 중계</td></tr>
+          <tr><td class="k">2026 경남 STEPIN 오픈 토너먼트</td><td>앱 예선 16일 → TOP 32 현장 초청 → 32강 싱글 엘리미네이션</td><td>32인 본선</td><td>지정 20곡 중 상위 10곡 점수 합산, 총상금 100만원</td></tr>
+          <tr><td class="k">찾아가는 교내 이스포츠 대회</td><td>학교 방문 현장 대회 (7곡 진행) + 체험존</td><td>학교 단위</td><td>앱 사전 연습 안내, 송리스트 사전 공개</td></tr>
+          <tr><td class="k">K-EXPO · 해외 체험존</td><td>포터블 2대 체험존 + 현장 토너먼트</td><td>체험 중심</td><td>백월 7×4m, 43인치 세로 TV, 영상 프레임 합성</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g2">
+        <figure><img src="img/case_kexpo_usa.jpg" alt="K-Expo USA 2026 운영 사례" loading="lazy"><figcaption>K-EXPO USA 2026 체험존</figcaption></figure>
+        <figure><img src="img/case_kexpo_spain.jpg" alt="K-Expo Spain 2025 운영 사례" loading="lazy"><figcaption>K-EXPO Spain 2025 체험존</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="operate:required" hidden>
+    <div class="block">
+      <h2 class="sec">대회별 운영 필수 조건</h2>
+      <p class="muted">주최/운영사가 준비할 항목입니다. <span class="pill p-req">필수</span> 항목이 준비되지 않으면 해당 형태로 진행할 수 없으니 사전에 본사와 협의해 주세요.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>항목</th><th>A. 체험존</th><th>B. 오프라인 대회</th><th>C. 앱 예선 + 본선</th><th>세부 기준</th></tr></thead>
+        <tbody>
+          <tr><td class="k">아케이드</td><td>1대 <span class="pill p-rec">2대 권장</span></td><td><span class="pill p-req">2대</span></td><td><span class="pill p-req">2대</span></td><td>STANDARD 2대 연동 또는 WIDE 1대(2인)</td></tr>
+          <tr><td class="k">플레이 공간</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>1대 3×3m, 2대 무대 6×3m 이상 (국제 대회 7×3m)</td></tr>
+          <tr><td class="k">전원</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>접지 AC 220V, 대당 500W · 행사 전체 20A 이상</td></tr>
+          <tr><td class="k">유선 인터넷</td><td><span class="pill p-rec">권장</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>RJ-45, ↓5Mbps/↑2Mbps 권장, 핑 50ms 이하</td></tr>
+          <tr><td class="k">관중용 중계 모니터</td><td><span class="pill p-opt">선택</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>65인치 이상 + 거치대</td></tr>
+          <tr><td class="k">부조(컨트롤) 공간</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>무대 옆 4×3m, 책상 2 · 의자 4, 대진·중계 PC</td></tr>
+          <tr><td class="k">MC · 마이크 · 스피커</td><td><span class="pill p-opt">선택</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>MC 1인, 무선 마이크 1, 스피커 300W 이상</td></tr>
+          <tr><td class="k">심판 · 슈퍼바이저</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>슈퍼바이저 1, 레퍼리 1 (STEPIN 사전 미팅)</td></tr>
+          <tr><td class="k">현장 스태프</td><td>대당 1인</td><td>2인 이상</td><td>2인 이상</td><td>체험 안내, 선수 안내, 안전 관리</td></tr>
+          <tr><td class="k">선수 대기 공간</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>무대 근처, 본선 인원만큼 의자</td></tr>
+          <tr><td class="k">안전바</td><td><span class="pill p-rec">권장</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>벨트형 차단봉 4~6개, 무대·관객석 분리</td></tr>
+          <tr><td class="k">조명</td><td colspan="3">저조도·야간·역광 환경이면 <span class="pill p-req">필수</span></td><td>플레이어 얼굴이 어둡게 잡히지 않도록 핀조명 2</td></tr>
+          <tr><td class="k">반입 인력 · 하역장</td><td colspan="3"><span class="pill p-req">필수</span></td><td>대당 성인 2인, 운반 카트, 지상 하역장, 계단 없는 동선</td></tr>
+          <tr><td class="k">앱 토너먼트 개설</td><td>—</td><td>—</td><td><span class="pill p-req">필수</span></td><td>비즈니스 계정 승인, 예선 일정 최소 24시간</td></tr>
+          <tr><td class="k">우천 대비 (야외)</td><td colspan="3">야외 행사 시 <span class="pill p-req">필수</span></td><td>캐노피 텐트, 방수 커버, 평탄한 바닥, 강풍 대책</td></tr>
+        </tbody>
+      </table></div>
+      <div class="row"><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_아케이드 행사 준비사항.pdf">준비사항 시트 받기 (PDF · 4종)</button><a class="btn sm" href="#checklist">단계별 체크리스트로 이동</a></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">역할 분담 (R&amp;R) 기준</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>구분</th><th>주최 · 운영사 (파트너)</th><th>STEPIN 본사</th></tr></thead>
+        <tbody>
+          <tr><td class="k">기획 · 규정</td><td>일정, 장소, 상금, 참가 자격 확정</td><td>대회 규정 수립, 포맷 설계, 송리스트 선정</td></tr>
+          <tr><td class="k">예선</td><td>지역 홍보물 배포, 학교·동아리 공문</td><td>앱 토너먼트 개설·디자인·결과 집계, 앱 내 배너·푸시</td></tr>
+          <tr><td class="k">현장 구성</td><td>무대, 백월, 브랜딩 설치물, 조명, 전원, 인터넷</td><td>아케이드 반입·설치, 중계 시스템 구성, 브랜딩 시안 협조</td></tr>
+          <tr><td class="k">운영 인력</td><td>MC, 현장 스태프, 안전 요원</td><td>기술 지원 인력, 심판 보조</td></tr>
+          <tr><td class="k">중계</td><td>방송 송출, 촬영 (필요 시)</td><td>게임 화면 출력, 대진표·중계 화면 제공</td></tr>
+          <tr><td class="k">사후</td><td>상금·상품 지급, 스케치 사진·영상 공유</td><td>결과 공지, 공식 SNS 홍보</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">실제 R&amp;R은 행사별 계약·견적으로 확정합니다. 기술 인력 숙소 등 체류 지원 여부도 사전에 정해 주세요.</p>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="operate:online" hidden>
+    <div class="block">
+      <h2 class="sec">온라인 APP 예선 진행 조건</h2>
+      <ol class="steps">
+        <li><div><b>비즈니스 계정 신청</b><p class="muted">STEPIN 앱 → 프로필 → 설정 → 비즈니스 계정 신청 → 회사 정보 → 담당자 정보 → 제출. 법인·기관은 증빙 서류를 요청받을 수 있습니다.</p></div></li>
+        <li><div><b>본사 승인 요청</b><p class="muted"><span class="mono">cs@sidewalkplay.com</span> 으로 승인을 요청하면 <span class="mono">tournament.stepin.ai</span> 개최 권한이 열립니다.</p></div></li>
+        <li><div><b>3페이지 개최 신청서 작성 → 내부 검토</b><p class="muted">승인되면 토너먼트가 SETUP 상태로 생성됩니다. 포스터·트랙·공지 등 필수 항목을 채워야 공개됩니다.</p></div></li>
+        <li><div><b>공개 → 접수 → 예선 → 대진 → 본선 → 종료</b><p class="muted">설정한 일정에 따라 단계가 자동으로 넘어갑니다.</p></div></li>
+      </ol>
+      <div class="chain" aria-label="토너먼트 상태 흐름">
+        <span class="st">SETUP</span><span class="ar">→</span><span class="st">UPCOMING</span><span class="ar">→</span><span class="st">REGISTER</span><span class="ar">→</span><span class="st">QUALIFIER</span><span class="ar">→</span><span class="st">SELECTING</span><span class="ar">→</span><span class="st">PREMATCH</span><span class="ar">→</span><span class="st live">LIVE · MATCH ⇄ EVALUATING ⇄ INTERMISSION</span><span class="ar">→</span><span class="st">FINISHED</span>
+      </div>
+      <p class="src">예선 없이 진행하면 QUALIFIER·SELECTING 단계가 생략되고, 자동 배정이면 대진 수동 배정이 필요 없습니다.</p>
+    </div>
+
+    <div class="block">
+      <h2 class="sec">개최 신청서 설정값</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>항목</th><th>설정 범위</th><th>운영 팁</th></tr></thead>
+        <tbody>
+          <tr><td class="k">타이틀</td><td>2~30자</td><td>지역·연도·성격이 드러나게 (예: 2026 경남 STEPIN 오픈 토너먼트)</td></tr>
+          <tr><td class="k">모집 방식</td><td>오픈 / 프라이빗</td><td>지역·학교 한정 대회는 프라이빗 (승인·거절·초대)</td></tr>
+          <tr><td class="k">참가 국가</td><td>글로벌 / 국가 선택</td><td>국내 대회는 대한민국만 선택</td></tr>
+          <tr><td class="k">라운드</td><td>8 · 16 · 32 · 64 · 128 · 256 · 512 · 1024강</td><td>본선 진출 인원과 별개로 앱 본선 규모</td></tr>
+          <tr><td class="k">참가비</td><td>0~1,000 다이아 (5 단위)</td><td>오픈 대회는 0 권장</td></tr>
+          <tr><td class="k">시간대</td><td>GMT -12 ~ +12</td><td>국내는 GMT+9</td></tr>
+          <tr><td class="k">사전 노출</td><td>있음/없음, 최소 5분</td><td>알림 신청 버튼으로 사전 모객</td></tr>
+          <tr><td class="k">참가 신청 기간</td><td>30분 ~ 14일</td><td>시작 시각은 최소 24시간 이후</td></tr>
+          <tr><td class="k">예선 (랭킹전)</td><td>있음/없음 · 최소 24시간</td><td>기준: 전체 점수 합산 / 곡별 최고 점수 합산</td></tr>
+          <tr><td class="k">점수 범위</td><td>모든 곡 / 경연곡 제한</td><td>공정성을 위해 경연곡 제한 + 최고 점수 합산 권장</td></tr>
+          <tr><td class="k">진출자 선정</td><td>자동 / 수동, 30분 ~ 30일</td><td>수동이면 본선 참석 확인 후 확정 가능</td></tr>
+          <tr><td class="k">대진 배정</td><td>자동 / 수동</td><td>자동은 시드 대칭 (1위 vs 최하위 …)</td></tr>
+          <tr><td class="k">진행 방식</td><td>동기 / 비동기</td><td>동기: 라운드 간 최소 15분 · 비동기: 플레이 창 1분~23시간 35분, 라운드 간 최소 25분</td></tr>
+          <tr><td class="k">본선 일정</td><td>라운드당 최소 30분</td><td>첫 라운드는 대진 공개 후 24시간 이후</td></tr>
+          <tr><td class="k">경연곡</td><td>5~30곡</td><td>현장 본선 송리스트와 맞추면 연습 효과가 큼</td></tr>
+          <tr><td class="k">언어</td><td>11개 언어, 기본 언어 1개 필수</td><td>공지 언어별 최대 3,000자</td></tr>
+          <tr><td class="k">포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>앱 다운로드 QR은 별도 홍보물에 삽입</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g2">
+        <figure><img src="img/tournament_setting_1.jpg" alt="토너먼트 개최 전 리뷰 화면 예시" loading="lazy"><figcaption>개최 신청서 리뷰 화면 예시 (기본 정보 · 예선 · 상금)</figcaption></figure>
+        <figure><img src="img/tournament_setting_2.jpg" alt="토너먼트 설정 화면 예시 2" loading="lazy"><figcaption>설정 화면 예시 2</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2 class="sec">본선 진출 방식 조합</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>진출자 선정</th><th>대진 배정</th><th>주최측 작업</th></tr></thead>
+        <tbody>
+          <tr><td>수동</td><td>수동</td><td>진출자 직접 선택 + 매치 직접 배정</td></tr>
+          <tr><td>수동</td><td>자동</td><td>진출자만 선택</td></tr>
+          <tr><td>자동</td><td>수동</td><td>매치만 배정</td></tr>
+          <tr><td>자동</td><td>자동</td><td>작업 없음 (대진 수정 불가)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">배정 기간 안에 끝내지 못하면 남은 진출자는 시스템이 자동 배정합니다. 대진표는 공개 전까지 수정할 수 있습니다.</p>
+    </div>
+
+    <div class="block">
+      <h2 class="sec">앱 본선 경기 규칙</h2>
+      <div class="grid g2">
+        <div class="panel block"><h3>매치당 게임 수</h3><ul class="list"><li>1024강 ~ 16강: <b>3게임</b></li><li>8강 ~ 결승: <b>5게임</b></li><li>매치 종료 후 평가 시간 20분 고정</li><li>라운드 간 휴식 5분 ~ 7일</li></ul></div>
+        <div class="panel block"><h3>미참여 처리</h3><ul class="list"><li><b>No Show</b>: 게임을 전혀 하지 않음 → 해당 매치 패배</li><li><b>FF (기권)</b>: 게임의 절반 미만만 플레이</li><li>마지막 라운드 종료 즉시 FINISHED (휴식 없음)</li></ul></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2 class="sec">상금 · 상품 설정</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>유형</th><th>설정</th></tr></thead>
+        <tbody>
+          <tr><td class="k">현금</td><td>USD / KRW / EUR / IDR, 최대 8자리 (소수점 불가)</td></tr>
+          <tr><td class="k">다이아 (인앱)</td><td>0~9,999개</td></tr>
+          <tr><td class="k">실물 상품</td><td>상품명 30자 + 이미지 (JPEG/PNG, 10MB)</td></tr>
+          <tr><td class="k">보너스 상품</td><td>순위와 무관, 주최측이 기준·수상자 지정</td></tr>
+          <tr><td class="k">시상 순위</td><td>기본 1~3위 (+4위). 16강 이상 1~4위(+5~8위), 32강 이상 1~8위(+9~16위) …</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note warn"><b>반려되는 경우.</b> 상금·상품 수량이나 내용이 모호할 때, 사전 협의 없이 대회를 취소한 이력이 있을 때, 과거 운영에서 참가자 민원이 컸을 때. 반려 사유는 신청 현황 화면에서 확인하고 수정 후 재신청합니다.</div>
+      <p class="muted">상금·상품은 주최측이 직접 지급합니다. 우승자 목록(이름·국적·연락처·이메일)은 CSV로 받을 수 있고, 미성년자는 법정대리인 정보 버튼이 표시됩니다.</p>
+    </div>
+
+    <div class="block">
+      <h2 class="sec">국내 예선 운영 팁</h2>
+      <ul class="list">
+        <li>지정곡 20곡 중 <b>최고 점수 상위 10곡 합산</b>처럼 기준을 단순하게 공지합니다. 순위는 10분마다 갱신됩니다.</li>
+        <li>동점자는 <b>먼저 득점한 순</b>으로 정하고 공지에 미리 적습니다.</li>
+        <li>진출자 확정 후 전원에게 유선으로 현장 참석 의사를 확인하고, 미성년자는 보호자와 먼저 연락합니다.</li>
+        <li>지역 한정 대회는 당일 거주 증빙 신분증 지참과 <b>대회 부속합의서</b> 서명을 안내합니다.</li>
+        <li>예선 기간에는 연습 독려·일정 알림 푸시를 시간대에 맞춰 보내도록 본사에 요청합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="operate:offline" hidden>
+    <div class="block">
+      <h2 class="sec">오프라인 아케이드 본선 진행 기준</h2>
+      <p class="muted">STEPIN E-Sports 대회 규정집 2026 기준입니다. 참가 규모에 따라 포맷을 탄력적으로 적용하며, 주최측 요청으로 라운드·세트 수·팀전 여부를 바꿀 수 있습니다.</p>
+      <div class="row"><button class="btn sm" data-dl="STEPIN_Rulebook_2026_KR.pdf" data-name="STEPIN E-Sports 대회 규정집 2026.pdf">규정집 국문 PDF</button><button class="btn sm" data-dl="STEPIN_Rulebook_2026_EN.pdf" data-name="STEPIN E-Sports Tournament Rulebook 2026.pdf">Rulebook EN PDF</button></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">개인전 · 참가 인원별 포맷</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>참가 인원</th><th>그룹 스테이지 (풀 라운드 로빈)</th><th>본선</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">8명</td><td>없음</td><td>8강 더블 엘리미네이션 바로 진행</td></tr>
+          <tr><td class="mono">9–11명</td><td>2개 조, 조별 상위 4명 진출</td><td>8강 더블 엘리미네이션</td></tr>
+          <tr><td class="mono">12–16명</td><td>4개 조, 조별 상위 2명 진출</td><td>8강 더블 엘리미네이션</td></tr>
+          <tr><td class="mono">17명 이상</td><td colspan="2">앱 예선으로 압축하거나 싱글 엘리미네이션 (예: 경남 32강, 32~4강 BO7 · 3-4위전·결승 BO9)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">조 편성은 경기 당일 랜덤 추첨, 본선 대진은 예선 순위로 정합니다.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">더블 엘리미네이션 · 세트 규칙</h2>
+      <div class="grid g3">
+        <div class="panel block"><h3>승자조 / 패자조</h3><p class="muted">패배하면 패자조로 이동하고, 2패째에 탈락합니다. 결승은 승자조 1위 vs 패자조 1위.</p></div>
+        <div class="panel block"><h3>연속 퍼포먼스</h3><p class="muted">일반 라운드 <b>BO7</b>, 결승 <b>BO9</b>. 7곡(9곡)을 중단 없이 모두 수행한 뒤 결과를 발표합니다. 지구력과 일관성을 함께 평가합니다.</p></div>
+        <div class="panel block"><h3>브래킷 리셋</h3><p class="muted">승자조 선수가 첫 BO9를 이기면 즉시 우승. 패자조 선수가 이기면 대진이 초기화되고 BO9를 한 번 더 치릅니다.</p></div>
+      </div>
+    </div>
+    <div class="block">
+      <h2 class="sec">팀전 (2인 1팀)</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>참가 팀</th><th>방식</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">4–5팀</td><td>단일 그룹 풀 라운드 로빈 → 1·2위 결승, 3·4위전 (BO9)</td></tr>
+          <tr><td class="mono">6팀</td><td>2개 조 그룹 스테이지 → 조별 상위 2팀 4강 싱글 엘리미네이션 (A1 vs B2, B1 vs A2)</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="list"><li><b>BO7</b>: 팀원 A 3세트 + 팀원 B 3세트 + 마지막 1세트는 A 또는 B</li><li><b>BO9</b>: 팀원 A 4세트 + 팀원 B 4세트 + 마지막 1세트는 A 또는 B</li><li>득점: 승 1점 · 패 0점</li></ul>
+    </div>
+    <div class="block">
+      <h2 class="sec">동률 처리 (타이브레이커)</h2>
+      <ol class="steps"><li><div><b>승자승</b> — 동률 팀 간 맞대결 승자</div></li><li><div><b>총 세트 득실차</b></div></li><li><div><b>총 포인트 득실차</b></div></li><li><div><b>단판 재경기 (BO7)</b> — 진출권이 걸린 경우에만</div></li></ol>
+      <p class="src">몰수패·기권패는 상대에게 최소 승리 조건 스코어로 기록하고 다른 통계는 기록하지 않습니다.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">송리스트 운영</h2>
+      <ul class="list">
+        <li>주최측이 선정해 사전 공유하는 최소 <b>25곡</b> 풀에서 매치마다 랜덤으로 곡을 고릅니다.</li>
+        <li>STEPIN 앱 플레이 수 상위곡 중심. 개인전·팀전 공통 10곡 + 각 15곡 별도.</li>
+        <li>곡당 하이라이트 구간 약 30초. 국가·지역 서비스 제한곡은 사전에 확인합니다.</li>
+        <li>송리스트를 앱 예선 경연곡과 맞추고 중계 화면에도 노출하면 다음 대회 준비에 도움이 됩니다.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h2 class="sec">선수 자격 · 복장 · 접속종료</h2>
+      <div class="grid g2">
+        <div class="panel block"><h3>자격</h3><ul class="list"><li>유효한 STEPIN 계정, 이용 제재 이력 없음</li><li>미성년자는 부모·법정대리인 동의</li><li>출전 자격 양도 금지 (부득이한 경우 운영국 절차로 대체)</li><li>국제 대회: 참가국 국적, 선수명 영문 12자 이내, 프로필 사진 1,080px 이상 PNG</li></ul></div>
+        <div class="panel block"><h3>AI 판정을 위한 복장</h3><ul class="list"><li>마스크·모자·선글라스 등 얼굴을 가리는 착용물 금지</li><li>신체 추적을 방해하는 과도하게 헐렁한 의상 금지</li><li>배경·바닥과 같은 색 의상 지양</li><li>시정 요구 불응 시 본선 참가 불가</li></ul></div>
+        <div class="panel block"><h3>접속종료</h3><ul class="list"><li><b>비고의</b> (네트워크·서버·천재지변): 심판이 재경기 여부 결정</li><li><b>고의</b>: 해당 세트 몰수패, 경중에 따라 경고·실격</li></ul></div>
+        <div class="panel block"><h3>징계</h3><ul class="list"><li>구두 주의 → 경고 → 세트·매치 패배 → 실격 → 상금 몰수 → 출전 정지</li><li>대회 후 부정행위가 확인되면 순위·상금 전액 환수</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="operate:day" hidden>
+    <div class="block">
+      <h2 class="sec">소요 시간 기준</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>구분</th><th>라운드</th><th>포맷</th><th>예상 시간</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3" class="k">개인전</td><td>라운드 1~2</td><td>BO7</td><td class="num">R1 15경기 약 100분</td></tr>
+          <tr><td>준결승</td><td>BO7</td><td class="num">약 20분</td></tr>
+          <tr><td>결승</td><td>BO9</td><td class="num">약 40분</td></tr>
+          <tr><td rowspan="3" class="k">팀전</td><td>풀 라운드 로빈</td><td>BO7</td><td class="num">6경기 × 7분 = 약 100분</td></tr>
+          <tr><td>결승</td><td>BO9</td><td class="num">약 20분</td></tr>
+          <tr><td>3·4위전</td><td>BO9</td><td class="num">약 40분</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">개인전·팀전 각각 총 약 160분 (40~45곡). 7곡 1매치는 약 7분으로 잡습니다.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">32강 하루 대회 타임테이블 예시</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>시간</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">10:00–11:00</td><td>개막식 · 선수 등록 (본인 확인, 부속합의서 서명)</td></tr>
+          <tr><td class="mono">11:00–13:00</td><td>연습 시간 (점심 포함)</td></tr>
+          <tr><td class="mono">13:00–13:30</td><td>휴식 · 세팅</td></tr>
+          <tr><td class="mono">13:30–15:00</td><td>32강 (16매치)</td></tr>
+          <tr><td class="mono">15:00–15:30</td><td>휴식 · 세팅</td></tr>
+          <tr><td class="mono">15:30–16:30</td><td>16강 (8매치) · 8강 (4매치)</td></tr>
+          <tr><td class="mono">16:30–16:45</td><td>휴식 · 세팅</td></tr>
+          <tr><td class="mono">16:45–17:15</td><td>4강 · 3-4위전 · 결승</td></tr>
+          <tr><td class="mono">17:15–17:30</td><td>TOP 3 인터뷰 · 기념 촬영</td></tr>
+          <tr><td class="mono">17:30–18:00</td><td>체험존 마무리 → 18:00 시상식 · 폐막</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">현장 운영 인력</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>역할</th><th>인원</th><th>담당</th></tr></thead>
+        <tbody>
+          <tr><td class="k">MC (캐스터)</td><td class="num">1</td><td>현장 진행·중계 멘트. 경기 규정 숙지, STEPIN 팀과 사전 미팅 필수</td></tr>
+          <tr><td class="k">슈퍼바이저</td><td class="num">1</td><td>경기 운영 총괄, MC와 진행 순서 소통</td></tr>
+          <tr><td class="k">레퍼리 (심판)</td><td class="num">1</td><td>복장 확인, 접속종료·재경기 판정, 결과 확인</td></tr>
+          <tr><td class="k">기술 오퍼레이터</td><td class="num">1–2</td><td>대진·중계 PC, 아케이드 상태 관리 (STEPIN 지원)</td></tr>
+          <tr><td class="k">현장 스태프</td><td class="num">2+</td><td>선수 호출·대기 안내, 관중 동선, 안전</td></tr>
+          <tr><td class="k">반입 인력</td><td class="num">대당 2</td><td>반입·반출일 아케이드 운반</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">본사에 미리 보낼 정보</h2>
+      <ul class="list"><li>Floor plan (무대·관중석·부조·대기실 위치, 창문·조명 방향)</li><li>전체 스케줄: 세팅, 리허설, 개회식, 경기, 시상, 폐막</li><li>비상연락망: 운영사, 선수 관리, 방송팀, 안전 요원</li><li>방송 계획: 송출 여부·플랫폼, 촬영팀 구성 → <a href="#setup" data-tab-go="setup:broadcast">중계 형태 선택</a></li><li>선수 정보: 닉네임(영문 12자 이내), 프로필 사진, 팀명</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SETUP ======== -->
+<section class="view" data-view="setup" hidden>
+  <div class="vh"><span class="eyebrow">03 · Arcade Setup</span><h1>아케이드 셋팅 · 중계 가이드</h1><p>공간과 전원, 네트워크를 갖춘 뒤 행사 형태에 맞는 중계 구성을 고릅니다. 정확한 AI 채점이 모든 구성의 출발점입니다.</p></div>
+  <div class="tabs" role="tablist" data-tabs="setup">
+    <button role="tab" data-tab="space">공간 · 설치 기준</button>
+    <button role="tab" data-tab="connect">기본 연결</button>
+    <button role="tab" data-tab="broadcast">중계 형태별 셋팅</button>
+    <button role="tab" data-tab="check">리허설 · 문제 해결</button>
+  </div>
+
+  <div class="tabpanel" data-panel="setup:space">
+    <div class="block">
+      <h2 class="sec">플레이 위치 표시</h2>
+      <div class="ruler" role="img" aria-label="카메라에서 2.2~2.5m 지점에 플레이 위치를 표시">
+        <div class="dev"></div><span class="dl">카메라 (아케이드 전면)</span>
+        <div class="zone"></div><span class="zl">플레이 위치 2.2–2.5m</span>
+        <span class="lab" style="left:0%">0</span><span class="lab" style="left:33.3%">1m</span><span class="lab" style="left:66.6%">2m</span><span class="lab" style="left:96%">3m</span>
+      </div>
+      <p class="muted">바닥에 테이프로 플레이 위치를 표시해 이용자가 최소 거리보다 가까이 서지 않게 합니다. 팔다리를 모두 뻗었을 때 전신이 화면 안에 들어와야 합니다. WIDE는 2.8–3.2m입니다.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">공간 기준</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>항목</th><th>STANDARD (1대)</th><th>WIDE (1대)</th><th>대회 무대 (2대)</th></tr></thead>
+        <tbody>
+          <tr><td class="k">최소 공간</td><td class="mono">3 × 3m</td><td class="mono">4 × 3.5m</td><td class="mono">6 × 3m</td></tr>
+          <tr><td class="k">권장 공간</td><td class="mono">3 × 4m 이상</td><td class="mono">4.5 × 4.5m 이상</td><td class="mono">7 × 3m + 관중·중계 공간</td></tr>
+          <tr><td class="k">후면 유지보수</td><td class="mono">60cm</td><td class="mono">60cm</td><td class="mono">60cm</td></tr>
+          <tr><td class="k">천장 높이</td><td class="mono">3m 이상</td><td class="mono">3m 이상</td><td class="mono">3m 이상</td></tr>
+          <tr><td class="k">관람 동선</td><td>카메라에서 약 5m 깊이</td><td>카메라에서 약 6m 깊이</td><td>관중은 카메라 뒤·옆, 중계 TV로 관람</td></tr>
+          <tr><td class="k">백월</td><td colspan="2">6 × 3m 권장</td><td>6 × 3m ~ 7 × 4m (브랜딩 시안 STEPIN 협조)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g2">
+        <figure><img src="img/setup_standard_distance.jpg" alt="스탠다드 2대 배치도: 6000×3000mm, 플레이어 거리 2200~2500mm" loading="lazy"><figcaption>STANDARD 2대 배치 · 6,000 × 3,000mm</figcaption></figure>
+        <figure><img src="img/setup_portable_backwall.jpg" alt="포터블 백월 배치도" loading="lazy"><figcaption>PORTABLE 2대 백월 배치 · 7 × 4m</figcaption></figure>
+      </div>
+    </div>
+    <div class="block">
+      <h2 class="sec">AI 채점 정확도를 높이는 현장 조건</h2>
+      <div class="grid g2">
+        <div class="panel block"><h3>바닥 · 배경</h3><ul class="list"><li>무대 바닥은 포맥스 무광 권장. 미끄럽지 않고 단차 없게</li><li>흰색·검은색 바닥 지양 (운동화 색과 겹침)</li><li>배경색과 의상색이 겹치지 않게 (검정 벽 + 검정 티셔츠 X)</li></ul></div>
+        <div class="panel block"><h3>조명 · 인물</h3><ul class="list"><li>역광 배치 금지. 창문·LED 월을 등지고 서지 않게</li><li>저조도·야간에는 핀조명 2개로 얼굴 밝기 확보</li><li>관중이 카메라에 잡히지 않게 플레이 존 뒤를 비움</li><li>2명 이상 겹쳐 서면 점수 정확도가 떨어짐</li></ul></div>
+      </div>
+      <div class="note warn"><b>실내 배정을 원칙으로 합니다.</b> 실외는 지붕, 방수·방진, 평탄한 바닥, 접지 전원, 우천·강풍 대책을 갖춘 경우에만 운영합니다. 강한 햇빛은 인식 오류를 일으킵니다.</div>
+    </div>
+    <div class="block">
+      <h2 class="sec">반입 · 운반</h2>
+      <ul class="list">
+        <li>아케이드는 <b>눕히지 않고 세워서</b> 운반합니다. 일반 지하주차장 진입이 어려우니 지상 하역장을 준비합니다.</li>
+        <li>대당 성인 2인 + 적정 하중 운반 카트. 하역장에서 설치 위치까지 계단 없는 동선을 미리 확인합니다.</li>
+        <li>화물 엘리베이터와 트럭 출입(주차 관리) 예약을 행사장에 미리 요청합니다.</li>
+        <li>반출 후 아케이드 포장재를 반납해 주세요.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="setup:connect" hidden>
+    <div class="block">
+      <h2 class="sec">STANDARD · WIDE (일체형)</h2>
+      <ol class="steps">
+        <li><div><b>위치 고정</b> — 플레이 위치 표시에서 카메라까지 2.2–2.5m (WIDE 2.8–3.2m), 후면 60cm 확보</div></li>
+        <li><div><b>전원 연결</b> — 접지된 AC 220V 콘센트에 직접 연결. 2대면 전용 콘센트 2구 이상</div></li>
+        <li><div><b>유선 LAN 연결</b> — RJ-45 (CAT6 권장). DHCP 기본, 고정 IP·프록시 환경은 설치 전 협의</div></li>
+        <li><div><b>부팅 · 언어 설정</b> — 기본 언어는 영어. 행사에 맞게 변경</div></li>
+        <li><div><b>배틀 연동 확인</b> — STANDARD 2대를 같은 네트워크에 연결하고 배틀 모드 진입 테스트</div></li>
+        <li><div><b>기능 테스트</b> — 챌린지 1곡, 배틀 1곡, QR 다운로드 1회 실행</div></li>
+      </ol>
+    </div>
+    <div class="block">
+      <h2 class="sec">PORTABLE (외부 모니터 연결형)</h2>
+      <div class="diagram" id="dg-portable"></div>
+      <div class="legend"><span><i class="hd"></i>HDMI (영상)</span><span><i></i>오디오 · 전원</span><span><i class="net"></i>네트워크</span></div>
+      <div class="tbl"><table>
+        <thead><tr><th>준비물 (2대 기준)</th><th>수량</th><th>규격</th></tr></thead>
+        <tbody>
+          <tr><td class="k">세로형 모니터</td><td class="num">2</td><td>43인치 이상, 9:16 (1080×1920), 매립 또는 스탠드 거치</td></tr>
+          <tr><td class="k">스피커</td><td class="num">2</td><td>300W 이상, 3.5mm 입력, 케이블 포함</td></tr>
+          <tr><td class="k">HDMI 케이블</td><td class="num">3</td><td>아케이드→모니터 2 + 중계 PC 1. 원거리는 10m 이상</td></tr>
+          <tr><td class="k">테이블</td><td class="num">2</td><td>높이 약 72cm, 상판 90×40cm 이상</td></tr>
+          <tr><td class="k">멀티탭</td><td class="num">3</td><td>4구, 1개는 10m. 현지 조달 (안전)</td></tr>
+          <tr><td class="k">전력</td><td>—</td><td>전체 20A 이상</td></tr>
+          <tr><td class="k">인터넷</td><td>—</td><td>있으면 배틀·영상 다운로드, 없으면 챌린지만</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">네트워크 · 전원 상세</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>항목</th><th>최소</th><th>권장</th></tr></thead>
+        <tbody>
+          <tr><td class="k">대역폭</td><td class="mono">↓1Mbps / ↑512Kbps</td><td class="mono">↓5Mbps / ↑2Mbps</td></tr>
+          <tr><td class="k">유선 인터페이스</td><td class="mono">100BASE-TX</td><td class="mono">1000BASE-T</td></tr>
+          <tr><td class="k">케이블</td><td class="mono">CAT5e</td><td class="mono">CAT6</td></tr>
+          <tr><td class="k">핑</td><td class="mono">150ms 이하</td><td class="mono">50ms 이하</td></tr>
+          <tr><td class="k">지터</td><td class="mono">30ms 이하</td><td class="mono">10ms 이하</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note"><b>공용 와이파이는 피하세요.</b> 관람객이 몰리면 트래픽으로 화면 멈춤·딜레이가 생깁니다 (두바이 체험존 사례). 학교·공공기관은 계약 전 통신 허용 목록을 정보화 담당자에게 전달해 사전 승인을 받습니다.</div>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="setup:broadcast" hidden>
+    <div class="block">
+      <h2 class="sec">중계 형태 선택</h2>
+      <p class="muted">행사에 맞는 형태를 고르면 구성도와 장비 목록이 바뀝니다. 위 단계는 아래 단계를 모두 포함합니다.</p>
+      <div class="typesel" role="group" aria-label="중계 형태">
+        <button type="button" data-bt="t1" aria-pressed="true"><span class="k">TYPE 1</span><b>체험존</b><span>중계 없음</span></button>
+        <button type="button" data-bt="t2" aria-pressed="false"><span class="k">TYPE 2</span><b>현장 중계</b><span>관중용 대형 화면</span></button>
+        <button type="button" data-bt="t3" aria-pressed="false"><span class="k">TYPE 3</span><b>녹화 · 스케치</b><span>실사 카메라 + 녹화</span></button>
+        <button type="button" data-bt="t4" aria-pressed="false"><span class="k">TYPE 4</span><b>라이브 송출</b><span>스트리밍 · 방송사</span></button>
+      </div>
+    </div>
+    <div class="block" id="btOut">
+      <h2 class="sec" id="btTitle"></h2>
+      <p class="muted" id="btDesc"></p>
+      <div class="diagram" id="dg-broadcast"></div>
+      <div class="legend"><span><i class="hd"></i>HDMI · SDI (영상)</span><span><i></i>오디오 · 마이크</span><span><i class="net"></i>네트워크</span></div>
+      <div class="grid g2">
+        <div class="panel block"><h3>장비 목록</h3><div class="tbl" style="border:0"><table id="btGear"><thead><tr><th>장비</th><th>수량</th><th>준비</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="panel block"><h3>연결 순서 · 주의</h3><ol class="steps" id="btSteps"></ol></div>
+      </div>
+    </div>
+    <div class="note warn"><b>캡처보드·스위처·인코더 사양은 예시입니다.</b> 아케이드 출력 해상도와 중계 PC 화면 구성은 행사마다 다를 수 있으니, 방송팀·슈퍼바이저·STEPIN 테크팀 3자 사전 미팅에서 최종 구성을 확정해 주세요.</div>
+    <div class="block">
+      <h2 class="sec">라이브 송출 시 음악 저작권</h2>
+      <ul class="list"><li>대회 곡은 K-POP 음원입니다. 송출 플랫폼과 국가별로 음악 저작권 적용이 달라 라이브가 차단될 수 있습니다.</li><li>플랫폼을 정하면 사전 테스트 송출을 하고, 대안 채널(녹화 후 편집 업로드)을 함께 준비합니다.</li><li>대회 영상 콘텐츠의 저작권은 주최측과 STEPIN 본부에 귀속됩니다 (규정집 제13조).</li></ul>
+    </div>
+  </div>
+
+  <div class="tabpanel" data-panel="setup:check" hidden>
+    <div class="block">
+      <h2 class="sec">D-1 리허설 점검</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>점검</th><th>기준</th></tr></thead>
+        <tbody>
+          <tr><td class="k">거리 · 화각</td><td>플레이 위치에서 양팔·양다리를 뻗어도 전신이 화면에 다 보이는지</td></tr>
+          <tr><td class="k">조명</td><td>플레이 화면과 중계 화면에서 얼굴이 어둡지 않은지 (역광 확인)</td></tr>
+          <tr><td class="k">네트워크</td><td>2대 배틀 연동, QR 다운로드 1회, 중계 PC 접속</td></tr>
+          <tr><td class="k">음향</td><td>아케이드 음악이 MC 마이크·메인 무대 소리에 묻히지 않는지</td></tr>
+          <tr><td class="k">중계 화면</td><td>관중 모니터에 게임 화면·대진표가 끊김 없이 나오는지 (HDMI 직결)</td></tr>
+          <tr><td class="k">진행</td><td>MC 큐시트, 선수 호출 순서, 송리스트 랜덤 선곡 방법 공유</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">문제 해결</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
+        <tbody>
+          <tr><td class="k">점수가 비정상적으로 낮음</td><td>거리 부족, 전신 미노출, 배경·의상 색 겹침, 2인 이상 인식</td><td>플레이 위치 재표시, 관중 이동, 의상 교체 요청</td></tr>
+          <tr><td class="k">플레이어가 어둡게 보임</td><td>역광, 저조도</td><td>배치 방향 변경, 핀조명 추가</td></tr>
+          <tr><td class="k">배틀 연결 안 됨</td><td>인터넷 미연결, 다른 네트워크</td><td>두 대를 같은 유선 LAN에 연결 후 재시도</td></tr>
+          <tr><td class="k">화면 멈춤 · 딜레이</td><td>공용 와이파이 트래픽</td><td>전용 유선 회선으로 전환</td></tr>
+          <tr><td class="k">미러링 화면 끊김 · 싱크 어긋남</td><td>무선 미러링</td><td>HDMI 직결로 교체</td></tr>
+          <tr><td class="k">QR 영상 다운로드 안 됨</td><td>인터넷 미연결, 공공장소 다운로드 비활성화</td><td>네트워크 확인, 행사 설정 본사 확인</td></tr>
+          <tr><td class="k">곡 검색이 안 됨</td><td>검색은 영문 원제만 지원</td><td>예: 아파트 → <span class="mono">APT.</span>, 첫 만남은 계획대로 되지 않아 → <span class="mono">plot twist</span></td></tr>
+          <tr><td class="k">기기 오류 · 하드웨어 이상</td><td>—</td><td>제품번호·증상·오류 화면 사진을 <a href="#contact">A/S 창구</a>로 접수, 원격 진단 후 방문</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== COMPARE ======== -->
+<section class="view" data-view="compare" hidden>
+  <div class="vh"><span class="eyebrow">04 · Online vs Offline</span><h1>온·오프라인 토너먼트 비교</h1><p>온라인은 규모와 유입, 오프라인은 현장성과 공정한 판정에 강합니다. 대부분의 행사는 둘을 묶은 하이브리드가 가장 효과적입니다.</p></div>
+  <div class="vs">
+    <div class="panel"><h3><span class="pill p-rec">ONLINE</span>APP 토너먼트</h3>
+      <div class="pc pro"><ul><li>장소·국가 제약 없이 대규모 모집 (최대 1024강)</li><li>신청부터 결과까지 웹 툴킷으로 자동 진행</li><li>현장 비용 없음, 장기간 랭킹전 가능</li><li>참가자 연습 → 앱 신규 유입·리텐션 효과</li><li>선수 영상·CSV 우승자 데이터 자동 확보</li></ul></div>
+      <div class="pc con"><ul><li>신청 대비 실제 참여율이 낮음</li><li>모바일 네트워크·기기 환경에 따라 중도 이탈</li><li>시차·일정 조율 필요 (동기 방식)</li><li>현장 관람 콘텐츠가 없어 화제성은 홍보에 의존</li></ul></div>
+    </div>
+    <div class="panel"><h3><span class="pill p-req">OFFLINE</span>아케이드 대회</h3>
+      <div class="pc pro"><ul><li>대형 화면·MC·관중이 만드는 관람 콘텐츠</li><li>같은 장비·같은 조건에서 판정 → 공정성 높음</li><li>복장·접속 문제를 심판이 현장에서 통제</li><li>지자체·학교·브랜드 행사 연계, 체험존 동시 운영</li></ul></div>
+      <div class="pc con"><ul><li>장비 렌탈·운반·무대·인력 비용</li><li>참가 인원이 시간에 묶임 (32강 하루 약 4시간)</li><li>공간·전원·조명·인터넷 조건이 맞아야 함</li><li>지역 참가자 중심으로 모집 범위가 좁음</li></ul></div>
+    </div>
+    <div class="panel"><h3><span class="pill p-ok">HYBRID</span>앱 예선 + 현장 본선</h3>
+      <div class="pc pro"><ul><li>넓게 모집하고 상위 N명만 현장 초청</li><li>예선 기간 내내 앱 연습 → 본선 경기력 상승</li><li>현장 비용을 본선 규모에 맞춰 통제</li><li>예선 홍보 + 본선 중계로 두 번의 노출 기회</li></ul></div>
+      <div class="pc con"><ul><li>운영 기간이 길어짐 (예선 1~2주 + 본선)</li><li>진출자 참석 확인·대체 진출 절차 필요</li><li>예선·본선 송리스트를 맞추는 사전 기획 필요</li></ul></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">과거 토너먼트 데이터</h2>
+    <div class="grid g3">
+      <div class="stat"><span class="eyebrow" style="color:var(--cyan)">2024 오피셜 USD 2,000</span><span class="v num">10.8%<small>실참여율</small></span><div class="bar"><i style="width:10.8%"></i></div><p>목표 512명 · 신청 372명 · 실참여 40명. 실참가자 65%가 미국. 신청 후 챌린지를 한 번도 하지 않은 신청자 42.7%.</p></div>
+      <div class="stat"><span class="eyebrow" style="color:var(--cyan)">2024 오디션미 협업 (47일)</span><span class="v num">7,227<small>신규 회원</small></span><div class="bar"><i style="width:24%"></i></div><p>토너먼트 기간 일평균 설치 102 → 127명 (약 +24%). 협업사 효과 환산 CPI 약 1,112원.</p></div>
+      <div class="stat"><span class="eyebrow" style="color:var(--cyan)">앱 8강 시범운영</span><span class="v num">LTE·5G<small>이탈 주원인</small></span><div class="bar"><i style="width:60%;background:var(--warn)"></i></div><p>모바일 데이터·지하 환경 참가자 다수가 한 곡 후 멈춤·재입장 불가. 와이파이 참가자는 정상 완주.</p></div>
+    </div>
+    <div class="note"><b>운영 시사점.</b> 온라인 예선은 신청 수보다 <b>실제 플레이를 끌어내는 장치</b>가 중요합니다. 시작 전 연습 독려 알림, 시간대별 일정 공지, 와이파이 환경 참여 안내를 함께 운영하세요. 신청 후 연습량이 많은 참가자일수록 실제로 참여했습니다.</div>
+  </div>
+
+  <div class="block">
+    <h2 class="sec">우리 행사에 맞는 방식 찾기</h2>
+    <p class="muted">가장 중요한 목표를 하나 이상 고르세요.</p>
+    <div class="chips" id="goalChips">
+      <button type="button" data-g="reach" aria-pressed="false">최대한 많은 참가자</button>
+      <button type="button" data-g="show" aria-pressed="true">현장 흥행 · 관람</button>
+      <button type="button" data-g="budget" aria-pressed="false">적은 예산</button>
+      <button type="button" data-g="fair" aria-pressed="false">공정한 판정</button>
+      <button type="button" data-g="local" aria-pressed="false">지역 · 학교 한정</button>
+      <button type="button" data-g="app" aria-pressed="false">앱 유입 · 홍보</button>
+      <button type="button" data-g="short" aria-pressed="false">짧은 준비 기간</button>
+    </div>
+    <div class="panel" id="recOut" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ======== CHECKLIST ======== -->
+<section class="view" data-view="checklist" hidden>
+  <div class="vh"><span class="eyebrow">05 · Checklist</span><h1>운영 체크리스트</h1><p>앱 예선 + 오프라인 본선 기준입니다. 체크한 항목은 이 브라우저에 저장됩니다.</p></div>
+  <div class="ck-head">
+    <div class="ck-prog"><b id="ckCount" class="num">0 / 0 완료</b><div class="bar"><i id="ckBar" style="width:0%"></i></div></div>
+    <div class="row">
+      <button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_아케이드 행사 준비사항.pdf">준비사항 시트 받기</button>
+      <span id="ckResetWrap"><button class="btn sm" id="ckReset" type="button">체크 초기화</button></span>
+    </div>
+  </div>
+  <div id="ckList" class="block"></div>
+</section>
+
+<!-- ======== MC ======== -->
+<section class="view" data-view="mc" hidden>
+  <div class="vh"><span class="eyebrow">06 · On-site</span><h1>MC · 현장 진행</h1><p>캐스터 멘트는 경기 사이 공백을 채우고 앱 다운로드로 이어지게 하는 핵심 장치입니다. ★ 표시는 반드시 전달할 내용입니다.</p></div>
+  <div class="tabs" role="tablist" data-tabs="mc">
+    <button role="tab" data-tab="kr">국문 멘트</button>
+    <button role="tab" data-tab="en">English Script</button>
+    <button role="tab" data-tab="tips">점수 기준 · 이벤트</button>
+  </div>
+  <div class="tabpanel" data-panel="mc:kr"><div class="script" id="scriptKR"></div></div>
+  <div class="tabpanel" data-panel="mc:en" hidden><div class="script" id="scriptEN"></div></div>
+  <div class="tabpanel" data-panel="mc:tips" hidden>
+    <div class="block">
+      <h2 class="sec">고득점 기준 (챌린지)</h2>
+      <div class="tbl"><table><thead><tr><th>점수</th><th>수준</th></tr></thead><tbody>
+        <tr><td class="mono">99+</td><td>숙련된 댄서도 받기 어려움</td></tr>
+        <tr><td class="mono">95+</td><td>숙련된 댄서, 안무를 정확히 아는 사람</td></tr>
+        <tr><td class="mono">90+</td><td>안무를 어느 정도 숙지한 일반인</td></tr>
+      </tbody></table></div>
+      <p class="muted">시작과 끝 포즈까지 정확히 따라 하면 점수에 도움이 됩니다. 곡당 하이라이트 약 30초.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">참여를 늘리는 현장 이벤트</h2>
+      <div class="grid g3">
+        <div class="panel block"><h3>곡 도장 이벤트</h3><p class="muted">여러 곡 완주 시 도장. 체류 시간이 늘고 송리스트 연습 효과. 도장 카드는 본사에 요청.</p></div>
+        <div class="panel block"><h3>고득점 굿즈</h3><p class="muted">90점·95점 기준으로 굿즈 증정. X배너로 기준을 미리 안내.</p></div>
+        <div class="panel block"><h3>SNS 인증</h3><p class="muted">QR로 받은 플레이 영상 업로드, 공식 계정 팔로우 인증. 행사 전용 프레임 합성 가능 (별도 협의).</p></div>
+      </div>
+    </div>
+    <div class="block">
+      <h2 class="sec">중계 화면 사이사이에 넣을 것</h2>
+      <ul class="list"><li>“대회를 미리 준비하세요!” + 앱 다운로드 QR + 스토어 검색어 <b>STEPIN</b></li><li>대회 송리스트 (다음 대회 참가자가 미리 연습)</li><li>선수 프로필과 선발 과정 스토리, 참가 각오</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ASSETS ======== -->
+<section class="view" data-view="assets" hidden>
+  <div class="vh"><span class="eyebrow">07 · Assets</span><h1>홍보 소스 · 다운로드</h1><p>행사 홍보와 고객 제안에 쓸 영상 링크, 디자인 소스, 문서입니다. 외부 게시물에는 STEPIN 앱 다운로드 QR을 꼭 넣어 주세요.</p></div>
+  <div class="tabs" role="tablist" data-tabs="assets">
+    <button role="tab" data-tab="video">홍보 영상 URL</button>
+    <button role="tab" data-tab="design">디자인 소스</button>
+    <button role="tab" data-tab="docs">문서 · 가이드</button>
+    <button role="tab" data-tab="raw">원본 영상 요청</button>
+    <button role="tab" data-tab="spec">제작 규격</button>
+  </div>
+  <div class="tabpanel" data-panel="assets:video">
+    <div class="row"><span class="muted">분류</span><div class="chips" id="vidFilter"></div></div>
+    <div class="vlist" id="vidList"></div>
+  </div>
+  <div class="tabpanel" data-panel="assets:design" hidden>
+    <div class="note"><b>사용 범위.</b> 포스터·광고 이미지는 과거 대회 레퍼런스입니다. 새 대회 포스터는 일정·상금·QR을 바꿔 제작하고, 사용 전 본사에 시안을 공유해 주세요. ECA 포스터의 대회 KV는 KeSPA 자산이므로 참고용으로만 사용합니다.</div>
+    <div class="gal" id="gal"></div>
+  </div>
+  <div class="tabpanel" data-panel="assets:docs" hidden>
+    <div class="dlist" id="docList"></div>
+    <p class="src">영업가이드는 총판·대리점 영업 담당자 배포용입니다. 고객에게 원문을 그대로 전달하지 말고 소개서·제안서를 사용하세요.</p>
+  </div>
+  <div class="tabpanel" data-panel="assets:raw" hidden>
+    <p class="muted">용량이 큰 원본 영상은 본사 저장공간에 있습니다. 파일명과 용도를 적어 <span class="mono">marketing@sidewalkplay.com</span> 으로 요청하면 공유 링크를 보내 드립니다.</p>
+    <div class="tbl"><table id="rawTbl"><thead><tr><th>소스</th><th>버전</th><th>용량</th><th>사용 시 확인</th><th></th></tr></thead><tbody></tbody></table></div>
+  </div>
+  <div class="tabpanel" data-panel="assets:spec" hidden>
+    <div class="block">
+      <h2 class="sec">규격 한눈에</h2>
+      <div class="tbl"><table><thead><tr><th>소재</th><th>규격</th><th>비고</th></tr></thead><tbody>
+        <tr><td class="k">앱 토너먼트 포스터</td><td class="mono">270 × 312 · JPG/PNG · 10MB</td><td>앱 내 대회 카드</td></tr>
+        <tr><td class="k">앱 토너먼트 배너</td><td class="mono">343 × 484 · JPG/PNG · 10MB</td><td>URL 연결 가능</td></tr>
+        <tr><td class="k">앱 인앱 배너</td><td class="mono">686 × 240 · 540 × 624</td><td>본사 제작, 언어별 버전</td></tr>
+        <tr><td class="k">상품 이미지</td><td class="mono">77 × 77 표시 · 10MB</td><td>실물·보너스 상품</td></tr>
+        <tr><td class="k">대회 공지</td><td class="mono">언어별 3,000자</td><td>11개 언어 중 기본 1개 필수</td></tr>
+        <tr><td class="k">선수 프로필 사진</td><td class="mono">1,080px 이상 · PNG</td><td>중계 화면용</td></tr>
+        <tr><td class="k">영상 프레임</td><td class="mono">1080 × 1920</td><td>QR 다운로드 영상 합성, 별도 개발 협의</td></tr>
+        <tr><td class="k">세로 모니터 화면</td><td class="mono">1080 × 1920 (9:16)</td><td>포터블 연결 43인치</td></tr>
+        <tr><td class="k">백월</td><td class="mono">6 × 3m ~ 7 × 4m</td><td>브랜딩 시안 STEPIN 협조</td></tr>
+        <tr><td class="k">POP 아크릴</td><td class="mono">A4 × 3</td><td>앱 다운로드·이벤트 안내</td></tr>
+        <tr><td class="k">X배너</td><td class="mono">1</td><td>유저 인증 이벤트·굿즈 안내</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="block">
+      <h2 class="sec">포스터에 꼭 들어갈 정보</h2>
+      <ul class="list"><li>STEPIN 앱 다운로드 QR + 스토어 검색어 <b>STEPIN</b></li><li>대회명, 예선 기간(시간대 표기), 본선 일시·장소</li><li>총상금과 순위별 상금, 참가 자격</li><li>참가 방법: 앱 → 토너먼트 탭 → 대회 선택 → 참가 신청</li><li>송리스트 또는 송리스트 공개 위치, 문의처</li></ul>
+    </div>
+    <div class="block">
+      <h2 class="sec">공식 채널 · 태그</h2>
+      <div class="grid g4">
+        <div class="ccard"><span class="k">Instagram</span><span class="v">@stepin.official</span><a href="https://www.instagram.com/stepin.official/" target="_blank" rel="noopener">열기 ↗</a></div>
+        <div class="ccard"><span class="k">TikTok</span><span class="v">@stepin.kpopdance</span><a href="https://www.tiktok.com/@stepin.kpopdance" target="_blank" rel="noopener">열기 ↗</a></div>
+        <div class="ccard"><span class="k">YouTube</span><span class="v">@stepin.official</span><a href="https://www.youtube.com/@stepin.official" target="_blank" rel="noopener">열기 ↗</a></div>
+        <div class="ccard"><span class="k">사후 공유 요청</span><span class="v" style="font-family:var(--f-body);font-size:14px;font-weight:500;user-select:text">현장 사진·스케치 영상을 보내주시면 공식 SNS에 함께 홍보합니다</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== POLICY ======== -->
+<section class="view" data-view="policy" hidden>
+  <div class="vh"><span class="eyebrow">08 · Commercial</span><h1>구매 · 렌탈 · A/S</h1><p>회사 배포 판매정책 V1.6 기준입니다. 영업 담당자는 회사 승인 없이 가격·할인·독점권·무상 콘텐츠·A/S 연장을 약속할 수 없습니다.</p></div>
+  <div class="block">
+    <h2 class="sec">기본 판매가격 <span class="tag">VAT 포함</span></h2>
+    <div class="tbl"><table><thead><tr><th>상품</th><th>가격</th><th>포함 사항</th></tr></thead><tbody>
+      <tr><td class="k">STANDARD (SA43)</td><td class="mono">27,280,000원</td><td rowspan="2">전국 기본 배송, 1회 설치·연결·기능 테스트, 댄스 콘텐츠 20종, 품질보증 1년 (제주·도서산간 실비 추가)</td></tr>
+      <tr><td class="k">WIDE (SA65)</td><td class="mono">49,280,000원</td></tr>
+      <tr><td class="k">콘텐츠 패키지 A</td><td class="mono">10,000,000원</td><td>추가 50종</td></tr>
+      <tr><td class="k">콘텐츠 패키지 B</td><td class="mono">20,000,000원</td><td>추가 100종</td></tr>
+    </tbody></table></div>
+    <ul class="list">
+      <li>기본 20종은 설치일부터 3년간 롤링 운영 (연 4회 업데이트, 회차별 전체 교체 아님). 3년 후 유료 롤링 <span class="mono">연 240만원/대</span> 또는 고정 전환 선택.</li>
+      <li>추가 패키지는 3년간 수량 유지 후 동일 수량으로 고정 전환. 유료 롤링 갱신 없음. 특정 곡 서비스는 보장하지 않음.</li>
+      <li>조달청 나라장터 구매 시 다량구매 할인 불가. 조달 수요기관에 계약 외 무상 제공 금지.</li>
+      <li>견적 유효기간 발행일로부터 30일. 민간 직판은 대금 전액 입금 후 출고 원칙.</li>
+    </ul>
+    <div class="row"><a class="btn sm" href="https://shop.g2b.go.kr/link/GMSF001_01/?ctrtItemMngNo=R26TA02019907000000001" target="_blank" rel="noopener">나라장터 STANDARD ↗</a><a class="btn sm" href="https://shop.g2b.go.kr/link/GMSF001_01/?ctrtItemMngNo=R26TA02019907000000002" target="_blank" rel="noopener">나라장터 WIDE ↗</a></div>
+  </div>
+  <div class="block">
+    <h2 class="sec">행사 렌탈 단가 <span class="tag">대당 · 2026.07 기준</span></h2>
+    <div class="tbl"><table><thead><tr><th>기간</th><th>정상가 (일 100만원)</th><th>렌탈가</th><th>비고</th></tr></thead><tbody>
+      <tr><td class="k">1일</td><td class="mono">1,000,000</td><td class="mono">1,000,000</td><td>기본 단가</td></tr>
+      <tr><td class="k">7일</td><td class="mono">7,000,000</td><td class="mono">5,000,000</td><td>약 29% 할인</td></tr>
+      <tr><td class="k">1개월</td><td class="mono">30,000,000</td><td class="mono">15,000,000</td><td>일 약 50만원</td></tr>
+      <tr><td class="k">3개월</td><td class="mono">90,000,000</td><td class="mono">30,000,000</td><td>분기 특가</td></tr>
+      <tr><td class="k">6개월</td><td class="mono">180,000,000</td><td class="mono">50,000,000</td><td>반기 특가</td></tr>
+      <tr><td class="k">1년</td><td class="mono">365,000,000</td><td class="mono">60,000,000</td><td>장기 최대 할인</td></tr>
+    </tbody></table></div>
+    <p class="src">대회 진행, MC·오퍼레이터, 댄서 섭외, 중계 화면·프레임 개발, 운반·설치는 범위에 따라 별도 견적입니다. 렌탈은 본사(070-4117-0113)로 직접 문의합니다.</p>
+  </div>
+  <div class="block">
+    <h2 class="sec">구매부터 설치까지</h2>
+    <ol class="steps">
+      <li><div><b>견적 · 승인</b> — 모델, 수량, 납품 장소, 설치 범위, 콘텐츠, 보증 기간 명시</div></li>
+      <li><div><b>주문 확정</b> — 발주 의사 확인 / 계약 체결 / 조달 납품요구. 학교·공공기관은 내부 구매절차 확인 후 제작·출고</div></li>
+      <li><div><b>출고</b> — 예상 약 25일 내 (재고·수량·지역·설치 조건에 따라 변동)</div></li>
+      <li><div><b>배송 · 설치</b> — 지정 업체가 반입, 위치 설치, 전원·네트워크 연결, 기능 테스트. 계단 반입·양중장비·야간 설치·재방문은 추가 비용</div></li>
+      <li><div><b>설치 · 인수 확인서</b> — 고객 서명으로 인수 완료. 보증 1년은 설치완료일부터 시작</div></li>
+    </ol>
+    <div class="row"><button class="btn sm" data-dl="STEPIN_Arcade_Install_Acceptance_Form.pdf" data-name="STEPIN ARCADE 설치·인수 확인서.pdf">설치·인수 확인서 양식 (PDF)</button></div>
+  </div>
+  <div class="block">
+    <h2 class="sec">A/S</h2>
+    <div class="grid g3">
+      <div class="panel block"><span class="pill p-opt">접수</span><p>공식 A/S 창구에 제품번호, 설치처, 증상, 발생 시점, 사진·영상 전달</p></div>
+      <div class="panel block"><span class="pill p-rec">1차</span><p>전화·온라인·원격 접속으로 원격 조치 가능 여부 확인</p></div>
+      <div class="panel block"><span class="pill p-req">2차</span><p>본사 또는 지정 A/S 업체가 현장 점검·수리·부품 교체</p></div>
+    </div>
+    <p class="muted">보증 1년 내 제조상 결함은 무상. 충돌·침수·임의 개조·비정상 전원·고객 과실, 보증 종료 후에는 출장비·기술료·부품비·운송비가 청구되며 작업 전 비용을 안내합니다.</p>
+  </div>
+  <div class="block">
+    <h2 class="sec">카메라 · 영상 처리 원칙</h2>
+    <div class="tbl"><table><thead><tr><th>상황</th><th>처리</th></tr></thead><tbody>
+      <tr><td class="k">실시간 동작 분석</td><td>기기 내에서 처리, 서버에 저장하지 않음</td></tr>
+      <tr><td class="k">일반 플레이 영상</td><td>결과 화면 동안 일시 처리, 이탈 시 자동 삭제</td></tr>
+      <tr><td class="k">QR 다운로드 선택</td><td>이용자가 선택한 경우에만 서버 전송, 24시간 후 자동 만료·삭제</td></tr>
+      <tr><td class="k">계정 연동 선택</td><td>영상·점수를 계정에 저장, 보유기간은 앱 정책</td></tr>
+    </tbody></table></div>
+    <div class="note warn"><b>이렇게 말하지 마세요.</b> “학생 영상은 절대 서버에 저장되지 않습니다.” (QR·계정 연동 시 서버 처리 발생) · “AI 점수를 수행평가에 바로 활용하세요.” (참여·피드백 보조 지표로 안내)</div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="view" data-view="faq" hidden>
+  <div class="vh"><span class="eyebrow">09 · FAQ</span><h1>자주 묻는 질문</h1><p>고객·참가자 문의에 쓰는 표준 답변입니다.</p></div>
+  <input id="faqFilter" type="search" placeholder="질문 필터 (예: 인터넷, 미성년자)" aria-label="질문 필터">
+  <div id="faqList"></div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section class="view" data-view="contact" hidden>
+  <div class="vh"><span class="eyebrow">10 · Contact</span><h1>문의 · 연락처</h1><p>문의 유형에 맞는 창구로 연락하면 가장 빠르게 처리됩니다. 주소를 눌러 복사할 수 있습니다.</p></div>
+  <div class="grid g3" id="contactGrid"></div>
+  <div class="block">
+    <h2 class="sec">지역 총판</h2>
+    <div class="tbl"><table><thead><tr><th>권역</th><th>총판</th><th>담당 · 연락처</th><th>상태</th></tr></thead><tbody id="dealerBody"></tbody></table></div>
+  </div>
+  <div class="block">
+    <h2 class="sec">웹사이트</h2>
+    <div class="row">
+      <a class="btn sm" href="https://tournament.stepin.ai" target="_blank" rel="noopener">토너먼트 개최 tournament.stepin.ai ↗</a>
+      <a class="btn sm" href="https://partners.stepin.ai/" target="_blank" rel="noopener">영업관리자 partners.stepin.ai ↗</a>
+      <a class="btn sm" href="https://arcade.stepin.ai/" target="_blank" rel="noopener">아케이드 arcade.stepin.ai ↗</a>
+      <a class="btn sm" href="https://www.stepin.ai/ko" target="_blank" rel="noopener">앱 stepin.ai ↗</a>
+      <a class="btn sm" href="https://sidewalkplay.com/ko/" target="_blank" rel="noopener">싸이드워크엔터테인먼트 ↗</a>
+    </div>
+  </div>
+  <footer class="foot">㈜싸이드워크엔터테인먼트 · STEPIN · 본 페이지는 파트너 전용이며 외부 무단 배포를 금지합니다.</footer>
+</section>
+<!-- ======== ADMIN ======== -->
+<section class="view" data-view="admin" hidden>
+  <div class="vh"><span class="eyebrow">Admin</span><h1>관리자 페이지</h1><p>파트너 코드, 공지, 지역 총판, 홍보 영상, FAQ, 연락처를 수정합니다. 저장하면 1~2분 뒤 사이트 전체에 반영됩니다.</p></div>
+  <div id="admBlocked" class="note warn" hidden></div>
+  <div id="admBody" class="block" hidden>
+    <div class="tabs" role="tablist" data-tabs="admin">
+      <button role="tab" data-tab="partners">파트너 코드</button>
+      <button role="tab" data-tab="notices">공지 · 업데이트</button>
+      <button role="tab" data-tab="dealers">지역 총판</button>
+      <button role="tab" data-tab="videos">홍보 영상</button>
+      <button role="tab" data-tab="faq">FAQ</button>
+      <button role="tab" data-tab="contacts">연락처</button>
+      <button role="tab" data-tab="log">변경 이력 · 도움말</button>
+    </div>
+    <div class="tabpanel" data-panel="admin:partners">
+      <div class="block">
+        <h2 class="sec">새 파트너 코드 발급</h2>
+        <div class="adm-fields">
+          <label class="fld"><span>파트너 이름 (화면 표시)</span><input id="npName" placeholder="예: 부산·울산 총판"></label>
+          <label class="fld"><span>코드</span><input id="npCode" class="mono" placeholder="비우면 자동 생성" style="text-transform:uppercase"></label>
+          <label class="fld"><span>구분</span><select id="npType"><option>총판</option><option>대리점</option><option>행사·대회 운영</option><option>교육·학교</option><option>본사</option><option>기타</option></select></label>
+        </div>
+        <div class="row"><button class="btn pri" id="npAdd" type="button">코드 발급 · 저장</button><span class="muted" style="font-size:13px">코드는 암호화(해시)되어 저장되므로 발급 직후에만 전체 코드를 볼 수 있습니다.</span></div>
+        <div id="npOut" hidden></div>
+      </div>
+      <div data-editor="partners"></div>
+    </div>
+    <div class="tabpanel" data-panel="admin:notices" hidden><div data-editor="notices"></div></div>
+    <div class="tabpanel" data-panel="admin:dealers" hidden><div data-editor="dealers"></div></div>
+    <div class="tabpanel" data-panel="admin:videos" hidden><div data-editor="videos"></div></div>
+    <div class="tabpanel" data-panel="admin:faq" hidden><div data-editor="faq"></div></div>
+    <div class="tabpanel" data-panel="admin:contacts" hidden><div data-editor="contacts"></div></div>
+    <div class="tabpanel" data-panel="admin:log" hidden>
+      <div class="block"><h2 class="sec">변경 이력</h2><div class="log" id="admLog"></div></div>
+      <div class="block"><h2 class="sec">Claude에게 수정 요청하기</h2>
+        <div class="prose"><p>관리자 페이지에서 저장한 내용은 GitHub 저장소(<span class="mono">public/data/*.json</span>)에 기록되고, 1~2분 뒤 사이트에 자동 반영됩니다. 채팅으로 “경남 총판 연락처 바꿔줘”, “11월 공지 추가해줘”처럼 요청하면 Claude가 같은 파일을 수정하므로 두 방식의 내용이 항상 같습니다.</p>
+        <p class="muted">가이드 본문(운영 기준, 셋팅 방법, 규정 등)과 다운로드 파일 교체는 페이지 수정이 필요하므로 채팅으로 요청해 주세요.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2400)}
+const clone=o=>JSON.parse(JSON.stringify(o));
+
+/* =====================================================================
+   기본 데이터 (서버의 /data/*.json을 불러오지 못했을 때 표시)
+   public/data/*.json 과 같은 구조입니다.
+   ===================================================================== */
+const DEF={
+ partners:[],
+ notices:[
+  {date:"2026.10",text:"파트너 허브 오픈 · 대회 운영/셋팅/홍보 자료 통합",view:"home",label:"홈"},
+  {date:"2026.08.28",text:"STEPIN 아케이드 영업가이드 V1.2 배포 (판매정책 V1.6 기준)",view:"assets:docs",label:"문서"},
+  {date:"2026.08",text:"행사 렌탈 준비사항 시트 (스탠다드/포터블 · 대회/체험존 4종)",view:"setup",label:"셋팅"},
+  {date:"2026.04",text:"STEPIN E-Sports 대회 규정집 2026 (국문/영문)",view:"operate:offline",label:"본선 규정"}
+ ],
+ dealers:[
+  {region:"서울 · 경기 · 인천",name:"",contact:"",status:"확정 시 게시"},
+  {region:"강원 · 충청",name:"",contact:"",status:"확정 시 게시"},
+  {region:"경상 · 부산 · 울산",name:"",contact:"",status:"확정 시 게시"},
+  {region:"전라 · 광주",name:"",contact:"",status:"확정 시 게시"},
+  {region:"제주",name:"",contact:"",status:"확정 시 게시"}
+ ],
+ videos:[
+  {cat:"학교",title:"찾아가는 교내 e스포츠 대회 2026",desc:"STEPIN 종목 운영사례 (경기국제통상고, 화성동화중)",url:"https://youtu.be/5NBznErwZVc"},
+  {cat:"학교",title:"MBC 오늘N · 학교 이스포츠",desc:"찾아가는 교내 e스포츠 대회 취지와 종목 소개 (Google Drive)",url:"https://drive.google.com/file/d/1qpjTGwrw7JGrmTIGTCM0464qT-VOCAwp/view"},
+  {cat:"학교",title:"찾아가는 교내 이스포츠 현장",desc:"교내 대회 현장 영상",url:"https://youtu.be/_9VEL69KVYs"},
+  {cat:"대회",title:"2026 ECA 진주 하이라이트",desc:"아시아 이스포츠대회 2026 STEPIN 종목",url:"https://youtu.be/hAzjOCW7LLw"},
+  {cat:"대회",title:"STEPIN × 댄스 아카데미 토너먼트",desc:"토너먼트 개최 및 청소년동아리경진대회 체험존",url:"https://youtu.be/2T8S9xv7JMA"},
+  {cat:"대회",title:"STEPIN 소개 · 토너먼트 안내",desc:"한국 토너먼트 가이드 수록 영상",url:"https://www.youtube.com/watch?v=lm_fu_rWy-4"},
+  {cat:"브랜드",title:"STEPIN 브랜드 필름",desc:"앱과 아케이드를 함께 소개 (여고생의 성장 스토리)",url:"https://youtu.be/JbhbgKYX8tE"},
+  {cat:"브랜드",title:"브랜드 필름 · APP (Shorts)",desc:"앱 소개 숏폼",url:"https://www.youtube.com/shorts/mEkSbw7TzAs"},
+  {cat:"브랜드",title:"브랜드 필름 · ARCADE (Shorts)",desc:"아케이드 소개 숏폼",url:"https://www.youtube.com/shorts/XpeGPgBFkrE"},
+  {cat:"브랜드",title:"2025 STEPIN Overall",desc:"성수 팝업스토어, ECA, K-EXPO 등 1년 정리",url:"https://youtu.be/XxJ9cfff4YE"},
+  {cat:"제품",title:"STEPIN 아케이드 소개영상",desc:"인트로와 3가지 댄스 모드",url:"https://youtu.be/v7dKfHbDHfM"},
+  {cat:"제품",title:"MBC A-IDOL",desc:"오디션 프로그램에서 댄스·스타일 평가 AI로 참여",url:"https://youtu.be/Q6uKoVYg-rg"},
+  {cat:"글로벌",title:"KBS America News",desc:"K-EXPO에서 소개된 STEPIN",url:"https://youtu.be/xdqIrnpuRp4"},
+  {cat:"글로벌",title:"BTS 월드투어 런던 · 대기 줄",desc:"2026 BTS THE CITY ARIRANG LONDON",url:"https://youtube.com/shorts/2ev0fV8ifrQ"},
+  {cat:"글로벌",title:"BTS 월드투어 런던 · 댄스챌린지",desc:"2026 BTS THE CITY ARIRANG LONDON",url:"https://youtu.be/tPkj6qFyiN8"},
+  {cat:"글로벌",title:"K-EXPO USA (Instagram)",desc:"현장 체험존 게시물",url:"https://www.instagram.com/p/DY4GRu0zwKr/"}
+ ],
+ faq:[
+  {cat:"제품",q:"일반 댄스게임과 무엇이 다른가요?",a:"이용자의 움직임을 카메라로 인식하고 실시간 AI 동작 분석으로 점수를 줍니다. 발판이나 센서 없이 실제 전신 움직임을 중심으로 플레이합니다."},
+  {cat:"제품",q:"한 번에 몇 명이 이용할 수 있나요?",a:"기기 1대당 1인 플레이입니다. 여러 명이 동시에 인식되면 점수 정확도가 떨어집니다. 함께 연습하는 목적이면 여러 명이 춰도 됩니다."},
+  {cat:"제품",q:"두 명이 동시에 대결할 수 있나요?",a:"STANDARD 2대를 설치하면 실시간 1:1 배틀이 가능합니다 (최소 폭 6m 권장). WIDE는 1대에서 2인 배틀이 됩니다."},
+  {cat:"설치",q:"인터넷이 꼭 필요한가요?",a:"기본 실행, 콘텐츠 인증·업데이트, 배틀과 대회, 영상 다운로드에 유선 인터넷이 필요합니다. 연결 없이 쓸 수 있는 것은 챌린지와 프랙티스입니다. 속도는 ↓1Mbps/↑512Kbps 이상, 지연과 지터가 안정적이어야 합니다."},
+  {cat:"설치",q:"설치에 필요한 공간은요?",a:"STANDARD 1대 최소 3×3m, WIDE 1대 4×3.5m, 대회용 2대 무대 6×3m 이상입니다. 천장 3m, 후면 60cm를 확보합니다."},
+  {cat:"설치",q:"야외에서도 쓸 수 있나요?",a:"전기와 인터넷 등 필수 요건을 갖추면 가능합니다. 지붕, 방수·방진, 평탄한 바닥, 우천·강풍 대책이 필요하며 강한 햇빛·역광은 인식 오류를 일으킵니다."},
+  {cat:"설치",q:"기기를 옮길 때 주의할 점은?",a:"눕히지 말고 세워서, 적정 하중의 카트와 성인 2인이 운반합니다. 지상 하역장과 계단 없는 동선을 미리 확인합니다."},
+  {cat:"대회",q:"기기 1대로도 대회를 할 수 있나요?",a:"가능합니다. 이용자별로 순차 챌린지를 하고 점수 랭킹으로 시상합니다."},
+  {cat:"대회",q:"예선 없이 바로 본선을 할 수 있나요?",a:"네. 앱 토너먼트에서 예선을 끄면 신청자 중 주최측이 진출자를 직접 고르고, 오프라인 대회는 현장 접수로 바로 진행할 수 있습니다."},
+  {cat:"대회",q:"동점이면 어떻게 하나요?",a:"그룹 스테이지는 승자승 → 세트 득실차 → 포인트 득실차 → (진출권이 걸린 경우) 단판 재경기 순입니다. 앱 예선 동점은 공지한 기준(예: 먼저 득점한 순)을 따릅니다."},
+  {cat:"대회",q:"미성년자 우승자는 어떻게 처리하나요?",a:"앱 우승자 목록에 법정대리인 정보 버튼이 표시됩니다. 대회 출전에는 부모·법정대리인 동의가 필요하고, 본선 연락은 보호자와 먼저 합니다."},
+  {cat:"대회",q:"상금은 누가 지급하나요?",a:"주최측이 직접 지급합니다. 우승자 이름·국적·연락처·이메일을 CSV로 받을 수 있습니다. 보너스 상품 수상자도 주최측이 정합니다."},
+  {cat:"대회",q:"앱 대회 중 튕기면 어떻게 되나요?",a:"게임을 전혀 하지 않으면 No Show(패배), 절반 미만만 하면 FF로 처리됩니다. 참가자에게 와이파이 등 안정적인 환경에서 참여하도록 미리 안내하세요."},
+  {cat:"대회",q:"대회 운영까지 맡길 수 있나요?",a:"규모·예산·일정에 따라 별도 견적으로 검토합니다. MC, 오퍼레이터, 댄서 섭외, 대진표 운영, 현장 기술지원, 영상 촬영 등 범위를 협의합니다."},
+  {cat:"콘텐츠",q:"원하는 K-POP 곡을 고를 수 있나요?",a:"보유 라이선스와 제작 가능 여부에 따라 달라 특정 곡 선택은 어렵습니다. 고객이 음원·안무 권리를 가진 경우 별도 제작 계약으로 검토할 수 있습니다."},
+  {cat:"콘텐츠",q:"곡 검색이 안 돼요.",a:"검색은 영문 원제로만 됩니다. 예: 아파트 → APT., 첫 만남은 계획대로 되지 않아 → plot twist. HOT100, 레벨, 가수 검색으로도 고를 수 있습니다."},
+  {cat:"콘텐츠",q:"AI 점수를 성적이나 선발에 써도 되나요?",a:"참여와 피드백을 위한 보조 정보로 안내합니다. 공식 평가에는 학교의 별도 기준과 검증 절차가 필요합니다."},
+  {cat:"구매",q:"가격과 할인은요?",a:"STANDARD 27,280,000원, WIDE 49,280,000원 (VAT 포함, 배송·설치·콘텐츠 20종·보증 1년 포함). 나라장터 구매 시 다량구매 할인은 불가하며, 민간 대량 구매는 수량·납기 기준으로 별도 문의합니다."},
+  {cat:"구매",q:"주문 후 얼마나 걸리나요?",a:"예상 출고일은 약 25일 내입니다. 재고, 수량, 지역, 설치 조건에 따라 달라집니다."},
+  {cat:"A/S",q:"무상 A/S 기간은요?",a:"설치완료일부터 1년입니다. 정상 사용 중 제조상 결함은 무상, 충돌·침수·임의 개조·비정상 전원·고객 과실은 유상입니다."},
+  {cat:"A/S",q:"고장이 나면 어떻게 접수하나요?",a:"support@sidewalkplay.com 으로 제품번호, 설치처, 증상, 발생 시점, 오류 화면 사진·영상을 보내 주세요. 원격 진단 후 필요하면 방문합니다."},
+  {cat:"A/S",q:"카메라가 영상을 저장하나요?",a:"동작 분석은 기기 내에서 처리하고 저장하지 않습니다. 이용자가 QR 다운로드를 선택한 경우에만 서버로 전송되며 24시간 후 자동 삭제됩니다."}
+ ],
+ contacts:[
+  {label:"대표 · 영업 · 정책 · 렌탈",value:"070-4117-0113",desc:"본사 IMC팀 · 가격, 콘텐츠, 승인 요청"},
+  {label:"영업 · 제안 · 렌탈 문의",value:"marketing@sidewalkplay.com",desc:"견적, 제안서, 원본 소스 요청"},
+  {label:"A/S 접수",value:"support@sidewalkplay.com",desc:"제품번호 · 설치처 · 증상 · 사진"},
+  {label:"토너먼트 플랫폼",value:"cs@sidewalkplay.com",desc:"비즈니스 계정 승인, 앱 대회 개최, 우승자 관련"},
+  {label:"이스포츠 대회 · 일반",value:"info@sidewalkplay.com",desc:"대회 개최 일반 문의"},
+  {label:"토너먼트 개최 웹",value:"tournament.stepin.ai",desc:"비즈니스 계정으로 로그인"}
+ ],
+ log:[]
+};
+const DATA=clone(DEF);
+const KEYS=["partners","notices","dealers","videos","faq","contacts","log"];
+
+/* ---------- session ---------- */
+async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("")}
+let entered=false,isAdmin=false,adminReady=false;
+function enter(name){entered=true;$("#app").hidden=false;$("#partnerName").textContent=name;$("#helloName").textContent=name;route()}
+async function logout(){try{await fetch("/api/logout",{method:"POST"})}catch(e){}location.href="/login"}
+$("#logout").addEventListener("click",logout);
+
+/* ---------- routing ---------- */
+const VIEWS=["home","about","operate","setup","compare","checklist","mc","assets","policy","faq","contact","admin"];
+function show(view,tab){
+  if(!VIEWS.includes(view))view="home";
+  if(view==="admin"&&!isAdmin)view="home";
+  $$(".view").forEach(v=>v.hidden=v.dataset.view!==view);
+  $$("[data-nav]").forEach(a=>{if(a.dataset.nav===view)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  if(tab)selectTab(view,tab);
+  document.body.classList.remove("nav-open");
+  window.scrollTo(0,0);
+}
+function route(){const h=(location.hash||"#home").slice(1);show(h)}
+window.addEventListener("hashchange",()=>{if(entered)route()});
+document.addEventListener("click",e=>{
+  const a=e.target.closest("a[href^='#']");
+  if(!a)return;
+  const go=a.getAttribute("data-tab-go");
+  const v=a.getAttribute("href").slice(1);
+  if(VIEWS.includes(v)){
+    e.preventDefault();
+    try{history.replaceState(null,"","#"+v)}catch(_){}
+    show(v,go?go.split(":")[1]:null);
+  }
+});
+$("#menuBtn").addEventListener("click",()=>document.body.classList.add("nav-open"));
+$("#scrim").addEventListener("click",()=>document.body.classList.remove("nav-open"));
+
+/* ---------- tabs ---------- */
+function selectTab(group,tab){
+  const bar=$(`[data-tabs="${group}"]`);if(!bar)return;
+  $$("button",bar).forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab?"true":"false"));
+  $$(`[data-panel^="${group}:"]`).forEach(p=>p.hidden=p.dataset.panel!==group+":"+tab);
+}
+$$("[data-tabs]").forEach(bar=>{
+  const g=bar.dataset.tabs;const first=$("button",bar).dataset.tab;selectTab(g,first);
+  bar.addEventListener("click",e=>{const b=e.target.closest("button[data-tab]");if(b)selectTab(g,b.dataset.tab)});
+});
+
+/* ---------- downloads ---------- */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-dl]");if(!b)return;
+  e.preventDefault();
+  const a=document.createElement("a");a.href="/dl/"+encodeURIComponent(b.dataset.dl);a.download=b.dataset.name||b.dataset.dl;
+  document.body.appendChild(a);a.click();a.remove();
+});
+
+/* ---------- copy ---------- */
+function copyText(t,el){
+  const fall=()=>{if(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}toast("텍스트를 선택했습니다. 복사해 주세요.")};
+  try{navigator.clipboard.writeText(t).then(()=>toast("복사했습니다"),fall)}catch(e){fall()}
+}
+
+/* ---------- diagrams ---------- */
+function svgDiagram(spec){
+  const W=spec.w||760,H=spec.h||300;
+  const N={};spec.nodes.forEach(n=>N[n.id]=n);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(spec.label)}"><defs>`;
+  ["","hd","net"].forEach(k=>{s+=`<marker id="m-${spec.key}-${k||"d"}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" class="ah ${k}"/></marker>`});
+  s+="</defs>";
+  const port=(n,side)=>{const cx=n.x+n.w/2,cy=n.y+n.h/2;return side==="r"?[n.x+n.w,cy]:side==="l"?[n.x,cy]:side==="t"?[cx,n.y]:side==="b"?[cx,n.y+n.h]:[cx,cy]};
+  spec.edges.forEach(e=>{
+    const a=N[e.f],b=N[e.t];const [x1,y1]=port(a,e.fs||"r"),[x2,y2]=port(b,e.ts||"l");
+    let d;
+    if((e.fs||"r")==="r"&&(e.ts||"l")==="l"){const mx=(x1+x2)/2;d=`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`}
+    else d=`M${x1},${y1} L${x2},${y2}`;
+    s+=`<path d="${d}" class="e ${e.k||""}" marker-end="url(#m-${spec.key}-${e.k||"d"})"/>`;
+    if(e.l){const lx=(x1+x2)/2,ly=(y1+y2)/2-6;s+=`<text x="${lx}" y="${ly}" text-anchor="middle" class="el">${esc(e.l)}</text>`}
+  });
+  spec.nodes.forEach(n=>{
+    s+=`<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="9" class="n ${n.c||""}"/>`;
+    const cx=n.x+n.w/2;const lines=n.t.split("\n");const base=n.y+n.h/2-(lines.length-1)*8+(n.s?-6:4);
+    lines.forEach((ln,i)=>s+=`<text x="${cx}" y="${base+i*16}" text-anchor="middle" class="t">${esc(ln)}</text>`);
+    if(n.s)s+=`<text x="${cx}" y="${base+(lines.length-1)*16+16}" text-anchor="middle" class="ts">${esc(n.s)}</text>`;
+  });
+  return s+"</svg>";
+}
+$("#dg-portable").innerHTML=svgDiagram({key:"pt",label:"포터블 연결도",w:760,h:250,nodes:[
+ {id:"cam",x:20,y:30,w:170,h:56,t:"카메라 + 터치 디바이스",s:"아케이드 포터블 본체",c:"arc"},
+ {id:"pc",x:20,y:150,w:170,h:56,t:"전원 · 인터넷",s:"멀티탭 20A · LAN",c:""},
+ {id:"tv",x:300,y:20,w:170,h:76,t:"43\" 세로 모니터",s:"9:16 · 1080×1920",c:"out"},
+ {id:"sp",x:300,y:150,w:170,h:56,t:"스피커 300W",s:"3.5mm 입력",c:"out"},
+ {id:"ctl",x:570,y:80,w:170,h:76,t:"중계 PC",s:"(TYPE 2 이상) HDMI 3번째",c:"ctl"}],
+ edges:[{f:"cam",t:"tv",k:"hd",l:"HDMI"},{f:"cam",t:"sp",l:"3.5mm"},{f:"pc",t:"cam",fs:"t",ts:"b",k:"net"},{f:"tv",t:"ctl",k:"hd",l:"HDMI (선택)"}]});
+
+const BT={
+ t1:{title:"TYPE 1 · 체험존 (중계 없음)",desc:"축제 부스, 팝업, 학교 행사처럼 참가자가 순서대로 플레이하고 관람객은 플레이 공간 좌우·후면에서 지켜보는 형태입니다.",
+  dg:{key:"t1",label:"체험존 구성도",w:760,h:240,nodes:[
+   {id:"a",x:20,y:30,w:170,h:56,t:"아케이드 A",s:"일체형 화면·스피커",c:"arc"},{id:"b",x:20,y:150,w:170,h:56,t:"아케이드 B",s:"2대 권장",c:"arc"},
+   {id:"lan",x:300,y:90,w:160,h:56,t:"유선 LAN · 전원",s:"220V · 대당 500W",c:""},
+   {id:"qr",x:570,y:30,w:170,h:56,t:"이용자 스마트폰",s:"QR 영상 다운로드",c:"out"},{id:"ld",x:570,y:150,w:170,h:56,t:"점수 보드 (선택)",s:"일·주간 랭킹",c:"out"}],
+   edges:[{f:"lan",t:"a",fs:"l",ts:"r",k:"net"},{f:"lan",t:"b",fs:"l",ts:"r",k:"net"},{f:"lan",t:"qr",k:"net",l:"인터넷"},{f:"lan",t:"ld"}]},
+  gear:[["아케이드","1~2대","STEPIN"],["전원 콘센트","대당 1구","주최"],["유선 LAN","1회선","주최 (권장)"],["안내 스태프","대당 1인","주최"],["X배너 · POP","1 · 3","협의"],["안전바","2+","주최"]],
+  steps:["플레이 위치 바닥 표시 (2.2–2.5m)","관람객은 플레이 공간 좌우·후면에 배치","스태프 1인이 곡 선택·순서 안내","고득점자 굿즈·SNS 인증으로 참여 유도","공공장소 영상 다운로드 허용 여부 사전 확인"]},
+ t2:{title:"TYPE 2 · 현장 중계 (관중용 대형 화면)",desc:"관중이 카메라에 잡히지 않도록 플레이 존 뒤를 비우고, 관중은 별도 중계 모니터로 경기를 봅니다. 대회 운영의 기본 구성입니다.",
+  dg:{key:"t2",label:"현장 중계 구성도",w:760,h:280,nodes:[
+   {id:"a",x:20,y:30,w:160,h:56,t:"아케이드 A",s:"선수 1",c:"arc"},{id:"b",x:20,y:150,w:160,h:56,t:"아케이드 B",s:"선수 2",c:"arc"},
+   {id:"ctl",x:290,y:80,w:180,h:76,t:"부조 · 컨트롤 PC",s:"대진표 · 대회 세팅 · 중계 화면",c:"ctl"},
+   {id:"mon",x:580,y:30,w:160,h:56,t:"관중용 모니터",s:"65\" 이상",c:"out"},{id:"stf",x:580,y:120,w:160,h:46,t:"스태프 모니터",s:"16\" 이상",c:"out"},
+   {id:"mc",x:290,y:206,w:180,h:52,t:"MC 마이크 · 믹서",s:"",c:""},{id:"spk",x:580,y:206,w:160,h:52,t:"스피커",s:"150~300W",c:"out"}],
+   edges:[{f:"a",t:"ctl",k:"net",l:"LAN"},{f:"b",t:"ctl",k:"net"},{f:"ctl",t:"mon",k:"hd",l:"HDMI"},{f:"ctl",t:"stf",k:"hd"},{f:"mc",t:"spk"}]},
+  gear:[["아케이드","2대","STEPIN"],["중계 · 컨트롤 PC","1","STEPIN"],["관중용 모니터 65\"+ · 거치대","1","주최"],["스태프 모니터 16\"+","1","주최"],["HDMI 케이블 (10m+)","2~3","주최"],["MC 마이크 · 스피커","1 · 2","주최"],["부조 공간 4×3m, 책상 2·의자 4","1","주최"],["유선 LAN","전용 1회선","주최"]],
+  steps:["부조 공간은 무대가 보이는 위치에 배치 (보이지 않으면 무전기 준비)","아케이드 2대와 컨트롤 PC를 같은 네트워크에 연결","컨트롤 PC → 관중 모니터 HDMI 직결 (무선 미러링 금지)","관중석과 무대는 안전바로 분리, 카메라 시야 밖에 관중 배치","MC 마이크 음량이 게임 음악을 덮지 않게 믹서 조정"]},
+ t3:{title:"TYPE 3 · 녹화 · 현장 스케치",desc:"TYPE 2에 선수 실사 카메라와 녹화 장비를 더해 하이라이트·SNS 영상 소스를 확보합니다. 방송 송출은 하지 않습니다.",
+  dg:{key:"t3",label:"녹화 구성도",w:760,h:300,nodes:[
+   {id:"a",x:20,y:20,w:160,h:52,t:"아케이드 A · B",s:"게임 화면",c:"arc"},{id:"cam",x:20,y:120,w:160,h:52,t:"실사 카메라",s:"선수 퍼포먼스",c:""},{id:"amb",x:20,y:220,w:160,h:52,t:"오디오",s:"게임 음악 + MC",c:""},
+   {id:"ctl",x:290,y:20,w:180,h:52,t:"컨트롤 PC",s:"대진표 · 중계 화면",c:"ctl"},{id:"rec",x:290,y:130,w:180,h:76,t:"캡처 · 녹화 PC",s:"캡처보드 / 레코더",c:"ctl"},
+   {id:"mon",x:580,y:20,w:160,h:52,t:"관중용 모니터",s:"65\" 이상",c:"out"},{id:"file",x:580,y:140,w:160,h:56,t:"녹화 파일",s:"하이라이트 · SNS 편집",c:"out"}],
+   edges:[{f:"a",t:"ctl",k:"net"},{f:"ctl",t:"mon",k:"hd",l:"HDMI"},{f:"ctl",t:"rec",fs:"b",ts:"t",k:"hd"},{f:"cam",t:"rec",k:"hd",l:"HDMI"},{f:"amb",t:"rec"},{f:"rec",t:"file"}]},
+  gear:[["TYPE 2 구성 전체","—","—"],["실사 카메라 (캠코더 · ENG)","1~2","주최"],["HDMI 분배기 (중계 화면 분기, 예시)","1","주최"],["캡처보드 · 녹화 PC 또는 레코더 (예시)","1","주최"],["오디오 라인 (믹서 출력)","1","주최"]],
+  steps:["카메라는 관중석 뒤 또는 측면에서 선수 전신을 촬영 (아케이드 카메라 시야를 가리지 않게)","중계 화면은 분배기로 관중 모니터와 녹화 장비에 동시 출력","게임 음악과 MC 음성을 믹서에서 합쳐 녹화","촬영 전 선수·관중 초상권 동의 안내 (미성년자 보호자 동의)","대회 후 스케치 영상·사진을 본사와 공유"]},
+ t4:{title:"TYPE 4 · 라이브 송출 (스트리밍 · 방송사)",desc:"게임 화면 + 선수 실사 화면 + 대진표·대결 현황을 혼합해 송출합니다. 방송팀(작가·PD·FD), STEPIN 테크팀, 슈퍼바이저의 3자 사전 미팅이 필수입니다.",
+  dg:{key:"t4",label:"라이브 송출 구성도",w:760,h:300,nodes:[
+   {id:"g",x:20,y:20,w:160,h:52,t:"게임 화면",s:"아케이드 A · B",c:"arc"},{id:"br",x:20,y:120,w:160,h:52,t:"대진표 · 현황",s:"STEPIN 컨트롤 PC",c:"ctl"},{id:"cam",x:20,y:220,w:160,h:52,t:"실사 카메라",s:"선수 · MC · 관중",c:""},
+   {id:"sw",x:280,y:110,w:200,h:76,t:"방송 스위처",s:"화면 혼합 · 자막",c:"ctl"},
+   {id:"mon",x:580,y:20,w:160,h:52,t:"현장 중계 모니터",s:"관중용",c:"out"},{id:"enc",x:580,y:120,w:160,h:52,t:"송출 인코더",s:"전용 유선 회선",c:"out"},{id:"pf",x:580,y:220,w:160,h:52,t:"플랫폼",s:"SOOP · YouTube 등",c:"out"}],
+   edges:[{f:"g",t:"sw",k:"hd"},{f:"br",t:"sw",k:"hd"},{f:"cam",t:"sw",k:"hd"},{f:"sw",t:"mon",k:"hd",l:"PGM"},{f:"sw",t:"enc",k:"hd"},{f:"enc",t:"pf",fs:"b",ts:"t",k:"net",l:"RTMP"}]},
+  gear:[["TYPE 3 구성 전체","—","—"],["방송 스위처 · 자막 장비 (예시)","1","방송팀"],["송출 인코더 · PC (예시)","1","방송팀"],["송출 전용 유선 회선 (아케이드와 분리)","1","주최"],["무전기","4+","주최"],["중계석 테이블 · 의자","1세트","주최"]],
+  steps:["3자 사전 미팅: 화면 구성(게임 + 실사 + 대진표), 큐시트, 송출 플랫폼 확정","STEPIN 컨트롤 PC 출력(대진표·현황)을 스위처 입력으로 받기","송출 회선은 아케이드 회선과 분리해 대역폭 확보","음악 저작권으로 송출이 차단되지 않는지 플랫폼 사전 테스트","경기 사이 화면에 앱 QR·송리스트·선수 스토리 삽입"]}
+};
+function renderBT(k){
+  const d=BT[k];
+  $$(".typesel button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.bt===k?"true":"false"));
+  $("#btTitle").textContent=d.title;$("#btDesc").textContent=d.desc;
+  $("#dg-broadcast").innerHTML=svgDiagram(d.dg);
+  $("#btGear tbody").innerHTML=d.gear.map(g=>`<tr><td>${esc(g[0])}</td><td class="num">${esc(g[1])}</td><td>${esc(g[2])}</td></tr>`).join("");
+  $("#btSteps").innerHTML=d.steps.map(s=>`<li><div>${esc(s)}</div></li>`).join("");
+  store.set("stepin_bt",k);
+}
+$(".typesel").addEventListener("click",e=>{const b=e.target.closest("[data-bt]");if(b)renderBT(b.dataset.bt)});
+renderBT(BT[store.get("stepin_bt")]?store.get("stepin_bt"):"t2");
+
+
+
+/* ---------- recommender ---------- */
+const REC={
+ reach:{h:2,o:0,y:1,why:"앱 예선은 지역 제한 없이 최대 1024강까지 모집합니다."},
+ show:{h:1,o:2,y:2,why:"대형 중계 화면과 MC가 있는 현장 본선이 관람 콘텐츠를 만듭니다."},
+ budget:{h:2,o:0,y:1,why:"온라인은 장비·무대 비용이 없고, 하이브리드는 본선 인원만큼만 현장 비용이 듭니다."},
+ fair:{h:0,o:2,y:2,why:"같은 장비·같은 조명에서 심판 통제 아래 판정합니다."},
+ local:{h:0,o:2,y:2,why:"프라이빗 예선 또는 현장 접수로 대상 지역·학교를 제한하기 쉽습니다."},
+ app:{h:2,o:0,y:2,why:"예선 기간 연습이 앱 설치·플레이로 이어집니다 (오디션미 협업 시 신규 유입 +24%)."},
+ short:{h:1,o:2,y:0,why:"예선 기간(최소 1~2주) 없이 현장 대회만으로 진행할 수 있습니다."}
+};
+const RN={h:["온라인 APP 토너먼트","p-rec"],o:["오프라인 아케이드 대회","p-req"],y:["하이브리드 (앱 예선 + 현장 본선)","p-ok"]};
+function renderRec(){
+  const sel=$$("#goalChips button").filter(b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.g);
+  const out=$("#recOut");
+  if(!sel.length){out.innerHTML='<p class="muted">목표를 고르면 추천 방식이 표시됩니다.</p>';return}
+  const sc={h:0,o:0,y:0};sel.forEach(g=>{sc.h+=REC[g].h;sc.o+=REC[g].o;sc.y+=REC[g].y});
+  const order=Object.keys(sc).sort((a,b)=>sc[b]-sc[a]||(a==="y"?-1:1));
+  const best=order[0],max=sel.length*2;
+  out.innerHTML=`<span class="eyebrow">추천</span><h3><span class="pill ${RN[best][1]}">${RN[best][0]}</span></h3>`+
+   order.map(k=>`<div style="display:grid;grid-template-columns:minmax(0,200px) 1fr 40px;gap:10px;align-items:center;font-size:13.5px"><span>${RN[k][0]}</span><div class="bar"><i style="width:${Math.round(sc[k]/max*100)}%"></i></div><span class="mono">${sc[k]}/${max}</span></div>`).join("")+
+   `<ul class="list" style="margin-top:6px">${sel.map(g=>`<li>${esc(REC[g].why)}</li>`).join("")}</ul>`;
+}
+$("#goalChips").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true");renderRec()});
+renderRec();
+
+/* ---------- checklist ---------- */
+const CK=[
+ ["D-30","기획 · 계약",[["대회 방식 결정 (체험존 / 오프라인 / 하이브리드)","주최"],["일정 · 장소 · 상금 · 참가 자격 확정","주최"],["아케이드 렌탈·구매 견적 및 계약","공동"],["중계 형태 결정 (TYPE 1~4)","주최"],["앱 비즈니스 계정 신청 · 승인 요청","주최"],["Floor plan 본사 공유","주최"]]],
+ ["D-21","예선 · 홍보 준비",[["앱 토너먼트 개최 신청 (경연곡 · 일정 · 상금)","STEPIN"],["송리스트 확정 (본선 25곡, 서비스 제한곡 확인)","STEPIN"],["포스터 제작 (앱 QR 필수) · 본사 시안 확인","공동"],["학교 · 동아리 · 지역 홍보물 배포, 공문 발송","주최"],["앱 내 배너 · 푸시 · 공식 SNS 공지 요청","STEPIN"]]],
+ ["D-14","현장 섭외",[["MC 섭외 및 STEPIN 사전 미팅 일정","주최"],["슈퍼바이저 · 레퍼리 · 스태프 배정","공동"],["유선 인터넷 회선 · 전원 20A 확보","주최"],["중계 모니터 · 스피커 · 마이크 · HDMI 준비","주최"],["방송 송출 시 3자 미팅 (방송팀 · 테크팀 · 슈퍼바이저)","공동"],["기술 인력 숙소 · 체류 지원 확인","주최"]]],
+ ["D-7","본선 확정",[["예선 마감 · 진출자 확정","STEPIN"],["진출자 전원 유선 참석 확인 (미성년자 보호자 우선)","공동"],["불참 인원만큼 차순위 진출 처리","공동"],["선수 닉네임 · 프로필 사진 수집","주최"],["신분증 지참 · 부속합의서 안내","주최"],["하역장 · 화물 엘리베이터 · 트럭 출입 예약","주최"]]],
+ ["D-1","반입 · 리허설",[["아케이드 반입 (대당 2인, 세워서 운반)","공동"],["플레이 위치 바닥 표시 2.2–2.5m","STEPIN"],["조명 · 역광 확인, 핀조명 설치","주최"],["2대 배틀 연동 · QR 다운로드 테스트","STEPIN"],["중계 화면 HDMI 직결 · 음향 밸런스 확인","공동"],["MC 큐시트 리허설","공동"]]],
+ ["D-day","대회 운영",[["선수 등록 · 본인 확인 · 부속합의서 서명","주최"],["복장 확인 (얼굴 가림 · 헐렁한 의상)","STEPIN"],["조 추첨 · 대진 공개","STEPIN"],["경기 진행 · 결과 기록 · 판정","공동"],["시상 · TOP3 인터뷰 · 기념 촬영","주최"],["현장 사진 · 스케치 영상 촬영","주최"]]],
+ ["D+7","사후",[["상금 · 상품 지급 (우승자 CSV 확인)","주최"],["결과 공지 · 공식 SNS 게시","STEPIN"],["사진 · 영상 소스 본사 공유","주최"],["아케이드 반출 · 포장재 반납","공동"],["운영 이슈 · 개선점 피드백 공유","공동"]]]
+];
+const CKKEY="stepin_ck_"+(store.get("stepin_partner")||"x").slice(0,10);
+let ckState={};try{ckState=JSON.parse(store.get(CKKEY)||"{}")}catch(e){ckState={}}
+function renderCK(){
+  let total=0,done=0;
+  $("#ckList").innerHTML=CK.map((ph,pi)=>{
+    const items=ph[2].map((it,ii)=>{const id=`ck-${pi}-${ii}`;total++;const on=!!ckState[id];if(on)done++;
+      const cls=it[1]==="STEPIN"?"p-req":it[1]==="주최"?"p-rec":"p-opt";
+      return `<label class="ck-item${on?" done":""}" for="${id}"><input type="checkbox" id="${id}" ${on?"checked":""}><span>${esc(it[0])}</span><span class="pill ${cls} who">${esc(it[1])}</span></label>`}).join("");
+    const pd=ph[2].filter((_,ii)=>ckState[`ck-${pi}-${ii}`]).length;
+    return `<div class="ck-phase"><header><span class="d">${ph[0]}</span><b>${ph[1]}</b><small>${pd}/${ph[2].length}</small></header>${items}</div>`}).join("");
+  $("#ckCount").textContent=`${done} / ${total} 완료`;$("#ckBar").style.width=(total?done/total*100:0)+"%";
+}
+$("#ckList").addEventListener("change",e=>{if(e.target.type!=="checkbox")return;ckState[e.target.id]=e.target.checked;store.set(CKKEY,JSON.stringify(ckState));renderCK();const el=document.getElementById(e.target.id);if(el)el.focus()});
+function resetUI(){const w=$("#ckResetWrap");w.innerHTML='<span class="confirm">모든 체크를 지울까요? <button class="btn sm pri" id="ckYes" type="button">지우기</button><button class="btn sm" id="ckNo" type="button">취소</button></span>';
+  $("#ckYes").onclick=()=>{ckState={};store.del(CKKEY);renderCK();restore()};$("#ckNo").onclick=restore}
+function restore(){$("#ckResetWrap").innerHTML='<button class="btn sm" id="ckReset" type="button">체크 초기화</button>';$("#ckReset").onclick=resetUI}
+$("#ckReset").onclick=resetUI;renderCK();
+
+/* ---------- MC scripts ---------- */
+const KR=[
+ ["STEPIN 소개",1,"여러분이 지금 보고 계신 STEPIN은 AI가 춤을 분석해서 점수로 보여주는 새로운 이스포츠입니다. 카메라 한 대만으로 전신 움직임을 실시간으로 추적하고, 얼마나 정확하게 춤을 췄는지 평가합니다. 실력을 데이터로 확인하는 새로운 댄스 이스포츠입니다."],
+ ["춤을 못 춰도 참여 가능",0,"춤을 못 춘다고 걱정하지 않아도 됩니다. 화면 속 아바타 테비(TEBI)가 동작을 보여주니 보고 따라 하기만 해도 점수를 얻을 수 있어요. 얼마나 집중해서 빠르게 따라 하느냐에 따라 처음 하는 분도 좋은 점수를 기대할 수 있습니다."],
+ ["AI 점수 시스템",1,"STEPIN은 사람 심사위원이 아니라 AI가 팔, 다리, 몸통 움직임을 분석해 점수를 계산합니다. 정확하게 따라 할수록 점수가 올라가고, 모두 같은 기준으로 평가받기 때문에 공정한 경쟁이 가능합니다."],
+ ["대회 운영 방식",1,"오늘 대회는 매치마다 공식 송리스트에서 곡이 랜덤으로 선택됩니다. 각 곡의 하이라이트 약 30초만 추기 때문에 끝까지 집중하는 게 중요합니다. 팁을 하나 드리면, 시작과 마지막 포즈까지 똑같이 따라 하면 점수를 더 챙길 수 있습니다."],
+ ["기존 이스포츠와 다른 점",1,"기존 이스포츠가 손가락과 컨트롤러를 쓴다면 STEPIN은 몸 전체를 씁니다. 게임의 재미와 스포츠의 활동성을 함께 경험하는 피지컬 이스포츠예요. 남성보다 여성 플레이어가 더 많은 종목이기도 합니다."],
+ ["건강과 운동 효과",0,"한 곡만 춰도 생각보다 많이 움직입니다. 즐겁게 게임하는 동안 운동이 되고, 리듬감과 순발력, 집중력까지 함께 씁니다. 재미있게 즐기면서 몸도 튼튼해지는 게 STEPIN의 큰 매력입니다."],
+ ["STEPIN 앱 소개",3,"오늘 대회가 끝나도 STEPIN은 계속됩니다. 스마트폰에 STEPIN 앱을 설치하면 언제 어디서나 연습할 수 있어요. 오늘 점수가 아쉬웠다면 앱으로 연습해서 다음 대회에 다시 도전해 보세요. 앱에서도 대회가 계속 열립니다. 스토어에서 ‘STEPIN’을 검색하세요!"],
+ ["관객 참여 유도",0,"무대 위 선수만큼 응원하는 여러분도 오늘의 주인공입니다. 선수 이름을 크게 불러 주시고 박수와 함성으로 응원해 주세요. 응원이 커질수록 선수들의 에너지도 커집니다!"],
+ ["결승 · 마무리",0,"이제 오늘 최고의 댄서를 가릴 순간입니다. 지금까지 보여준 열정과 도전만으로도 모든 선수가 큰 박수를 받을 자격이 있습니다. 과연 최고 점수의 주인공은 누가 될까요? 함께 지켜보겠습니다."]
+];
+const EN=[
+ ["Introducing STEPIN",1,"Welcome everyone! STEPIN is a new form of esports where AI analyzes your dance performance and scores it in real time. Using just a single camera, the AI tracks your full-body movements and evaluates how accurately you perform the choreography."],
+ ["Anyone can participate",0,"If you think you're not a great dancer, don't worry! Our avatar, TEBI, demonstrates the choreography on screen. Simply watch and follow along to earn points. The more focused you are, the better your score can be."],
+ ["How AI scoring works",1,"STEPIN is not judged by human judges. Our AI analyzes your arm, leg and body movements to calculate your score. Since everyone is evaluated by exactly the same criteria, the competition is fair for everyone."],
+ ["Tournament format",1,"Songs are selected randomly from the official song list. You'll only dance the highlight section of each song, around 30 seconds. Here's a tip: matching the starting and ending poses can help you score higher."],
+ ["Different from traditional esports",1,"Traditional esports use fingers and controllers. STEPIN uses your entire body. It combines the excitement of gaming with the physical activity of sports. Interestingly, STEPIN has more female players than male players."],
+ ["Health and fitness",0,"Even one song takes more movement than you might expect. While you're having fun, you're getting cardio and strength exercise, and improving rhythm, coordination, reaction speed and concentration."],
+ ["Introducing the STEPIN app",3,"The fun doesn't end after today. Install the STEPIN app and practice anytime, anywhere. Not happy with today's score? Keep practicing and come back stronger. There are ongoing competitions in the app, so search 'STEPIN' in your app store!"],
+ ["Audience participation",0,"Our players are important, but all of you in the audience are just as important today. Cheer them on with your applause and your voices! The louder your support, the more energy you give the dancers."],
+ ["Grand final & closing",0,"We're approaching the moment we've all been waiting for. Every participant deserves a huge round of applause for their passion and courage. Let's find out who will become today's STEPIN champion!"]
+];
+function renderScript(el,arr){el.innerHTML=arr.map((s,i)=>`<div class="sline"><div><b><span class="mono muted">${String(i+1).padStart(2,"0")}</span>${esc(s[0])}${s[1]?` <span class="star">${"★".repeat(s[1])}</span>`:""}</b><p>${esc(s[2])}</p></div><div><button class="btn sm" type="button" data-copy="${i}">복사</button></div></div>`).join("");
+  el.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;copyText(arr[+b.dataset.copy][2],b.closest(".sline").querySelector("p"))})}
+renderScript($("#scriptKR"),KR);renderScript($("#scriptEN"),EN);
+
+
+/* ---------- data-bound renderers ---------- */
+function renderNotices(){
+  $("#noticeBody").innerHTML=DATA.notices.length?DATA.notices.map(n=>{
+    const [v,t]=String(n.view||"home").split(":");
+    return `<tr><td class="mono">${esc(n.date)}</td><td>${esc(n.text)}</td><td>${VIEWS.includes(v)&&v!=="admin"?`<a href="#${v}"${t?` data-tab-go="${esc(v+":"+t)}"`:""}>${esc(n.label||"보기")}</a>`:"—"}</td></tr>`}).join(""):'<tr><td colspan="3" class="muted">등록된 공지가 없습니다.</td></tr>';
+}
+function renderDealers(){
+  const cls=s=>s==="확정"?"p-ok":s==="모집 중"?"p-rec":"p-opt";
+  $("#dealerBody").innerHTML=DATA.dealers.map(d=>`<tr><td class="k">${esc(d.region)}</td><td>${esc(d.name||"—")}</td><td>${esc(d.contact||"—")}</td><td><span class="pill ${cls(d.status)}">${esc(d.status||"—")}</span></td></tr>`).join("");
+}
+let vf="전체";
+function renderVids(){
+  const cats=["전체",...new Set(DATA.videos.map(v=>v.cat))];if(!cats.includes(vf))vf="전체";
+  $("#vidFilter").innerHTML=cats.map(c=>`<button type="button" aria-pressed="${c===vf}" data-vf="${esc(c)}">${esc(c)}</button>`).join("");
+  $("#vidList").innerHTML=DATA.videos.filter(v=>vf==="전체"||v.cat===vf).map(v=>{const safe=/^https?:\/\//.test(v.url)?v.url:"#";return `<div class="vitem"><span class="play" aria-hidden="true"></span><div><span class="cat">${esc(v.cat)}</span><b>${esc(v.title)}</b><small>${esc(v.desc)}</small></div><div class="row"><a class="btn sm" href="${esc(safe)}" target="_blank" rel="noopener">보기 ↗</a><button class="btn sm" type="button" data-url="${esc(safe)}">URL</button></div></div>`}).join("");
+}
+$("#vidFilter").addEventListener("click",e=>{const b=e.target.closest("[data-vf]");if(b){vf=b.dataset.vf;renderVids()}});
+$("#vidList").addEventListener("click",e=>{const b=e.target.closest("[data-url]");if(b)copyText(b.dataset.url,null)});
+function renderFAQ(q){
+  q=(q||"").trim().toLowerCase();
+  const list=DATA.faq.map((f,i)=>[f,i]).filter(([f])=>!q||(f.q+f.a+f.cat).toLowerCase().includes(q));
+  $("#faqList").innerHTML=list.length?list.map(([f,i])=>`<details class="qa" id="faq-${i}"><summary><span>${esc(f.q)}</span><span class="faq-cat">${esc(f.cat)}</span></summary><div class="a">${esc(f.a)}</div></details>`).join(""):'<p class="muted">맞는 질문이 없습니다. <a href="#contact">본사에 문의</a>해 주세요.</p>';
+}
+$("#faqFilter").addEventListener("input",e=>renderFAQ(e.target.value));
+function renderContacts(){
+  $("#contactGrid").innerHTML=DATA.contacts.map(c=>`<div class="ccard"><span class="k">${esc(c.label)}</span><span class="v">${esc(c.value)}</span><small class="muted">${esc(c.desc)}</small><div><button class="btn sm" type="button" data-cp="${esc(c.value)}">복사</button></div></div>`).join("");
+}
+$("#contactGrid").addEventListener("click",e=>{const b=e.target.closest("[data-cp]");if(b)copyText(b.dataset.cp,b.closest(".ccard").querySelector(".v"))});
+
+/* ---------- gallery ---------- */
+const GAL=[
+ ["keyvisual_arcade_motion","키비주얼 · 아케이드 모션 트래킹","2520×1782 PNG"],
+ ["keyvisual_stepin_score","키비주얼 · AI 점수 S+","1864×1108 PNG"],
+ ["arcade_product_teby","제품 이미지 · 아케이드 + 테비","1512×2138 PNG"],
+ ["arcade_product_front","제품 이미지 · 아케이드 정면","1274×3876 PNG"],
+ ["arcade_product_studio","제품 이미지 · 스튜디오 컷","420×594 PNG"],
+ ["photo_arcade_gameplay","플레이 화면 캡처","632×783 PNG"],
+ ["photo_popup_seongsu","현장 사진 · 성수 팝업 외관","1596×900 PNG"],
+ ["photo_popup_seongsu_inside","현장 사진 · 성수 팝업 내부","1195×666 PNG"],
+ ["poster_8th_KR","포스터 · 8th Global Tournament (KR)","686×968 PNG"],
+ ["poster_8th_EN","포스터 · 8th Global Tournament (EN)","686×968 PNG"],
+ ["poster_ECA2026_selection","포스터 · ECA 2026 한국대표 선발전","2160×3052 PNG · 참고용"],
+ ["ad_rpd_battle_1","광고 소재 · RPD 댄스배틀 1","1024×1536 PNG"],
+ ["ad_rpd_battle_2","광고 소재 · RPD 댄스배틀 2","1024×1536 PNG"],
+ ["video_frame_sample_1080x1920","영상 프레임 샘플","1080×1920 PNG"],
+ ["logo_sidewalk_black","로고 · SIDEWALK ENTERTAINMENT","PNG (블랙)"]
+];
+$("#gal").innerHTML=GAL.map(g=>`<div class="gitem"><div class="ph" style="background-image:url('img/${g[0]}.jpg')" role="img" aria-label="${esc(g[1])}"></div><div class="meta"><b>${esc(g[1])}</b><small class="mono">${esc(g[2])}</small><div class="row"><button class="btn sm" type="button" data-dl="${g[0]}.png" data-name="STEPIN_${g[0]}.png">원본 받기</button><a class="btn sm" href="img/${g[0]}.jpg" target="_blank" rel="noopener">미리보기</a></div></div></div>`).join("");
+
+/* ---------- docs ---------- */
+const DOCS=[
+ ["PDF","STEPIN 아케이드 영업가이드 V1.2","총판·대리점 영업 담당자용 · 2026.08.28 · 2.3MB","STEPIN_Arcade_Sales_Guide_v1.2.pdf","STEPIN 아케이드 영업가이드_v1.2.pdf"],
+ ["PDF","STEPIN E-Sports 대회 규정집 2026 (국문)","오프라인 본선 공식 규정 · 0.3MB","STEPIN_Rulebook_2026_KR.pdf","STEPIN E-Sports 대회 규정집 2026.pdf"],
+ ["PDF","STEPIN E-Sports Tournament Rulebook 2026 (EN)","Official rulebook · 0.2MB","STEPIN_Rulebook_2026_EN.pdf","STEPIN E-Sports Tournament Rulebook 2026.pdf"],
+ ["PDF","Online Tournament Business Guide (EN)","앱 토너먼트 개최 · 운영 전 과정 · 0.2MB","STEPIN_Online_Tournament_Guide_EN.pdf","STEPIN_Online_Tournament_Guide.pdf"],
+ ["PDF","Offline Tournament Business Guide (EN)","앱 예선 + 아케이드 본선 · 0.1MB","STEPIN_Offline_Tournament_Guide_EN.pdf","STEPIN_Offline_Tournament_Guide.pdf"],
+ ["PDF","한국 토너먼트 참가자 가이드","참가자 배포용 가입 · 참가 방법 안내 (2025) · 2.4MB","STEPIN_Korea_Tournament_Player_Guide.pdf","STEPIN 한국 토너먼트 가이드.pdf"],
+ ["PDF","STEPIN Introduction Deck (July 2026)","고객 · 해외 파트너 제안용 소개서 · 5.2MB","STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf"],
+ ["PDF","STEPIN Esports for School","학교 이스포츠 제안서 · 2.9MB","STEPIN_Esports_for_School.pdf","STEPIN_Esports for School.pdf"],
+ ["PDF","Arcade Portable Setup Guide","포터블 구성 · 백월 배치 · 준비 요청사항 · 0.9MB","STEPIN_Arcade_Portable_Setup_Guide.pdf","STEPIN Arcade Portable Setup Guide.pdf"],
+ ["PDF","아케이드 행사 준비사항 시트","스탠다드/포터블 × 대회/체험존 4종 · 0.5MB","STEPIN_Arcade_Event_Prep_Checklist.pdf","STEPIN_아케이드 행사 준비사항.pdf"],
+ ["XLSX","아케이드 행사 준비사항 시트 (편집용)","고객사에 보내 준비 여부를 체크받는 엑셀 원본 · 5.1MB","STEPIN_Arcade_Event_Prep_Checklist.xlsx","STEPIN_아케이드 행사 준비사항.xlsx"],
+ ["PDF","설치 · 인수 확인서","구매 설치 완료 시 고객 서명 양식","STEPIN_Arcade_Install_Acceptance_Form.pdf","STEPIN ARCADE 설치·인수 확인서.pdf"],
+ ["DOCX","설치 · 인수 확인서 (편집용)","워드 원본","STEPIN_Arcade_Install_Acceptance_Form.docx","STEPIN ARCADE 설치·인수 확인서.docx"]
+];
+$("#docList").innerHTML=DOCS.map(d=>`<div class="ditem"><span class="ext">${d[0]}</span><div><b>${esc(d[1])}</b><small>${esc(d[2])}</small></div><div class="act row"><button class="btn sm pri" type="button" data-dl="${d[3]}" data-name="${esc(d[4])}">받기</button></div></div>`).join("");
+
+/* ---------- raw videos ---------- */
+const RAW=[
+ ["인플루언서 홍보 영상","EN · DE · PT(BR) · ES · TH","각 약 25MB","출연자 초상권 · 사용 기간"],
+ ["스트릿 우먼 파이터 협업 영상","EN · DE · ES · TH · PT","각 약 50MB","방송사 IP · 사용 범위 본사 확인"],
+ ["스트릿 걸스 파이터 2 협업 영상","EN · DE · ES · TH · PT","87~177MB","방송사 IP · 사용 범위 본사 확인"],
+ ["Kylie 협업 영상","EN · DE · PT · ES · TH","각 약 108MB","출연자 초상권"],
+ ["메이크유댄스 토너먼트 리캡","EN · DE · PT · ES · TH","33~51MB","협업 학원 표기"],
+ ["STEPIN 로고 모션","logo · logo + bg","14~18MB","오프닝 · 엔딩 삽입용"],
+ ["ThisisSTEPIN B2B Promo","EN","약 221MB","B2B 제안 · 전시"],
+ ["미국 K박람회 STEPIN 1분 영상","KR","약 72MB","전시 · 제안"],
+ ["STEPIN School Esports","KR","약 62MB","학교 제안"],
+ ["2026 찾아가는 교내 이스포츠 대회 예고","KR","약 38MB","학교 홍보"],
+ ["아케이드 주요화면 · 플레이 영상","KR","약 496MB","기기 소개 · 시연"]
+];
+$("#rawTbl tbody").innerHTML=RAW.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td><td class="mono">${esc(r[2])}</td><td>${esc(r[3])}</td><td><button class="btn sm" type="button" data-req="${esc(r[0])} (${esc(r[1])})">요청문 복사</button></td></tr>`).join("");
+$("#rawTbl").addEventListener("click",e=>{const b=e.target.closest("[data-req]");if(!b)return;
+  const name=$("#partnerName").textContent;
+  copyText(`[STEPIN 원본 영상 요청]\n파트너: ${name}\n요청 소스: ${b.dataset.req}\n사용 용도/채널:\n사용 기간:\n행사명·일정:\n받는 분 이메일:`,null)});
+
+
+
+/* ---------- search ---------- */
+let IDX=[];
+function buildIndex(){
+  IDX=[];
+  $$(".view").forEach(v=>{
+    const view=v.dataset.view;if(view==="admin")return;const vt=$("h1",v)?$("h1",v).textContent:"";
+    $$("h2.sec, h3, .tabpanel table td.k",v).forEach((el,i)=>{
+      if(el.closest("#faqList"))return;
+      const panel=el.closest("[data-panel]");const tab=panel?panel.dataset.panel.split(":")[1]:null;
+      if(!el.id)el.id=`s-${view}-${i}-${Math.random().toString(36).slice(2,6)}`;
+      const ctx=(el.closest("tr")?el.closest("tr").textContent:el.parentElement.textContent).replace(/\s+/g," ").slice(0,300);
+      IDX.push({view,tab,id:el.id,title:el.textContent.replace(/\s+/g," ").trim(),vt,ctx});
+    });
+  });
+  DATA.faq.forEach((f,i)=>IDX.push({view:"faq",tab:null,id:"faq-"+i,title:f.q,vt:"자주 묻는 질문",ctx:f.a}));
+}
+const qEl=$("#q"),rEl=$("#results");
+qEl.addEventListener("input",()=>{
+  const q=qEl.value.trim().toLowerCase();
+  if(q.length<1){rEl.hidden=true;return}
+  const hits=IDX.map(it=>{const t=it.title.toLowerCase(),c=it.ctx.toLowerCase();let s=0;if(t.includes(q))s+=3;if(c.includes(q))s+=1;return [s,it]}).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]).slice(0,12);
+  rEl.innerHTML=hits.length?hits.map(([,it])=>`<button type="button" data-v="${it.view}" data-t="${it.tab||""}" data-id="${it.id}">${esc(it.title)}<small>${esc(it.vt)}</small></button>`).join(""):'<div class="muted" style="padding:10px">검색 결과가 없습니다.</div>';
+  rEl.hidden=false;
+});
+rEl.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;
+  try{history.replaceState(null,"","#"+b.dataset.v)}catch(_){}
+  show(b.dataset.v,b.dataset.t||null);rEl.hidden=true;qEl.value="";
+  if(b.dataset.v==="faq"){$("#faqFilter").value="";renderFAQ("")}
+  setTimeout(()=>{const el=document.getElementById(b.dataset.id);if(el){if(el.tagName==="DETAILS")el.open=true;el.scrollIntoView({block:"center"});el.style.outline="2px solid var(--accent)";setTimeout(()=>el.style.outline="",1600)}},30)});
+document.addEventListener("click",e=>{if(!e.target.closest(".search"))rEl.hidden=true});
+qEl.addEventListener("keydown",e=>{if(e.key==="Escape"){rEl.hidden=true;qEl.blur()}});
+
+function renderAll(){renderNotices();renderDealers();renderVids();renderFAQ($("#faqFilter").value);renderContacts();buildIndex()}
+renderAll();
+
+/* =====================================================================
+   관리자: DB 연동 (hub/<key> 문서 = {items:[...], updatedAt})
+   ===================================================================== */
+const SCHEMA={
+ partners:{title:"파트너 코드 목록",note:"이름·구분 수정, 사용 중지·재개, 삭제가 가능합니다. 코드 자체는 다시 볼 수 없으니 분실 시 새로 발급하세요.",noAdd:true,
+  fields:[{k:"name",l:"파트너 이름"},{k:"type",l:"구분",t:"select",o:["총판","대리점","행사·대회 운영","교육·학교","본사","기타"]},{k:"hint",l:"코드 힌트",ro:true},{k:"active",l:"상태",t:"bool"}]},
+ notices:{title:"공지 · 업데이트",note:"홈 화면 ‘최근 업데이트’에 위에서부터 표시됩니다.",blank:{date:"",text:"",view:"home",label:"홈"},
+  fields:[{k:"date",l:"날짜"},{k:"label",l:"링크 이름"},{k:"view",l:"연결 위치",t:"select",o:["home","about","operate","operate:online","operate:offline","setup","setup:broadcast","compare","checklist","mc","assets","assets:docs","assets:video","policy","faq","contact"]},{k:"text",l:"내용",wide:true}]},
+ dealers:{title:"지역 총판",note:"‘문의 · 연락처’ 페이지의 지역 총판 표에 표시됩니다.",blank:{region:"",name:"",contact:"",status:"확정 시 게시"},
+  fields:[{k:"region",l:"권역"},{k:"name",l:"총판명"},{k:"contact",l:"담당 · 연락처"},{k:"status",l:"상태",t:"select",o:["확정","모집 중","확정 시 게시"]}]},
+ videos:{title:"홍보 영상 URL",note:"‘홍보 소스’의 영상 목록에 표시됩니다. 분류는 자유롭게 입력할 수 있습니다.",blank:{cat:"대회",title:"",desc:"",url:"https://"},
+  fields:[{k:"cat",l:"분류"},{k:"title",l:"제목"},{k:"url",l:"URL",wide:true},{k:"desc",l:"설명",wide:true}]},
+ faq:{title:"FAQ",note:"‘자주 묻는 질문’과 전체 검색에 반영됩니다.",blank:{cat:"대회",q:"",a:""},
+  fields:[{k:"cat",l:"분류",t:"select",o:["제품","설치","대회","콘텐츠","구매","A/S","기타"]},{k:"q",l:"질문",wide:true},{k:"a",l:"답변",t:"area",wide:true}]},
+ contacts:{title:"연락처",note:"‘문의 · 연락처’ 상단 카드에 표시됩니다.",blank:{label:"",value:"",desc:""},
+  fields:[{k:"label",l:"문의 유형"},{k:"value",l:"번호 · 주소"},{k:"desc",l:"설명",wide:true}]}
+};
+const DRAFT={},DIRTY={};
+function setDirty(k,v){DIRTY[k]=v;const el=$(`[data-editor="${k}"] .adm-state`);if(el){el.textContent=v?"저장하지 않은 변경 있음":"저장된 내용 · 저장 후 1~2분 뒤 사이트 반영";el.classList.toggle("dirty",!!v)}}
+function renderEditor(k){
+  const host=$(`[data-editor="${k}"]`);if(!host)return;const sc=SCHEMA[k];const items=DRAFT[k];
+  const fld=(it,i,f)=>{const id=`ed-${k}-${i}-${f.k}`;const v=it[f.k];
+    if(f.ro)return `<label class="fld"><span>${f.l}</span><input id="${id}" value="${esc(v)}" readonly class="mono"></label>`;
+    if(f.t==="bool")return `<label class="fld"><span>${f.l}</span><select id="${id}" data-i="${i}" data-k="${f.k}" data-bool="1"><option value="1"${v!==false?" selected":""}>사용</option><option value="0"${v===false?" selected":""}>중지</option></select></label>`;
+    if(f.t==="select"){const opts=f.o.includes(v)||!v?f.o:[v,...f.o];return `<label class="fld${f.wide?" wide":""}"><span>${f.l}</span><select id="${id}" data-i="${i}" data-k="${f.k}">${opts.map(o=>`<option${o===v?" selected":""}>${esc(o)}</option>`).join("")}</select></label>`}
+    if(f.t==="area")return `<label class="fld wide"><span>${f.l}</span><textarea id="${id}" data-i="${i}" data-k="${f.k}">${esc(v)}</textarea></label>`;
+    return `<label class="fld${f.wide?" wide":""}"><span>${f.l}</span><input id="${id}" data-i="${i}" data-k="${f.k}" value="${esc(v)}"></label>`};
+  host.innerHTML=`<div class="block"><h2 class="sec">${sc.title} <span class="tag">${items.length}개</span></h2><p class="muted">${sc.note}</p>
+   <div class="adm-bar"><span class="adm-state"></span><div class="row">${sc.noAdd?"":`<button class="btn sm" type="button" data-act="add">+ 항목 추가</button>`}<button class="btn sm" type="button" data-act="revert">되돌리기</button><button class="btn sm pri" type="button" data-act="save">저장</button></div></div>
+   <div class="adm-list">${items.map((it,i)=>`<div class="adm-row${it.active===false?" off":""}"><div class="adm-fields">${sc.fields.map(f=>fld(it,i,f)).join("")}</div><div class="adm-ops"><button type="button" data-act="up" data-i="${i}" aria-label="위로">▲</button><button type="button" data-act="down" data-i="${i}" aria-label="아래로">▼</button><button type="button" class="del" data-act="del" data-i="${i}">삭제</button></div></div>`).join("")||'<p class="muted">항목이 없습니다.</p>'}</div></div>`;
+  setDirty(k,!!DIRTY[k]);
+}
+function wireEditor(k){
+  const host=$(`[data-editor="${k}"]`);if(!host)return;
+  host.addEventListener("input",e=>{const t=e.target;if(t.dataset.i==null)return;DRAFT[k][+t.dataset.i][t.dataset.k]=t.dataset.bool?t.value==="1":t.value;setDirty(k,true)});
+  host.addEventListener("change",e=>{const t=e.target;if(t.tagName!=="SELECT"||t.dataset.i==null)return;DRAFT[k][+t.dataset.i][t.dataset.k]=t.dataset.bool?t.value==="1":t.value;setDirty(k,true);if(t.dataset.bool)renderEditor(k)});
+  host.addEventListener("click",async e=>{const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act,i=+b.dataset.i,arr=DRAFT[k];
+    if(a==="add"){arr.unshift(clone(SCHEMA[k].blank));setDirty(k,true);renderEditor(k)}
+    else if(a==="up"&&i>0){[arr[i-1],arr[i]]=[arr[i],arr[i-1]];setDirty(k,true);renderEditor(k)}
+    else if(a==="down"&&i<arr.length-1){[arr[i+1],arr[i]]=[arr[i],arr[i+1]];setDirty(k,true);renderEditor(k)}
+    else if(a==="del"){if(b.dataset.confirm){arr.splice(i,1);setDirty(k,true);renderEditor(k)}else{b.dataset.confirm="1";b.textContent="삭제 확인";setTimeout(()=>{if(b.isConnected){delete b.dataset.confirm;b.textContent="삭제"}},3000)}}
+    else if(a==="revert"){DRAFT[k]=clone(DATA[k]);setDirty(k,false);renderEditor(k)}
+    else if(a==="save"){b.disabled=true;try{await saveKey(k,DRAFT[k],SCHEMA[k].title+" 수정");toast("저장했습니다. 1~2분 뒤 사이트에 반영됩니다.")}catch(err){toast(errMsg(err))}finally{b.disabled=false}}
+  });
+}
+function errMsg(err){return (err&&err.message)||"저장하지 못했습니다. 잠시 후 다시 시도해 주세요."}
+async function saveKey(k,items,what){
+  if(!adminReady)throw new Error("저장 설정(GITHUB_TOKEN)이 아직 없어 저장할 수 없습니다.");
+  const clean=items.map(o=>{const c={};Object.keys(o).forEach(x=>{if(o[x]!==undefined)c[x]=o[x]});return c});
+  const r=await fetch("/api/admin/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({key:k,items:clean,what})});
+  let d={};try{d=await r.json()}catch(e){}
+  if(r.status===401||r.status===403)throw new Error("관리자 로그인이 만료되었습니다. 다시 로그인해 주세요.");
+  if(!r.ok)throw new Error(d.error||"저장하지 못했습니다.");
+  DATA[k]=clone(clean);DRAFT[k]=clone(clean);setDirty(k,false);
+  if(["notices","dealers","videos","faq","contacts"].includes(k))renderAll();
+  DATA.log=[{at:d.at||new Date().toISOString(),what,by:"admin"},...DATA.log].slice(0,100);renderLog();
+}
+function renderLog(){const el=$("#admLog");if(!el)return;el.innerHTML=DATA.log.length?DATA.log.map(l=>`<div><span class="mono muted">${esc(new Date(l.at).toLocaleString("ko-KR",{hour12:false}))}</span><span>${esc(l.what)}</span></div>`).join(""):'<div><span class="muted">—</span><span class="muted">아직 변경 이력이 없습니다.</span></div>'}
+/* new partner code */
+function genCode(type){const pre={"총판":"DST","대리점":"AGT","행사·대회 운영":"EVT","교육·학교":"EDU","본사":"SWE","기타":"PTN"}[type]||"PTN";const A="ABCDEFGHJKLMNPQRSTUVWXYZ";const r=n=>Array.from(crypto.getRandomValues(new Uint32Array(n))).map(x=>x);const [a,b,c]=r(3);return `STP-${pre}${A[a%24]}-${String(1000+b%9000)}${A[c%24]}`}
+$("#npAdd").addEventListener("click",async()=>{
+  const name=$("#npName").value.trim(),type=$("#npType").value;let code=$("#npCode").value.trim().toUpperCase().replace(/\s+/g,"");
+  if(!name){toast("파트너 이름을 입력해 주세요.");$("#npName").focus();return}
+  if(!code)code=genCode(type);
+  if(!/^[A-Z0-9-]{6,32}$/.test(code)){toast("코드는 영문 대문자·숫자·하이픈 6~32자로 입력해 주세요.");return}
+  const hash=await sha("stepin-partner:"+code);
+  if(DATA.partners.some(p=>p.hash===hash)){toast("이미 등록된 코드입니다.");return}
+  const parts=code.split("-");const hint=parts.length>1?parts.slice(0,-1).join("-")+"-****":code.slice(0,3)+"****";
+  const next=[...DATA.partners,{hash,name,type,hint,active:true,createdAt:new Date().toISOString()}];
+  try{await saveKey("partners",next,`파트너 코드 발급: ${name}`);
+    $("#npOut").hidden=false;$("#npOut").innerHTML=`<div class="newcode"><span>발급 완료 · <b>${esc(name)}</b></span><span class="v" id="npCodeShow">${esc(code)}</span><button class="btn sm" type="button" id="npCopy">코드 복사</button><span class="muted" style="font-size:12.5px">이 화면을 벗어나면 전체 코드를 다시 볼 수 없습니다.</span></div>`;
+    $("#npCopy").onclick=()=>copyText(code,$("#npCodeShow"));
+    $("#npName").value="";$("#npCode").value="";renderEditor("partners");
+  }catch(err){toast(errMsg(err))}
+});
+Object.keys(SCHEMA).forEach(k=>{DRAFT[k]=clone(DATA[k]);wireEditor(k);renderEditor(k)});renderLog();
+
+function blockAdmin(m,showBody){$("#admBlocked").textContent=m;$("#admBlocked").hidden=false;$("#admBody").hidden=!showBody}
+async function boot(){
+  let me=null;
+  try{const r=await fetch("/api/me",{cache:"no-store",credentials:"same-origin"});if(r.status===401){location.href="/login";return}me=await r.json()}catch(e){location.href="/login";return}
+  isAdmin=me.role==="admin";adminReady=!!me.adminReady;
+  const keys=["notices","dealers","videos","faq","contacts"].concat(isAdmin?["partners","log"]:[]);
+  await Promise.all(keys.map(async k=>{try{const r=await fetch("/data/"+k+".json",{cache:"no-store"});if(r.ok){const d=await r.json();if(Array.isArray(d.items))DATA[k]=d.items}}catch(e){}}));
+  renderAll();
+  $("#adminNav").hidden=!isAdmin;
+  if(isAdmin){
+    Object.keys(SCHEMA).forEach(k=>{DRAFT[k]=clone(DATA[k]);renderEditor(k)});renderLog();
+    if(adminReady){$("#admBlocked").hidden=true;$("#admBody").hidden=false}
+    else blockAdmin("저장 설정(Cloudflare 환경변수 GITHUB_TOKEN · GITHUB_REPO)이 아직 없습니다. 내용은 볼 수 있지만 저장은 설정 후 가능합니다.",true);
+  }
+  enter(me.name);
+}
+boot();
+})();
+</script>
+</body>
+</html>

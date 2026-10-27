@@ -1,0 +1,29 @@
+{
+ "items": [
+  {
+   "date": "2026.10",
+   "text": "파트너 허브 오픈 · 대회 운영/셋팅/홍보 자료 통합",
+   "view": "home",
+   "label": "홈"
+  },
+  {
+   "date": "2026.08.28",
+   "text": "STEPIN 아케이드 영업가이드 V1.2 배포 (판매정책 V1.6 기준)",
+   "view": "assets:docs",
+   "label": "문서"
+  },
+  {
+   "date": "2026.08",
+   "text": "행사 렌탈 준비사항 시트 (스탠다드/포터블 · 대회/체험존 4종)",
+   "view": "setup",
+   "label": "셋팅"
+  },
+  {
+   "date": "2026.04",
+   "text": "STEPIN E-Sports 대회 규정집 2026 (국문/영문)",
+   "view": "operate:offline",
+   "label": "본선 규정"
+  }
+ ],
+ "updatedAt": "2026-10-27T00:00:00.000Z"
+}

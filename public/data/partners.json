@@ -1,0 +1,40 @@
+{
+ "items": [
+  {
+   "hash": "e370eab1e55a42e5cdd3055ce57dd8ef415fc22aa8b7323cd7e20b6b145e5790",
+   "name": "싸이드워크 본사",
+   "type": "본사",
+   "hint": "SWE-HQ-****",
+   "active": true
+  },
+  {
+   "hash": "e584576ba21c3e109623040dd6042e9c1114d3924b856ebdf79d4a16d0a212ee",
+   "name": "서울·경기 총판",
+   "type": "총판",
+   "hint": "STP-SEL-****",
+   "active": true
+  },
+  {
+   "hash": "b55dbdfcf416c2aeb0ceb2f620b698f65e06e3261623115cb3057def2b80741f",
+   "name": "경남 총판",
+   "type": "총판",
+   "hint": "STP-GNM-****",
+   "active": true
+  },
+  {
+   "hash": "cdbe06db61d72ed0369792ae9d17ad4d117495a85491f80b7ef14d40740b0553",
+   "name": "행사·대회 운영 파트너",
+   "type": "행사·대회 운영",
+   "hint": "STP-EVT-****",
+   "active": true
+  },
+  {
+   "hash": "8360383063a54111d4add241d991f395e301f4a68f04dfcf03909c8d825019ac",
+   "name": "교육·학교 파트너",
+   "type": "교육·학교",
+   "hint": "STP-EDU-****",
+   "active": true
+  }
+ ],
+ "updatedAt": "2026-10-27T00:00:00.000Z"
+}
