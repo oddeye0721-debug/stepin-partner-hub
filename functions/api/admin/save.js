@@ -1,7 +1,7 @@
 // 관리자 저장: public/data/<key>.json 을 GitHub에 커밋 → Cloudflare가 자동 재배포 (1~2분)
 import { json } from "../../../lib/auth.js";
 
-const KEYS = ["partners", "notices", "dealers", "videos", "faq", "contacts"];
+const KEYS = ["partners", "notices", "refs", "videos", "faq", "contacts"];
 
 function toB64(str) {
   const bytes = new TextEncoder().encode(str);

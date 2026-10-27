@@ -1,27 +1,27 @@
 {
  "items": [
   {
-   "label": "대표 · 영업 · 정책 · 렌탈",
-   "value": "070-4117-0113",
-   "desc": "본사 IMC팀 · 가격, 콘텐츠, 승인 요청"
-  },
-  {
-   "label": "영업 · 제안 · 렌탈 문의",
+   "label": "대회 협업 · 운영 문의",
    "value": "marketing@sidewalkplay.com",
-   "desc": "견적, 제안서, 원본 소스 요청"
+   "desc": "싸이드워크 IMC팀 · 대회 기획, 제작물 시안, 원본 소스 요청"
   },
   {
-   "label": "A/S 접수",
-   "value": "support@sidewalkplay.com",
-   "desc": "제품번호 · 설치처 · 증상 · 사진"
+   "label": "대표 전화",
+   "value": "070-4117-0113",
+   "desc": "본사 IMC팀"
   },
   {
-   "label": "토너먼트 플랫폼",
+   "label": "앱 토너먼트 개최 · 계정 승인",
    "value": "cs@sidewalkplay.com",
-   "desc": "비즈니스 계정 승인, 앱 대회 개최, 우승자 관련"
+   "desc": "비즈니스 계정 승인, 개최 신청, 우승자 관련"
   },
   {
-   "label": "이스포츠 대회 · 일반",
+   "label": "현장 기술 지원",
+   "value": "support@sidewalkplay.com",
+   "desc": "아케이드 · 대회 프로그램 오류 (제품번호 · 증상 · 사진)"
+  },
+  {
+   "label": "이스포츠 대회 일반",
    "value": "info@sidewalkplay.com",
    "desc": "대회 개최 일반 문의"
   },
@@ -31,5 +31,5 @@
    "desc": "비즈니스 계정으로 로그인"
   }
  ],
- "updatedAt": "2026-10-27T00:00:00.000Z"
+ "updatedAt": "2026-10-27T12:00:00.000Z"
 }
