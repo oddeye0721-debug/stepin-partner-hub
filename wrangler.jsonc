@@ -1,0 +1,20 @@
+{
+  // Cloudflare Workers 배포 설정
+  // "name"은 Cloudflare 대시보드의 Worker 이름과 같아야 합니다.
+  "name": "stepin-partner-hub",
+  "main": "src/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // 모든 요청이 먼저 로그인 확인을 거치도록 합니다 (파일 직접 접근 차단)
+    "run_worker_first": true
+  },
+  "vars": {
+    "GITHUB_REPO": "oddeye0721-debug/stepin-partner-hub",
+    "GITHUB_BRANCH": "main"
+  },
+  // 대시보드에서 추가한 텍스트 변수가 배포 때 지워지지 않도록 유지
+  "keep_vars": true,
+  "observability": { "enabled": true }
+}

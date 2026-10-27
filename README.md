@@ -19,7 +19,17 @@ lib/auth.js        세션 서명 · 공통 함수
 - 파트너 코드는 원문이 아닌 SHA-256 해시로만 `public/data/partners.json`에 저장되며, 이 파일은 관리자만 읽을 수 있습니다.
 - 관리자 페이지에서 저장하면 서버가 이 저장소의 `public/data/*.json`을 커밋하고, Cloudflare가 1~2분 안에 자동 재배포합니다.
 
-## Cloudflare 설정 (최초 1회)
+## Cloudflare 설정 (Workers 방식 · 현재 사용)
+
+`wrangler.jsonc` + `src/index.js` 로 Workers에 배포됩니다. 모든 요청이 먼저 로그인 확인을 거칩니다 (`run_worker_first`).
+
+1. Worker → **설정** → **빌드** 의 API 토큰이 비어 있으면 **새 토큰 생성**으로 만들어 선택합니다.
+2. Worker → **설정** → **변수 및 암호** (빌드 항목이 아닌 상단 항목) 에 **비밀(Secret)** 3개를 추가합니다: `SESSION_SECRET`, `ADMIN_PASSWORD`, `GITHUB_TOKEN`.
+   `GITHUB_REPO`, `GITHUB_BRANCH` 는 `wrangler.jsonc` 에 이미 들어 있습니다.
+3. Worker 이름이 `stepin-partner-hub` 가 아니면 `wrangler.jsonc` 의 `name` 을 같은 이름으로 바꿉니다.
+4. **설정 → 도메인 및 경로 → 추가 → 사용자 지정 도메인** 에 `hub.stepin.ai` 를 넣습니다 (stepin.ai DNS가 Cloudflare에 있지 않으면 경로 대신 DNS 담당자와 CNAME 연결 방법을 확인).
+
+## Cloudflare 설정 (Pages 방식 · 대안)
 
 1. Cloudflare 대시보드 → **Workers & Pages** → **만들기(Create)** → **Pages** 탭 → **Git에 연결(Connect to Git)**
 2. GitHub 계정 연결 후 `stepin-partner-hub` 저장소 선택
