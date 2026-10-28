@@ -3,6 +3,7 @@
   {
    "date": "2026.06",
    "title": "2026 경남 STEPIN 오픈 토너먼트",
+   "img": "/img/ref_gyeongnam.jpg",
    "cat": "지역 대회",
    "host": "경남e스포츠대학리그 · 경상국립대",
    "format": "앱 예선 16일 (지정 20곡 중 상위 10곡 합산) → TOP 32 현장 초청 → 32강 싱글 엘리미네이션",
@@ -13,6 +14,7 @@
   {
    "date": "2026.06",
    "title": "STEPIN Dance Tournament · Singapore",
+   "img": "/img/ref_singapore.jpg",
    "cat": "해외",
    "host": "Flex Sea Gaming",
    "format": "앱 예선 → 상위 8인 현장 초청 → 포터블 아케이드 2대 본선",
@@ -23,9 +25,10 @@
   {
    "date": "2026.05~",
    "title": "2026 찾아가는 교내 이스포츠 대회",
+   "img": "/img/why_school.jpg",
    "cat": "학교",
    "host": "한국e스포츠협회 (KeSPA)",
-   "format": "학교 방문 · 체험존 운영 → 체험존 상위 4인 4강 토너먼트 (7곡)",
+   "format": "학교 방문 · 체험존 운영 → 체험존 상위 4인 4강 토너먼트",
    "scale": "20개교 기준",
    "place": "전국 중·고교",
    "url": "https://youtu.be/5NBznErwZVc"
@@ -33,6 +36,7 @@
   {
    "date": "2026.04",
    "title": "2026 아시아 이스포츠 대회 (ECA) 진주",
+   "img": "/img/why_eca.jpg",
    "cat": "국제",
    "host": "한국e스포츠협회 (KeSPA) · SOOP 중계",
    "format": "국가별 선발 → 개인전 (2개조 라운드로빈 + 8강 더블 엘리미네이션), 팀전 (5팀 풀리그 + 순위결정전)",
@@ -43,6 +47,7 @@
   {
    "date": "2026.03~04",
    "title": "ECA 2026 STEPIN 한국 대표 선발전",
+   "img": "/img/poster_ECA2026_selection.jpg",
    "cat": "온라인",
    "host": "싸이드워크",
    "format": "앱 참가신청·랭킹전 (4/2~4/9) → 대진 생성 → 비동기 토너먼트 → 국가대표 확정",
@@ -53,6 +58,7 @@
   {
    "date": "2025.11",
    "title": "2025 아시아 이스포츠 대회 (ECA) 베트남",
+   "img": "/img/ref_eca2025.jpg",
    "cat": "국제",
    "host": "한국e스포츠협회 (KeSPA)",
    "format": "국가대항 현장 대회 (STEPIN 첫 종목 채택)",
@@ -63,6 +69,7 @@
   {
    "date": "2025.07",
    "title": "STEPIN 8th Global Tournament",
+   "img": "/img/poster_8th_KR.jpg",
    "cat": "온라인",
    "host": "싸이드워크",
    "format": "글로벌 앱 토너먼트 · 선발전 23일 → 대진표 발표",
@@ -73,6 +80,7 @@
   {
    "date": "2025.05",
    "title": "KOREA 1ST RPD BATTLE (한국 토너먼트)",
+   "img": "/img/ref_korea_rpd.jpg",
    "cat": "온라인",
    "host": "싸이드워크",
    "format": "앱 선발전(RPD 점수) 18일 → 32강 진출 → 하루 동안 32강~결승 (32~16강 3곡, 8강~결승 5곡)",
@@ -83,33 +91,14 @@
   {
    "date": "2025.03",
    "title": "STEPIN × 댄스 아카데미 토너먼트",
+   "img": "/img/ref_academy.jpg",
    "cat": "협업",
    "host": "메이크유댄스 · 댄스인사이드 등",
    "format": "학원 협업 토너먼트 + 청소년 동아리 경진대회 체험존",
    "scale": "학원 단위",
    "place": "온라인 + 현장",
    "url": "https://youtu.be/2T8S9xv7JMA"
-  },
-  {
-   "date": "2024.10",
-   "title": "오디션미 × STEPIN 토너먼트",
-   "cat": "협업",
-   "host": "오디션미",
-   "format": "글로벌 앱 토너먼트 128강 · 양사 SNS 공동 홍보",
-   "scale": "상금 1,000 USD · 47일간 신규 회원 7,227명",
-   "place": "STEPIN 앱 (글로벌)",
-   "url": ""
-  },
-  {
-   "date": "2024",
-   "title": "STEPIN Official Tournament (The American Arena)",
-   "cat": "온라인",
-   "host": "싸이드워크",
-   "format": "글로벌 앱 토너먼트 · 틱톡 광고 + 인플루언서 20인",
-   "scale": "상금 2,000 USD · 신청 372명 / 실참여 40명",
-   "place": "STEPIN 앱 (미국 중심)",
-   "url": ""
   }
  ],
- "updatedAt": "2026-10-27T12:00:00.000Z"
+ "updatedAt": "2026-10-28T12:00:00.000Z"
 }
