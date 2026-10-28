@@ -494,7 +494,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div><span class="v num">6 × 3m</span><span class="l">아케이드 2대 대회 무대 최소 면적</span></div>
       <div><span class="v num">20A</span><span class="l">대회 현장 전력 최소 (대당 500W)</span></div>
       <div><span class="v">유선 LAN</span><span class="l">배틀 · 대회 · 영상 다운로드 필수</span></div>
-      <div><span class="v num">≈ 1분</span><span class="l">세트당 평균 소요 (세트 수는 대회별 선택)</span></div>
+      <div><span class="v num">≈ 1분</span><span class="l">1세트 평균 (플레이 30초 + 준비·교체)</span></div>
       <div><span class="v num">D-35</span><span class="l">앱 예선 + 본선 대회 최소 준비 기간</span></div>
     </div>
   </div>
@@ -842,7 +842,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <h2 class="sec">더블 엘리미네이션 · 세트 운영</h2>
       <div class="grid g3">
         <div class="panel block"><h3>승자조 / 패자조</h3><p class="muted">패배하면 패자조로 이동하고, 2패째에 탈락합니다. 결승은 승자조 1위 vs 패자조 1위.</p></div>
-        <div class="panel block"><h3>연속 퍼포먼스</h3><p class="muted">세트 수는 대회별로 정합니다 (3 · 5 · 7 · 9세트 중 선택, 결승은 더 길게 잡는 편). 정한 세트를 중단 없이 모두 수행한 뒤 결과를 발표하므로 지구력과 일관성을 함께 평가합니다. <b>세트당 평균 약 1분</b> 기준으로 일정을 잡습니다.</p></div>
+        <div class="panel block"><h3>연속 퍼포먼스</h3><p class="muted">세트 수는 대회별로 정합니다 (3 · 5 · 7 · 9세트 중 선택, 결승은 더 길게 잡는 편). 정한 세트를 중단 없이 모두 수행한 뒤 결과를 발표하므로 지구력과 일관성을 함께 평가합니다. 곡당 실제 플레이는 약 30초이고, 준비·선수 교체를 합쳐 <b>1세트 약 1분</b>으로 일정을 잡습니다.</p></div>
         <div class="panel block"><h3>브래킷 리셋</h3><p class="muted">승자조 선수가 결승 첫 매치를 이기면 즉시 우승. 패자조 선수가 이기면 대진이 초기화되고 같은 세트 수로 한 번 더 치릅니다.</p></div>
       </div>
     </div>
@@ -886,13 +886,12 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
     <div class="block">
       <h2 class="sec">경기 시간 계산기</h2>
-      <p class="muted">세트 수는 확정하지 않고 대회별로 고릅니다. 아래 값을 바꾸면 본선 경기 시간이 바로 계산됩니다. 세트 1개는 곡 하이라이트(20~40초)와 다음 곡 전환을 합쳐 <b>평균 약 1분</b>입니다.</p>
+      <p class="muted">세트 수는 확정하지 않고 대회별로 고릅니다. 아래 값을 바꾸면 본선 경기 시간이 바로 계산됩니다. 곡당 실제 플레이는 약 30초, 준비·선수 교체를 합치면 <b>1세트 약 1분</b>입니다.</p>
       <div class="calc" id="setCalc">
         <label class="fld"><span>본선 인원 (개인전)</span><select id="scN"><option value="4">4명</option><option value="8" selected>8명</option><option value="10">10명</option><option value="12">12명</option><option value="16">16명</option><option value="32">32명</option></select></label>
         <label class="fld"><span>일반 라운드 세트 수</span><select id="scS1"><option>3</option><option selected>5</option><option>7</option><option>9</option></select></label>
         <label class="fld"><span>결승 세트 수</span><select id="scS2"><option>3</option><option>5</option><option selected>7</option><option>9</option></select></label>
-        <label class="fld"><span>세트당 평균 <b id="scSecV">60초</b></span><input id="scSec" type="range" min="40" max="90" step="5" value="60"></label>
-        <label class="fld"><span>매치 전환 <b id="scChV">3분</b></span><input id="scCh" type="range" min="1" max="6" step="1" value="3"></label>
+        <label class="fld"><span>1세트 평균 (준비·교체 포함) <b id="scSecV">60초</b></span><input id="scSec" type="range" min="40" max="90" step="5" value="60"></label>
       </div>
       <div class="calc-out" id="scOut" aria-live="polite"></div>
     </div>
@@ -1801,7 +1800,7 @@ function teamStages(T){
   return {desc:"2개 조 그룹 스테이지 → 4강 싱글 엘리미네이션",stages:[{name:"그룹 스테이지 (2개 조 × 3팀)",m:6},{name:"4강",m:2},{name:"3·4위전 · 결승",m:2,final:true}]};
 }
 const STAGE_BREAK=15;
-function stageMinutes(st,o){const sets=st.final?o.s2:o.s1;return st.m*(sets*o.sec/60+o.ch)}
+function stageMinutes(st,o){const sets=st.final?o.s2:o.s1;return st.m*sets*o.sec/60}
 function estimate(plan,o){
   const rows=plan.stages.map(st=>({name:st.name,m:st.m,sets:st.final?o.s2:o.s1,min:stageMinutes(st,o)}));
   const play=rows.reduce((a,r)=>a+r.min,0);const breaks=Math.max(0,rows.length-1)*STAGE_BREAK;
@@ -1813,12 +1812,12 @@ function stageTable(est){
 }
 /* --- 본선 계산기 (본선 · 오프라인 아케이드 > 타임테이블 탭) --- */
 function renderSetCalc(){
-  const o={s1:+$("#scS1").value,s2:+$("#scS2").value,sec:+$("#scSec").value,ch:+$("#scCh").value};
-  $("#scSecV").textContent=o.sec+"초";$("#scChV").textContent=o.ch+"분";
+  const o={s1:+$("#scS1").value,s2:+$("#scS2").value,sec:+$("#scSec").value};
+  $("#scSecV").textContent=o.sec+"초";
   const plan=indivStages(+$("#scN").value);const est=estimate(plan,o);
-  $("#scOut").innerHTML=`<div class="kpis"><div><span class="v num">${est.matches}</span><span class="l">총 매치 수</span></div><div><span class="v num">${fmtMin(o.s1*o.sec/60+o.ch)}</span><span class="l">일반 매치 1회</span></div><div class="hl"><span class="v num">${fmtMin(est.total)}</span><span class="l">본선 경기 시간 (휴식 포함)</span></div></div><p class="muted">${esc(plan.desc)}</p>${stageTable(est)}`;
+  $("#scOut").innerHTML=`<div class="kpis"><div><span class="v num">${est.matches}</span><span class="l">총 매치 수</span></div><div><span class="v num">${fmtMin(o.s1*o.sec/60)}</span><span class="l">일반 매치 1회</span></div><div class="hl"><span class="v num">${fmtMin(est.total)}</span><span class="l">본선 경기 시간 (휴식 포함)</span></div></div><p class="muted">${esc(plan.desc)}</p>${stageTable(est)}`;
 }
-["scN","scS1","scS2","scSec","scCh"].forEach(id=>$("#"+id).addEventListener("input",renderSetCalc));renderSetCalc();
+["scN","scS1","scS2","scSec"].forEach(id=>$("#"+id).addEventListener("input",renderSetCalc));renderSetCalc();
 
 /* =====================================================================
    맞춤 대회 설계 (위저드)
@@ -1826,14 +1825,14 @@ function renderSetCalc(){
 const PQ=[
  {id:"host",t:"주최 유형을 골라 주세요",h:"제안 자료와 홍보 방법 추천에 씁니다.",type:"single",opts:[["gov","지자체 · 공공기관","축제, 지역 대회"],["school","학교 · 교육청","교내 대회, 학교 대항전"],["fed","협회 · 연맹","대표 선발, 국제 대회"],["brand","브랜드 · 스폰서","팬 이벤트, 캠페인"],["etc","기타","대회 운영사 등"]]},
  {id:"qual",t:"예선은 어떻게 진행하나요?",type:"single",opts:[["app","온라인 APP 예선","앱 랭킹전으로 넓게 모집 → 상위권 현장 초청"],["arcade","현장 아케이드 예선","체험존 챌린지 점수로 당일 선발"],["none","예선 없음","초청 · 사전 선발 · 현장 접수"]]},
- {id:"qsize",t:a=>a.qual==="app"?"예선 참가 예상 규모는?":"현장 예선 참가 예상 인원은?",h:a=>a.qual==="app"?"홍보 방법과 앱 토너먼트 규모를 정하는 기준입니다.":"아케이드 1대가 1시간에 약 40명을 받습니다 (1인 약 1.5분).",type:"range",when:a=>a.qual!=="none",
+ {id:"qsize",t:a=>a.qual==="app"?"예선 참가 예상 규모는?":"현장 예선 참가 예상 인원은?",h:a=>a.qual==="app"?"홍보 방법과 앱 토너먼트 규모를 정하는 기준입니다.":"아케이드 1대가 1시간에 약 60명을 받습니다 (1인 1곡 · 준비 포함 약 1분).",type:"range",when:a=>a.qual!=="none",
   cfg:a=>a.qual==="app"?{min:30,max:3000,step:10,def:300,unit:"명",presets:[100,300,1000,3000]}:{min:20,max:600,step:10,def:120,unit:"명",presets:[50,120,300,600]}},
  {id:"main",t:"본선은 어디서 하나요?",type:"single",when:a=>a.qual!=="arcade",opts:[["offline","오프라인 아케이드 본선","현장 무대 · 관중 · 중계"],["online","온라인 APP 본선","앱에서 라운드 진행, 현장 없음"]]},
  {id:"event",t:"종목을 골라 주세요",type:"single",when:a=>mainOf(a)==="offline",opts:[["indiv","개인전","1:1 배틀"],["team","팀전 (2인 1팀)","팀원이 세트를 나눠 수행"],["both","개인전 + 팀전","국가대항 · 학교대항 등"]]},
  {id:"nsize",t:"본선 인원 (개인전)",h:a=>mainOf(a)==="online"?"앱 본선 라운드 규모입니다.":"인원에 따라 그룹 스테이지가 자동으로 붙습니다.",type:"single",when:a=>mainOf(a)==="online"||a.event!=="team",
   opts:a=>mainOf(a)==="online"?[["8","8강",""],["16","16강",""],["32","32강",""],["64","64강",""],["128","128강",""],["256","256강",""],["512","512강",""],["1024","1024강",""]]:[["4","4명","4강 + 3·4위전"],["8","8명","8강 더블 엘리미네이션"],["10","10명","2개 조 그룹 스테이지"],["12","12명","4개 조 그룹 스테이지"],["16","16명","4개 조 그룹 스테이지"],["32","32명","32강 싱글 엘리미네이션"]]},
  {id:"tsize",t:"본선 팀 수 (팀전)",type:"single",when:a=>mainOf(a)==="offline"&&(a.event==="team"||a.event==="both"),opts:[["4","4팀","풀 라운드 로빈"],["5","5팀","풀 라운드 로빈"],["6","6팀","2개 조 + 4강"]]},
- {id:"sets",t:"세트 수와 세트당 평균 시간",h:"세트 수는 대회별로 정합니다. 세트당 평균 약 1분(곡 하이라이트 + 전환)입니다.",type:"sets",when:a=>mainOf(a)==="offline"},
+ {id:"sets",t:"세트 수와 세트당 평균 시간",h:"세트 수는 대회별로 정합니다. 곡당 실제 플레이 약 30초 + 준비·선수 교체 = 1세트 약 1분입니다.",type:"sets",when:a=>mainOf(a)==="offline"},
  {id:"venue",t:"장소는 어디인가요?",type:"single",when:a=>mainOf(a)==="offline",opts:[["indoor","실내","강당, 전시장, 경기장"],["roof","실외 · 지붕 있음","캐노피, 천막, 필로티"],["open","실외 · 지붕 없음","광장, 운동장"]]},
  {id:"model",t:"어떤 아케이드를 쓰나요?",type:"single",when:a=>mainOf(a)==="offline",opts:[["standard","STANDARD 2대","43인치 일체형 · 가장 일반적"],["wide","WIDE 1대","65인치 · 1대에서 2인 배틀"],["portable","PORTABLE 2대","외부 모니터 연결 · 해외·이동형"],["auto","본사 추천","장소 보고 정하기"]]},
  {id:"bc",t:"방송 · 중계는 어떻게 하나요?",type:"single",when:a=>mainOf(a)==="offline",opts:[["t1","중계 없음","체험존 · 랭킹전 수준"],["t2","현장 중계","관중용 대형 화면 + MC"],["t3","녹화 · 스케치","현장 중계 + 실사 촬영 · 녹화"],["t4","라이브 송출","YouTube · SOOP · 방송사"]]},
@@ -1866,8 +1865,8 @@ function renderWiz(){
     const c=val(q,"cfg");const v=PA[q.id]??c.def;
     body=`<div class="rangebox"><span class="val num" id="rgV">${Number(v).toLocaleString()}${c.unit}</span><input type="range" id="rgIn" min="${c.min}" max="${c.max}" step="${c.step}" value="${v}" aria-label="${esc(title)}"><div class="chips">${c.presets.map(p=>`<button type="button" data-pre="${p}" aria-pressed="${+v===p}">${p.toLocaleString()}${c.unit}</button>`).join("")}</div></div>`;
   }else if(q.type==="sets"){
-    const v=PA.sets||{s1:5,s2:7,sec:60,ch:3};const sel=(id,cur)=>`<select id="${id}">${[3,5,7,9].map(n=>`<option${n===cur?" selected":""}>${n}</option>`).join("")}</select>`;
-    body=`<div class="calc"><label class="fld"><span>일반 라운드 세트 수</span>${sel("psS1",v.s1)}</label><label class="fld"><span>결승 세트 수</span>${sel("psS2",v.s2)}</label><label class="fld"><span>세트당 평균 <b id="psSecV">${v.sec}초</b></span><input id="psSec" type="range" min="40" max="90" step="5" value="${v.sec}"></label><label class="fld"><span>매치 전환 <b id="psChV">${v.ch}분</b></span><input id="psCh" type="range" min="1" max="6" step="1" value="${v.ch}"></label></div>`;
+    const v=PA.sets||{s1:5,s2:7,sec:60};const sel=(id,cur)=>`<select id="${id}">${[3,5,7,9].map(n=>`<option${n===cur?" selected":""}>${n}</option>`).join("")}</select>`;
+    body=`<div class="calc"><label class="fld"><span>일반 라운드 세트 수</span>${sel("psS1",v.s1)}</label><label class="fld"><span>결승 세트 수</span>${sel("psS2",v.s2)}</label><label class="fld"><span>1세트 평균 (준비·교체 포함) <b id="psSecV">${v.sec}초</b></span><input id="psSec" type="range" min="40" max="90" step="5" value="${v.sec}"></label></div>`;
   }else if(q.type==="date"){
     const v=PA.date||{};body=`<div class="calc"><label class="fld"><span>대회 날짜</span><input type="date" id="pdD" value="${esc(v.d||"")}"></label><label class="fld"><span>시작 시간</span><input type="time" id="pdT" value="${esc(v.t||"10:00")}"></label></div>`;
   }
@@ -1877,7 +1876,7 @@ function renderWiz(){
 }
 function commit(q){
   if(q.type==="range"){PA[q.id]=+$("#rgIn").value}
-  else if(q.type==="sets"){PA.sets={s1:+$("#psS1").value,s2:+$("#psS2").value,sec:+$("#psSec").value,ch:+$("#psCh").value}}
+  else if(q.type==="sets"){PA.sets={s1:+$("#psS1").value,s2:+$("#psS2").value,sec:+$("#psSec").value}}
   else if(q.type==="date"){PA.date={d:$("#pdD").value,t:$("#pdT").value||"10:00"}}
   else if(q.type==="multi"&&!Array.isArray(PA[q.id]))PA[q.id]=[];
 }
@@ -1898,7 +1897,6 @@ $("#wiz").addEventListener("click",e=>{
 $("#wiz").addEventListener("input",e=>{
   if(e.target.id==="rgIn"){const q=activeQs()[pIdx];const c=val(q,"cfg");$("#rgV").textContent=Number(e.target.value).toLocaleString()+c.unit;$$("[data-pre]").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.pre===+e.target.value)))}
   if(e.target.id==="psSec")$("#psSecV").textContent=e.target.value+"초";
-  if(e.target.id==="psCh")$("#psChV").textContent=e.target.value+"분";
 });
 
 /* --- 결과 생성 --- */
@@ -1924,7 +1922,7 @@ const WD=["일","월","화","수","목","금","토"];
 function dstr(base,off){if(!base)return off>0?`D-${off}`:off===0?"D-day":`D+${-off}`;const d=new Date(base+"T00:00:00");d.setDate(d.getDate()-off);return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,"0")}.${String(d.getDate()).padStart(2,"0")} (${WD[d.getDay()]})`}
 function hm(start,min){const [h,m]=(start||"10:00").split(":").map(Number);const t=h*60+m+Math.round(min);const hh=Math.floor(t/60)%24,mm=t%60;return `${String(hh).padStart(2,"0")}:${String(mm).padStart(2,"0")}`}
 function renderPlan(){
-  const a=PA,off=mainOf(a)==="offline",T=typeOf(a);const o=a.sets||{s1:5,s2:7,sec:60,ch:3};const ex=a.extra||[];
+  const a=PA,off=mainOf(a)==="offline",T=typeOf(a);const o=a.sets||{s1:5,s2:7,sec:60};const ex=a.extra||[];
   const model=a.model==="auto"||!a.model?"standard":a.model;const bc=a.bc||"t1";const base=a.date&&a.date.d;
   let html=`<div class="plan-head"><div><span class="eyebrow">맞춤 운영 가이드</span><h2 class="sec" style="margin-top:4px">${esc(T.n)}</h2></div><div class="row no-print"><button class="btn sm" type="button" id="plCopy">요약 복사</button><button class="btn sm" type="button" id="plPrint">인쇄 · PDF 저장</button></div></div>`;
   // ---- summary
@@ -1939,7 +1937,7 @@ function renderPlan(){
     if(a.event!=="team"){const p=indivStages(+a.nsize);parts.push(["개인전",+a.nsize+"명",p,estimate(p,o)])}
     if(a.event==="team"||a.event==="both"){const p=teamStages(+a.tsize);parts.push(["팀전",+a.tsize+"팀",p,estimate(p,o)])}
     const arcades=model==="wide"?1:2;
-    const qualMin=a.qual==="arcade"?(+a.qsize)*1.5/arcades:0;
+    const qualMin=a.qual==="arcade"?(+a.qsize)*1/arcades:0;
     const setupMin=(model==="wide"?150:model==="portable"?90:120)+({t1:30,t2:60,t3:90,t4:150}[bc])+(a.venue==="open"?60:a.venue==="roof"?30:0);
     const rehearsal=bc==="t4"?90:bc==="t1"?30:60;const teardown=bc==="t4"?90:60;
     const blocks=[];if(ex.includes("open"))blocks.push(["개막식",30]);if(ex.includes("practice"))blocks.push(["선수 연습",60]);
@@ -1953,8 +1951,8 @@ function renderPlan(){
       <div class="kpis"><div><span class="v num">${fmtMin(setupMin+rehearsal)}</span><span class="l">반입 · 설치 · 중계 셋팅 · 리허설 (전날 권장)</span></div><div class="hl"><span class="v num">${fmtMin(dayMin)}</span><span class="l">대회 당일 운영 시간</span></div><div><span class="v num">${fmtMin(teardown)}</span><span class="l">철수 · 반출</span></div><div><span class="v num">${fmtMin(setupMin+rehearsal+dayMin+teardown)}</span><span class="l">현장 총 소요 (최소)</span></div></div>
       ${dayMin>480?`<div class="note warn"><b>하루 8시간을 넘습니다.</b> 개인전·팀전을 이틀로 나누거나 세트 수를 줄이는 것을 권장합니다.</div>`:""}
       <h3>당일 타임테이블</h3><div class="tbl"><table><thead><tr><th>시간</th><th>내용</th><th>소요</th></tr></thead><tbody>${tl}</tbody></table></div>
-      ${parts.map(p=>`<h3>${p[0]} 본선 구조 · ${p[1]}</h3><p class="muted">${esc(p[2].desc)} · 총 ${p[3].matches}매치 · 일반 ${o.s1}세트 / 결승 ${o.s2}세트 · 세트당 ${o.sec}초 · 매치 전환 ${o.ch}분</p>${stageTable(p[3])}`).join("")}
-      <p class="src">현장 예선은 1인 약 1.5분, 단계 사이 휴식 15분, 설치는 모델·중계 형태·장소에 따라 계산한 최소값입니다. 실제 일정은 본사와 확정해 주세요.</p></div>`;
+      ${parts.map(p=>`<h3>${p[0]} 본선 구조 · ${p[1]}</h3><p class="muted">${esc(p[2].desc)} · 총 ${p[3].matches}매치 · 일반 ${o.s1}세트 / 결승 ${o.s2}세트 · 1세트 평균 ${o.sec}초 (준비·교체 포함)</p>${stageTable(p[3])}`).join("")}
+      <p class="src">곡당 플레이 약 30초 + 준비·교체 = 1세트(1인 1곡) 약 1분, 현장 예선은 1인 1곡 기준, 단계 사이 휴식 15분, 설치는 모델·중계 형태·장소에 따라 계산한 최소값입니다. 실제 일정은 본사와 확정해 주세요.</p></div>`;
     txt+=`\n현장 최소 소요: 설치·리허설 ${fmtMin(setupMin+rehearsal)} / 당일 운영 ${fmtMin(dayMin)} / 철수 ${fmtMin(teardown)}\n`+blocks.map(b=>`- ${b[0]}: ${fmtMin(b[1])}`).join("\n")+"\n";
   }else{
     const N=+a.nsize;const rounds=Math.round(Math.log2(N));
