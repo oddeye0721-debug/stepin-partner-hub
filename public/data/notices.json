@@ -14,7 +14,7 @@
   },
   {
    "date": "2026.10",
-   "text": "대회 운영 템플릿 (큐시트 · 중계 장비 체크 · D-day 일정) 추가",
+   "text": "대회 운영 템플릿 (중계 장비 체크 · D-day 일정) 추가",
    "view": "production:docs",
    "label": "제작물"
   },
@@ -23,12 +23,6 @@
    "text": "STEPIN, WDSF 공식 댄스 e스포츠 플랫폼 선정",
    "view": "why",
    "label": "필요성"
-  },
-  {
-   "date": "2026.04",
-   "text": "STEPIN E-Sports 대회 규정집 2026 (국문/영문)",
-   "view": "offline",
-   "label": "본선 규정"
   }
  ],
  "updatedAt": "2026-10-28T12:00:00.000Z"
