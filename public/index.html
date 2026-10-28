@@ -417,144 +417,6 @@ figure img{height:auto}
   table{min-width:0}
 }
 footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted)}
-
-/* ===== 시각 자료 ===== */
-.ic{width:20px;height:20px;flex:none;vertical-align:-4px}.ic.lg{width:34px;height:34px}
-.vis{margin:6px 0 14px}
-details.more{margin:10px 0 4px;border:1px dashed var(--line);border-radius:12px;padding:0 14px;background:var(--surface)}
-details.more>summary{cursor:pointer;padding:11px 0;font-size:.88rem;color:var(--muted);font-weight:600;list-style:none}
-details.more>summary::-webkit-details-marker{display:none}
-details.more>summary::before{content:"＋ ";color:var(--accent)}details.more[open]>summary::before{content:"－ "}
-details.more[open]{padding-bottom:12px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.tile{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.tile .ic{width:30px;height:30px;color:var(--accent)}.tile b{font-size:1.05rem;line-height:1.3}.tile span{font-size:.82rem;color:var(--muted)}
-.tile.hot{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-.iflow{display:flex;align-items:stretch;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
-.ifs{flex:1 0 118px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:16px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:inherit;text-decoration:none}
-a.ifs:hover{border-color:var(--accent)}
-.ifs .ic{width:34px;height:34px;color:var(--accent)}.ifs b{font-size:.92rem;line-height:1.3}.ifs span{font-size:.78rem;color:var(--muted);font-family:"JetBrains Mono",monospace}
-.iarr{align-self:center;color:var(--muted);font-size:1.4rem;flex:none}
-.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.fcard{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--surface);display:flex;flex-direction:column;gap:12px}
-.fcard.hot{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-.fcard header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.fcard header b{font-size:1rem}
-.fk{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-family:Unbounded,sans-serif;font-size:.85rem}
-.fflow{display:flex;align-items:center;gap:4px;color:var(--ink);padding:10px;background:var(--sunk);border-radius:12px;justify-content:center}.fflow .iarr{font-size:1rem}
-.fmeta span{white-space:nowrap}.fmeta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;gap:8px}.feq{display:flex;gap:2px;color:var(--cyan)}
-.fcard p{margin:0;font-size:.82rem;color:var(--muted)}
-.mtx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
-.mtx-row{display:grid;grid-template-columns:minmax(130px,1.4fr) repeat(4,minmax(34px,.5fr)) minmax(110px,1.2fr);align-items:center;border-top:1px solid var(--line);font-size:.86rem}
-.mtx-row>span{padding:9px 8px;text-align:center}.mtx-row>.mtx-k,.mtx-row>.mtx-s{text-align:left}
-.mtx-k{display:flex;align-items:center;gap:8px;font-weight:600}.mtx-k .ic{color:var(--accent)}.mtx-s{color:var(--muted);font-size:.8rem}
-.mtx-h{border-top:0;background:var(--sunk);font-family:Unbounded,sans-serif;font-size:.8rem}
-.mtx.cmp .mtx-row{grid-template-columns:minmax(130px,1.3fr) repeat(3,minmax(80px,1fr))}
-.mtx.cmp .mtx-h span{display:flex;gap:6px;justify-content:center;align-items:center;font-family:inherit;font-weight:700}
-.dot{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:middle}
-.d-r{background:var(--accent)}.d-c{background:transparent;border:4px solid var(--accent)}.d-o{background:transparent;border:2px dashed var(--muted)}.d-n{width:10px;height:2px;border-radius:2px;background:var(--line)}
-.mtx-legend{display:flex;gap:16px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}.mtx-legend span{display:flex;align-items:center;gap:6px}
-.sc5{display:inline-flex;gap:3px}.sc5 i{width:14px;height:14px;border-radius:4px;background:var(--line)}.sc5 i.on{background:var(--accent)}
-.gantt,.dayline,.bracket,.floor,.wf{width:100%;height:auto;display:block}
-.gantt,.dayline,.bracket{min-width:640px}
-.vis:has(.gantt),.vis:has(.dayline),.vis:has(.bracket){overflow-x:auto}
-.g-grid{stroke:var(--line);stroke-dasharray:3 4}.g-ax{font:500 11px "JetBrains Mono",monospace;fill:var(--muted)}.g-lab{font:700 13px "IBM Plex Sans KR",sans-serif;fill:var(--ink)}
-.g-bar{opacity:.95}.g-a{fill:var(--accent)}.g-b{fill:#8B5CF6}.g-c{fill:var(--cyan)}.g-d{fill:#F59E0B}.g-e{fill:#10B981}.g-n{fill:var(--line)}
-.g-bo{font:600 11px "IBM Plex Sans KR",sans-serif;fill:var(--ink)}.g-sep{stroke:var(--line)}.g-grid.dday{stroke:var(--accent);stroke-dasharray:none;opacity:.5}.g-bt{font:600 11px "IBM Plex Sans KR",sans-serif;fill:#fff}.g-bt.c{font-size:11.5px}
-.lanes{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
-.lane,.lane-h{display:grid;grid-template-columns:minmax(110px,.8fr) 1fr 1fr;border-top:1px solid var(--line)}.lane-h{border-top:0;background:var(--sunk)}
-.lane>span,.lane-h>*{padding:11px 12px;font-size:.86rem}.lane-h b{display:flex;gap:6px;align-items:center}
-.lane-k{display:flex;align-items:center;gap:8px;font-weight:700}.lane-k .ic{color:var(--accent)}
-.lane-p{border-left:4px solid var(--cyan)}.lane-s{border-left:4px solid var(--accent)}
-.chev{display:flex;gap:4px;overflow-x:auto;padding-bottom:4px}
-.cv{flex:1 0 104px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:14px 14px 14px 20px;background:var(--sunk);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%,12px 50%)}
-.cv:first-child{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%);padding-left:12px}
-.cv .ic{width:26px;height:26px;color:var(--accent)}.cv code{font:600 .66rem "JetBrains Mono",monospace;color:var(--muted)}.cv b{font-size:.88rem}.cv span{font-size:.74rem;color:var(--muted)}
-.cv.hot{background:var(--accent);color:#fff}.cv.hot .ic,.cv.hot code,.cv.hot span{color:#fff}
-.g2x2{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-.sq{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.sq-i{display:flex;align-items:center;gap:6px;color:var(--accent)}.sq b{font-size:.92rem}.sq>span{font-size:.8rem;color:var(--muted)}
-.gm{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.gm-b{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.gm-b.hot{border-color:var(--accent)}.gm-b .ic{color:var(--muted)}.gm-b>span{font-size:.8rem;color:var(--muted)}
-.gm-dots{display:flex;gap:5px}.gm-dots i{width:18px;height:18px;border-radius:5px;background:var(--accent)}
-.fmt4{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
-.fmt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);text-align:center}
-.fmt>b{font-family:Unbounded,sans-serif;font-size:1rem}.fmt>span{font-size:.82rem;color:var(--muted)}
-.gdiag{width:100%;max-width:240px;height:76px}
-.gd-box{fill:var(--sunk);stroke:var(--line)}.gd-t{font:700 10px "IBM Plex Sans KR",sans-serif;fill:var(--muted)}.gd-p{fill:var(--line)}.gd-adv{fill:var(--accent)}
-.legend .ldot{width:12px;height:12px;border-radius:50%;background:var(--line);display:inline-block}.legend .ldot.adv{background:var(--accent)}
-.bk-b{fill:var(--surface);stroke:var(--line);stroke-width:1.5}.bk-b.hot{stroke:var(--accent)}.bk-b.gf{fill:var(--accent);stroke:var(--accent)}
-.bk-t{font:600 12px "IBM Plex Sans KR",sans-serif;fill:var(--ink)}.bk-b.gf+.bk-t{fill:#fff}
-.bk-l{fill:none;stroke:var(--accent);stroke-width:2}.bk-l.lb{stroke:var(--cyan);stroke-dasharray:5 4}
-.bk-h{font:700 12px "IBM Plex Sans KR",sans-serif;fill:var(--muted)}.bk-n{font:500 11px "IBM Plex Sans KR",sans-serif;fill:var(--muted)}
-.setbar{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.sb-row{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:12px;font-size:.86rem}
-.sb{display:flex;gap:4px;flex-wrap:wrap}.sb-c{padding:7px 12px;border-radius:8px;background:var(--sunk);font-weight:700;font-size:.82rem}
-.sb-c.ta{background:var(--accent);color:#fff}.sb-c.tb{background:var(--cyan);color:#06222a}.sb-c.last{background:linear-gradient(90deg,var(--accent) 50%,var(--cyan) 50%);color:#fff}
-.sb-time{display:flex;border-radius:8px;overflow:hidden;font-size:.8rem;font-weight:600}
-.sb-time span{padding:8px 10px;text-align:center}.st-play{background:var(--accent);color:#fff}.st-prep{background:var(--sunk);color:var(--muted)}
-.sb-n{color:var(--muted);font-size:.8rem}
-.dress{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.dz{padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--surface)}
-.dz h4{margin:0 0 12px;display:flex;gap:6px;align-items:center;font-size:.95rem}
-.dz.no h4{color:#E11D48}.dz.ok h4{color:#059669}.dz.no{border-top:4px solid #E11D48}.dz.ok{border-top:4px solid #10B981}
-.dz-i{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.dz-i span{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-.dz-i em{font-style:normal;font-size:.76rem;color:var(--muted)}
-.dz.no .dz-i .ic{color:#E11D48}.dz.ok .dz-i .ic{color:#059669}
-.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.ph{border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}
-.ph header{display:flex;align-items:center;gap:10px;padding:14px;background:var(--sunk)}.ph header .ic{color:var(--accent)}
-.ph header b{display:block;font-size:1rem}.ph header span{font:500 .78rem "JetBrains Mono",monospace;color:var(--muted)}
-.ph ul{list-style:none;margin:0;padding:6px 14px 12px}.ph li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.85rem}
-.ph li:last-child{border-bottom:0}.ph li .ic{color:var(--cyan);width:18px;height:18px}.ph li span{flex:1}
-.who{font-style:normal;font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:999px}
-.w-s{background:var(--accent);color:#fff}.w-p{background:var(--cyan);color:#06222a}.w-c{background:var(--sunk);color:var(--muted);border:1px solid var(--line)}
-.vs2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.mock-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-figure.mock{margin:0;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-figure.mock svg.wf{max-height:420px}
-.wf-bg{fill:var(--sunk);stroke:var(--line)}.wf-a{fill:var(--accent)}.wf-img{fill:color-mix(in srgb,var(--cyan) 25%,var(--sunk))}
-.wf-b{fill:var(--surface);stroke:var(--line)}.wf-qr{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3}
-.wf-dev{fill:#1f2937}.wf-mon{fill:#1f2937;stroke:var(--cyan);stroke-width:1.5}.wf-foot{fill:none;stroke:#F59E0B;stroke-width:2.5;stroke-dasharray:5 3}
-.wf-t{font:700 13px "IBM Plex Sans KR",sans-serif;fill:#fff}.wf-t2{font:700 12px "IBM Plex Sans KR",sans-serif;fill:var(--ink)}
-.wf-s{font:500 10px "IBM Plex Sans KR",sans-serif;fill:var(--muted)}.wf-s.w{fill:#fff;font-weight:700}
-.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;padding:6px 0}
-.sz{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
-.sz i{display:block;border:2px solid var(--accent);border-radius:4px;background:color-mix(in srgb,var(--accent) 12%,transparent)}
-.sz b{font-size:.8rem}.sz span{font-size:.72rem;color:var(--muted)}
-.fl-wall{fill:#1f2937}.fl-stage{fill:color-mix(in srgb,var(--accent) 6%,var(--surface));stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 4}
-.fl-dev{fill:#1f2937;stroke:#4b5563}.fl-cone{fill:color-mix(in srgb,var(--cyan) 18%,transparent);stroke:var(--cyan);stroke-dasharray:3 3}
-.fl-spot{fill:none;stroke:#F59E0B;stroke-width:3;stroke-dasharray:6 3}.fl-dim{stroke:var(--muted);stroke-width:1.2;marker-end:none}
-.fl-d{font:700 12px "JetBrains Mono",monospace;fill:var(--accent)}
-.fl-belt{stroke:#F59E0B;stroke-width:4;stroke-dasharray:14 6}
-.fl-aud{fill:var(--sunk);stroke:var(--line)}.fl-mon{fill:#1f2937;stroke:var(--cyan)}
-.fl-ctl{fill:color-mix(in srgb,#8B5CF6 14%,var(--surface));stroke:#8B5CF6}.fl-wait{fill:color-mix(in srgb,#10B981 12%,var(--surface));stroke:#10B981}
-.fl-mc{fill:color-mix(in srgb,#F59E0B 12%,var(--surface));stroke:#F59E0B}
-.fl-t{font:700 13px "IBM Plex Sans KR",sans-serif;fill:var(--ink)}.fl-t.w{fill:#fff}
-.fl-s{font:500 11px "IBM Plex Sans KR",sans-serif;fill:var(--muted)}.fl-s.b{fill:#B45309;font-weight:700}
-.fl-light{fill:#FDE68A;stroke:#F59E0B}.fl-beam{fill:color-mix(in srgb,#FDE68A 45%,transparent)}
-.fl-cam{fill:var(--accent)}
-.fl-node{fill:var(--surface);stroke:var(--line);stroke-width:1.5}.fl-node2{fill:var(--sunk);stroke:var(--muted);stroke-dasharray:4 3}
-.fl-out{fill:color-mix(in srgb,var(--cyan) 14%,var(--surface));stroke:var(--cyan)}
-.fl-wire{fill:none;stroke:var(--accent);stroke-width:2.2}.fl-wire.dash{stroke:var(--muted);stroke-dasharray:4 4}
-.gear{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.gr{display:flex;flex-direction:column;gap:5px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.gr .ic{color:var(--accent)}.gr b{font-size:.95rem}.gr span{font-size:.82rem}.gr em{font-style:normal;font-size:.76rem;color:var(--muted);font-family:"JetBrains Mono",monospace}
-.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.sc{display:flex;flex-direction:column;gap:6px;align-items:center}.sc b{font-size:.85rem}
-.scn{width:100%;height:auto;border-radius:6px}.sc-bg{fill:#111827}.sc-a{fill:var(--accent)}.sc-b{fill:#374151}.sc-v{fill:color-mix(in srgb,var(--cyan) 55%,#111827)}.sc-q{fill:none;stroke:#fff;stroke-dasharray:3 2}
-.nsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.ns{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:18px 12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}.ns em{position:absolute;top:8px;left:10px;font:700 .8rem Unbounded,sans-serif;font-style:normal;color:var(--accent)}.ns .ic{color:var(--ink)}.ns b{font-size:.9rem}.ns span{font-size:.76rem;color:var(--muted)}
-.fixes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.fx{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid var(--line);border-left:4px solid #E11D48;border-radius:14px;background:var(--surface)}.fx>.ic{color:#E11D48}.fx b{font-size:.95rem}.fx-c{font-size:.8rem;color:var(--muted)}.fx-a{display:flex;gap:6px;align-items:center;font-size:.84rem;font-weight:600;color:#059669}.fx-a .ic{width:16px;height:16px}
-.scorebar{display:flex;gap:4px;border-radius:14px;overflow:hidden}.sbx{display:flex;flex-direction:column;gap:4px;padding:16px;color:#fff;background:var(--accent)}.sbx:first-child{background:#F59E0B}.sbx:nth-child(2){background:#8B5CF6}.sbx b{font-size:1.6rem;font-family:Unbounded,sans-serif}.sbx span{font-size:.8rem}
-[data-vis="bc-floor"],[data-vis="bc-sound"],[data-vis="prod-site"]{overflow-x:auto}[data-vis="bc-floor"] svg,[data-vis="bc-sound"] svg,[data-vis="prod-site"] svg{min-width:620px}
-.models{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.mdc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.mdl{width:150px;height:175px}.mdc>b{font-family:Unbounded,sans-serif;font-size:.95rem;margin-top:6px}.mdc>span{font-size:.8rem;color:var(--muted)}
-.mdc dl{display:grid;grid-template-columns:auto 1fr;gap:6px 8px;margin:10px 0 0;font-size:.82rem;align-items:center;width:100%}
-.mdc dt .ic{width:16px;height:16px;color:var(--accent)}.mdc dd{margin:0}
-@media (max-width:620px){.mtx-row{grid-template-columns:minmax(110px,1.4fr) repeat(4,30px)}.mtx-row>.mtx-s{display:none}.sb-row{grid-template-columns:1fr}.dz-i{grid-template-columns:repeat(2,1fr)}.lane,.lane-h{grid-template-columns:1fr 1fr}.lane-k,.lane-h>span{grid-column:1/-1}.lane-h>span{display:none}.sizes{grid-template-columns:repeat(2,1fr)}}
-@media print{details.more{border:0}details.more>summary{display:none}}
 </style>
 </head>
 <body>
@@ -615,12 +477,26 @@ figure.mock svg.wf{max-height:420px}
 
   <div class="block">
     <h2 class="sec">대회 진행 흐름 <span class="tag">D-35 → D+7</span></h2>
-    <div class="vis" data-vis="home-flow"></div>
+    <div class="flow">
+      <a href="#formats"><span class="d">STEP 1</span><b>형태 · 일정 확정</b><span>운영 형태, 규모, 상금, 본사 협업 범위</span></a>
+      <a href="#online"><span class="d">STEP 2</span><b>예선 개설</b><span>앱 토너먼트 개최 신청, 송리스트</span></a>
+      <a href="#boost"><span class="d">STEP 3</span><b>모객 · 활성화</b><span>홍보, 연습 독려, 참여율 관리</span></a>
+      <a href="#production"><span class="d">STEP 4</span><b>제작물 · 셋팅</b><span>포스터, 백월, 중계 장비, 리허설</span></a>
+      <a href="#offline"><span class="d">STEP 5</span><b>본선 운영</b><span>그룹 스테이지, 토너먼트, MC</span></a>
+      <a href="#assets"><span class="d">STEP 6</span><b>사후 홍보</b><span>결과 공지, 하이라이트, 소스 공유</span></a>
+    </div>
   </div>
 
   <div class="block">
     <h2 class="sec">현장에서 꼭 기억할 숫자</h2>
-    <div class="vis" data-vis="home-facts"></div>
+    <div class="facts">
+      <div><span class="v num">2.2–2.5m</span><span class="l">카메라 ↔ 플레이어 거리 (STANDARD)</span></div>
+      <div><span class="v num">6 × 3m</span><span class="l">아케이드 2대 대회 무대 최소 면적</span></div>
+      <div><span class="v num">20A</span><span class="l">대회 현장 전력 최소 (대당 500W)</span></div>
+      <div><span class="v">유선 LAN</span><span class="l">배틀 · 대회 · 영상 다운로드 필수</span></div>
+      <div><span class="v num">≈ 1분</span><span class="l">1세트 평균 (플레이 30초 + 준비·교체)</span></div>
+      <div><span class="v num">D-35</span><span class="l">앱 예선 + 본선 대회 최소 준비 기간</span></div>
+    </div>
   </div>
 
   <div class="block">
@@ -754,7 +630,7 @@ figure.mock svg.wf{max-height:420px}
     <button role="tab" data-tab="rnr">역할 분담</button>
   </div>
   <div class="tabpanel" data-panel="formats:types">
-    <div class="vis" data-vis="formats-cards"></div><details class="more"><summary>5가지 형태 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>형태</th><th>구성</th><th>적합한 행사</th><th>최소 장비</th><th>최소 준비</th></tr></thead>
       <tbody>
         <tr><td class="k">A. 현장 챌린지 랭킹전</td><td>체험존에서 순서대로 챌린지 → 최고 점수 랭킹 시상 (필요 시 상위 4인 미니 토너먼트)</td><td>축제, 학교 행사, 팝업</td><td>아케이드 1대 (2대 권장)</td><td class="mono">D-14</td></tr>
@@ -763,12 +639,12 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">D. 온라인 단독 앱 토너먼트</td><td>앱에서 접수·예선·본선 라운드 전부 진행</td><td>글로벌 팬 이벤트, 브랜드 캠페인</td><td>없음 (앱)</td><td class="mono">D-21</td></tr>
         <tr><td class="k">E. 국제 · 다국가 대회</td><td>국가별 앱 예선 → 국가 대표 → 국제 본선 (개인전 + 팀전)</td><td>ECA, WDSF 챔피언십</td><td>B 구성 + 방송 송출</td><td class="mono">D-56 이상</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
     <div class="note">1대만 있어도 대회는 가능합니다. 순차 챌린지 점수 랭킹으로 시상하고, 상위 4인을 뽑아 마지막에 2대로 결승 배틀을 하면 관람 재미가 커집니다 (교내 대회 방식).</div>
   </div>
   <div class="tabpanel" data-panel="formats:required" hidden>
     <p class="muted"><span class="pill p-req">필수</span> 항목이 준비되지 않으면 해당 형태로 진행할 수 없습니다. 준비가 어려운 항목은 사전에 본사와 협의해 주세요.</p>
-    <div class="vis" data-vis="formats-matrix"></div><details class="more"><summary>항목별 세부 기준 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>항목</th><th>A 랭킹전</th><th>B 오프라인</th><th>C 예선+본선</th><th>D 온라인</th><th>세부 기준</th></tr></thead>
       <tbody>
         <tr><td class="k">아케이드</td><td>1대 <span class="pill p-rec">2대 권장</span></td><td><span class="pill p-req">2대</span></td><td><span class="pill p-req">2대</span></td><td>—</td><td>STANDARD 2대 연동 또는 WIDE 1대(2인)</td></tr>
@@ -789,12 +665,12 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">상금 · 상품</td><td colspan="4"><span class="pill p-req">필수</span></td><td>수량·내용이 명확해야 앱 개최 신청 승인. 지급은 주최측</td></tr>
         <tr><td class="k">우천 대비 (야외)</td><td colspan="3">야외 시 <span class="pill p-req">필수</span></td><td>—</td><td>캐노피, 방수 커버, 평탄한 바닥, 강풍 대책</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
     <div class="row"><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_대회 현장 준비사항.pdf">현장 준비사항 시트 (PDF)</button><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.xlsx" data-name="STEPIN_대회 현장 준비사항.xlsx">편집용 엑셀</button><a class="btn sm" href="#checklist">단계별 체크리스트</a></div>
   </div>
   <div class="tabpanel" data-panel="formats:schedule" hidden>
     <p class="muted">본사와 처음 협의한 날부터 대회 당일까지 필요한 <b>최소</b> 기간입니다. 앱 토너먼트의 시스템 최소값(아래)을 지키면서 홍보 기간을 확보한 권장 일정입니다.</p>
-    <div class="vis" data-vis="formats-gantt"></div><details class="more"><summary>일자별 할 일 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>시점</th><th>C. 앱 예선 + 오프라인 본선 (D-35)</th><th>B. 오프라인 단독 (D-21)</th><th>A. 현장 랭킹전 (D-14)</th></tr></thead>
       <tbody>
         <tr><td class="mono">D-35</td><td>형태·규모·상금·장소 확정, 본사 협업 범위 합의</td><td>—</td><td>—</td></tr>
@@ -808,22 +684,22 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="mono">D-day</td><td colspan="3">대회 운영 · 현장 촬영</td></tr>
         <tr><td class="mono">D+7</td><td colspan="3">상금·상품 지급, 결과 공지, 사진·영상 소스 본사 공유</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
     <div class="block">
       <h3>앱 토너먼트 시스템 최소값</h3>
-      <div class="vis" data-vis="online-timeline"></div><details class="more"><summary>시스템 최소값 표로 보기</summary><div class="tbl"><table><thead><tr><th>단계</th><th>최소</th><th>최대</th></tr></thead><tbody>
+      <div class="tbl"><table><thead><tr><th>단계</th><th>최소</th><th>최대</th></tr></thead><tbody>
         <tr><td class="k">사전 노출 (UPCOMING)</td><td class="mono">5분</td><td>—</td></tr>
         <tr><td class="k">참가 신청 (REGISTER)</td><td class="mono">30분 (시작은 신청 후 24시간 이후)</td><td class="mono">14일</td></tr>
         <tr><td class="k">예선 (QUALIFIER)</td><td class="mono">24시간</td><td>—</td></tr>
         <tr><td class="k">진출자 선정 (SELECTING)</td><td class="mono">30분</td><td class="mono">30일</td></tr>
         <tr><td class="k">첫 라운드 시작</td><td class="mono">대진 공개 후 24시간</td><td>—</td></tr>
         <tr><td class="k">본선 라운드</td><td class="mono">라운드당 30분</td><td>—</td></tr>
-      </tbody></table></div></details>
+      </tbody></table></div>
       <p class="src">국제·다국가 대회(E)는 국가별 선발 일정, 선수단 비자·체류, 방송사 협의가 더해져 8주 이상을 권장합니다. 2026 ECA 진주는 국내 선발 예선 7일 + 비동기 8강(3일) 후 본선을 진행했습니다.</p>
     </div>
   </div>
   <div class="tabpanel" data-panel="formats:rnr" hidden>
-    <div class="vis" data-vis="formats-rnr"></div><details class="more"><summary>역할 분담 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>구분</th><th>파트너 (주최 · 운영사)</th><th>싸이드워크 (본사)</th></tr></thead>
       <tbody>
         <tr><td class="k">기획 · 규정</td><td>일정, 장소, 상금, 참가 자격 확정</td><td>대회 규정 수립, 포맷 설계, 송리스트 선정</td></tr>
@@ -833,7 +709,7 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">중계</td><td>방송 송출, 촬영 (필요 시)</td><td>게임 화면 출력, 대진표·현황 화면 제공</td></tr>
         <tr><td class="k">사후</td><td>상금·상품 지급, 사진·영상 공유</td><td>결과 공지, 공식 SNS 홍보</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
     <p class="src">실제 R&amp;R은 대회별 협의로 확정합니다. 본사 기술 인력의 숙소·체류 지원 여부도 미리 정해 주세요.</p>
   </div>
 </section>
@@ -843,21 +719,21 @@ figure.mock svg.wf{max-height:420px}
   <div class="vh"><span class="eyebrow">04 · Qualifier</span><h1>예선 · 온라인 APP 토너먼트</h1><p>참가자는 STEPIN 앱에서 참가하고, 주최측은 웹(<span class="mono">tournament.stepin.ai</span>)에서 설정·관리합니다. 설정한 일정에 따라 단계가 자동으로 진행됩니다.</p></div>
     <div class="block">
       <h2 class="sec">온라인 APP 예선 진행 조건</h2>
-      <div class="vis" data-vis="online-steps"></div><details class="more"><summary>단계별 설명 보기</summary><ol class="steps">
+      <ol class="steps">
         <li><div><b>비즈니스 계정 신청</b><p class="muted">STEPIN 앱 → 프로필 → 설정 → 비즈니스 계정 신청 → 회사 정보 → 담당자 정보 → 제출. 법인·기관은 증빙 서류를 요청받을 수 있습니다.</p></div></li>
         <li><div><b>본사 승인 요청</b><p class="muted"><span class="mono">cs@sidewalkplay.com</span> 으로 승인을 요청하면 <span class="mono">tournament.stepin.ai</span> 개최 권한이 열립니다.</p></div></li>
         <li><div><b>3페이지 개최 신청서 작성 → 내부 검토</b><p class="muted">승인되면 토너먼트가 SETUP 상태로 생성됩니다. 포스터·트랙·공지 등 필수 항목을 채워야 공개됩니다.</p></div></li>
         <li><div><b>공개 → 접수 → 예선 → 대진 → 본선 → 종료</b><p class="muted">설정한 일정에 따라 단계가 자동으로 넘어갑니다.</p></div></li>
-      </ol></details>
-      <div class="vis" data-vis="online-timeline"></div><details class="more"><summary>시스템 상태값 전체 보기</summary><div class="chain" aria-label="토너먼트 상태 흐름">
+      </ol>
+      <div class="chain" aria-label="토너먼트 상태 흐름">
         <span class="st">SETUP</span><span class="ar">→</span><span class="st">UPCOMING</span><span class="ar">→</span><span class="st">REGISTER</span><span class="ar">→</span><span class="st">QUALIFIER</span><span class="ar">→</span><span class="st">SELECTING</span><span class="ar">→</span><span class="st">PREMATCH</span><span class="ar">→</span><span class="st live">LIVE · MATCH ⇄ EVALUATING ⇄ INTERMISSION</span><span class="ar">→</span><span class="st">FINISHED</span>
-      </div></details>
+      </div>
       <p class="src">예선 없이 진행하면 QUALIFIER·SELECTING 단계가 생략되고, 자동 배정이면 대진 수동 배정이 필요 없습니다.</p>
     </div>
 
     <div class="block">
       <h2 class="sec">개최 신청서 설정값</h2>
-      <details class="more"><summary>설정값 전체 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>항목</th><th>설정 범위</th><th>운영 팁</th></tr></thead>
         <tbody>
           <tr><td class="k">타이틀</td><td>2~30자</td><td>지역·연도·성격이 드러나게 (예: 2026 경남 STEPIN 오픈 토너먼트)</td></tr>
@@ -878,7 +754,7 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">언어</td><td>11개 언어, 기본 언어 1개 필수</td><td>공지 언어별 최대 3,000자</td></tr>
           <tr><td class="k">포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>앱 다운로드 QR은 별도 홍보물에 삽입</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
       <div class="grid g2">
         <figure><a href="/img/tournament_setting_1.jpg" target="_blank" rel="noopener"><img src="/img/tournament_setting_1.jpg" alt="토너먼트 개최 전 리뷰 화면 예시" width="1800" height="1183"></a><figcaption>개최 신청서 리뷰 화면 예시 (기본 정보 · 예선 · 상금)</figcaption></figure>
         <figure><a href="/img/tournament_setting_2.jpg" target="_blank" rel="noopener"><img src="/img/tournament_setting_2.jpg" alt="토너먼트 설정 화면 예시 2" width="1800" height="1183"></a><figcaption>설정 화면 예시 2 · 누르면 크게 보기</figcaption></figure>
@@ -887,7 +763,7 @@ figure.mock svg.wf{max-height:420px}
 
     <div class="block">
       <h2 class="sec">본선 진출 방식 조합</h2>
-      <div class="vis" data-vis="online-select"></div><details class="more"><summary>표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>진출자 선정</th><th>대진 배정</th><th>주최측 작업</th></tr></thead>
         <tbody>
           <tr><td>수동</td><td>수동</td><td>진출자 직접 선택 + 매치 직접 배정</td></tr>
@@ -895,21 +771,21 @@ figure.mock svg.wf{max-height:420px}
           <tr><td>자동</td><td>수동</td><td>매치만 배정</td></tr>
           <tr><td>자동</td><td>자동</td><td>작업 없음 (대진 수정 불가)</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
       <p class="src">배정 기간 안에 끝내지 못하면 남은 진출자는 시스템이 자동 배정합니다. 대진표는 공개 전까지 수정할 수 있습니다.</p>
     </div>
 
     <div class="block">
       <h2 class="sec">앱 본선 경기 규칙</h2>
-      <div class="vis" data-vis="online-games"></div><details class="more"><summary>규칙 자세히 보기</summary><div class="grid g2">
+      <div class="grid g2">
         <div class="panel block"><h3>매치당 게임 수</h3><ul class="list"><li>1024강 ~ 16강: <b>3게임</b></li><li>8강 ~ 결승: <b>5게임</b></li><li>매치 종료 후 평가 시간 20분 고정</li><li>라운드 간 휴식 5분 ~ 7일</li></ul></div>
         <div class="panel block"><h3>미참여 처리</h3><ul class="list"><li><b>No Show</b>: 게임을 전혀 하지 않음 → 해당 매치 패배</li><li><b>FF (기권)</b>: 게임의 절반 미만만 플레이</li><li>마지막 라운드 종료 즉시 FINISHED (휴식 없음)</li></ul></div>
-      </div></details>
+      </div>
     </div>
 
     <div class="block">
       <h2 class="sec">상금 · 상품 설정</h2>
-      <div class="vis" data-vis="online-prize"></div><details class="more"><summary>상금 설정 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>유형</th><th>설정</th></tr></thead>
         <tbody>
           <tr><td class="k">현금</td><td>USD / KRW / EUR / IDR, 최대 8자리 (소수점 불가)</td></tr>
@@ -918,20 +794,20 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">보너스 상품</td><td>순위와 무관, 주최측이 기준·수상자 지정</td></tr>
           <tr><td class="k">시상 순위</td><td>기본 1~3위 (+4위). 16강 이상 1~4위(+5~8위), 32강 이상 1~8위(+9~16위) …</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
       <div class="note warn"><b>반려되는 경우.</b> 상금·상품 수량이나 내용이 모호할 때, 사전 협의 없이 대회를 취소한 이력이 있을 때, 과거 운영에서 참가자 민원이 컸을 때. 반려 사유는 신청 현황 화면에서 확인하고 수정 후 재신청합니다.</div>
       <p class="muted">상금·상품은 주최측이 직접 지급합니다. 우승자 목록(이름·국적·연락처·이메일)은 CSV로 받을 수 있고, 미성년자는 법정대리인 정보 버튼이 표시됩니다.</p>
     </div>
 
     <div class="block">
       <h2 class="sec">국내 예선 운영 팁</h2>
-      <div class="vis" data-vis="online-tips"></div><details class="more"><summary>운영 팁 자세히 보기</summary><ul class="list">
+      <ul class="list">
         <li>지정곡 20곡 중 <b>최고 점수 상위 10곡 합산</b>처럼 기준을 단순하게 공지합니다. 순위는 10분마다 갱신됩니다.</li>
         <li>동점자는 <b>먼저 득점한 순</b>으로 정하고 공지에 미리 적습니다.</li>
         <li>진출자 확정 후 전원에게 유선으로 현장 참석 의사를 확인하고, 미성년자는 보호자와 먼저 연락합니다.</li>
         <li>지역 한정 대회는 당일 거주 증빙 신분증 지참과 <b>대회 부속합의서</b> 서명을 안내합니다.</li>
         <li>예선 기간에는 연습 독려·일정 알림 푸시를 시간대에 맞춰 보내도록 본사에 요청합니다.</li>
-      </ul></details>
+      </ul>
     </div>
   
 </section>
@@ -951,7 +827,7 @@ figure.mock svg.wf{max-height:420px}
     </div>
     <div class="block">
       <h2 class="sec">개인전 · 참가 인원별 포맷</h2>
-      <div class="vis" data-vis="offline-format"></div><details class="more"><summary>포맷 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>참가 인원</th><th>그룹 스테이지 (풀 라운드 로빈)</th><th>본선</th></tr></thead>
         <tbody>
           <tr><td class="mono">8명</td><td>없음</td><td>8강 더블 엘리미네이션 바로 진행</td></tr>
@@ -959,50 +835,50 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="mono">12–16명</td><td>4개 조, 조별 상위 2명 진출</td><td>8강 더블 엘리미네이션</td></tr>
           <tr><td class="mono">17명 이상</td><td colspan="2">앱 예선으로 압축하거나 싱글 엘리미네이션 (예: 경남 32강)</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
       <p class="src">조 편성은 경기 당일 랜덤 추첨, 본선 대진은 예선 순위로 정합니다.</p>
     </div>
     <div class="block">
       <h2 class="sec">더블 엘리미네이션 · 세트 운영</h2>
-      <div class="vis" data-vis="offline-bracket"></div><div class="vis" data-vis="offline-sets"></div><details class="more"><summary>규칙 설명 보기</summary><div class="grid g3">
+      <div class="grid g3">
         <div class="panel block"><h3>승자조 / 패자조</h3><p class="muted">패배하면 패자조로 이동하고, 2패째에 탈락합니다. 결승은 승자조 1위 vs 패자조 1위.</p></div>
         <div class="panel block"><h3>연속 퍼포먼스</h3><p class="muted">세트 수는 대회별로 정합니다 (3 · 5 · 7 · 9세트 중 선택, 결승은 더 길게 잡는 편). 정한 세트를 중단 없이 모두 수행한 뒤 결과를 발표하므로 지구력과 일관성을 함께 평가합니다. 곡당 실제 플레이는 약 30초이고, 준비·선수 교체를 합쳐 <b>1세트 약 1분</b>으로 일정을 잡습니다.</p></div>
         <div class="panel block"><h3>브래킷 리셋</h3><p class="muted">승자조 선수가 결승 첫 매치를 이기면 즉시 우승. 패자조 선수가 이기면 대진이 초기화되고 같은 세트 수로 한 번 더 치릅니다.</p></div>
-      </div></details>
+      </div>
     </div>
     <div class="block">
       <h2 class="sec">팀전 (2인 1팀)</h2>
-      <div class="vis" data-vis="offline-team"></div><details class="more"><summary>팀전 방식 자세히 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>참가 팀</th><th>방식</th></tr></thead>
         <tbody>
           <tr><td class="mono">4–5팀</td><td>단일 그룹 풀 라운드 로빈 → 1·2위 결승, 3·4위전</td></tr>
           <tr><td class="mono">6팀</td><td>2개 조 그룹 스테이지 → 조별 상위 2팀 4강 싱글 엘리미네이션 (A1 vs B2, B1 vs A2)</td></tr>
         </tbody>
       </table></div>
-      <ul class="list"><li>세트 수(홀수)를 정하면 팀원 A·B가 절반씩 나눠 수행하고, 마지막 1세트는 A 또는 B가 수행합니다 (예: 7세트 = A 3 + B 3 + 1)</li><li>득점: 승 1점 · 패 0점</li></ul></details>
+      <ul class="list"><li>세트 수(홀수)를 정하면 팀원 A·B가 절반씩 나눠 수행하고, 마지막 1세트는 A 또는 B가 수행합니다 (예: 7세트 = A 3 + B 3 + 1)</li><li>득점: 승 1점 · 패 0점</li></ul>
     </div>
     <div class="block">
       <h2 class="sec">동률 처리 (타이브레이커)</h2>
-      <div class="vis" data-vis="offline-tie"></div>
+      <ol class="steps"><li><div><b>승자승</b> — 동률 팀 간 맞대결 승자</div></li><li><div><b>총 세트 득실차</b></div></li><li><div><b>총 포인트 득실차</b></div></li><li><div><b>단판 재경기</b> — 진출권이 걸린 경우에만</div></li></ol>
       <p class="src">몰수패·기권패는 상대에게 최소 승리 조건 스코어로 기록하고 다른 통계는 기록하지 않습니다.</p>
     </div>
     <div class="block">
       <h2 class="sec">송리스트 운영</h2>
-      <div class="vis" data-vis="offline-songs"></div><details class="more"><summary>송리스트 운영 자세히 보기</summary><ul class="list">
+      <ul class="list">
         <li>주최측이 선정해 사전 공유하는 최소 <b>25곡</b> 풀에서 매치마다 랜덤으로 곡을 고릅니다.</li>
         <li>STEPIN 앱 플레이 수 상위곡 중심. 개인전·팀전 공통 10곡 + 각 15곡 별도.</li>
         <li>곡당 하이라이트 구간 약 30초. 국가·지역 서비스 제한곡은 사전에 확인합니다.</li>
         <li>송리스트를 앱 예선 경연곡과 맞추고 중계 화면에도 노출하면 다음 대회 준비에 도움이 됩니다.</li>
-      </ul></details>
+      </ul>
     </div>
     <div class="block">
       <h2 class="sec">선수 자격 · 복장 · 접속종료</h2>
-      <div class="vis" data-vis="offline-dress"></div><details class="more"><summary>자격 · 접속종료 · 징계 자세히 보기</summary><div class="grid g2">
+      <div class="grid g2">
         <div class="panel block"><h3>자격</h3><ul class="list"><li>유효한 STEPIN 계정, 이용 제재 이력 없음</li><li>미성년자는 부모·법정대리인 동의</li><li>출전 자격 양도 금지 (부득이한 경우 운영국 절차로 대체)</li><li>국제 대회: 참가국 국적, 선수명 영문 12자 이내, 프로필 사진 1,080px 이상 PNG</li></ul></div>
         <div class="panel block"><h3>AI 판정을 위한 복장</h3><ul class="list"><li>마스크·모자·선글라스 등 얼굴을 가리는 착용물 금지</li><li>신체 추적을 방해하는 과도하게 헐렁한 의상 금지</li><li>배경·바닥과 같은 색 의상 지양</li><li>시정 요구 불응 시 본선 참가 불가</li></ul></div>
         <div class="panel block"><h3>접속종료</h3><ul class="list"><li><b>비고의</b> (네트워크·서버·천재지변): 심판이 재경기 여부 결정</li><li><b>고의</b>: 해당 세트 몰수패, 경중에 따라 경고·실격</li></ul></div>
         <div class="panel block"><h3>징계</h3><ul class="list"><li>구두 주의 → 경고 → 세트·매치 패배 → 실격 → 상금 몰수 → 출전 정지</li><li>대회 후 부정행위가 확인되면 순위·상금 전액 환수</li></ul></div>
-      </div></details>
+      </div>
     </div>
   
   </div>
@@ -1021,7 +897,7 @@ figure.mock svg.wf{max-height:420px}
     </div>
     <div class="block">
       <h2 class="sec">32강 하루 대회 타임테이블 예시</h2>
-      <div class="vis" data-vis="offline-day"></div><details class="more"><summary>시간표 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>시간</th><th>내용</th></tr></thead>
         <tbody>
           <tr><td class="mono">10:00–11:00</td><td>개막식 · 선수 등록 (본인 확인, 부속합의서 서명)</td></tr>
@@ -1035,11 +911,11 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="mono">17:15–17:30</td><td>TOP 3 인터뷰 · 기념 촬영</td></tr>
           <tr><td class="mono">17:30–18:00</td><td>체험존 마무리 → 18:00 시상식 · 폐막</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
     </div>
     <div class="block">
       <h2 class="sec">현장 운영 인력</h2>
-      <div class="vis" data-vis="offline-staff"></div><details class="more"><summary>역할별 담당 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>역할</th><th>인원</th><th>담당</th></tr></thead>
         <tbody>
           <tr><td class="k">MC (캐스터)</td><td class="num">1</td><td>현장 진행·중계 멘트. 경기 규정 숙지, STEPIN 팀과 사전 미팅 필수</td></tr>
@@ -1049,11 +925,11 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">현장 스태프</td><td class="num">2+</td><td>선수 호출·대기 안내, 관중 동선, 안전</td></tr>
           <tr><td class="k">반입 인력</td><td class="num">대당 2</td><td>반입·반출일 아케이드 운반</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
     </div>
     <div class="block">
       <h2 class="sec">본사에 미리 보낼 정보</h2>
-      <div class="vis" data-vis="offline-send"></div><details class="more"><summary>항목 자세히 보기</summary><ul class="list"><li>Floor plan (무대·관중석·부조·대기실 위치, 창문·조명 방향)</li><li>전체 스케줄: 세팅, 리허설, 개회식, 경기, 시상, 폐막</li><li>비상연락망: 운영사, 선수 관리, 방송팀, 안전 요원</li><li>방송 계획: 송출 여부·플랫폼, 촬영팀 구성 → <a href="#broadcast" data-tab-go="broadcast:types">중계 형태 선택</a></li><li>선수 정보: 닉네임(영문 12자 이내), 프로필 사진, 팀명</li></ul></details>
+      <ul class="list"><li>Floor plan (무대·관중석·부조·대기실 위치, 창문·조명 방향)</li><li>전체 스케줄: 세팅, 리허설, 개회식, 경기, 시상, 폐막</li><li>비상연락망: 운영사, 선수 관리, 방송팀, 안전 요원</li><li>방송 계획: 송출 여부·플랫폼, 촬영팀 구성 → <a href="#broadcast" data-tab-go="broadcast:types">중계 형태 선택</a></li><li>선수 정보: 닉네임(영문 12자 이내), 프로필 사진, 팀명</li></ul>
     </div>
   
   </div>
@@ -1065,7 +941,7 @@ figure.mock svg.wf{max-height:420px}
   
   <div class="block">
     <h2 class="sec">단계별 활성화 방법</h2>
-    <div class="vis" data-vis="boost-phases"></div><details class="more"><summary>방법별 팁 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>시점</th><th>방법</th><th>담당</th><th>팁</th></tr></thead>
       <tbody>
         <tr><td class="k" rowspan="6">모객 (D-28~)</td><td>앱 내 배너 · 푸시 · 팝업, 토너먼트 티켓 페이지</td><td><span class="pill p-req">본사</span></td><td>사전 노출 기간을 두고 ‘알림 받기’로 모객</td></tr>
@@ -1089,16 +965,16 @@ figure.mock svg.wf{max-height:420px}
         <tr><td>대회 영상 2차 활용 (브랜디드 콘텐츠)</td><td><span class="pill p-req">본사</span></td><td>64강 1회 = 댄스 영상 416개</td></tr>
         <tr><td>다음 대회 예고 · 앱 상시 대회 안내</td><td>공동</td><td>참가자 리텐션</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
   </div>
   <div class="block">
     <h2 class="sec">상품 구성 예시 (교내 대회 · 20개교 기준)</h2>
-    <div class="vis" data-vis="boost-prize"></div><details class="more"><summary>단가 · 수량 표로 보기</summary><div class="tbl"><table><thead><tr><th>구분</th><th>상품</th><th>단가</th><th>수량</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>구분</th><th>상품</th><th>단가</th><th>수량</th></tr></thead><tbody>
       <tr><td class="k">1위</td><td>텀블러 + 티셔츠</td><td class="mono">49,800원</td><td class="mono">학교당 1</td></tr>
       <tr><td class="k">2위</td><td>티셔츠 + 키링</td><td class="mono">33,400원</td><td class="mono">학교당 1</td></tr>
       <tr><td class="k">3위</td><td>키링</td><td class="mono">8,500원</td><td class="mono">학교당 1</td></tr>
       <tr><td class="k">체험존</td><td>스티커 / 스킨케어 소분용기 세트</td><td class="mono">1,000 / 2,500원</td><td class="mono">학교당 30 / 10</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <p class="src">20개교 총 약 293만원. 학교·청소년 대상은 학교 규정과 청탁금지법 기준을 확인해 주세요.</p>
   </div>
 </section>
@@ -1113,7 +989,7 @@ figure.mock svg.wf{max-height:420px}
     <button role="tab" data-tab="docs">서류 · 운영물</button>
   </div>
   <div class="tabpanel" data-panel="production:promo">
-    <div class="vis" data-vis="prod-poster"></div><details class="more"><summary>규격 · 시점 표로 보기</summary><div class="tbl"><table><thead><tr><th>제작물</th><th>규격</th><th>용도 · 필수 내용</th><th>제작</th><th>시점</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>제작물</th><th>규격</th><th>용도 · 필수 내용</th><th>제작</th><th>시점</th></tr></thead><tbody>
       <tr><td class="k">대회 포스터</td><td class="mono">SNS 1080×1350 · 인쇄 A2/A3</td><td>대회명, 예선·본선 일정(시간대), 상금, 참가 자격, 참가 방법, <b>앱 다운로드 QR 필수</b></td><td><span class="pill p-rec">시안 협조</span></td><td class="mono">D-28</td></tr>
         <tr><td class="k">앱 토너먼트 포스터</td><td class="mono">270×312 · JPG/PNG · 10MB</td><td>앱 대회 카드 이미지</td><td>본사</td><td class="mono">D-30</td></tr>
         <tr><td class="k">앱 토너먼트 배너</td><td class="mono">343×484 · JPG/PNG · 10MB</td><td>대회 상세 배너, URL 연결</td><td>본사</td><td class="mono">D-30</td></tr>
@@ -1121,7 +997,7 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">SNS 피드 · 스토리</td><td class="mono">1080×1080 · 1080×1350 · 1080×1920</td><td>오픈 공지, 송리스트, 중간 순위, 결과</td><td>공동</td><td class="mono">D-28~D+7</td></tr>
         <tr><td class="k">숏폼 광고 소재</td><td class="mono">1080×1920 · 15~30초</td><td>“집에서 참가 · 참가비 무료 · 상금” 메시지</td><td><span class="pill p-opt">협의</span></td><td class="mono">D-28</td></tr>
         <tr><td class="k">학교 · 기관 공문</td><td>기관 양식</td><td>대회 개요, 참가 방법, 개인정보·보호자 동의 안내</td><td>파트너</td><td class="mono">D-28</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <div class="grid g4">
       <figure><img src="img/poster_8th_KR.jpg" alt="8차 글로벌 토너먼트 포스터" loading="lazy"><figcaption>앱 토너먼트 포스터 예시</figcaption></figure>
       <figure><img src="img/poster_ECA2026_selection.jpg" alt="ECA 2026 선발전 포스터" loading="lazy"><figcaption>국가대표 선발전 포스터 예시</figcaption></figure>
@@ -1130,7 +1006,7 @@ figure.mock svg.wf{max-height:420px}
     </div>
   </div>
   <div class="tabpanel" data-panel="production:site" hidden>
-    <div class="vis" data-vis="prod-site"></div><details class="more"><summary>설치물 규격 표로 보기</summary><div class="tbl"><table><thead><tr><th>제작물</th><th>규격 · 수량</th><th>내용 · 주의</th><th>제작</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>제작물</th><th>규격 · 수량</th><th>내용 · 주의</th><th>제작</th></tr></thead><tbody>
       <tr><td class="k">백월</td><td class="mono">6×3m ~ 7×4m · 1</td><td>대회명·로고·앱 QR. 플레이어 뒤 배경이므로 <b>의상과 같은 단색(검정·흰색) 피하기</b>, 무광 소재</td><td><span class="pill p-rec">시안 협조</span></td></tr>
       <tr><td class="k">무대 바닥</td><td class="mono">6×3m 이상</td><td>포맥스 무광 권장. 미끄럼·단차 없게, 흰색·검은색 피하기</td><td>파트너</td></tr>
       <tr><td class="k">플레이 위치 표시</td><td class="mono">대당 1 · 바닥 테이프</td><td>카메라에서 2.2–2.5m (WIDE 2.8–3.2m) 발 위치 표시</td><td>본사</td></tr>
@@ -1140,25 +1016,25 @@ figure.mock svg.wf{max-height:420px}
       <tr><td class="k">안전바</td><td class="mono">벨트형 4~6</td><td>무대·관객석 분리, 카메라 시야 밖에 관중 배치</td><td>파트너</td></tr>
       <tr><td class="k">선수 대기석 · 명찰</td><td>본선 인원</td><td>대기석 안내, 선수 번호·닉네임 명찰</td><td>파트너</td></tr>
       <tr><td class="k">포토월 · 시상 보드</td><td>선택</td><td>시상·인터뷰 배경, 상금 보드</td><td>파트너</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <div class="grid g2">
       <figure><img src="img/setup_portable_backwall.jpg" alt="백월 배치 예시" loading="lazy"><figcaption>백월 7×4m · 포터블 2대 배치 예시</figcaption></figure>
       <figure><img src="img/photo_popup_seongsu.jpg" alt="성수 팝업 현장" loading="lazy"><figcaption>설치물 · 브랜딩 예시 (성수 팝업)</figcaption></figure>
     </div>
   </div>
   <div class="tabpanel" data-panel="production:gfx" hidden>
-    <div class="vis" data-vis="prod-overlay"></div><details class="more"><summary>그래픽 규격 표로 보기</summary><div class="tbl"><table><thead><tr><th>그래픽</th><th>규격</th><th>내용</th><th>제작</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>그래픽</th><th>규격</th><th>내용</th><th>제작</th></tr></thead><tbody>
       <tr><td class="k">대기 화면</td><td class="mono">1920×1080 PNG/MP4</td><td>대회 로고, 시작 시간, 앱 QR, 송리스트</td><td><span class="pill p-rec">시안 협조</span></td></tr>
       <tr><td class="k">경기 화면 오버레이</td><td class="mono">1920×1080 투명 PNG</td><td>좌우 아케이드 화면 프레임(각 608×1080), 선수명, 라운드, 세트 스코어 영역</td><td><span class="pill p-rec">시안 협조</span></td></tr>
       <tr><td class="k">대진표 · 현황</td><td>STEPIN 대회 프로그램</td><td>그룹 스테이지 표, 더블 엘리미네이션 대진, 실시간 결과</td><td>본사</td></tr>
       <tr><td class="k">선수 소개 카드</td><td class="mono">1920×1080</td><td>프로필 사진(1,080px 이상 PNG), 닉네임(영문 12자 이내), 소속·국가</td><td>공동</td></tr>
       <tr><td class="k">하단 자막 · 스폰서</td><td class="mono">1920×200 투명 PNG</td><td>“대회를 미리 준비하세요!” + 앱 QR + 스토어 검색어 STEPIN</td><td><span class="pill p-rec">시안 협조</span></td></tr>
       <tr><td class="k">결과 · 시상 화면</td><td class="mono">1920×1080</td><td>TOP3, 상금, 다음 대회 예고</td><td>공동</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <p class="src">아케이드 게임 화면은 세로(9:16)입니다. 1920×1080 방송 화면에는 높이를 1080에 맞춰 좌우로 배치합니다 (<a href="#broadcast" data-tab-go="broadcast:obs">OBS 장면 구성</a> 참고).</p>
   </div>
   <div class="tabpanel" data-panel="production:docs" hidden>
-    <div class="vis" data-vis="prod-docs"></div><details class="more"><summary>서류 내용 표로 보기</summary><div class="tbl"><table><thead><tr><th>서류 · 운영물</th><th>내용</th><th>준비</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>서류 · 운영물</th><th>내용</th><th>준비</th></tr></thead><tbody>
       <tr><td class="k">대회 규정집</td><td>경기 방식, 자격, 복장, 접속종료, 징계</td><td>본사 (규정집 2026 기반 수정)</td></tr>
       <tr><td class="k">참가 신청 · 개인정보 동의</td><td>수집 항목·목적·보유기간, 미성년자 보호자 동의</td><td>파트너</td></tr>
       <tr><td class="k">대회 부속합의서</td><td>본인 확인, 규정 동의, 초상권·영상 활용 동의 (현장 서명)</td><td>공동</td></tr>
@@ -1167,7 +1043,7 @@ figure.mock svg.wf{max-height:420px}
       <tr><td class="k">송리스트 안내</td><td>본선 25곡 풀, 랜덤 선곡 방식</td><td>본사</td></tr>
       <tr><td class="k">스태프 교육 자료</td><td>체험 안내 순서, 곡 검색(영문), 고득점 기준, 비상 연락</td><td>본사</td></tr>
       <tr><td class="k">도장 카드 · 굿즈</td><td>곡 도장 이벤트, 고득점·앱 인증 상품</td><td>파트너 (도장 카드는 본사 요청 가능)</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <div class="row"><button class="btn sm" data-dl="STEPIN_Tournament_Ops_Templates.xlsx" data-name="STEPIN_대회 운영 템플릿.xlsx">운영 템플릿 받기 (큐시트 · 장비 · 일정)</button><button class="btn sm" data-dl="STEPIN_Rulebook_2026_KR.pdf" data-name="STEPIN E-Sports 대회 규정집 2026.pdf">규정집 국문</button></div>
   </div>
 </section>
@@ -1187,7 +1063,7 @@ figure.mock svg.wf{max-height:420px}
   <div class="tabpanel" data-panel="broadcast:space">
     <div class="block">
       <h2 class="sec">아케이드 모델별 설치 사양</h2>
-<div class="vis" data-vis="bc-models"></div><details class="more"><summary>모델별 사양 표로 보기</summary><div class="tbl"><table>
+<div class="tbl"><table>
       <thead><tr><th>항목</th><th>STANDARD</th><th>WIDE</th><th>PORTABLE (행사용)</th></tr></thead>
       <tbody>
                 <tr><td class="k">디스플레이</td><td>43인치 강화유리 (일체형)</td><td>65인치 강화유리 (일체형)</td><td>외부 43인치 세로형 모니터 연결 (9:16, 1080×1920)</td></tr>
@@ -1198,7 +1074,7 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">배틀</td><td>2대 연동 시</td><td>1대에서 2인</td><td>2대 연동 시</td></tr>
         <tr><td class="k">카메라 거리</td><td class="mono">2.2–2.5m</td><td class="mono">2.8–3.2m</td><td class="mono">2.2–2.5m</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
     </div>
     <div class="block">
       <h2 class="sec">플레이 위치 표시</h2>
@@ -1211,7 +1087,7 @@ figure.mock svg.wf{max-height:420px}
     </div>
     <div class="block">
       <h2 class="sec">공간 기준</h2>
-      <div class="vis" data-vis="bc-floor"></div><details class="more"><summary>공간 기준 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>항목</th><th>STANDARD (1대)</th><th>WIDE (1대)</th><th>대회 무대 (2대)</th></tr></thead>
         <tbody>
           <tr><td class="k">최소 공간</td><td class="mono">3 × 3m</td><td class="mono">4 × 3.5m</td><td class="mono">6 × 3m</td></tr>
@@ -1221,7 +1097,7 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">관람 동선</td><td>카메라에서 약 5m 깊이</td><td>카메라에서 약 6m 깊이</td><td>관중은 카메라 뒤·옆, 중계 TV로 관람</td></tr>
           <tr><td class="k">백월</td><td colspan="2">6 × 3m 권장</td><td>6 × 3m ~ 7 × 4m (브랜딩 시안 STEPIN 협조)</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
       <div class="grid g2">
         <figure><img src="img/setup_standard_distance.jpg" alt="스탠다드 2대 배치도: 6000×3000mm, 플레이어 거리 2200~2500mm" loading="lazy"><figcaption>STANDARD 2대 배치 · 6,000 × 3,000mm</figcaption></figure>
         <figure><img src="img/setup_portable_backwall.jpg" alt="포터블 백월 배치도" loading="lazy"><figcaption>PORTABLE 2대 백월 배치 · 7 × 4m</figcaption></figure>
@@ -1229,20 +1105,20 @@ figure.mock svg.wf{max-height:420px}
     </div>
     <div class="block">
       <h2 class="sec">AI 채점 정확도를 높이는 현장 조건</h2>
-      <div class="vis" data-vis="bc-ai"></div><details class="more"><summary>조건 자세히 보기</summary><div class="grid g2">
+      <div class="grid g2">
         <div class="panel block"><h3>바닥 · 배경</h3><ul class="list"><li>무대 바닥은 포맥스 무광 권장. 미끄럽지 않고 단차 없게</li><li>흰색·검은색 바닥 지양 (운동화 색과 겹침)</li><li>배경색과 의상색이 겹치지 않게 (검정 벽 + 검정 티셔츠 X)</li></ul></div>
         <div class="panel block"><h3>조명 · 인물</h3><ul class="list"><li>역광 배치 금지. 창문·LED 월을 등지고 서지 않게</li><li>저조도·야간에는 핀조명 2개로 얼굴 밝기 확보</li><li>관중이 카메라에 잡히지 않게 플레이 존 뒤를 비움</li><li>2명 이상 겹쳐 서면 점수 정확도가 떨어짐</li></ul></div>
-      </div></details>
+      </div>
       <div class="note warn"><b>실내 배정을 원칙으로 합니다.</b> 실외는 지붕, 방수·방진, 평탄한 바닥, 접지 전원, 우천·강풍 대책을 갖춘 경우에만 운영합니다. 강한 햇빛은 인식 오류를 일으킵니다.</div>
     </div>
     <div class="block">
       <h2 class="sec">반입 · 운반</h2>
-      <div class="vis" data-vis="bc-move"></div><details class="more"><summary>운반 안내 자세히 보기</summary><ul class="list">
+      <ul class="list">
         <li>아케이드는 <b>눕히지 않고 세워서</b> 운반합니다. 일반 지하주차장 진입이 어려우니 지상 하역장을 준비합니다.</li>
         <li>대당 성인 2인 + 적정 하중 운반 카트. 하역장에서 설치 위치까지 계단 없는 동선을 미리 확인합니다.</li>
         <li>화물 엘리베이터와 트럭 출입(주차 관리) 예약을 행사장에 미리 요청합니다.</li>
         <li>반출 후 아케이드 포장재를 반납해 주세요.</li>
-      </ul></details>
+      </ul>
     </div>
   
   </div>
@@ -1345,7 +1221,7 @@ figure.mock svg.wf{max-height:420px}
   </div>
   <div class="tabpanel" data-panel="broadcast:gear" hidden>
     <p class="muted">아케이드와 중계 PC, 화면, 음향을 잇는 장비입니다. 제품명은 많이 쓰는 예시이며 같은 사양이면 다른 제품도 됩니다.</p>
-    <div class="vis" data-vis="bc-gear"></div><details class="more"><summary>권장 사양 · 예시 제품 표로 보기</summary><div class="tbl"><table><thead><tr><th>장비</th><th>역할</th><th>권장 사양</th><th>예시 제품</th><th>필요 형태</th></tr></thead><tbody>
+    <div class="tbl"><table><thead><tr><th>장비</th><th>역할</th><th>권장 사양</th><th>예시 제품</th><th>필요 형태</th></tr></thead><tbody>
       <tr><td class="k">HDMI 캡처보드</td><td>아케이드 게임 화면을 중계 PC로 입력</td><td>USB 3.0, 1080p60 입력, 패스스루(모니터 동시 출력) 지원, UVC 호환</td><td>Elgato HD60 X · AVerMedia Live Gamer Portable 2 Plus</td><td>TYPE 2~4 · 아케이드당 1</td></tr>
       <tr><td class="k">HDMI 분배기 1×2</td><td>한 신호를 모니터와 캡처보드로 동시 출력</td><td>1080p60, HDCP 대응, 전원 어댑터형</td><td>4K HDMI 스플리터 1in 2out</td><td>패스스루 없는 캡처보드 · 포터블</td></tr>
       <tr><td class="k">HDMI 연장</td><td>부조석까지 장거리 연결</td><td>10m 이하 일반 케이블, 10~20m 액티브(리피터) 케이블, 20m 이상 HDMI over LAN 익스텐더(Cat6)</td><td>HDMI 익스텐더 50~70m</td><td>부조가 무대에서 먼 경우</td></tr>
@@ -1358,14 +1234,14 @@ figure.mock svg.wf{max-height:420px}
       <tr><td class="k">실사 카메라</td><td>선수 퍼포먼스 · MC · 관중</td><td>클린 HDMI 출력, 1080p60, 상시 전원(더미 배터리), 삼각대</td><td>캠코더 · 미러리스</td><td>TYPE 3~4</td></tr>
       <tr><td class="k">조명</td><td>플레이어 얼굴·전신 밝기 확보</td><td>LED 패널 2, 5600K, CRI 95+, 디밍, 스탠드 2m+</td><td>바이컬러 LED 패널</td><td>저조도 · TYPE 2~4</td></tr>
       <tr><td class="k">중계 PC</td><td>STEPIN 대회 프로그램 + OBS</td><td>Windows, RAM 16GB+(32GB 권장), 외장 GPU(NVENC) 권장, HDMI 출력, USB 3.0 포트 2+</td><td>게이밍 노트북 · 데스크톱</td><td>TYPE 2~4</td></tr>
-    </tbody></table></div></details>
+    </tbody></table></div>
     <div class="note warn"><b>HDCP 주의.</b> 일부 분배기·캡처보드는 저작권 보호(HDCP) 신호를 막습니다. 리허설에서 아케이드 → 분배기 → 캡처보드 경로로 화면이 나오는지 꼭 확인하세요.</div>
   </div>
   <div class="tabpanel" data-panel="broadcast:obs" hidden>
     <div class="block">
       <h2 class="sec">OBS Studio 셋팅 순서</h2>
       <p class="muted">OBS Studio는 무료 방송·녹화 프로그램입니다 (Windows · macOS). 중계 PC에 STEPIN 대회 프로그램과 함께 설치합니다.</p>
-      <div class="vis" data-vis="bc-obs"></div><details class="more"><summary>단계별 상세 설명 보기</summary><ol class="steps">
+      <ol class="steps">
         <li><div><b>설치 · 자동 구성</b> — obsproject.com에서 설치 → 첫 실행 자동 구성 마법사에서 “방송에 최적화” 선택</div></li>
         <li><div><b>비디오</b> — 설정 → 비디오: 기본(캔버스) 해상도 1920×1080, 출력 해상도 1920×1080, FPS 30 (움직임이 많아 60 권장, PC 사양에 맞춰)</div></li>
         <li><div><b>소스 추가</b> — 비디오 캡처 장치: 캡처보드 A · B (해상도 1080p, 아케이드 출력에 맞춤), 카메라 · 브라우저/창 캡처: STEPIN 대회 프로그램 대진표 · 이미지: 오버레이 PNG · 미디어 소스: 홍보 영상</div></li>
@@ -1376,28 +1252,28 @@ figure.mock svg.wf{max-height:420px}
         <li><div><b>녹화</b> — 설정 → 출력 → 녹화: 형식 mkv(중간에 꺼져도 파일 보존) → 종료 후 ‘파일 → 리먹스’로 mp4 변환. 방송과 동시 녹화</div></li>
         <li><div><b>송출 (TYPE 4)</b> — 설정 → 방송: 서비스(YouTube · SOOP 등) 선택, 스트림 키 입력 → 출력 설정은 아래 표</div></li>
         <li><div><b>테스트</b> — 본 행사 전 30분 이상 비공개(또는 일부 공개) 테스트 송출, 녹화본 재생 확인</div></li>
-      </ol></details>
+      </ol>
     </div>
     <div class="block">
       <h2 class="sec">장면(Scene) 구성 예시</h2>
-      <div class="vis" data-vis="bc-scenes"></div><details class="more"><summary>장면별 소스 표로 보기</summary><div class="tbl"><table><thead><tr><th>장면</th><th>소스</th><th>사용 시점</th></tr></thead><tbody>
+      <div class="tbl"><table><thead><tr><th>장면</th><th>소스</th><th>사용 시점</th></tr></thead><tbody>
         <tr><td class="k">① 대기</td><td>대기 화면 이미지/영상, BGM, 앱 QR, 송리스트</td><td>시작 전 · 휴식</td></tr>
         <tr><td class="k">② 경기</td><td>캡처 A(좌) + 캡처 B(우) + 경기 오버레이 + 대진·점수 + 실사 PIP</td><td>매치 진행</td></tr>
         <tr><td class="k">③ 대진표</td><td>STEPIN 대회 프로그램 전체 화면</td><td>라운드 사이 · 결과 발표</td></tr>
         <tr><td class="k">④ 카메라 풀</td><td>실사 카메라 + 하단 자막</td><td>오프닝 · 인터뷰 · 시상</td></tr>
         <tr><td class="k">⑤ 하이라이트</td><td>미디어 소스(홍보 영상 반복)</td><td>세팅 · 지연 시간</td></tr>
-      </tbody></table></div></details>
+      </tbody></table></div>
     </div>
     <div class="block">
       <h2 class="sec">송출 · 녹화 설정값</h2>
-      <div class="vis" data-vis="bc-enc"></div><details class="more"><summary>설정값 표로 보기</summary><div class="tbl"><table><thead><tr><th>항목</th><th>라이브 송출</th><th>녹화</th></tr></thead><tbody>
+      <div class="tbl"><table><thead><tr><th>항목</th><th>라이브 송출</th><th>녹화</th></tr></thead><tbody>
         <tr><td class="k">인코더</td><td>하드웨어 (NVIDIA NVENC H.264) 우선, 없으면 x264 veryfast</td><td>동일</td></tr>
         <tr><td class="k">비트레이트 제어</td><td>CBR</td><td>CQP/CRF (품질 기준)</td></tr>
         <tr><td class="k">비디오 비트레이트</td><td>1080p30: 최소 5Mbps · 권장 14Mbps / 1080p60: 최소 6 · 권장 17Mbps (YouTube 기준). 업로드 회선에 맞춰 낮춤</td><td>20~40Mbps</td></tr>
         <tr><td class="k">키프레임 간격</td><td>2초 (4초 초과 금지)</td><td>—</td></tr>
         <tr><td class="k">오디오</td><td>AAC 128~160kbps, 48kHz 스테레오</td><td>AAC 192kbps+</td></tr>
         <tr><td class="k">회선</td><td>송출 비트레이트의 1.5배 이상 업로드 여유 (예: 8Mbps 송출 → 12Mbps+), 아케이드와 분리된 유선</td><td>—</td></tr>
-      </tbody></table></div></details>
+      </tbody></table></div>
       <p class="src">SOOP 등 다른 플랫폼은 플랫폼 권장값을 확인해 맞춥니다. K-POP 음원 저작권으로 송출이 차단될 수 있으니 플랫폼 사전 테스트가 필수입니다.</p>
     </div>
     <div class="block">
@@ -1406,7 +1282,7 @@ figure.mock svg.wf{max-height:420px}
     </div>
   </div>
   <div class="tabpanel" data-panel="broadcast:av" hidden>
-<div class="block"><h2 class="sec">사운드 연결</h2><div class="vis" data-vis="bc-sound"></div></div><div class="block"><div class="grid g2"><div><h2 class="sec">조명 배치</h2><div class="vis" data-vis="bc-light"></div></div><div><h2 class="sec">카메라 배치</h2><div class="vis" data-vis="bc-cam"></div></div></div></div><div class="block"><h2 class="sec">MC · 큐 흐름</h2><div class="vis" data-vis="bc-mc"></div></div><details class="more"><summary>사운드 · 영상 · 조명 · MC 세부 기준 보기</summary>    <div class="grid g2">
+    <div class="grid g2">
       <div class="panel block"><h3>사운드</h3><ul class="list">
         <li>아케이드 3.5mm 출력 → (그라운드 아이솔레이터) → 믹서 채널 1·2 / 아케이드 B는 3·4</li>
         <li>배틀 중에는 두 아케이드가 같은 곡을 재생하므로 <b>한 대의 음원만 PA로</b> 내보내 이중 재생·딜레이를 피합니다</li>
@@ -1436,13 +1312,13 @@ figure.mock svg.wf{max-height:420px}
         <li>경기 사이 공백(세팅·집계)에는 선수 스토리, 송리스트, 앱 QR 안내</li>
         <li>선수 호출은 다음 매치 2팀 전에 미리 대기석으로</li>
       </ul></div>
-    </div></details>
+    </div>
   </div>
   <div class="tabpanel" data-panel="broadcast:check" hidden>
 
     <div class="block">
       <h2 class="sec">D-1 리허설 점검</h2>
-      <div class="vis" data-vis="bc-reh"></div><details class="more"><summary>점검 기준 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>점검</th><th>기준</th></tr></thead>
         <tbody>
           <tr><td class="k">거리 · 화각</td><td>플레이 위치에서 양팔·양다리를 뻗어도 전신이 화면에 다 보이는지</td></tr>
@@ -1452,11 +1328,11 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">중계 화면</td><td>관중 모니터에 게임 화면·대진표가 끊김 없이 나오는지 (HDMI 직결)</td></tr>
           <tr><td class="k">진행</td><td>MC 큐시트, 선수 호출 순서, 송리스트 랜덤 선곡 방법 공유</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
     </div>
     <div class="block">
       <h2 class="sec">문제 해결</h2>
-      <div class="vis" data-vis="bc-fix"></div><details class="more"><summary>증상별 조치 표로 보기</summary><div class="tbl"><table>
+      <div class="tbl"><table>
         <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
         <tbody>
           <tr><td class="k">점수가 비정상적으로 낮음</td><td>거리 부족, 전신 미노출, 배경·의상 색 겹침, 2인 이상 인식</td><td>플레이 위치 재표시, 관중 이동, 의상 교체 요청</td></tr>
@@ -1468,7 +1344,7 @@ figure.mock svg.wf{max-height:420px}
           <tr><td class="k">곡 검색이 안 됨</td><td>검색은 영문 원제만 지원</td><td>예: 아파트 → <span class="mono">APT.</span>, 첫 만남은 계획대로 되지 않아 → <span class="mono">plot twist</span></td></tr>
           <tr><td class="k">기기 오류 · 하드웨어 이상</td><td>—</td><td>제품번호·증상·오류 화면 사진을 <a href="#contact">본사 기술 지원</a>으로 접수, 원격 진단 후 조치</td></tr>
         </tbody>
-      </table></div></details>
+      </table></div>
     </div>
   
   </div>
@@ -1486,24 +1362,24 @@ figure.mock svg.wf{max-height:420px}
   <div class="tabpanel" data-panel="mc:tips" hidden>
     <div class="block">
       <h2 class="sec">고득점 기준 (챌린지)</h2>
-      <div class="vis" data-vis="mc-score"></div><details class="more"><summary>표로 보기</summary><div class="tbl"><table><thead><tr><th>점수</th><th>수준</th></tr></thead><tbody>
+      <div class="tbl"><table><thead><tr><th>점수</th><th>수준</th></tr></thead><tbody>
         <tr><td class="mono">99+</td><td>숙련된 댄서도 받기 어려움</td></tr>
         <tr><td class="mono">95+</td><td>숙련된 댄서, 안무를 정확히 아는 사람</td></tr>
         <tr><td class="mono">90+</td><td>안무를 어느 정도 숙지한 일반인</td></tr>
-      </tbody></table></div></details>
+      </tbody></table></div>
       <p class="muted">시작과 끝 포즈까지 정확히 따라 하면 점수에 도움이 됩니다. 곡당 하이라이트 약 30초.</p>
     </div>
     <div class="block">
       <h2 class="sec">참여를 늘리는 현장 이벤트</h2>
-      <div class="vis" data-vis="mc-events"></div><details class="more"><summary>이벤트 설명 보기</summary><div class="grid g3">
+      <div class="grid g3">
         <div class="panel block"><h3>곡 도장 이벤트</h3><p class="muted">여러 곡 완주 시 도장. 체류 시간이 늘고 송리스트 연습 효과. 도장 카드는 본사에 요청.</p></div>
         <div class="panel block"><h3>고득점 굿즈</h3><p class="muted">90점·95점 기준으로 굿즈 증정. X배너로 기준을 미리 안내.</p></div>
         <div class="panel block"><h3>SNS 인증</h3><p class="muted">QR로 받은 플레이 영상 업로드, 공식 계정 팔로우 인증. 행사 전용 프레임 합성 가능 (별도 협의).</p></div>
-      </div></details>
+      </div>
     </div>
     <div class="block">
       <h2 class="sec">중계 화면 사이사이에 넣을 것</h2>
-      <div class="vis" data-vis="mc-between"></div><details class="more"><summary>자세히 보기</summary><ul class="list"><li>“대회를 미리 준비하세요!” + 앱 다운로드 QR + 스토어 검색어 <b>STEPIN</b></li><li>대회 송리스트 (다음 대회 참가자가 미리 연습)</li><li>선수 프로필과 선발 과정 스토리, 참가 각오</li></ul></details>
+      <ul class="list"><li>“대회를 미리 준비하세요!” + 앱 다운로드 QR + 스토어 검색어 <b>STEPIN</b></li><li>대회 송리스트 (다음 대회 참가자가 미리 연습)</li><li>선수 프로필과 선발 과정 스토리, 참가 각오</li></ul>
     </div>
   </div>
 </section>
@@ -1523,7 +1399,7 @@ figure.mock svg.wf{max-height:420px}
 <!-- ======== COMPARE ======== -->
 <section class="view" data-view="compare" hidden>
   <div class="vh"><span class="eyebrow">11 · Online vs Offline</span><h1>온·오프라인 토너먼트 비교</h1><p>온라인은 규모와 유입, 오프라인은 현장성과 공정한 판정에 강합니다. 대부분의 행사는 둘을 묶은 하이브리드가 가장 효과적입니다.</p></div>
-  <div class="block"><h2 class="sec">한눈에 비교</h2><div class="vis" data-vis="compare-score"></div></div><details class="more" open><summary>장단점 자세히 보기</summary><div class="vs">
+  <div class="vs">
     <div class="panel"><h3><span class="pill p-rec">ONLINE</span>APP 토너먼트</h3>
       <div class="pc pro"><ul><li>장소·국가 제약 없이 대규모 모집 (최대 1024강)</li><li>신청부터 결과까지 웹 툴킷으로 자동 진행</li><li>현장 비용 없음, 장기간 랭킹전 가능</li><li>참가자 연습 → 앱 신규 유입·리텐션 효과</li><li>선수 영상·CSV 우승자 데이터 자동 확보</li></ul></div>
       <div class="pc con"><ul><li>신청 대비 실제 참여율이 낮음</li><li>모바일 네트워크·기기 환경에 따라 중도 이탈</li><li>시차·일정 조율 필요 (동기 방식)</li><li>현장 관람 콘텐츠가 없어 화제성은 홍보에 의존</li></ul></div>
@@ -1536,11 +1412,11 @@ figure.mock svg.wf{max-height:420px}
       <div class="pc pro"><ul><li>넓게 모집하고 상위 N명만 현장 초청</li><li>예선 기간 내내 앱 연습 → 본선 경기력 상승</li><li>현장 비용을 본선 규모에 맞춰 통제</li><li>예선 홍보 + 본선 중계로 두 번의 노출 기회</li></ul></div>
       <div class="pc con"><ul><li>운영 기간이 길어짐 (예선 1~2주 + 본선)</li><li>진출자 참석 확인·대체 진출 절차 필요</li><li>예선·본선 송리스트를 맞추는 사전 기획 필요</li></ul></div>
     </div>
-  </div></details>
+  </div>
 
   <div class="block">
     <h2 class="sec">필수 필요 조건</h2>
-    <div class="vis" data-vis="compare-need"></div><details class="more"><summary>조건 비교 표로 보기</summary><div class="tbl"><table>
+    <div class="tbl"><table>
       <thead><tr><th>조건</th><th>온라인 APP 토너먼트</th><th>오프라인 아케이드 대회</th></tr></thead>
       <tbody>
         <tr><td class="k">계정 · 승인</td><td>비즈니스 계정 승인 + 개최 신청 본사 검토 승인</td><td>본사 협업 확정 (장비 · 운영 범위)</td></tr>
@@ -1552,7 +1428,7 @@ figure.mock svg.wf{max-height:420px}
         <tr><td class="k">인력</td><td>참가자 관리 (프라이빗 시 승인·거절), 문의 대응</td><td>MC, 슈퍼바이저, 레퍼리, 오퍼레이터, 스태프 2+, 반입 인력</td></tr>
         <tr><td class="k">개인정보</td><td>우승자 CSV(이름·국적·연락처·이메일) 관리, 미성년자 법정대리인 정보</td><td>현장 부속합의서 · 입상자 정보 수집 동의</td></tr>
       </tbody>
-    </table></div></details>
+    </table></div>
   </div>
 
   <div class="block">
@@ -1670,201 +1546,6 @@ figure.mock svg.wf{max-height:420px}
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-/* =====================================================================
-   시각 자료: 아이콘 스프라이트 + 도식 렌더러 (data-vis="..." 자리에 그림)
-   ===================================================================== */
-const ICONS={
- arcade:'<path d="M5.5 2.5h13v3h-13z"/><rect x="6.5" y="5.5" width="11" height="9.5"/><circle cx="12" cy="7.3" r=".6" fill="currentColor"/><path d="M4.5 15h15l-1 6.5h-13z"/><path d="M9 18.3h6"/>',
- phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18.5h2"/>',
- trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 21h6M10 17h4"/>',
- users:'<circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0 1 21 18.5"/>',
- user:'<circle cx="12" cy="7.5" r="3.5"/><path d="M5 21a7 7 0 0 1 14 0"/>',
- calendar:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
- clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
- plug:'<path d="M9 2v5M15 2v5M7 7h10v4a5 5 0 0 1-10 0zM12 16v6"/>',
- lan:'<rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/>',
- wifi:'<path d="M3 9a13 13 0 0 1 18 0M6 12.5a8.5 8.5 0 0 1 12 0M9 16a4 4 0 0 1 6 0"/><circle cx="12" cy="19.5" r=".8"/>',
- monitor:'<rect x="2.5" y="4" width="19" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/>',
- tvv:'<rect x="7" y="2" width="10" height="17" rx="1.2"/><path d="M12 19v3M9 22h6"/>',
- mic:'<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4.5M9 21.5h6"/>',
- speaker:'<rect x="6" y="2.5" width="12" height="19" rx="2"/><circle cx="12" cy="15" r="3.2"/><circle cx="12" cy="7" r="1.6"/>',
- camera:'<rect x="2.5" y="7" width="13" height="10" rx="1.5"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/>',
- light:'<path d="M5 4h8l-1 9H6z"/><path d="M13 6.5l7-2.5M13 9l8 0M13 11.5l7 2.5M9 13v5M6 21h6"/>',
- pc:'<rect x="4" y="4" width="16" height="11" rx="1.2"/><path d="M2 19h20l-2-4H4z"/>',
- capture:'<rect x="5" y="8" width="14" height="8" rx="1.5"/><path d="M2 12h3M19 12h3M9 12h6"/>',
- split:'<path d="M3 12h7M10 12l6-6h5M10 12l6 6h5"/><circle cx="10" cy="12" r="1.2"/>',
- mixer:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v10M12 7v10M16 7v10"/><rect x="6.5" y="9" width="3" height="2" rx=".5"/><rect x="10.5" y="13" width="3" height="2" rx=".5"/><rect x="14.5" y="8" width="3" height="2" rx=".5"/>',
- poster:'<rect x="5" y="2.5" width="14" height="19" rx="1"/><path d="M8 6h8M8 9h5"/><rect x="8" y="14" width="4" height="4"/><path d="M14 15h2M14 17h2"/>',
- banner:'<path d="M7 2h10v15H7z"/><path d="M7 17l-2.5 5M17 17l2.5 5M12 17v5M9.5 6h5M9.5 9h5"/>',
- wall:'<rect x="2" y="4" width="20" height="12" rx="1"/><path d="M5 16v5M19 16v5M7 8h10M7 11h6"/>',
- foot:'<ellipse cx="8.5" cy="9" rx="2.6" ry="4.2"/><ellipse cx="15.5" cy="13" rx="2.6" ry="4.2"/><path d="M3 21h18" stroke-dasharray="2 2"/>',
- shield:'<path d="M12 2.5 4.5 5.5v6c0 4.5 3.2 8.2 7.5 10 4.3-1.8 7.5-5.5 7.5-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
- chair:'<path d="M7 3h10v9H7zM5 12h14v3H5zM7 15v6M17 15v6"/>',
- truck:'<path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
- stream:'<circle cx="12" cy="12" r="2.2"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/>',
- rec:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/>',
- megaphone:'<path d="M3 10v4h3l9 5V5L6 10z"/><path d="M18 9a4 4 0 0 1 0 6M6 14l1.5 5h3L9 14"/>',
- star:'<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
- check:'<circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/>',
- x:'<circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/>',
- school:'<path d="M3 9 12 4l9 5-9 5z"/><path d="M7 11.5V17c2.5 2 7.5 2 10 0v-5.5M21 9v6"/>',
- building:'<path d="M4 21V5l8-3v19M12 9h8v12M4 21h17M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/>',
- globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',
- tag:'<path d="M3 12V3h9l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
- doc:'<path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4M9 12h6M9 15.5h6"/>',
- cloud:'<path d="M7 17a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a3.8 3.8 0 0 1-.5 7.5z"/><path d="M9 20l-1 2M13 20l-1 2M17 20l-1 2"/>',
- sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>',
- bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
- qr:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM18 14h3M14 18v3"/>',
- mask:'<path d="M3 9c3 0 5-2 9-2s6 2 9 2v3c0 4-4 6-9 6s-9-2-9-6z"/><path d="M7 11.5h10M8 14h8"/>',
- cap:'<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M4 15h17l-1 2H4z"/>',
- glasses:'<circle cx="7" cy="13" r="3.5"/><circle cx="17" cy="13" r="3.5"/><path d="M10.5 13h3M3.5 12 2 9M20.5 12 22 9"/>',
- shirt:'<path d="M8 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5-3c0 2-1.5 3-4 3S8 5 8 3z"/>',
- ai:'<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 15l2-6 2 6M9.7 13h2.6M15 9v6M2 9h3M2 15h3M19 9h3M19 15h3M9 2v3M15 2v3M9 19v3M15 19v3"/>',
- gift:'<rect x="3" y="8" width="18" height="5" rx="1"/><path d="M5 13v8h14v-8M12 8v13M12 8c-1-3-5-4-5-1s5 1 5 1 5 2 5-1-4-2-5 1"/>',
- share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/>',
- video:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/>',
- ruler:'<rect x="2" y="8" width="20" height="8" rx="1" transform="rotate(-0 12 12)"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/>',
- bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
- group:'<circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M4 12h16" stroke-dasharray="2 2"/>',
- radio:'<rect x="7" y="7" width="10" height="15" rx="2"/><path d="M14 7V2M10 11h4M10 14h4"/>'
-};
-(function(){const sp=document.createElementNS("http://www.w3.org/2000/svg","svg");sp.setAttribute("aria-hidden","true");sp.style.display="none";
- sp.innerHTML=Object.entries(ICONS).map(([k,v])=>`<symbol id="i-${k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${v}</symbol>`).join("");document.body.prepend(sp)})();
-const I=(n,c="")=>`<svg class="ic ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
-function tiles(items,cls=""){return `<div class="tiles ${cls}">${items.map(t=>`<div class="tile${t.hot?" hot":""}">${I(t.i)}<b>${esc(t.t)}</b>${t.s?`<span>${esc(t.s)}</span>`:""}${t.p?`<em class="pill ${t.pc||"p-rec"}">${esc(t.p)}</em>`:""}</div>`).join("")}</div>`}
-function iflow(items){return `<div class="iflow">${items.map((t,i)=>`${i?'<span class="iarr" aria-hidden="true">›</span>':""}<${t.h?`a href="${t.h}"`:"div"} class="ifs">${I(t.i)}<b>${esc(t.t)}</b>${t.s?`<span>${esc(t.s)}</span>`:""}</${t.h?"a":"div"}>`).join("")}</div>`}
-
-const VIS={
- /* ---- 홈 ---- */
- "home-flow":()=>iflow([{i:"calendar",t:"형태 · 일정 확정",s:"D-35",h:"#formats"},{i:"phone",t:"예선 개설",s:"D-30",h:"#online"},{i:"megaphone",t:"모객 · 활성화",s:"D-28~",h:"#boost"},{i:"wall",t:"제작물 · 셋팅",s:"D-14~D-1",h:"#production"},{i:"trophy",t:"본선 운영",s:"D-day",h:"#offline"},{i:"share",t:"사후 홍보",s:"D+7",h:"#assets"}]),
- "home-facts":()=>tiles([{i:"ruler",t:"2.2–2.5m",s:"카메라 ↔ 플레이어"},{i:"wall",t:"6 × 3m",s:"2대 대회 무대 최소"},{i:"bolt",t:"20A",s:"현장 전력 최소"},{i:"lan",t:"유선 LAN",s:"배틀 · 대회 필수"},{i:"clock",t:"1세트 ≈ 1분",s:"플레이 30초 + 준비"},{i:"calendar",t:"D-35",s:"예선+본선 최소 준비"}],"t6"),
-
- /* ---- 운영 형태 ---- */
- "formats-cards":()=>{const F=[
-   {k:"A",n:"현장 챌린지 랭킹전",d:"D-14",f:["arcade","users","trophy"],eq:["arcade"],u:"축제 · 학교 행사 · 팝업"},
-   {k:"B",n:"오프라인 단독 대회",d:"D-21",f:["users","arcade","monitor","trophy"],eq:["arcade","arcade","pc","monitor"],u:"학교 대항전 · 기관 행사"},
-   {k:"C",n:"앱 예선 + 오프라인 본선",d:"D-35",f:["phone","users","arcade","trophy"],eq:["phone","arcade","arcade","pc","monitor"],u:"지역 오픈 · 대표 선발",hot:1},
-   {k:"D",n:"온라인 단독 앱 토너먼트",d:"D-21",f:["phone","globe","trophy"],eq:["phone"],u:"글로벌 팬 이벤트 · 브랜드"},
-   {k:"E",n:"국제 · 다국가 대회",d:"D-56+",f:["globe","phone","arcade","stream"],eq:["phone","arcade","arcade","pc","stream"],u:"ECA · WDSF 챔피언십"}];
-  return `<div class="fcards">${F.map(x=>`<article class="fcard${x.hot?" hot":""}"><header><span class="fk">${x.k}</span><b>${esc(x.n)}</b>${x.hot?'<em class="pill p-req">권장</em>':""}</header><div class="fflow">${x.f.map((i,j)=>(j?'<span class="iarr">›</span>':"")+I(i,"lg")).join("")}</div><div class="fmeta"><span>${I("calendar")} 최소 <b>${x.d}</b></span><span class="feq">${x.eq.map(i=>I(i)).join("")}</span></div><p>${esc(x.u)}</p></article>`).join("")}</div>`},
- "formats-matrix":()=>{const C=["A","B","C","D"];const L={r:"필수",c:"권장",o:"선택","-":"불필요"};
-  const R=[["arcade","아케이드","c","r","r","-","1대(2대 권장) / 2대"],["phone","앱 토너먼트","-","-","r","r","계정 · 개최 승인"],["wall","플레이 공간","r","r","r","-","6×3m 이상"],["bolt","전원 20A","r","r","r","-","대당 500W"],["lan","유선 인터넷","c","r","r","-","↓5 / ↑2Mbps"],["pc","중계 PC · 캡처보드","-","r","r","-","RAM 16GB+"],["monitor","관중 모니터","o","r","r","-","65인치+"],["mic","MC · 음향","o","r","r","-","마이크 · 스피커 2"],["users","슈퍼바이저 · 레퍼리","-","r","r","-","각 1인"],["chair","선수 대기 공간","-","r","r","-","본선 인원"],["shield","안전바","c","r","r","-","4~6개"],["light","조명","c","c","c","-","저조도 시 필수"],["truck","반입 인력","r","r","r","-","대당 2인"],["gift","상금 · 상품","r","r","r","r","수량 명확히"]];
-  return `<div class="mtx"><div class="mtx-row mtx-h"><span></span>${C.map(c=>`<span>${c}</span>`).join("")}<span class="mtx-s">기준</span></div>${R.map(r=>`<div class="mtx-row"><span class="mtx-k">${I(r[0])}${esc(r[1])}</span>${r.slice(2,6).map(v=>`<span><i class="dot d-${v==="-"?"n":v}" title="${L[v]}"></i></span>`).join("")}<span class="mtx-s">${esc(r[6])}</span></div>`).join("")}<div class="mtx-legend"><span><i class="dot d-r"></i>필수</span><span><i class="dot d-c"></i>권장</span><span><i class="dot d-o"></i>선택</span><span><i class="dot d-n"></i>불필요</span></div></div>`},
- "formats-gantt":()=>{const T=[["C · 앱 예선 + 본선",[[35,30,"기획 · 승인","a"],[28,22,"송리스트 · 포스터","b"],[21,7,"접수 + 예선 랭킹전","c"],[14,8,"중계 · 장비 확정","d"],[7,3,"진출 확정 · 선수 정보","b"],[1,0,"반입 · 리허설 · 대회","e"]]],["B · 오프라인 단독",[[21,15,"규정 · 모집 시작","a"],[14,8,"중계 · 제작물","d"],[7,3,"참가 확정 · 큐시트","b"],[1,0,"반입 · 리허설 · 대회","e"]]],["A · 현장 랭킹전",[[14,8,"일정 · 운반 예약","a"],[7,3,"제작물 · 교육","d"],[1,0,"반입 · 대회","e"]]],["D · 온라인 단독",[[21,14,"승인 · 사전 노출","a"],[10,3,"접수 · 예선","c"],[2,0,"대진 · 본선","e"]]]];
-  const W=900,lw=150,max=35,sx=d=>lw+(max-d)/(max+7)*(W-lw-10),bh=24,gap=6,tw=t=>[...t].reduce((a,c)=>a+(/[\uac00-\ud7a3]/.test(c)?11.2:5.5),0)+12;
-  let y=26,body="";
-  T.forEach(t=>{const lanes=[];const placed=t[1].map(b=>{const x1=sx(b[0]),x2=Math.max(sx(b[1]),x1+10),inside=tw(b[2])<=x2-x1,end=inside?x2:x2+6+tw(b[2]);let L=lanes.findIndex(e=>e<=x1-2);if(L<0){L=lanes.length;lanes.push(0)}lanes[L]=end;return {b,x1,x2,inside,L}});
-   const h=lanes.length*(bh+gap)+8;body+=`<text x="0" y="${y+bh/2+5}" class="g-lab">${esc(t[0])}</text>`;
-   placed.forEach(o=>{const yy=y+o.L*(bh+gap);body+=`<rect x="${o.x1}" y="${yy}" width="${o.x2-o.x1}" height="${bh}" rx="6" class="g-bar g-${o.b[3]}"/>`+(o.inside?`<text x="${o.x1+6}" y="${yy+16}" class="g-bt">${esc(o.b[2])}</text>`:`<text x="${o.x2+6}" y="${yy+16}" class="g-bo">${esc(o.b[2])}</text>`)});
-   y+=h+10;body+=`<line x1="0" y1="${y-8}" x2="${W}" y2="${y-8}" class="g-sep"/>`});
-  let g=`<svg viewBox="0 0 ${W} ${y}" class="gantt" role="img" aria-label="형태별 최소 준비 일정 타임라인">`;
-  [35,28,21,14,7,0,-7].forEach(d=>{const x=sx(d);g+=`<line x1="${x}" y1="18" x2="${x}" y2="${y-10}" class="g-grid${d===0?" dday":""}"/><text x="${x}" y="12" text-anchor="middle" class="g-ax">${d>0?"D-"+d:d===0?"D-day":"D+7"}</text>`});
-  return g+body+`</svg>`},
- "formats-rnr":()=>{const R=[["calendar","기획 · 규정","일정 · 장소 · 상금 · 자격","규정 · 포맷 · 송리스트"],["phone","예선","지역 홍보 · 공문","앱 개설 · 디자인 · 집계 · 푸시"],["wall","현장 구성","무대 · 백월 · 조명 · 전원 · 인터넷","아케이드 반입 · 대회 프로그램 · 시안"],["users","운영 인력","MC · 스태프 · 안전","기술 오퍼레이터 · 심판 보조"],["stream","중계","송출 · 촬영","게임 화면 · 대진표 출력"],["gift","사후","상금 지급 · 소스 공유","결과 공지 · SNS 홍보"]];
-  return `<div class="lanes"><div class="lane-h"><span></span><b>${I("building")} 파트너</b><b>${I("star")} 싸이드워크</b></div>${R.map(r=>`<div class="lane"><span class="lane-k">${I(r[0])}${esc(r[1])}</span><span class="lane-p">${esc(r[2])}</span><span class="lane-s">${esc(r[3])}</span></div>`).join("")}</div>`},
-
- /* ---- 온라인 예선 ---- */
- "online-steps":()=>iflow([{i:"user",t:"비즈니스 계정 신청",s:"앱 > 설정"},{i:"check",t:"본사 승인",s:"cs@sidewalkplay.com"},{i:"doc",t:"개최 신청 3페이지",s:"본사 검토"},{i:"poster",t:"포스터 · 트랙 · 공지",s:"SETUP"},{i:"trophy",t:"자동 진행",s:"공개 → 종료"}]),
- "online-timeline":()=>{const S=[["UPCOMING","사전 노출","최소 5분","bell"],["REGISTER","참가 신청","30분~14일","users"],["QUALIFIER","예선 랭킹전","최소 24시간","phone"],["SELECTING","진출자 선정","30분~30일","check"],["PREMATCH","대진 공개","24시간 후 시작","group"],["LIVE","본선 라운드","라운드당 30분+","trophy"],["FINISHED","종료","CSV · 영상","doc"]];
-  return `<div class="chev">${S.map((s,i)=>`<div class="cv${s[0]==="LIVE"?" hot":""}">${I(s[3])}<code>${s[0]}</code><b>${s[1]}</b><span>${s[2]}</span></div>`).join("")}</div>`},
- "online-select":()=>`<div class="g2x2">${[["수동","수동","진출자 선택 + 매치 배정","user","user"],["수동","자동","진출자만 선택","user","ai"],["자동","수동","매치만 배정","ai","user"],["자동","자동","작업 없음","ai","ai"]].map(r=>`<div class="sq"><div class="sq-i">${I(r[3],"lg")}<span>+</span>${I(r[4],"lg")}</div><b>선정 ${r[0]} · 배정 ${r[1]}</b><span>${r[2]}</span></div>`).join("")}</div>`,
- "online-tips":()=>tiles([{i:"star",t:"상위 10곡 합산",s:"지정곡 20곡 중 · 10분마다 갱신"},{i:"clock",t:"동점 = 먼저 득점",s:"공지에 미리 명시"},{i:"phone",t:"참석 유선 확인",s:"미성년자는 보호자 먼저"},{i:"doc",t:"신분증 · 부속합의서",s:"지역 한정 대회"},{i:"bell",t:"연습 독려 푸시",s:"시간대 맞춰 본사 요청"}]),
- "online-prize":()=>tiles([{i:"tag",t:"현금",s:"USD · KRW · EUR · IDR"},{i:"star",t:"다이아",s:"0~9,999개"},{i:"gift",t:"실물 상품",s:"이름 30자 + 이미지"},{i:"trophy",t:"보너스 상품",s:"순위 무관 · 주최 지정"}]),
- "online-games":()=>`<div class="gm"><div class="gm-b"><b>1024강 ~ 16강</b><div class="gm-dots">${"<i></i>".repeat(3)}</div><span>매치당 3게임</span></div><div class="gm-b hot"><b>8강 ~ 결승</b><div class="gm-dots">${"<i></i>".repeat(5)}</div><span>매치당 5게임</span></div><div class="gm-b"><b>No Show</b>${I("x","lg")}<span>전혀 안 함 → 패배</span></div><div class="gm-b"><b>FF</b>${I("clock","lg")}<span>절반 미만 플레이</span></div></div>`,
-
- /* ---- 오프라인 본선 ---- */
- "offline-format":()=>{const g=(groups,per,adv)=>{let s=`<svg viewBox="0 0 ${groups*64} 70" class="gdiag" aria-hidden="true">`;for(let k=0;k<groups;k++){s+=`<rect x="${k*64+4}" y="4" width="56" height="${Math.ceil(per/2)*16+18}" rx="8" class="gd-box"/><text x="${k*64+32}" y="16" text-anchor="middle" class="gd-t">${String.fromCharCode(65+k)}조</text>`;for(let p=0;p<per;p++){const cx=k*64+20+(p%2)*24,cy=28+Math.floor(p/2)*16;s+=`<circle cx="${cx}" cy="${cy}" r="5.5" class="${p<adv?"gd-adv":"gd-p"}"/>`}}return s+"</svg>"};
-  const C=[["8명","바로 8강",`<svg viewBox="0 0 120 70" class="gdiag" aria-hidden="true">${[0,1,2,3,4,5,6,7].map(i=>`<circle cx="${12+(i%4)*32}" cy="${i<4?22:50}" r="6.5" class="gd-adv"/>`).join("")}</svg>`],["9–11명","2개 조 · 조별 상위 4",g(2,5,4)],["12–16명","4개 조 · 조별 상위 2",g(4,4,2)],["17명+","앱 예선 압축 또는 32강",`<svg viewBox="0 0 120 70" class="gdiag" aria-hidden="true">${Array.from({length:16}).map((_,i)=>`<circle cx="${8+(i%8)*15}" cy="${i<8?20:44}" r="5" class="gd-p"/>`).join("")}<text x="60" y="66" text-anchor="middle" class="gd-t">32강 싱글</text></svg>`]];
-  return `<div class="fmt4">${C.map(c=>`<div class="fmt"><b>${c[0]}</b>${c[2]}<span>${c[1]}</span></div>`).join("")}</div><div class="legend"><span><i class="ldot adv"></i>본선 진출</span><span><i class="ldot"></i>그룹 스테이지</span></div>`},
- "offline-bracket":()=>{let s=`<svg viewBox="0 0 860 330" class="bracket" role="img" aria-label="8강 더블 엘리미네이션 대진 구조">`;
-  const box=(x,y,t,c="")=>`<rect x="${x}" y="${y}" width="120" height="34" rx="8" class="bk-b ${c}"/><text x="${x+60}" y="${y+22}" text-anchor="middle" class="bk-t">${t}</text>`;
-  const ln=(x1,y1,x2,y2,c="")=>`<path d="M${x1},${y1} H${(x1+x2)/2} V${y2} H${x2}" class="bk-l ${c}"/>`;
-  s+=`<text x="10" y="18" class="bk-h">승자조 (Winner's Bracket)</text><text x="10" y="214" class="bk-h">패자조 (Loser's Bracket) · 2패 탈락</text>`;
-  const wy=[30,74,118,162];wy.forEach((y,i)=>s+=box(10,y,`8강 매치 ${i+1}`));s+=box(190,52,"승자조 4강 1")+box(190,140,"승자조 4강 2")+box(370,96,"승자조 결승","hot");
-  s+=ln(130,47,190,69)+ln(130,91,190,69)+ln(130,135,190,157)+ln(130,179,190,157)+ln(310,69,370,113)+ln(310,157,370,113);
-  s+=box(190,222,"패자 1R 1")+box(190,272,"패자 1R 2")+box(370,222,"패자 2R 1")+box(370,272,"패자 2R 2")+box(550,247,"패자 3R")+box(550,190,"패자조 결승");
-  s+=ln(310,239,370,239,"lb")+ln(310,289,370,289,"lb")+ln(490,239,550,264,"lb")+ln(490,289,550,264,"lb")+ln(670,264,670,207,"lb");
-  s+=`<path d="M670,264 H690 V207 H670" class="bk-l lb"/>`;
-  s+=box(730,140,"그랜드 파이널","gf")+ln(490,113,730,157)+`<path d="M670,207 H700 V157 H730" class="bk-l lb"/>`;
-  s+=`<text x="790" y="196" text-anchor="middle" class="bk-n">패자조 승리 시</text><text x="790" y="212" text-anchor="middle" class="bk-n">리셋 매치 1회</text></svg>`;return s},
- "offline-sets":()=>`<div class="setbar"><div class="sb-row"><b>세트 구성</b><div class="sb">${[3,5,7,9].map(n=>`<span class="sb-c">${n}세트</span>`).join("")}</div><span class="sb-n">대회별 선택 · 결승은 길게</span></div><div class="sb-row"><b>1세트</b><div class="sb-time"><span class="st-play" style="flex:1">플레이 약 30초</span><span class="st-prep" style="flex:1">준비 · 교체</span></div><span class="sb-n">≈ 1분</span></div><div class="sb-row"><b>팀전 7세트 예</b><div class="sb">${["A","B","A","B","A","B","A/B"].map((x,i)=>`<span class="sb-c ${i===6?"last":x==="A"?"ta":"tb"}">${x}</span>`).join("")}</div><span class="sb-n">마지막 1세트는 팀 결정</span></div></div>`,
- "offline-team":()=>`<div class="fmt4"><div class="fmt"><b>4–5팀</b>${I("users","lg")}<span>단일 그룹 풀 리그 → 1·2위 결승 · 3·4위전</span></div><div class="fmt"><b>6팀</b>${I("group","lg")}<span>2개 조 → 조별 상위 2팀 4강 (A1–B2 · B1–A2)</span></div><div class="fmt"><b>득점</b>${I("star","lg")}<span>승 1점 · 패 0점</span></div></div>`,
- "offline-songs":()=>tiles([{i:"doc",t:"최소 25곡 풀",s:"사전 공유 · 매치마다 랜덤"},{i:"star",t:"앱 인기곡 중심",s:"공통 10곡 + 각 15곡"},{i:"clock",t:"곡당 약 30초",s:"하이라이트 구간"},{i:"globe",t:"서비스 제한곡 확인",s:"국가 · 지역별"},{i:"phone",t:"예선 경연곡과 맞춤",s:"중계 화면에도 노출"}]),
- "offline-tie":()=>iflow([{i:"users",t:"승자승",s:"맞대결 승자"},{i:"ruler",t:"세트 득실차",s:"전체 세트"},{i:"star",t:"포인트 득실차",s:"전체 포인트"},{i:"bolt",t:"단판 재경기",s:"진출권이 걸린 경우만"}]),
- "offline-dress":()=>`<div class="dress"><div class="dz no"><h4>${I("x")} 금지</h4><div class="dz-i">${[["mask","마스크"],["cap","모자"],["glasses","선글라스"],["shirt","과하게 헐렁한 옷"]].map(x=>`<span>${I(x[0],"lg")}<em>${x[1]}</em></span>`).join("")}</div></div><div class="dz ok"><h4>${I("check")} 권장</h4><div class="dz-i">${[["user","얼굴 · 전신 노출"],["shirt","몸에 맞는 옷"],["wall","배경과 다른 색"],["foot","운동화"]].map(x=>`<span>${I(x[0],"lg")}<em>${x[1]}</em></span>`).join("")}</div></div></div>`,
- "offline-day":()=>{const B=[["10:00",60,"개막 · 등록","a"],["11:00",120,"연습 (점심 포함)","b"],["13:00",30,"세팅","n"],["13:30",90,"32강 16매치","e"],["15:00",30,"세팅","n"],["15:30",60,"16강 · 8강","e"],["16:30",15,"","n"],["16:45",30,"4강·결승","e"],["17:15",15,"인터뷰","b"],["17:30",30,"마무리","n"],["18:00",30,"시상","a"]];
-  const tot=B.reduce((a,b)=>a+b[1],0);let x=0;let s=`<svg viewBox="0 0 900 112" class="dayline" role="img" aria-label="32강 하루 타임테이블">`;
-  let lx=-99;const tw=t=>[...t].reduce((a,c)=>a+(/[\uac00-\ud7a3]/.test(c)?11.5:5.5),0)+8;B.forEach(b=>{const w=b[1]/tot*880;s+=`<rect x="${10+x}" y="30" width="${w-2}" height="36" rx="5" class="g-bar g-${b[3]}"/>`;if(b[2]){if(w>=tw(b[2]))s+=`<text x="${10+x+w/2}" y="52" text-anchor="middle" class="g-bt c">${esc(b[2])}</text>`;else s+=`<text x="${10+x+w/2}" y="84" text-anchor="middle" class="g-bo">${esc(b[2])}</text>`}if(x-lx>=44){s+=`<text x="${10+x}" y="20" class="g-ax">${b[0]}</text>`;lx=x}x+=w});
-  return s+`<text x="890" y="106" text-anchor="end" class="g-ax">18:30 종료 · 총 8시간 30분</text></svg>`},
- "offline-send":()=>tiles([{i:"wall",t:"Floor plan",s:"무대 · 관중 · 부조 · 대기 · 창문 방향"},{i:"calendar",t:"전체 스케줄",s:"세팅 → 리허설 → 경기 → 시상"},{i:"radio",t:"비상연락망",s:"운영 · 선수 · 방송 · 안전"},{i:"stream",t:"방송 계획",s:"송출 여부 · 플랫폼 · 촬영팀"},{i:"user",t:"선수 정보",s:"영문 닉네임 12자 · 프로필 · 팀명"}]),
- "offline-staff":()=>tiles([{i:"mic",t:"MC",s:"1명 · 진행 · 중계"},{i:"star",t:"슈퍼바이저",s:"1명 · 운영 총괄"},{i:"shield",t:"레퍼리",s:"1명 · 판정"},{i:"pc",t:"오퍼레이터",s:"1–2명 · 대진 · 중계"},{i:"users",t:"현장 스태프",s:"2명+ · 호출 · 안전"},{i:"truck",t:"반입 인력",s:"대당 2명"}],"t6"),
-
- /* ---- 활성화 ---- */
- "boost-phases":()=>{const P=[["megaphone","모객","D-28~",[["phone","앱 배너 · 푸시","본사"],["share","공식 SNS","본사"],["users","댄스학원 · 크루 네트워크","본사"],["school","학교 공문 · 포스터","파트너"],["video","숏폼 광고 · 인플루언서","협의"]]],["phone","예선 중","D-21~D-7",[["doc","송리스트 공개 · 연습 독려","공동"],["bell","시간대별 푸시","본사"],["wifi","와이파이 참여 안내","공동"],["star","중간 순위 공유","공동"]]],["arcade","현장","D-day",[["arcade","체험존 동시 운영","공동"],["gift","고득점 굿즈 · 도장","파트너"],["qr","앱 다운로드 인증","파트너"],["mic","MC 응원 유도","파트너"]]],["share","사후","D+7",[["trophy","결과 · 우승 인터뷰","공동"],["video","하이라이트 숏폼","공동"],["tag","영상 2차 활용","본사"],["calendar","다음 대회 예고","공동"]]]];
-  return `<div class="phases">${P.map(p=>`<div class="ph"><header>${I(p[0],"lg")}<div><b>${p[1]}</b><span>${p[2]}</span></div></header><ul>${p[3].map(x=>`<li>${I(x[0])}<span>${esc(x[1])}</span><em class="who w-${x[2]==="본사"?"s":x[2]==="파트너"?"p":"c"}">${x[2]}</em></li>`).join("")}</ul></div>`).join("")}</div>`},
-
- "boost-prize":()=>{const P=[["2위","티셔츠 + 키링","33,400원",110,"g-b"],["1위","텀블러 + 티셔츠","49,800원",150,"g-a"],["3위","키링","8,500원",80,"g-c"]];let s=`<svg viewBox="0 0 640 230" class="floor" role="img" aria-label="교내 대회 상품 구성 시상대">`;P.forEach((p,i)=>{const x=40+i*150,y=210-p[3];s+=`<rect x="${x}" y="${y}" width="130" height="${p[3]}" rx="6" class="g-bar ${p[4]}"/><text x="${x+65}" y="${y+30}" text-anchor="middle" class="wf-t">${p[0]}</text><text x="${x+65}" y="${y-28}" text-anchor="middle" class="fl-t">${p[1]}</text><text x="${x+65}" y="${y-10}" text-anchor="middle" class="fl-s">${p[2]} · 학교당 1</text>`});
-  s+=`<rect x="500" y="120" width="120" height="90" rx="8" class="fl-node2"/><text x="560" y="150" text-anchor="middle" class="fl-t">체험존</text><text x="560" y="172" text-anchor="middle" class="fl-s">스티커 1,000원 ×30</text><text x="560" y="190" text-anchor="middle" class="fl-s">소분 세트 2,500원 ×10</text><line x1="20" y1="210" x2="620" y2="210" class="fl-dim"/></svg>`;return `<figure class="mock">${s}<figcaption>학교당 기준 · 20개교 총 약 293만원</figcaption></figure>`},
- /* ---- 제작물 ---- */
- "prod-poster":()=>`<div class="mock-row"><figure class="mock"><svg viewBox="0 0 200 280" class="wf" role="img" aria-label="대회 포스터 필수 요소 배치"><rect x="4" y="4" width="192" height="272" rx="6" class="wf-bg"/><rect x="16" y="18" width="168" height="40" rx="4" class="wf-a"/><text x="100" y="43" text-anchor="middle" class="wf-t">대회명</text><rect x="16" y="66" width="168" height="96" rx="4" class="wf-img"/><text x="100" y="118" text-anchor="middle" class="wf-t2">키비주얼 · 아케이드 이미지</text><rect x="16" y="170" width="110" height="20" rx="3" class="wf-b"/><text x="22" y="184" class="wf-s">예선 · 본선 일정</text><rect x="16" y="196" width="110" height="20" rx="3" class="wf-b"/><text x="22" y="210" class="wf-s">총상금 · 순위별</text><rect x="16" y="222" width="110" height="20" rx="3" class="wf-b"/><text x="22" y="236" class="wf-s">참가 방법 · 자격</text><rect x="134" y="170" width="50" height="50" rx="3" class="wf-qr"/><text x="159" y="232" text-anchor="middle" class="wf-s">앱 QR</text><text x="159" y="243" text-anchor="middle" class="wf-s">필수</text><rect x="16" y="250" width="168" height="16" rx="3" class="wf-b"/><text x="100" y="261" text-anchor="middle" class="wf-s">주최 · 협업 로고 · 문의처</text></svg><figcaption>대회 포스터 · SNS 1080×1350 / 인쇄 A2·A3</figcaption></figure>
-   <figure class="mock"><div class="sizes">${[["앱 포스터","270×312",270,312],["앱 배너","343×484",343,484],["인앱 배너","686×240",686,240],["인앱 배너","540×624",540,624],["SNS 피드","1080×1350",1080,1350],["스토리 · 릴스","1080×1920",1080,1920]].map(z=>{const k=Math.min(110/z[2],110/z[3]);return `<div class="sz"><i style="width:${Math.round(z[2]*k)}px;height:${Math.round(z[3]*k)}px"></i><b>${z[0]}</b><span class="mono">${z[1]}</span></div>`}).join("")}</div><figcaption>디지털 소재 규격 (비율 그대로)</figcaption></figure></div>`,
- "prod-site":()=>`<div class="mock-row"><figure class="mock wide"><svg viewBox="0 0 520 250" class="wf" role="img" aria-label="현장 설치물 배치"><rect x="10" y="10" width="500" height="80" rx="6" class="wf-a"/><text x="260" y="45" text-anchor="middle" class="wf-t">백월 6×3m ~ 7×4m</text><text x="260" y="64" text-anchor="middle" class="wf-s">대회명 · 로고 · 앱 QR · 의상과 다른 색 · 무광</text><rect x="120" y="100" width="40" height="70" rx="4" class="wf-dev"/><rect x="360" y="100" width="40" height="70" rx="4" class="wf-dev"/><text x="140" y="140" text-anchor="middle" class="wf-s w">A</text><text x="380" y="140" text-anchor="middle" class="wf-s w">B</text><ellipse cx="140" cy="215" rx="20" ry="8" class="wf-foot"/><ellipse cx="380" cy="215" rx="20" ry="8" class="wf-foot"/><text x="140" y="240" text-anchor="middle" class="wf-s">바닥 위치 테이프</text><text x="380" y="240" text-anchor="middle" class="wf-s">바닥 위치 테이프</text><rect x="20" y="110" width="40" height="120" rx="3" class="wf-b"/><text x="40" y="175" text-anchor="middle" class="wf-s">X배너</text><rect x="460" y="190" width="44" height="32" rx="3" class="wf-b"/><text x="482" y="210" text-anchor="middle" class="wf-s">POP A4</text><rect x="230" y="110" width="60" height="44" rx="3" class="wf-mon"/><text x="260" y="137" text-anchor="middle" class="wf-s w">중계 65"</text></svg><figcaption>무대 설치물 배치 예시</figcaption></figure></div>`,
- "prod-overlay":()=>`<figure class="mock"><svg viewBox="0 0 640 360" class="wf" role="img" aria-label="1920×1080 경기 화면 오버레이 구성"><rect x="0" y="0" width="640" height="360" rx="6" class="wf-bg"/><rect x="0" y="0" width="203" height="360" class="wf-img"/><text x="101" y="180" text-anchor="middle" class="wf-t2">아케이드 A</text><text x="101" y="198" text-anchor="middle" class="wf-s">608×1080</text><rect x="437" y="0" width="203" height="360" class="wf-img"/><text x="538" y="180" text-anchor="middle" class="wf-t2">아케이드 B</text><text x="538" y="198" text-anchor="middle" class="wf-s">608×1080</text><rect x="213" y="12" width="214" height="40" rx="4" class="wf-a"/><text x="320" y="37" text-anchor="middle" class="wf-t">라운드 · 세트 스코어</text><rect x="213" y="62" width="100" height="28" rx="4" class="wf-b"/><text x="263" y="80" text-anchor="middle" class="wf-s">선수 A</text><rect x="327" y="62" width="100" height="28" rx="4" class="wf-b"/><text x="377" y="80" text-anchor="middle" class="wf-s">선수 B</text><rect x="213" y="100" width="214" height="140" rx="4" class="wf-b"/><text x="320" y="174" text-anchor="middle" class="wf-s">대진표 · 실사 PIP</text><rect x="213" y="250" width="214" height="60" rx="4" class="wf-b"/><text x="320" y="285" text-anchor="middle" class="wf-s">곡 정보 · 스폰서</text><rect x="213" y="318" width="214" height="32" rx="4" class="wf-qr"/><text x="320" y="339" text-anchor="middle" class="wf-s">하단 자막 · 앱 QR</text></svg><figcaption>경기 장면 1920×1080 · 세로 화면 2개 + 가운데 정보</figcaption></figure>`,
- "prod-docs":()=>tiles([{i:"doc",t:"대회 규정집",s:"본사"},{i:"shield",t:"참가 신청 · 개인정보 동의",s:"파트너 · 미성년자 보호자"},{i:"doc",t:"대회 부속합의서",s:"현장 서명 · 영상 활용"},{i:"gift",t:"입상자 정보 수집서",s:"상금 지급"},{i:"mic",t:"MC 큐시트",s:"필수 멘트 ★"},{i:"poster",t:"송리스트 안내",s:"25곡 풀"},{i:"users",t:"스태프 교육 자료",s:"본사"},{i:"star",t:"도장 카드 · 굿즈",s:"파트너"}]),
-
- "mc-score":()=>`<div class="scorebar">${[["90+","안무를 어느 정도 숙지한 일반인",40],["95+","숙련된 댄서 · 안무 정확",28],["99+","숙련된 댄서도 어려움",14]].map(x=>`<div class="sbx" style="flex:${x[2]}"><b class="num">${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>`,
- "mc-events":()=>tiles([{i:"star",t:"곡 도장 이벤트",s:"여러 곡 완주 · 카드는 본사 요청"},{i:"gift",t:"고득점 굿즈",s:"90점 · 95점 기준 · X배너 안내"},{i:"share",t:"SNS 인증",s:"QR 영상 업로드 · 팔로우"}]),
- "mc-between":()=>tiles([{i:"qr",t:"앱 QR + 검색어 STEPIN",s:"“대회를 미리 준비하세요!”"},{i:"doc",t:"대회 송리스트",s:"다음 대회 연습용"},{i:"user",t:"선수 스토리",s:"프로필 · 선발 과정 · 각오"}]),
- /* ---- 비교 ---- */
- "compare-score":()=>{const R=[["users","참가 규모",5,2,5],["globe","지역 제약 없음",5,1,4],["monitor","현장 관람 · 화제성",1,5,5],["shield","판정 공정성",3,5,5],["tag","비용 부담 낮음",5,2,3],["clock","준비 기간 짧음",4,3,2],["phone","앱 유입 · 홍보",5,2,5]];
-  const bar=v=>`<span class="sc5">${[1,2,3,4,5].map(k=>`<i class="${k<=v?"on":""}"></i>`).join("")}</span>`;
-  return `<div class="mtx cmp"><div class="mtx-row mtx-h"><span></span><span>${I("phone")} 온라인</span><span>${I("arcade")} 오프라인</span><span>${I("star")} 하이브리드</span></div>${R.map(r=>`<div class="mtx-row"><span class="mtx-k">${I(r[0])}${esc(r[1])}</span><span>${bar(r[2])}</span><span>${bar(r[3])}</span><span>${bar(r[4])}</span></div>`).join("")}</div>`},
- "compare-need":()=>`<div class="vs2"><div class="ph"><header>${I("phone","lg")}<div><b>온라인 APP</b><span>필요한 것</span></div></header><ul>${[["check","비즈니스 계정 · 개최 승인"],["clock","접수 24시간 후 시작 · 예선 24시간+"],["gift","상금 · 상품 명확히"],["wifi","참가자 스마트폰 · 와이파이"],["doc","경연곡 5~30곡"],["user","참가자 문의 대응"]].map(x=>`<li>${I(x[0])}<span>${x[1]}</span></li>`).join("")}</ul></div><div class="ph"><header>${I("arcade","lg")}<div><b>오프라인 아케이드</b><span>필요한 것</span></div></header><ul>${[["arcade","아케이드 2대 · 6×3m 무대"],["bolt","20A 전원 · 유선 LAN"],["pc","중계 PC · 캡처보드 · 모니터"],["users","MC · 슈퍼바이저 · 레퍼리 · 스태프"],["shield","본인 확인 · 보호자 동의 · 복장"],["calendar","D-1 반입 · 리허설"]].map(x=>`<li>${I(x[0])}<span>${x[1]}</span></li>`).join("")}</ul></div></div>`,
- /* ---- 방송 · 중계 ---- */
- "bc-models":()=>{const M=[["STANDARD","43\" 일체형","700 × 2,033 × 550","약 80kg","500W","2.2–2.5m","2대 연동 배틀",56,163],["WIDE","65\" 일체형","1,600 × 1,900 × 380","약 120kg","600W","2.8–3.2m","1대에서 2인",128,152],["PORTABLE","외부 43\" 세로 모니터","480 × 234 × 330","약 8kg","멀티탭 · 20A","2.2–2.5m","2대 연동 배틀",40,20]];
-  return `<div class="models">${M.map(m=>{const sc=m[8]>100?1:1;const h=m[8],w=m[7];let svg=`<svg viewBox="0 0 150 175" class="mdl" aria-hidden="true"><line x1="0" y1="170" x2="150" y2="170" class="fl-dim"/>`;
-   if(m[0]==="PORTABLE")svg+=`<rect x="45" y="20" width="60" height="105" rx="4" class="wf-mon"/><text x="75" y="76" text-anchor="middle" class="wf-s w">모니터</text><rect x="55" y="132" width="40" height="18" rx="3" class="fl-dev"/><rect x="40" y="150" width="70" height="4" class="wf-b"/><path d="M48 154v16M102 154v16" class="fl-wire"/>`;
-   else svg+=`<rect x="${75-w/2}" y="${170-h}" width="${w}" height="${h}" rx="6" class="fl-dev"/><rect x="${75-w/2+6}" y="${170-h+14}" width="${w-12}" height="${h*.5}" rx="3" class="wf-mon"/><circle cx="75" cy="${170-h+7}" r="2.5" fill="#fff"/>`;
-   return `<div class="mdc">${svg}</svg><b>${m[0]}</b><span>${m[1]}</span><dl><dt>${I("ruler")}</dt><dd class="mono">${m[2]}mm</dd><dt>${I("truck")}</dt><dd>${m[3]}</dd><dt>${I("bolt")}</dt><dd>${m[4]}</dd><dt>${I("user")}</dt><dd>거리 ${m[5]}</dd><dt>${I("users")}</dt><dd>${m[6]}</dd></dl></div>`}).join("")}</div>`},
- "bc-floor":()=>`<figure class="mock"><svg viewBox="0 0 900 470" class="floor" role="img" aria-label="대회 무대 평면 배치도: 아케이드 2대, 플레이 위치 2.2~2.5m, 관중 · 부조 · 대기 공간">
-   <rect x="40" y="20" width="560" height="22" rx="4" class="fl-wall"/><text x="320" y="36" text-anchor="middle" class="fl-t w">백월 6~7m</text>
-   <rect x="40" y="46" width="560" height="280" rx="8" class="fl-stage"/><text x="320" y="318" text-anchor="middle" class="fl-s">무대 6×3m 이상 · 포맥스 무광 바닥</text>
-   ${[160,480].map((x,i)=>`<rect x="${x-26}" y="52" width="52" height="40" rx="5" class="fl-dev"/><text x="${x}" y="77" text-anchor="middle" class="fl-t w">${i?"B":"A"}</text><path d="M${x-14},92 L${x-90},300 L${x+90},300 L${x+14},92Z" class="fl-cone"/><ellipse cx="${x}" cy="262" rx="42" ry="15" class="fl-spot"/><text x="${x}" y="267" text-anchor="middle" class="fl-s b">플레이 위치</text><line x1="${x+44}" y1="92" x2="${x+44}" y2="262" class="fl-dim"/><text x="${x+50}" y="182" class="fl-d">2.2–2.5m</text>`).join("")}
-   <line x1="40" y1="340" x2="600" y2="340" class="fl-belt"/><text x="320" y="356" text-anchor="middle" class="fl-s">안전바 (벨트형 4~6)</text>
-   <rect x="40" y="366" width="560" height="90" rx="8" class="fl-aud"/><text x="320" y="408" text-anchor="middle" class="fl-t">관중석 · 카메라 시야 밖</text><text x="320" y="428" text-anchor="middle" class="fl-s">관중은 중계 모니터로 관람</text>
-   <rect x="616" y="120" width="34" height="100" rx="4" class="fl-mon"/><text x="633" y="236" text-anchor="middle" class="fl-s">관중 모니터</text><text x="633" y="250" text-anchor="middle" class="fl-s">65"+</text>
-   <rect x="676" y="46" width="200" height="150" rx="8" class="fl-ctl"/><text x="776" y="74" text-anchor="middle" class="fl-t">부조 4×3m</text><text x="776" y="96" text-anchor="middle" class="fl-s">중계 PC · 캡처보드</text><text x="776" y="114" text-anchor="middle" class="fl-s">믹서 · 무전기</text><text x="776" y="132" text-anchor="middle" class="fl-s">책상 2 · 의자 4</text><text x="776" y="170" text-anchor="middle" class="fl-s b">무대가 보이는 위치</text>
-   <rect x="676" y="220" width="200" height="106" rx="8" class="fl-wait"/><text x="776" y="262" text-anchor="middle" class="fl-t">선수 대기</text><text x="776" y="282" text-anchor="middle" class="fl-s">본선 인원만큼 의자</text>
-   <rect x="676" y="366" width="200" height="90" rx="8" class="fl-mc"/><text x="776" y="404" text-anchor="middle" class="fl-t">MC · 인터뷰석</text><text x="776" y="424" text-anchor="middle" class="fl-s">보조 조명 1</text>
-   <text x="10" y="190" class="fl-s" transform="rotate(-90 14 190)">후면 60cm · 천장 3m</text></svg><figcaption>대회 무대 평면도 (STANDARD 2대 기준, 위에서 본 모습)</figcaption></figure>`,
- "bc-ai":()=>`<div class="dress"><div class="dz ok"><h4>${I("check")} 정확한 채점</h4><div class="dz-i">${[["ruler","2.2–2.5m 거리"],["user","전신이 화면 안"],["wall","배경 ≠ 의상 색"],["light","정면 조명"]].map(x=>`<span>${I(x[0],"lg")}<em>${x[1]}</em></span>`).join("")}</div></div><div class="dz no"><h4>${I("x")} 점수 오류 원인</h4><div class="dz-i">${[["sun","역광 · 직사광선"],["users","2명 이상 인식"],["shirt","검정 벽 + 검정 옷"],["light","무빙 · 스트로브"]].map(x=>`<span>${I(x[0],"lg")}<em>${x[1]}</em></span>`).join("")}</div></div></div>`,
- "bc-move":()=>iflow([{i:"truck",t:"세워서 운반",s:"눕히기 금지"},{i:"users",t:"대당 성인 2인",s:"STANDARD 약 80kg"},{i:"building",t:"지상 하역장",s:"지하주차장 X"},{i:"foot",t:"계단 없는 동선",s:"화물 엘리베이터"},{i:"check",t:"포장재 반납",s:"반출 후"}]),
- "bc-light":()=>`<figure class="mock"><svg viewBox="0 0 420 260" class="floor" role="img" aria-label="조명 배치도: 플레이어 정면 좌우 45도 LED 패널"><rect x="140" y="14" width="140" height="40" rx="5" class="fl-dev"/><text x="210" y="39" text-anchor="middle" class="fl-t w">아케이드 · 카메라</text><ellipse cx="210" cy="190" rx="34" ry="16" class="fl-spot"/><text x="210" y="195" text-anchor="middle" class="fl-s b">플레이어</text>${[[60,70,-1],[360,70,1]].map(p=>`<rect x="${p[0]-22}" y="${p[1]-14}" width="44" height="28" rx="4" class="fl-light"/><text x="${p[0]}" y="${p[1]+4}" text-anchor="middle" class="fl-s">LED</text><path d="M${p[0]},${p[1]+14} L${210-p[2]*40},175 L${210-p[2]*5},205Z" class="fl-beam"/>`).join("")}<text x="60" y="110" text-anchor="middle" class="fl-s">좌 45° · 2m+</text><text x="360" y="110" text-anchor="middle" class="fl-s">우 45° · 2m+</text><text x="210" y="245" text-anchor="middle" class="fl-s">5600K · CRI 95+ · 뒤쪽 창문·LED월 금지</text></svg><figcaption>조명 배치</figcaption></figure>`,
- "bc-cam":()=>`<figure class="mock"><svg viewBox="0 0 420 260" class="floor" role="img" aria-label="카메라 배치도: 선수 풀샷, 무대 와이드, MC 관중"><rect x="60" y="14" width="300" height="140" rx="8" class="fl-stage"/><rect x="110" y="20" width="36" height="28" rx="4" class="fl-dev"/><rect x="274" y="20" width="36" height="28" rx="4" class="fl-dev"/><path d="M118,48 L80,150 L180,150 L138,48Z" class="fl-cone"/><path d="M282,48 L240,150 L340,150 L302,48Z" class="fl-cone"/><text x="210" y="100" text-anchor="middle" class="fl-s">아케이드 카메라 시야 · 비워 두기</text>${[[80,196,"① 선수 풀샷 (사선)"],[210,226,"② 무대 와이드 (관중석 뒤)"],[345,196,"③ MC · 관중"]].map(c=>`<g transform="translate(${c[0]-14},${c[1]-12})"><rect width="28" height="20" rx="4" class="fl-cam"/><path d="M28,6 L36,2 L36,18 L28,14Z" class="fl-cam"/></g><text x="${c[0]}" y="${c[1]+22}" text-anchor="middle" class="fl-s">${c[2]}</text>`).join("")}</svg><figcaption>카메라 배치 (TYPE 3 · 4)</figcaption></figure>`,
- "bc-sound":()=>`<figure class="mock"><svg viewBox="0 0 720 230" class="floor" role="img" aria-label="사운드 흐름: 아케이드 3.5mm와 마이크가 믹서로, 믹서에서 PA 스피커와 중계 PC로">${[[20,20,"아케이드 A","3.5mm 출력"],[20,90,"아케이드 B","볼륨 낮춤 · 선수용"],[20,160,"MC 무선 마이크","UHF"]].map(n=>`<rect x="${n[0]}" y="${n[1]}" width="150" height="50" rx="8" class="fl-node"/><text x="${n[0]+75}" y="${n[1]+22}" text-anchor="middle" class="fl-t">${n[2]}</text><text x="${n[0]+75}" y="${n[1]+40}" text-anchor="middle" class="fl-s">${n[3]}</text>`).join("")}<rect x="220" y="20" width="120" height="50" rx="8" class="fl-node2"/><text x="280" y="42" text-anchor="middle" class="fl-t">아이솔레이터</text><text x="280" y="60" text-anchor="middle" class="fl-s">험 노이즈 제거</text><rect x="390" y="70" width="130" height="90" rx="8" class="fl-ctl"/><text x="455" y="110" text-anchor="middle" class="fl-t">믹서</text><text x="455" y="130" text-anchor="middle" class="fl-s">4~8ch · USB</text><rect x="570" y="40" width="130" height="50" rx="8" class="fl-out"/><text x="635" y="70" text-anchor="middle" class="fl-t">PA 스피커 ×2</text><rect x="570" y="140" width="130" height="50" rx="8" class="fl-out"/><text x="635" y="170" text-anchor="middle" class="fl-t">중계 PC (OBS)</text><path d="M170,45 H220 M340,45 H365 V100 H390 M170,185 H365 V130 H390 M520,100 H545 V65 H570 M520,130 H545 V165 H570" class="fl-wire"/><text x="524" y="88" class="fl-d">MAIN</text><text x="524" y="152" class="fl-d">USB</text><path d="M170,115 H200" class="fl-wire dash"/><text x="205" y="119" class="fl-s">PA 미연결 (이중 재생 방지)</text></svg><figcaption>사운드 연결 · 경기 중 MC −6dB, 피크 −12~−6dB</figcaption></figure>`,
- "bc-mc":()=>iflow([{i:"mic",t:"MC",s:"진행 · 중계 멘트"},{i:"radio",t:"무전기 · 인이어",s:"큐 공유"},{i:"star",t:"슈퍼바이저",s:"순서 · 판정 전달"},{i:"pc",t:"오퍼레이터",s:"장면 전환"},{i:"users",t:"선수 호출",s:"2매치 전 대기"}]),
- "bc-gear":()=>{const G=[["capture","HDMI 캡처보드","아케이드 → 중계 PC","USB 3.0 · 1080p60 · 패스스루"],["split","HDMI 분배기 1×2","모니터 + 캡처 동시","HDCP 대응"],["lan","HDMI 연장","부조까지 장거리","10–20m 액티브 · 20m+ LAN 익스텐더"],["lan","스위치 허브","아케이드 2 + PC 연결","1Gbps · 5~8포트"],["monitor","비디오 스위처","소스 전환 · 합성","ATEM Mini 등 HDMI 4입력"],["mixer","오디오 믹서","게임음 · MC · BGM","4~8ch · USB"],["mic","무선 마이크","MC · 인터뷰","UHF 2ch"],["capture","오디오 케이블 · 아이솔레이터","3.5mm → 믹서","험 노이즈 제거"],["speaker","PA 스피커","현장 음향","액티브 2 · 150~300W"],["camera","실사 카메라","선수 · MC · 관중","클린 HDMI · 1080p60"],["light","LED 조명","얼굴 · 전신 밝기","5600K · CRI 95+"],["pc","중계 PC","대회 프로그램 + OBS","RAM 16GB+ · NVENC"]];
-  return `<div class="gear">${G.map(g=>`<div class="gr">${I(g[0],"lg")}<b>${esc(g[1])}</b><span>${esc(g[2])}</span><em>${esc(g[3])}</em></div>`).join("")}</div>`},
- "bc-obs":()=>{const S=[["pc","설치 · 자동 구성","방송에 최적화"],["monitor","비디오 1920×1080","30fps (60 권장)"],["capture","소스 추가","캡처 A·B · 대진표 · PNG"],["tvv","세로 화면 배치","608×1080 좌우 + 가운데 704"],["mixer","오디오 48kHz","믹서 USB 1개 · 피크 −12~−6dB"],["video","스튜디오 모드","미리보기 → 전환 · 단축키"],["monitor","관중 화면","전체 화면 프로젝터 → 디스플레이 2"],["rec","녹화 mkv","종료 후 리먹스 → mp4"],["stream","송출 (TYPE 4)","서비스 · 스트림 키"],["check","테스트 30분+","비공개 송출 · 녹화 재생"]];
-  return `<div class="nsteps">${S.map((x,i)=>`<div class="ns"><em>${i+1}</em>${I(x[0],"lg")}<b>${x[1]}</b><span>${x[2]}</span></div>`).join("")}</div>`},
- "bc-enc":()=>tiles([{i:"bolt",t:"NVENC H.264",s:"없으면 x264 veryfast"},{i:"stream",t:"CBR 5–17Mbps",s:"1080p30 14 · 1080p60 17 권장"},{i:"clock",t:"키프레임 2초",s:"4초 초과 금지"},{i:"speaker",t:"AAC 128–160kbps",s:"48kHz 스테레오"},{i:"lan",t:"업로드 ×1.5",s:"아케이드와 분리된 유선"},{i:"rec",t:"녹화 20–40Mbps",s:"CQP / CRF"}],"t6"),
- "bc-reh":()=>tiles([{i:"user",t:"거리 · 화각",s:"팔다리 뻗어도 전신"},{i:"light",t:"조명",s:"얼굴 어둡지 않게 · 역광 X"},{i:"lan",t:"네트워크",s:"배틀 연동 · QR 1회 · PC"},{i:"speaker",t:"음향",s:"음악이 MC에 묻히지 않게"},{i:"monitor",t:"중계 화면",s:"HDMI 직결 · 끊김 없음"},{i:"mic",t:"진행",s:"큐시트 · 호출 · 랜덤 선곡"}],"t6"),
- "bc-fix":()=>{const R=[["user","점수가 낮음","거리 · 전신 · 의상색 · 2인 인식","위치 재표시 · 관중 이동"],["light","플레이어가 어두움","역광 · 저조도","방향 변경 · 핀조명"],["lan","배틀 연결 안 됨","다른 네트워크","같은 유선 LAN"],["wifi","화면 멈춤 · 딜레이","공용 와이파이","전용 유선 회선"],["monitor","미러링 끊김","무선 미러링","HDMI 직결"],["qr","QR 다운로드 안 됨","인터넷 · 비활성화","네트워크 · 본사 확인"],["doc","곡 검색 안 됨","영문 원제만 지원","아파트 → APT."],["x","기기 오류","하드웨어","사진 첨부 → 본사 기술 지원"]];
-  return `<div class="fixes">${R.map(r=>`<div class="fx">${I(r[0],"lg")}<b>${r[1]}</b><span class="fx-c">${esc(r[2])}</span><span class="fx-a">${I("check")}${esc(r[3])}</span></div>`).join("")}</div>`},
- "bc-scenes":()=>{const S=[["① 대기","logo"],["② 경기","match"],["③ 대진표","bracket"],["④ 카메라 풀","cam"],["⑤ 하이라이트","video"]];
-  const draw=k=>{let s=`<svg viewBox="0 0 160 90" class="scn" aria-hidden="true"><rect width="160" height="90" rx="4" class="sc-bg"/>`;
-   if(k==="logo")s+=`<rect x="50" y="22" width="60" height="22" rx="3" class="sc-a"/><rect x="66" y="52" width="28" height="28" class="sc-q"/>`;
-   if(k==="match")s+=`<rect x="0" y="0" width="50" height="90" class="sc-v"/><rect x="110" y="0" width="50" height="90" class="sc-v"/><rect x="56" y="6" width="48" height="12" rx="2" class="sc-a"/><rect x="56" y="24" width="48" height="40" rx="2" class="sc-b"/><rect x="56" y="70" width="48" height="12" rx="2" class="sc-q"/>`;
-   if(k==="bracket")s+=[0,1,2,3].map(i=>`<rect x="14" y="${10+i*19}" width="34" height="12" rx="2" class="sc-b"/>`).join("")+`<rect x="62" y="20" width="34" height="12" rx="2" class="sc-b"/><rect x="62" y="58" width="34" height="12" rx="2" class="sc-b"/><rect x="110" y="39" width="36" height="12" rx="2" class="sc-a"/>`;
-   if(k==="cam")s+=`<circle cx="80" cy="38" r="14" class="sc-v"/><rect x="56" y="54" width="48" height="26" rx="10" class="sc-v"/><rect x="10" y="74" width="140" height="10" rx="2" class="sc-q"/>`;
-   if(k==="video")s+=`<path d="M70,30 L96,45 L70,60Z" class="sc-a"/>`;
-   return s+"</svg>"};
-  return `<div class="scenes">${S.map(x=>`<div class="sc">${draw(x[1])}<b>${x[0]}</b></div>`).join("")}</div>`}
-};
-function renderVis(){$$("[data-vis]").forEach(el=>{const f=VIS[el.dataset.vis];if(f)try{el.innerHTML=f()}catch(e){console.error(el.dataset.vis,e)}})}
-renderVis();
-
 function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2400)}
 const clone=o=>JSON.parse(JSON.stringify(o));
 
