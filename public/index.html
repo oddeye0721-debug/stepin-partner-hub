@@ -371,9 +371,10 @@ details.qa .a{padding:12px 16px 14px 38px;font-size:14.5px;color:var(--ink)}
 .btn.lg{padding:13px 20px;font-size:15.5px;align-self:flex-start}
 @media (max-width:560px){.dlcard{grid-template-columns:1fr}.dlcard img{aspect-ratio:16/9;height:auto}}
 figure img{height:auto}
-.ref{grid-template-columns:200px 92px minmax(0,1fr);align-items:stretch}
-.ref-img{width:200px;height:100%;min-height:150px;align-self:stretch;object-fit:cover;object-position:center top;border-radius:8px;border:1px solid var(--line);background:var(--sunk)}
-@media (max-width:720px){.ref{grid-template-columns:130px minmax(0,1fr)}.ref-img{width:130px;height:100%;min-height:150px;grid-row:span 2}}
+.ref{grid-template-columns:220px 92px minmax(0,1fr);align-items:stretch}
+.ref-img{width:220px;height:100%;min-height:150px;align-self:stretch;object-fit:cover;object-position:center top;border-radius:8px;border:1px solid var(--line);background:var(--sunk)}
+.ref-img.land{object-fit:contain;object-position:center center}
+@media (max-width:720px){.ref{grid-template-columns:140px minmax(0,1fr)}.ref-img{width:140px;height:100%;min-height:150px;grid-row:span 2}}
 @media (max-width:460px){.ref{grid-template-columns:1fr}.ref-img{width:100%;height:auto;min-height:0;aspect-ratio:4/3;grid-row:auto}}
 .nav-hot{background:var(--accent-soft)}
 .qcard.hot{border:2px solid var(--accent);background:var(--accent-soft)}
@@ -1622,6 +1623,7 @@ function show(view,tab){
   if(tab)selectTab(view,tab);
   document.body.classList.remove("nav-open");
   window.scrollTo(0,0);
+  if(view==="refs")requestAnimationFrame(equalizeRefs);
 }
 function route(){const h=(location.hash||"#home").slice(1);show(h)}
 window.addEventListener("hashchange",()=>{if(entered)route()});
@@ -2039,10 +2041,17 @@ function renderNotices(){
     return `<tr><td class="mono">${esc(n.date)}</td><td>${esc(n.text)}</td><td>${VIEWS.includes(v)&&v!=="admin"?`<a href="#${v}"${t?` data-tab-go="${esc(v+":"+t)}"`:""}>${esc(n.label||"보기")}</a>`:"—"}</td></tr>`}).join(""):'<tr><td colspan="3" class="muted">등록된 공지가 없습니다.</td></tr>';
 }
 let rf="전체";
+function equalizeRefs(){
+  const cards=$$("#refList .ref");cards.forEach(c=>c.style.height="");
+  if(!cards.length||innerWidth<=460||!cards[0].offsetHeight)return;
+  const h=Math.max(...cards.map(c=>c.offsetHeight));cards.forEach(c=>c.style.height=h+"px");
+}
+let eqT;window.addEventListener("resize",()=>{clearTimeout(eqT);eqT=setTimeout(equalizeRefs,120)});
 function renderRefs(){
   const cats=["전체",...new Set(DATA.refs.map(r=>r.cat).filter(Boolean))];if(!cats.includes(rf))rf="전체";
   $("#refFilter").innerHTML=cats.map(c=>`<button type="button" aria-pressed="${c===rf}" data-rf="${esc(c)}">${esc(c)}</button>`).join("");
-  $("#refList").innerHTML=DATA.refs.filter(r=>rf==="전체"||r.cat===rf).map(r=>{const u=/^https?:\/\//.test(r.url||"")?r.url:"";return `<article class="ref">${r.img?`<img class="ref-img" src="${esc(r.img)}" alt="${esc(r.title)} 대표 이미지" loading="lazy">`:`<div class="ref-img" aria-hidden="true"></div>`}<div class="ref-d mono">${esc(r.date)}</div><div class="ref-b"><span class="cat">${esc(r.cat)}</span><h3>${esc(r.title)}</h3><dl><dt>주최·운영</dt><dd>${esc(r.host)}</dd><dt>방식</dt><dd>${esc(r.format)}</dd><dt>규모·성과</dt><dd>${esc(r.scale)}</dd><dt>장소</dt><dd>${esc(r.place)}</dd></dl>${u?`<a class="btn sm" href="${esc(u)}" target="_blank" rel="noopener">영상 보기 ↗</a>`:""}</div></article>`}).join("")||'<p class="muted">등록된 레퍼런스가 없습니다.</p>';
+  $("#refList").innerHTML=DATA.refs.filter(r=>rf==="전체"||r.cat===rf).map(r=>{const u=/^https?:\/\//.test(r.url||"")?r.url:"";return `<article class="ref">${r.img?`<img class="ref-img" src="${esc(r.img)}" alt="${esc(r.title)} 대표 이미지" loading="lazy" onload="this.classList.toggle('land',this.naturalWidth>this.naturalHeight)">`:`<div class="ref-img" aria-hidden="true"></div>`}<div class="ref-d mono">${esc(r.date)}</div><div class="ref-b"><span class="cat">${esc(r.cat)}</span><h3>${esc(r.title)}</h3><dl><dt>주최·운영</dt><dd>${esc(r.host)}</dd><dt>방식</dt><dd>${esc(r.format)}</dd><dt>규모·성과</dt><dd>${esc(r.scale)}</dd><dt>장소</dt><dd>${esc(r.place)}</dd></dl>${u?`<a class="btn sm" href="${esc(u)}" target="_blank" rel="noopener">영상 보기 ↗</a>`:""}</div></article>`}).join("")||'<p class="muted">등록된 레퍼런스가 없습니다.</p>';
+  requestAnimationFrame(equalizeRefs);
 }
 $("#refFilter").addEventListener("click",e=>{const b=e.target.closest("[data-rf]");if(b){rf=b.dataset.rf;renderRefs()}});
 
