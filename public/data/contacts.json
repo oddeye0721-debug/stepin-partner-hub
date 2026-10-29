@@ -11,9 +11,9 @@
    "desc": "본사 IMC팀"
   },
   {
-   "label": "앱 토너먼트 개최 · 계정 승인",
+   "label": "앱 예선 · 우승자 관련",
    "value": "cs@sidewalkplay.com",
-   "desc": "비즈니스 계정 승인, 개최 신청, 우승자 관련"
+   "desc": "앱 예선 참가자 문의, 우승자 정보 관련"
   },
   {
    "label": "현장 기술 지원",
@@ -24,11 +24,6 @@
    "label": "이스포츠 대회 일반",
    "value": "info@sidewalkplay.com",
    "desc": "대회 개최 일반 문의"
-  },
-  {
-   "label": "토너먼트 개최 웹",
-   "value": "tournament.stepin.ai",
-   "desc": "비즈니스 계정으로 로그인"
   }
  ],
  "updatedAt": "2026-10-27T12:00:00.000Z"

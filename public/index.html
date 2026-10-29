@@ -308,6 +308,9 @@ details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::before{content:"Q";font-family:var(--f-mono);color:var(--accent)}
 details.qa[open] summary{border-bottom:1px solid var(--line)}
 .recs details.qa+details.qa{margin-top:8px}details.qa.rec summary::before{content:"✓"}details.qa.rec .why{margin-left:auto;font-size:12.5px;font-weight:500;color:var(--muted);white-space:nowrap}details.qa.rec[open] .why{visibility:hidden}.fmtx p{margin:6px 0 10px}
+.tsh{font-size:16px;margin:18px 0 8px}
+.obsg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.obss{margin:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}.obss img{display:block;width:100%;height:auto;aspect-ratio:5/3;object-fit:cover;background:#202127}.obss figcaption{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;padding:14px 16px 16px;color:var(--ink);font-size:14px}.obss .n{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:13px}.obss figcaption>div>b{display:block;margin-bottom:4px;font-size:15px}.obss p b{color:var(--ink)}.obss p{color:var(--muted);font-size:13.5px;margin:0}@media (max-width:760px){.obsg{grid-template-columns:1fr}}
+.bgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:6px}.bitem{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}.bph{height:120px;display:grid;place-items:center;padding:16px;border-bottom:1px solid var(--line)}.bph img{width:100%;height:88px;object-fit:contain}.bph span{color:#8a8ea0;font-size:12px}.bitem .meta{padding:10px 12px;display:flex;flex-direction:column;gap:8px}.bitem b{font-size:13.5px}
 details.qa .a{padding:12px 16px 14px 38px;font-size:14.5px;color:var(--ink)}
 .faq-cat{font-family:var(--f-mono);font-size:11px;color:var(--cyan);margin-left:auto;white-space:nowrap}
 #faqFilter{width:100%;max-width:420px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;color:var(--ink)}
@@ -518,7 +521,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <h2 class="sec">대회 진행 흐름 <span class="tag">D-35 → D+7</span></h2>
     <div class="flow">
       <a href="#formats"><span class="d">STEP 1</span><b>형태 · 일정 확정</b><span>운영 형태, 규모, 상금, 본사 협업 범위</span></a>
-      <a href="#online"><span class="d">STEP 2</span><b>예선 개설</b><span>앱 토너먼트 개최 신청, 송리스트</span></a>
+      <a href="#online"><span class="d">STEP 2</span><b>예선 개설</b><span>본사 협의로 앱 예선 개설, 송리스트</span></a>
       <a href="#boost"><span class="d">STEP 3</span><b>모객 · 활성화</b><span>홍보, 연습 독려, 참여율 관리</span></a>
       <a href="#production"><span class="d">STEP 4</span><b>제작물 · 셋팅</b><span>포스터, 백월, 중계 장비, 리허설</span></a>
       <a href="#offline"><span class="d">STEP 5</span><b>본선 운영</b><span>그룹 스테이지, 토너먼트, 중계</span></a>
@@ -532,7 +535,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div><span class="v num">2.2–2.5m</span><span class="l">카메라 ↔ 플레이어 거리 (STANDARD)</span></div>
       <div><span class="v num">6 × 3m</span><span class="l">아케이드 2대 대회 무대 최소 면적</span></div>
       <div><span class="v num">20A</span><span class="l">대회 현장 전력 최소 (대당 500W)</span></div>
-      <div><span class="v">유선 LAN</span><span class="l">배틀 · 대회 · 영상 다운로드 필수</span></div>
+      <div><span class="v">유선 LAN</span><span class="l">아케이드 현장 대회 필수 조건 (와이파이 X)</span></div>
       <div><span class="v num">≈ 1분</span><span class="l">1세트 평균 (플레이 30초 + 준비·교체)</span></div>
       <div><span class="v num">D-35</span><span class="l">앱 예선 + 본선 대회 최소 준비 기간</span></div>
     </div>
@@ -605,7 +608,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
   <div class="block">
     <h2 class="sec">대회 방식의 강점</h2>
-    <div class="split"><img class="split-img" src="/img/why_show.jpg" alt="대형 화면 1대1 배틀 중계" width="1200" height="760"><div class="tcards c2"><div class="tcard"><h3>공정한 AI 판정</h3><p>사람 심사위원 대신 AI가 팔·다리·몸통 움직임을 같은 기준으로 채점합니다. 판정 시비가 적고 결과를 점수로 설명할 수 있습니다.</p></div><div class="tcard"><h3>시간·장소 제약 없는 예선</h3><p>앱 예선은 원하는 시간·장소에서 참여합니다. 지역 대회도 넓게 모집하고 상위권만 현장에 초청합니다.</p></div><div class="tcard"><h3>자동 운영</h3><p>접수, 예선 랭킹, 대진 생성, 라운드 진행, 우승자 정보(CSV)까지 웹 툴킷이 자동으로 처리합니다.</p></div><div class="tcard"><h3>보는 재미 · 콘텐츠</h3><p>대형 화면 1:1 배틀 중계가 관람 콘텐츠가 되고, 대회 영상은 홍보 숏폼으로 다시 쓰입니다.</p></div></div></div>
+    <div class="split"><img class="split-img" src="/img/why_show.jpg" alt="대형 화면 1대1 배틀 중계" width="1200" height="760"><div class="tcards c2"><div class="tcard"><h3>공정한 AI 판정</h3><p>사람 심사위원 대신 AI가 팔·다리·몸통 움직임을 같은 기준으로 채점합니다. 판정 시비가 적고 결과를 점수로 설명할 수 있습니다.</p></div><div class="tcard"><h3>시간·장소 제약 없는 예선</h3><p>앱 예선은 원하는 시간·장소에서 참여합니다. 지역 대회도 넓게 모집하고 상위권만 현장에 초청합니다.</p></div><div class="tcard"><h3>자동 운영</h3><p>접수, 예선 랭킹, 대진 생성, 라운드 진행, 결과 집계까지 STEPIN 대회 시스템이 자동으로 처리합니다.</p></div><div class="tcard"><h3>보는 재미 · 콘텐츠</h3><p>대형 화면 1:1 배틀 중계가 관람 콘텐츠가 되고, 대회 영상은 홍보 숏폼으로 다시 쓰입니다.</p></div></div></div>
   </div>
 
   <div class="block">
@@ -668,10 +671,10 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <thead><tr><th>항목</th><th>A 랭킹전</th><th>B 오프라인</th><th>C 예선+본선</th><th>D 온라인</th><th>세부 기준</th></tr></thead>
       <tbody>
         <tr><td class="k">아케이드</td><td>1대 <span class="pill p-rec">2대 권장</span></td><td><span class="pill p-req">2대</span></td><td><span class="pill p-req">2대</span></td><td>—</td><td>STANDARD 2대 연동 또는 WIDE 1대(2인)</td></tr>
-        <tr><td class="k">앱 토너먼트 개설</td><td>—</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>비즈니스 계정 승인 + 개최 신청 승인</td></tr>
+        <tr><td class="k">앱 예선 개설</td><td>—</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>본사 협의로 예선 방식 · 선발 기준 확정 후 본사가 앱에 개설</td></tr>
         <tr><td class="k">플레이 공간</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>1대 3×3m, 2대 무대 6×3m 이상 (국제 7×3m)</td></tr>
         <tr><td class="k">전원</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>접지 AC 220V, 대당 500W, 현장 20A 이상, 멀티탭 3 (1개 10m)</td></tr>
-        <tr><td class="k">유선 인터넷</td><td><span class="pill p-rec">권장</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>RJ-45, ↓5/↑2Mbps 권장. 라이브 송출 시 별도 회선</td></tr>
+        <tr><td class="k">유선 인터넷 (LAN)</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>아케이드 대당 RJ-45 유선 1포트 (와이파이 · 모바일 핫스팟 불가), ↓5/↑2Mbps 이상. 라이브 송출 시 별도 회선</td></tr>
         <tr><td class="k">중계 PC · 캡처보드</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>RAM 16GB+(32GB 권장), 캡처보드 2, OBS + STEPIN 대회 프로그램</td></tr>
         <tr><td class="k">관중용 중계 모니터</td><td><span class="pill p-opt">선택</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>65인치 이상 + 거치대</td></tr>
         <tr><td class="k">부조(컨트롤) 공간</td><td>—</td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>무대 옆 4×3m, 책상 2 · 의자 4, 무대가 보이는 위치</td></tr>
@@ -682,7 +685,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
         <tr><td class="k">안전바</td><td><span class="pill p-rec">권장</span></td><td><span class="pill p-req">필수</span></td><td><span class="pill p-req">필수</span></td><td>—</td><td>벨트형 차단봉 4~6개</td></tr>
         <tr><td class="k">조명</td><td colspan="4">저조도 · 야간 · 역광 환경이면 <span class="pill p-req">필수</span></td><td>핀조명 2 또는 LED 패널 2</td></tr>
         <tr><td class="k">반입 인력 · 하역장</td><td colspan="3"><span class="pill p-req">필수</span></td><td>—</td><td>대당 성인 2인, 카트, 지상 하역장, 계단 없는 동선</td></tr>
-        <tr><td class="k">상금 · 상품</td><td colspan="4"><span class="pill p-req">필수</span></td><td>수량·내용이 명확해야 앱 개최 신청 승인. 지급은 주최측</td></tr>
+        <tr><td class="k">상금 · 상품</td><td colspan="4"><span class="pill p-req">필수</span></td><td>수량 · 내용을 대회 요강에 명확히 공지. 지급은 주최측</td></tr>
         <tr><td class="k">우천 대비 (야외)</td><td colspan="3">야외 시 <span class="pill p-req">필수</span></td><td>—</td><td>캐노피, 방수 커버, 평탄한 바닥, 강풍 대책</td></tr>
       </tbody>
     </table></div>
@@ -694,7 +697,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <thead><tr><th>시점</th><th>C. 앱 예선 + 오프라인 본선 (D-35)</th><th>B. 오프라인 단독 (D-21)</th><th>A. 현장 랭킹전 (D-14)</th></tr></thead>
       <tbody>
         <tr><td class="mono">D-35</td><td>형태·규모·상금·장소 확정, 본사 협업 범위 합의</td><td>—</td><td>—</td></tr>
-        <tr><td class="mono">D-30</td><td>비즈니스 계정 승인, 앱 개최 신청서 제출 (본사 검토)</td><td>—</td><td>—</td></tr>
+        <tr><td class="mono">D-30</td><td>본사와 예선 방식 · 본선 진출 기준 · 지정곡 협의, 앱 예선 개설 요청</td><td>—</td><td>—</td></tr>
         <tr><td class="mono">D-28</td><td>송리스트·규정 확정, 포스터 제작, 사전 노출 시작</td><td>—</td><td>—</td></tr>
         <tr><td class="mono">D-21</td><td>참가 접수 + 예선 랭킹전 시작 (예선 14일 권장)</td><td>형태·규정·송리스트 확정, 참가 모집 시작</td><td>—</td></tr>
         <tr><td class="mono">D-14</td><td>중계·장비 구성 확정, 방송팀 3자 미팅</td><td>중계·장비 확정, 제작물 발주</td><td>일정·장소 확정, 아케이드 일정·운반 예약</td></tr>
@@ -736,65 +739,108 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== ONLINE ======== -->
 <section class="view" data-view="online" hidden>
-  <div class="vh"><span class="eyebrow">04 · Qualifier</span><h1>예선 · 온라인 APP 토너먼트</h1><p>참가자는 STEPIN 앱에서 참가하고, 주최측은 웹(<span class="mono">tournament.stepin.ai</span>)에서 설정·관리합니다. 설정한 일정에 따라 단계가 자동으로 진행됩니다.</p></div>
+  <div class="vh"><span class="eyebrow">04 · Qualifier</span><h1>예선 · 온라인 APP</h1><p>앱 예선은 <b>본사와 협의해 방식과 본선 진출 기준을 정한 뒤</b> 본사가 STEPIN 앱에 개설합니다. 참가자는 STEPIN 앱에서 참여하고, 기록과 랭킹은 자동으로 집계됩니다.</p></div>
+  <div class="note warn"><b>앱 토너먼트 셀프 개설(비즈니스 계정)은 현재 오픈되지 않은 서비스입니다.</b> 파트너가 직접 개설하지 않고, 본사와 협의해 예선 형태 · 일정 · 지정곡 · 선발 기준을 정하면 본사가 앱에 예선을 열고 결과를 집계해 드립니다.</div>
+  <div class="tabs" role="tablist" data-tabs="online">
+    <button role="tab" data-tab="flow">진행 방식 · 협의</button>
+    <button role="tab" data-tab="school">학교대항전 예선</button>
+    <button role="tab" data-tab="open">오픈 앱 토너먼트</button>
+    <button role="tab" data-tab="cases">운영 사례</button>
+  </div>
+  <div class="tabpanel" data-panel="online:flow">
     <div class="block">
-      <h2 class="sec">온라인 APP 예선 진행 조건</h2>
+      <h2 class="sec">앱 예선 진행 순서</h2>
       <ol class="steps">
-        <li><div><b>비즈니스 계정 신청</b><p class="muted">STEPIN 앱 → 프로필 → 설정 → 비즈니스 계정 신청 → 회사 정보 → 담당자 정보 → 제출. 법인·기관은 증빙 서류를 요청받을 수 있습니다.</p></div></li>
-        <li><div><b>본사 승인 요청</b><p class="muted"><span class="mono">cs@sidewalkplay.com</span> 으로 승인을 요청하면 <span class="mono">tournament.stepin.ai</span> 개최 권한이 열립니다.</p></div></li>
-        <li><div><b>3페이지 개최 신청서 작성 → 내부 검토</b><p class="muted">승인되면 토너먼트가 SETUP 상태로 생성됩니다. 포스터·트랙·공지 등 필수 항목을 채워야 공개됩니다.</p></div></li>
-        <li><div><b>공개 → 접수 → 예선 → 대진 → 본선 → 종료</b><p class="muted">설정한 일정에 따라 단계가 자동으로 넘어갑니다.</p></div></li>
+        <li><div><b>본사 협의 요청</b><p class="muted">대회 개요(주최 · 대상 · 일정 · 장소 · 상금)를 정리해 <span class="mono">marketing@sidewalkplay.com</span> 으로 보내 주세요.</p></div></li>
+        <li><div><b>예선 형태 결정</b><p class="muted">학교대항전 예선(학교별 참가 · 학교 랭킹), 오픈 앱 토너먼트(개인 랭킹전 → 앱 본선), 앱 예선 + 현장 예선 병행 중에서 대회에 맞게 고릅니다.</p></div></li>
+        <li><div><b>본선 진출 기준 · 지정곡 · 일정 확정</b><p class="muted">진출 학교 · 선수 수, 점수 집계 방식, 동점 처리, 예선 기간, 지정곡(송리스트)을 협의해 확정하고 참가 안내에 공지합니다.</p></div></li>
+        <li><div><b>참가 신청 접수</b><p class="muted">학교 대항전은 학교 단위로 신청(구글폼 등)을 받고, 오픈 대회는 앱에서 바로 참가 신청을 받습니다.</p></div></li>
+        <li><div><b>본사가 앱에 예선 개설</b><p class="muted">신청 학교를 앱 학교대항전 섹션에 등록하거나 앱 토너먼트를 개설하고, 참가 안내 페이지 · 가이드를 함께 준비합니다.</p></div></li>
+        <li><div><b>예선 진행 · 활성화</b><p class="muted">본사가 주차별 참여 데이터를 공유합니다. 참여가 적은 학교 · 지역은 앱 푸시, 담당자 유선 연락, 공문 재전달, SNS 게시로 독려합니다.</p></div></li>
+        <li><div><b>본선 진출 확정 · 발표</b><p class="muted">협의한 기준으로 진출 학교 · 선수를 확정하고 공문 · 이메일 · 문자 · 앱 푸시로 안내합니다. 현장 참석 여부를 유선으로 확인합니다.</p></div></li>
       </ol>
-      <div class="chain" aria-label="토너먼트 상태 흐름">
-        <span class="st">SETUP</span><span class="ar">→</span><span class="st">UPCOMING</span><span class="ar">→</span><span class="st">REGISTER</span><span class="ar">→</span><span class="st">QUALIFIER</span><span class="ar">→</span><span class="st">SELECTING</span><span class="ar">→</span><span class="st">PREMATCH</span><span class="ar">→</span><span class="st live">LIVE · MATCH ⇄ EVALUATING ⇄ INTERMISSION</span><span class="ar">→</span><span class="st">FINISHED</span>
-      </div>
-      <p class="src">예선 없이 진행하면 QUALIFIER·SELECTING 단계가 생략되고, 자동 배정이면 대진 수동 배정이 필요 없습니다.</p>
     </div>
-
     <div class="block">
-      <h2 class="sec">개최 신청서 설정값</h2>
+      <h2 class="sec">협의할 항목</h2>
       <div class="tbl"><table>
-        <thead><tr><th>항목</th><th>설정 범위</th><th>운영 팁</th></tr></thead>
+        <thead><tr><th>항목</th><th>정할 내용</th><th>예시</th></tr></thead>
         <tbody>
-          <tr><td class="k">타이틀</td><td>2~30자</td><td>지역·연도·성격이 드러나게 (예: 2026 경남 STEPIN 오픈 토너먼트)</td></tr>
-          <tr><td class="k">모집 방식</td><td>오픈 / 프라이빗</td><td>지역·학교 한정 대회는 프라이빗 (승인·거절·초대)</td></tr>
-          <tr><td class="k">참가 국가</td><td>글로벌 / 국가 선택</td><td>국내 대회는 대한민국만 선택</td></tr>
-          <tr><td class="k">라운드</td><td>8 · 16 · 32 · 64 · 128 · 256 · 512 · 1024강</td><td>본선 진출 인원과 별개로 앱 본선 규모</td></tr>
-          <tr><td class="k">참가비</td><td>0~1,000 다이아 (5 단위)</td><td>오픈 대회는 0 권장</td></tr>
-          <tr><td class="k">시간대</td><td>GMT -12 ~ +12</td><td>국내는 GMT+9</td></tr>
-          <tr><td class="k">사전 노출</td><td>있음/없음, 최소 5분</td><td>알림 신청 버튼으로 사전 모객</td></tr>
-          <tr><td class="k">참가 신청 기간</td><td>30분 ~ 14일</td><td>시작 시각은 최소 24시간 이후</td></tr>
-          <tr><td class="k">예선 (랭킹전)</td><td>있음/없음 · 최소 24시간</td><td>기준: 전체 점수 합산 / 곡별 최고 점수 합산</td></tr>
-          <tr><td class="k">점수 범위</td><td>모든 곡 / 경연곡 제한</td><td>공정성을 위해 경연곡 제한 + 최고 점수 합산 권장</td></tr>
-          <tr><td class="k">진출자 선정</td><td>자동 / 수동, 30분 ~ 30일</td><td>수동이면 본선 참석 확인 후 확정 가능</td></tr>
-          <tr><td class="k">대진 배정</td><td>자동 / 수동</td><td>자동은 시드 대칭 (1위 vs 최하위 …)</td></tr>
-          <tr><td class="k">진행 방식</td><td>동기 / 비동기</td><td>동기: 라운드 간 최소 15분 · 비동기: 플레이 창 1분~23시간 35분, 라운드 간 최소 25분</td></tr>
-          <tr><td class="k">본선 일정</td><td>라운드당 최소 30분</td><td>첫 라운드는 대진 공개 후 24시간 이후</td></tr>
-          <tr><td class="k">경연곡</td><td>5~30곡</td><td>현장 본선 송리스트와 맞추면 연습 효과가 큼</td></tr>
-          <tr><td class="k">언어</td><td>11개 언어, 기본 언어 1개 필수</td><td>공지 언어별 최대 3,000자</td></tr>
-          <tr><td class="k">포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>앱 다운로드 QR은 별도 홍보물에 삽입</td></tr>
+          <tr><td class="k">참가 단위</td><td>개인 / 학교(팀) / 지역</td><td>학교 단위 신청 후 학교별 선수 등록</td></tr>
+          <tr><td class="k">예선 기간</td><td>시작 · 종료 일시, 신청 마감, 추가 접수 여부</td><td>교내 예선 약 1~3주</td></tr>
+          <tr><td class="k">지정곡</td><td>곡 수, 곡 목록, 본선 송리스트와 연계 여부</td><td>지정곡 10곡 중 곡별 최고점 합산</td></tr>
+          <tr><td class="k">점수 집계</td><td>개인 점수 기준, 학교 점수 기준</td><td>곡별 최고점 합산 · 참여 학생 수 · 교내 상위 n명 합산</td></tr>
+          <tr><td class="k">본선 진출 기준</td><td>진출 학교 수 · 학교당 선수 수 · 와일드카드</td><td>상위 16개교, 학교별 상위 2명</td></tr>
+          <tr><td class="k">동점 처리</td><td>먼저 득점한 순, 현장 진출전 등</td><td>참여 학생 수 동점 시 현장 진출전</td></tr>
+          <tr><td class="k">현장 예선 병행</td><td>앱 참여가 어려운 학생(연령 · 기기)을 위한 현장 예선</td><td>본선 당일 현장 예선으로 추가 선발</td></tr>
+          <tr><td class="k">보호자 동의 · 개인정보</td><td>만 14세 미만 보호자 동의, 수집 항목</td><td>성명 · 학년 · 반, 담당 교사 연락처</td></tr>
+          <tr><td class="k">공개 범위</td><td>학교 랭킹 · 점수 공개 여부</td><td>학교별 합산 점수 비공개</td></tr>
         </tbody>
       </table></div>
+      <p class="src">협의 결과는 대회 요강 · 공문 · 참가 안내 페이지에 같은 내용으로 공지해 주세요.</p>
+    </div>
+  </div>
+  <div class="tabpanel" data-panel="online:school" hidden>
+    <div class="block">
+      <h2 class="sec">학교대항전 앱 예선 흐름</h2>
+      <ol class="steps">
+        <li><div><b>학교 단위 참가 신청</b><p class="muted">구글폼 등으로 학교명 · 담당 선생님 연락처 · 예상 참가 인원을 받습니다. 공문에 신청 URL과 QR을 함께 넣습니다.</p></div></li>
+        <li><div><b>본사가 신청 학교를 앱에 등록</b><p class="muted">신청 마감 후 STEPIN 앱 학교대항전 섹션에 참가 학교 목록을 만들고, 학교별 접속 QR · 참가 안내 페이지를 준비합니다.</p></div></li>
+        <li><div><b>학생 선수 등록</b><p class="muted">학생은 앱에서 학교대항전 배너 → 참가하기 → 본인 학교 선택 → 성명 · 학년 · 반을 입력해 등록합니다.</p></div></li>
+        <li><div><b>지정곡 플레이 (교내 예선)</b><p class="muted">예선 기간 동안 지정곡에 도전합니다. 곡별 최고점이 기록되고 여러 번 도전할 수 있습니다.</p></div></li>
+        <li><div><b>랭킹 확인</b><p class="muted">학교 랭킹 · 교내 랭킹 · 개인 랭킹이 자동으로 집계됩니다. 학교 간 점수 공개 여부는 협의로 정합니다.</p></div></li>
+        <li><div><b>본선 진출 학교 · 선수 선발</b><p class="muted">협의한 기준으로 진출 학교와 학교별 대표 선수를 정해 발표합니다.</p></div></li>
+      </ol>
+    </div>
+    <div class="block">
+      <h2 class="sec">참가 학생 앱 참여 방법 (예시 화면)</h2>
+      <figure><a href="/img/app_school_guide_1.jpg" target="_blank" rel="noopener"><img src="/img/app_school_guide_1.jpg" alt="① 앱 다운로드 ② 회원가입 · 로그인 ③ 학교 대항전 배너 클릭 ④ 참가하기 ⑤ 본인 학교 선택 ⑥ 성명 · 학년 · 반 작성 후 등록" width="1800" height="833" loading="lazy"></a><figcaption>① 앱 다운로드 → ② 회원가입 · 로그인 → ③ 학교 대항전 배너 → ④ 참가하기 → ⑤ 본인 학교 선택 → ⑥ 성명 · 학년 · 반 등록</figcaption></figure>
+      <figure><a href="/img/app_school_guide_2.jpg" target="_blank" rel="noopener"><img src="/img/app_school_guide_2.jpg" alt="⑦ 학교 랭킹 ⑧ 교내 랭킹 ⑨ 개인 랭킹 ⑩ 지정곡 도전" width="1800" height="767" loading="lazy"></a><figcaption>⑦ 학교 랭킹 → ⑧ 교내 랭킹 → ⑨ 개인 랭킹 → ⑩ 지정곡 도전 후 플레이 (2026 춘천 학교 대항전 안내 예시)</figcaption></figure>
+    </div>
+    <div class="block">
+      <h2 class="sec">본선 진출 학교 · 선수 선발 기준 예시</h2>
+      <p class="muted">선발 기준은 대회 목적에 맞게 협의해 정합니다. 아래 방식을 하나 또는 섞어서 씁니다.</p>
       <div class="grid g2">
-        <figure><a href="/img/tournament_setting_1.jpg" target="_blank" rel="noopener"><img src="/img/tournament_setting_1.jpg" alt="토너먼트 개최 전 리뷰 화면 예시" width="1800" height="1183"></a><figcaption>개최 신청서 리뷰 화면 예시 (기본 정보 · 예선 · 상금)</figcaption></figure>
-        <figure><a href="/img/tournament_setting_2.jpg" target="_blank" rel="noopener"><img src="/img/tournament_setting_2.jpg" alt="토너먼트 설정 화면 예시 2" width="1800" height="1183"></a><figcaption>설정 화면 예시 2 · 누르면 크게 보기</figcaption></figure>
+        <div class="panel block fmtx"><span class="eyebrow">PARTICIPATION</span><h3>참여 학생 수 기준</h3><p>학교별로 예선에 <b>1회 이상 참여한 학생 수</b>가 많은 순으로 상위 n개교를 선발합니다.</p><ul class="list"><li><b>장점</b> 학교 전체 참여를 끌어내 대회 취지(학교 체육 · 참여 확대)에 맞습니다</li><li><b>예시</b> 참여 학생 수 상위 16개교 선발, 동수면 본선 현장에서 학교 1위끼리 진출전 (제주)</li></ul></div>
+        <div class="panel block fmtx"><span class="eyebrow">SCHOOL SCORE</span><h3>학교 점수 합산 기준</h3><p>학교별 참여 학생의 <b>곡별 최고점을 합산</b>해 학교 점수로 평가하고 상위 학교를 선발합니다.</p><ul class="list"><li><b>장점</b> 참여와 실력을 함께 반영합니다</li><li><b>정할 것</b> 합산 범위(전원 · 상위 n명), 곡 수, 동점 처리</li></ul></div>
+        <div class="panel block fmtx"><span class="eyebrow">TOP PLAYERS</span><h3>교내 순위 기준</h3><p>학교마다 <b>교내 예선 상위 n명</b>을 학교 대표로 본선에 보냅니다.</p><ul class="list"><li><b>예시</b> 교내 2위까지 본선 진출 (춘천), 진출 학교별 예선 점수 상위 2명 개인전 출전 (제주)</li></ul></div>
+        <div class="panel block fmtx"><span class="eyebrow">HYBRID</span><h3>앱 예선 + 현장 예선 병행</h3><p>연령 제한 · 기기 문제로 앱 참여가 어려운 학생은 <b>현장 예선</b>을 신청받아 본선 당일 추가로 선발합니다.</p><ul class="list"><li><b>예시</b> 앱 사전 예선 + 결승 당일 현장 예선 → 8강 본선 (춘천)</li><li><b>주의</b> 지원자가 많으면 학교별 참가 인원을 제한할 수 있습니다</li></ul></div>
+      </div>
+      <div class="note">단체전(예: 교원 1명 + 학생 1명)을 함께 여는 경우, 단체전은 예선 점수와 무관하게 학교당 1팀으로 정하되 <b>예선 참여를 필수 조건</b>으로 두는 방식도 있습니다 (제주).</div>
+    </div>
+    <div class="block">
+      <h2 class="sec">참고 페이지</h2>
+      <div class="grid g2">
+        <a class="qcard" href="https://bit.ly/jeju-stepin" target="_blank" rel="noopener"><span class="k">구글폼</span><b>학교 참가 신청 예시 ↗</b><span>제주 청소년 e스포츠대회 · 학교 단위 참가 신청 (담당 선생님 연락처 포함)</span></a>
+        <a class="qcard" href="https://on-campus-esports.stepinft.com/#/guide" target="_blank" rel="noopener"><span class="k">안내 페이지</span><b>참가 학교 대상 예선 안내 예시 ↗</b><span>찾아가는 교내 이스포츠 대회 · STEPIN 학교 대항전 참여 방법 · 현장 예선 신청</span></a>
       </div>
     </div>
-
     <div class="block">
-      <h2 class="sec">본선 진출 방식 조합</h2>
+      <h2 class="sec">국내 예선 운영 팁</h2>
+      <ul class="list">
+        <li>지정곡 20곡 중 <b>최고 점수 상위 10곡 합산</b>처럼 기준을 단순하게 공지합니다. 순위는 10분마다 갱신됩니다.</li>
+        <li>동점자는 <b>먼저 득점한 순</b>으로 정하고 공지에 미리 적습니다.</li>
+        <li>진출자 확정 후 전원에게 유선으로 현장 참석 의사를 확인하고, 미성년자는 보호자와 먼저 연락합니다.</li>
+        <li>지역 한정 대회는 당일 거주 증빙 신분증 지참과 <b>대회 부속합의서</b> 서명을 안내합니다.</li>
+        <li>예선 기간에는 연습 독려 · 일정 알림 푸시를 시간대에 맞춰 보내도록 본사에 요청합니다.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tabpanel" data-panel="online:open" hidden>
+    <div class="block">
+      <h2 class="sec">오픈 앱 토너먼트 (개인 랭킹전)</h2>
+      <p class="muted">지역 · 국가 단위로 개인을 넓게 모집할 때 쓰는 방식입니다. 본사가 협의한 내용으로 앱 토너먼트를 개설합니다.</p>
       <div class="tbl"><table>
-        <thead><tr><th>진출자 선정</th><th>대진 배정</th><th>주최측 작업</th></tr></thead>
+        <thead><tr><th>협의 항목</th><th>선택지</th><th>운영 팁</th></tr></thead>
         <tbody>
-          <tr><td>수동</td><td>수동</td><td>진출자 직접 선택 + 매치 직접 배정</td></tr>
-          <tr><td>수동</td><td>자동</td><td>진출자만 선택</td></tr>
-          <tr><td>자동</td><td>수동</td><td>매치만 배정</td></tr>
-          <tr><td>자동</td><td>자동</td><td>작업 없음 (대진 수정 불가)</td></tr>
+          <tr><td class="k">모집 방식</td><td>오픈 / 프라이빗</td><td>지역 · 학교 한정 대회는 프라이빗 (승인 · 초대)</td></tr>
+          <tr><td class="k">참가 국가</td><td>글로벌 / 국가 선택</td><td>국내 대회는 대한민국만</td></tr>
+          <tr><td class="k">예선 (랭킹전)</td><td>기간 · 지정곡 · 집계 기준</td><td>지정곡 제한 + 곡별 최고점 합산 권장</td></tr>
+          <tr><td class="k">앱 본선</td><td>8강 ~ 1024강, 동기 / 비동기</td><td>현장 본선이 있으면 앱 예선 상위 n명만 초청</td></tr>
+          <tr><td class="k">일정</td><td>사전 노출 · 신청 · 예선 · 본선</td><td>신청 시작은 개설 확정 후 24시간 이후, 예선 최소 24시간</td></tr>
+          <tr><td class="k">포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>본사 디자인 협조 가능</td></tr>
         </tbody>
       </table></div>
-      <p class="src">배정 기간 안에 끝내지 못하면 남은 진출자는 시스템이 자동 배정합니다. 대진표는 공개 전까지 수정할 수 있습니다.</p>
     </div>
-
     <div class="block">
       <h2 class="sec">앱 본선 경기 규칙</h2>
       <div class="grid g2">
@@ -802,7 +848,6 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
         <div class="panel block"><h3>미참여 처리</h3><ul class="list"><li><b>No Show</b>: 게임을 전혀 하지 않음 → 해당 매치 패배</li><li><b>FF (기권)</b>: 게임의 절반 미만만 플레이</li><li>마지막 라운드 종료 즉시 FINISHED (휴식 없음)</li></ul></div>
       </div>
     </div>
-
     <div class="block">
       <h2 class="sec">상금 · 상품 설정</h2>
       <div class="tbl"><table>
@@ -815,21 +860,41 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
           <tr><td class="k">시상 순위</td><td>기본 1~3위 (+4위). 16강 이상 1~4위(+5~8위), 32강 이상 1~8위(+9~16위) …</td></tr>
         </tbody>
       </table></div>
-      <div class="note warn"><b>반려되는 경우.</b> 상금·상품 수량이나 내용이 모호할 때, 사전 협의 없이 대회를 취소한 이력이 있을 때, 과거 운영에서 참가자 민원이 컸을 때. 반려 사유는 신청 현황 화면에서 확인하고 수정 후 재신청합니다.</div>
       <p class="muted">상금·상품은 주최측이 직접 지급합니다. 우승자 목록(이름·국적·연락처·이메일)은 CSV로 받을 수 있고, 미성년자는 법정대리인 정보 버튼이 표시됩니다.</p>
     </div>
-
+  </div>
+  <div class="tabpanel" data-panel="online:cases" hidden>
     <div class="block">
-      <h2 class="sec">국내 예선 운영 팁</h2>
-      <ul class="list">
-        <li>지정곡 20곡 중 <b>최고 점수 상위 10곡 합산</b>처럼 기준을 단순하게 공지합니다. 순위는 10분마다 갱신됩니다.</li>
-        <li>동점자는 <b>먼저 득점한 순</b>으로 정하고 공지에 미리 적습니다.</li>
-        <li>진출자 확정 후 전원에게 유선으로 현장 참석 의사를 확인하고, 미성년자는 보호자와 먼저 연락합니다.</li>
-        <li>지역 한정 대회는 당일 거주 증빙 신분증 지참과 <b>대회 부속합의서</b> 서명을 안내합니다.</li>
-        <li>예선 기간에는 연습 독려·일정 알림 푸시를 시간대에 맞춰 보내도록 본사에 요청합니다.</li>
-      </ul>
+      <h2 class="sec">제주 청소년 e스포츠대회 · 춤신춤왕 학교대항전 (2026)</h2>
+      <p class="muted">제주특별자치도e스포츠협회 주최 · 제주도 내 중 · 고등학생과 교원 대상 · 총상금 300만원 + 교육감 상장</p>
+      <div class="tbl"><table>
+        <thead><tr><th>단계</th><th>일정</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="k">공문 · 참가 신청</td><td class="mono">10.28 ~ 11.13</td><td>학교 단위 구글폼 신청 (추가 접수 11.18 마감)</td></tr>
+          <tr><td class="k">예선 준비</td><td class="mono">11.16 ~ 11.17</td><td>신청 학교를 앱 학교대항전 섹션에 등록, 예선 가이드 안내</td></tr>
+          <tr><td class="k">선수 등록 · 교내 예선</td><td class="mono">11.18 ~ 12.9</td><td>약 3주 앱 교내 예선, 주차별 참여 데이터 공유 · 독려</td></tr>
+          <tr><td class="k">본선 진출 발표</td><td class="mono">12.11</td><td>참여 학생 수 상위 16개교 선발, 공문 · 이메일 · 문자 · 앱 푸시 안내</td></tr>
+          <tr><td class="k">본선</td><td class="mono">12.19</td><td>현장 대진 추첨 → 개인전(학교별 상위 2명) → 단체전(교원+학생 2인 1팀) → 시상</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">특별상: 최다 학생 예선 참여 학교, 최다 학생 현장 응원 학교 (현장 응원 부스에서 학생증 확인 후 집계)</p>
     </div>
-  
+    <div class="block">
+      <h2 class="sec">춘천시 중학교 e스포츠 학교 대항전 (2026)</h2>
+      <p class="muted">춘천교육지원청 · 한국이스포츠협회 공동 주관 · 관내 20개 중학교 대상 · 결승 춘천중학교 강당</p>
+      <div class="split">
+        <img class="split-img" src="/img/case_chuncheon_poster.jpg" alt="2026 춘천시 중학교 e스포츠 학교 대항전 포스터" style="aspect-ratio:auto" loading="lazy">
+        <div class="tbl"><table>
+          <thead><tr><th>단계</th><th>일정</th><th>내용</th></tr></thead>
+          <tbody>
+            <tr><td class="k">온라인 예선</td><td class="mono">10.19 ~ 10.26</td><td>STEPIN 앱 학교 대항전 사전 예선, 교내 2위까지 본선 진출</td></tr>
+            <tr><td class="k">현장 예선 신청</td><td class="mono">~ 10.26</td><td>연령 제한 등으로 앱 참여가 어려운 학생은 구글폼으로 현장 예선 신청</td></tr>
+            <tr><td class="k">결승</td><td class="mono">10.30</td><td>현장 예선으로 추가 선발 → 8강 본선 (개인전)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ======== OFFLINE ======== -->
@@ -1147,7 +1212,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <ol class="steps">
         <li><div><b>위치 고정</b> — 플레이 위치 표시에서 카메라까지 2.2–2.5m (WIDE 2.8–3.2m), 후면 60cm 확보</div></li>
         <li><div><b>전원 연결</b> — 접지된 AC 220V 콘센트에 직접 연결. 2대면 전용 콘센트 2구 이상</div></li>
-        <li><div><b>유선 LAN 연결</b> — RJ-45 (CAT6 권장). DHCP 기본, 고정 IP·프록시 환경은 설치 전 협의</div></li>
+        <li><div><b>유선 LAN 연결 (필수)</b> — 아케이드마다 RJ-45 유선 케이블 연결 (CAT6 권장). 와이파이 · 모바일 핫스팟으로는 대회를 진행할 수 없습니다. DHCP 기본, 고정 IP · 프록시 · 방화벽 환경은 설치 전 본사와 협의</div></li>
         <li><div><b>부팅 · 언어 설정</b> — 기본 언어는 영어. 행사에 맞게 변경</div></li>
         <li><div><b>배틀 연동 확인</b> — STANDARD 2대를 같은 네트워크에 연결하고 배틀 모드 진입 테스트</div></li>
         <li><div><b>캡처보드 연결 (중계 시)</b> — 전원을 끈 상태에서 아케이드 본체 HDMI 출력 케이블을 화면에서 빼 캡처보드 <b>HDMI IN</b>에 연결 → 캡처보드 <b>HDMI OUT(패스스루)</b>을 새 HDMI 케이블로 아케이드 화면 입력에 다시 연결 → 캡처보드 USB를 중계 PC USB 3.0 포트에 연결. 아케이드 화면과 OBS 미리보기에 같은 화면이 나오는지 확인합니다.</div></li>
@@ -1166,18 +1231,25 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
           <tr><td class="k">지터</td><td class="mono">30ms 이하</td><td class="mono">10ms 이하</td></tr>
         </tbody>
       </table></div>
-      <div class="note"><b>공용 와이파이는 피하세요.</b> 관람객이 몰리면 트래픽으로 화면 멈춤·딜레이가 생깁니다 (두바이 체험존 사례). 학교·공공기관은 계약 전 통신 허용 목록을 정보화 담당자에게 전달해 사전 승인을 받습니다.</div>
+      <div class="note warn"><b>아케이드 현장 대회는 유선 LAN 인터넷 연결이 필수입니다.</b> 배틀 연동, 대회 프로그램 연결, 점수 집계, 플레이 영상 QR 다운로드가 모두 인터넷으로 동작합니다. 와이파이나 모바일 핫스팟은 관람객이 몰리면 끊김·멈춤·딜레이가 생겨 대회용으로 쓸 수 없습니다 (두바이 체험존 사례).</div>
+      <div class="tbl"><table><thead><tr><th>준비 항목</th><th>기준</th></tr></thead><tbody>
+        <tr><td class="k">회선 수</td><td>아케이드 대당 유선 1포트 + 중계 PC 1포트. 2대 대회면 최소 3포트 (스위치 허브로 분기 가능). 라이브 송출은 송출 전용 회선 별도</td></tr>
+        <tr><td class="k">설치 위치</td><td>아케이드 설치 위치까지 랜선 길이 확인 (벽 단자에서 멀면 20~30m 랜선, 바닥은 케이블 덮개로 고정)</td></tr>
+        <tr><td class="k">사전 확인</td><td>행사 7일 전까지 장소 담당자에게 유선 단자 위치 · 개수 · 속도 확인. 학교 · 공공기관은 통신 허용 목록을 정보화 담당자에게 전달해 사전 승인</td></tr>
+        <tr><td class="k">현장 테스트</td><td>D-1 설치 때 노트북을 같은 단자에 연결해 속도 측정 (↓5/↑2Mbps 이상), 2대 배틀 연동 · QR 다운로드 1회 확인</td></tr>
+        <tr><td class="k">예비</td><td>예비 랜선 2개 · 스위치 허브 1개 준비. 행사장 회선이 불안정하면 공유기 대여나 임시 회선 개통을 미리 협의</td></tr>
+      </tbody></table></div>
     </div>
   
 <div class="block">
-    <h2 class="sec">인터넷 연결 여부에 따른 기능</h2>
+    <h2 class="sec">유선 인터넷이 필요한 기능</h2>
     <div class="tbl"><table>
-      <thead><tr><th>기능</th><th>인터넷 연결</th><th>미연결</th></tr></thead>
+      <thead><tr><th>기능</th><th>유선 LAN 연결 시</th><th>연결이 끊기면</th></tr></thead>
       <tbody>
-        <tr><td class="k">Practice · Challenge</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-ok">가능</span></td></tr>
-        <tr><td class="k">Battle · 대회 진행</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">불가</span> 대회용 오프라인 구성은 본사 협의</td></tr>
+        <tr><td class="k">Battle · 대회 진행</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">진행 불가</span> 2대 연동 · 점수 집계 중단</td></tr>
+        <tr><td class="k">대회 프로그램 · 중계 화면</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">갱신 중단</span> 대진 · 결과 반영 안 됨</td></tr>
         <tr><td class="k">플레이 영상 QR 다운로드</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">불가</span></td></tr>
-        <tr><td class="k">콘텐츠 인증·업데이트</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-warn">설치 시 필요</span></td></tr>
+        <tr><td class="k">콘텐츠 인증 · 업데이트</td><td><span class="pill p-ok">가능</span></td><td><span class="pill p-bad">불가</span> 부팅 · 곡 로딩 오류 가능</td></tr>
       </tbody>
     </table></div>
     <p class="src">공공장소 운영 시 개인정보 사유로 영상 다운로드를 끄는 경우가 있습니다. 행사 성격에 맞춰 본사와 사전에 정해 주세요.</p>
@@ -1210,7 +1282,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div class="tbl"><table><thead><tr><th>항목</th><th>TYPE 1 체험존</th><th>TYPE 2 현장 중계</th><th>TYPE 3 녹화</th><th>TYPE 4 라이브</th></tr></thead><tbody>
         <tr><td class="k">영상</td><td>아케이드 내장 화면</td><td>캡처보드 2 → OBS → 관중 65"</td><td>+ 실사 카메라 1~2, 녹화</td><td>+ 스위처 · 인코더, 3캠 권장</td></tr>
         <tr><td class="k">사운드</td><td>아케이드 내장 스피커</td><td>믹서 + PA 스피커 2, 무선 마이크 1</td><td>+ 녹음 라인 (믹서 → 녹화 PC)</td><td>+ 방송 믹스 별도 (모니터·PA 분리)</td></tr>
-        <tr><td class="k">네트워크</td><td>유선 LAN (권장)</td><td>아케이드 · PC 공용 회선</td><td>동일</td><td>송출 전용 회선 추가</td></tr>
+        <tr><td class="k">네트워크</td><td>유선 LAN (필수)</td><td>아케이드 · PC 공용 유선 회선</td><td>동일</td><td>송출 전용 회선 추가</td></tr>
         <tr><td class="k">조명</td><td>저조도 시 핀조명</td><td>플레이어 정면 LED 2</td><td>+ 카메라 노출 맞춤</td><td>+ 인터뷰 조명</td></tr>
         <tr><td class="k">인력</td><td>대당 안내 1</td><td>오퍼레이터 1, 스태프 2</td><td>+ 촬영 1</td><td>+ PD · 스위처 · 음향 각 1</td></tr>
       </tbody></table></div>
@@ -1238,18 +1310,8 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <div class="block">
       <h2 class="sec">OBS Studio 셋팅 순서</h2>
       <p class="muted">OBS Studio는 무료 방송·녹화 프로그램입니다 (Windows · macOS). 중계 PC에 STEPIN 대회 프로그램과 함께 설치합니다.</p>
-      <ol class="steps">
-        <li><div><b>설치 · 자동 구성</b> — obsproject.com에서 설치 → 첫 실행 자동 구성 마법사에서 “방송에 최적화” 선택</div></li>
-        <li><div><b>비디오</b> — 설정 → 비디오: 기본(캔버스) 해상도 1920×1080, 출력 해상도 1920×1080, FPS 30 (움직임이 많아 60 권장, PC 사양에 맞춰)</div></li>
-        <li><div><b>소스 추가</b> — 비디오 캡처 장치: 캡처보드 A · B (해상도 1080p, 아케이드 출력에 맞춤), 카메라 · 브라우저/창 캡처: STEPIN 대회 프로그램 대진표 · 이미지: 오버레이 PNG · 미디어 소스: 홍보 영상</div></li>
-        <li><div><b>세로 화면 배치</b> — 아케이드 화면(9:16)을 높이 1080에 맞춰 각 약 608×1080으로 좌우 배치. 가운데 704px에 대진표·점수·선수명</div></li>
-        <li><div><b>오디오</b> — 설정 → 오디오: 샘플레이트 48kHz · 스테레오. 믹서 USB 입력 하나로 받는 것을 권장 (게임 + 마이크 합쳐진 소리). 피크 −12 ~ −6dB, 빨간색 금지</div></li>
-        <li><div><b>스튜디오 모드</b> — 미리보기에서 다음 장면을 준비하고 ‘전환’으로 송출. 장면마다 단축키 지정</div></li>
-        <li><div><b>관중 화면</b> — 프로그램 화면 우클릭 → 전체 화면 프로젝터(프로그램) → 관중 모니터(디스플레이 2) 선택</div></li>
-        <li><div><b>녹화</b> — 설정 → 출력 → 녹화: 형식 mkv(중간에 꺼져도 파일 보존) → 종료 후 ‘파일 → 리먹스’로 mp4 변환. 방송과 동시 녹화</div></li>
-        <li><div><b>송출 (TYPE 4)</b> — 설정 → 방송: 서비스(YouTube · SOOP 등) 선택, 스트림 키 입력 → 출력 설정은 아래 표</div></li>
-        <li><div><b>테스트</b> — 본 행사 전 30분 이상 비공개(또는 일부 공개) 테스트 송출, 녹화본 재생 확인</div></li>
-      </ol>
+      <div class="obsg"><figure class="obss"><a href="/img/obs/obs_step01.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step01.jpg" alt="OBS 셋팅 1단계: 자동 구성 마법사 실행" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">1</span><div><b>자동 구성 마법사 실행</b><p>OBS를 설치한 뒤 <b>도구 → 자동 구성 마법사</b>를 열고 ‘방송에 최적화, 녹화는 부차적’을 선택해 끝까지 진행합니다. PC 사양에 맞는 기본값이 잡힙니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step02.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step02.jpg" alt="OBS 셋팅 2단계: 비디오 해상도 · FPS" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">2</span><div><b>비디오 해상도 · FPS</b><p><b>설정 → 비디오</b>에서 기본(캔버스) 해상도와 출력 해상도를 모두 <b>1920x1080</b>, 공통 FPS 값은 <b>60</b>(사양이 낮으면 30)으로 맞춥니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step03.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step03.jpg" alt="OBS 셋팅 3단계: 캡처보드 소스 추가" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">3</span><div><b>캡처보드 소스 추가</b><p>소스 창의 <b>＋ → 비디오 캡처 장치</b>를 눌러 ‘캡처 A’를 만들고 장치에서 캡처보드 A, 해상도 1920x1080을 고릅니다. 캡처 B도 같은 방법으로 추가합니다. 대진표는 ‘창 캡처’, 오버레이는 ‘이미지’로 추가합니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step04.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step04.jpg" alt="OBS 셋팅 4단계: 세로 화면 좌우 배치" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">4</span><div><b>세로 화면 좌우 배치</b><p>아케이드 화면은 세로(9:16)입니다. 소스 우클릭 → <b>변환 → 변환 편집</b>에서 캡처 A는 위치 0, 0 · 크기 608x1080, 캡처 B는 위치 1312, 0 · 크기 608x1080으로 넣고 가운데 704px에 대진표 · 점수 · 선수명을 둡니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step05.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step05.jpg" alt="OBS 셋팅 5단계: 오디오 설정" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">5</span><div><b>오디오 설정</b><p><b>설정 → 오디오</b>에서 샘플 레이트 48kHz · 스테레오, 마이크/보조 오디오에 <b>오디오 믹서 USB</b>를 선택합니다. 게임음과 마이크를 믹서에서 합쳐 하나로 받고, 메인 화면 오디오 믹서 피크를 −12 ~ −6dB로 유지합니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step06.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step06.jpg" alt="OBS 셋팅 6단계: 스튜디오 모드 · 장면 전환" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">6</span><div><b>스튜디오 모드 · 장면 전환</b><p><b>제어 → 스튜디오 모드</b>를 켜면 왼쪽 미리보기에서 다음 장면을 준비하고 <b>전환</b>으로 송출 화면을 바꿉니다. 장면(대기 · 경기 · 대진표 · 카메라 · 하이라이트)마다 단축키(F2~F5 등)를 지정해 두면 편합니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step07.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step07.jpg" alt="OBS 셋팅 7단계: 관중 모니터로 출력" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">7</span><div><b>관중 모니터로 출력</b><p>프로그램 화면을 우클릭 → <b>전체 화면 프로젝터 (프로그램)</b> → 관중 모니터가 연결된 <b>디스플레이 2</b>를 고릅니다. 관중 모니터는 중계 PC에 HDMI로 직결합니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step08.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step08.jpg" alt="OBS 셋팅 8단계: 녹화 설정" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">8</span><div><b>녹화 설정</b><p><b>설정 → 출력(고급) → 녹화</b>에서 녹화 경로(외장 SSD 권장), 형식 <b>mkv</b>, 인코더 NVENC를 고릅니다. mkv는 중간에 꺼져도 파일이 남고, 끝난 뒤 <b>파일 → 녹화 리먹스</b>로 mp4로 바꿉니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step09.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step09.jpg" alt="OBS 셋팅 9단계: 라이브 송출 설정 (TYPE 4)" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">9</span><div><b>라이브 송출 설정 (TYPE 4)</b><p><b>설정 → 방송</b>에서 서비스(YouTube · SOOP 등)를 고르고 스트림 키를 붙여 넣습니다. 출력 → 방송은 CBR, 비트레이트 업로드 속도의 2/3 이하(예: 8000Kbps), 키프레임 2초로 맞춥니다.</p></div></figcaption></figure><figure class="obss"><a href="/img/obs/obs_step10.jpg" target="_blank" rel="noopener"><img src="/img/obs/obs_step10.jpg" alt="OBS 셋팅 10단계: 테스트 송출 · 녹화" width="1800" height="1080" loading="lazy"></a><figcaption><span class="n">10</span><div><b>테스트 송출 · 녹화</b><p>본 행사 전 <b>비공개 송출 + 녹화를 30분 이상</b> 진행하고, 하단 상태 표시줄에서 드롭 프레임 0% · FPS 유지를 확인한 뒤 녹화 파일을 재생해 봅니다.</p></div></figcaption></figure></div>
+      <p class="src">화면 구성 예시는 OBS Studio 30 한국어 기준으로 다시 그린 안내 이미지입니다. 버전에 따라 메뉴 위치 · 이름이 조금 다를 수 있습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
     </div>
     <div class="block">
       <h2 class="sec">장면(Scene) 구성 예시</h2>
@@ -1323,20 +1385,23 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     </div>
     <div class="block">
       <h2 class="sec">문제 해결</h2>
-      <div class="tbl"><table>
-        <thead><tr><th>증상</th><th>원인</th><th>조치</th></tr></thead>
-        <tbody>
-          <tr><td class="k">점수가 비정상적으로 낮음</td><td>거리 부족, 전신 미노출, 배경·의상 색 겹침, 2인 이상 인식</td><td>플레이 위치 재표시, 관중 이동, 의상 교체 요청</td></tr>
-          <tr><td class="k">플레이어가 어둡게 보임</td><td>역광, 저조도</td><td>배치 방향 변경, 핀조명 추가</td></tr>
-          <tr><td class="k">캡처보드 연결 후 아케이드 화면이 꺼짐</td><td>캡처보드 HDMI OUT → 아케이드 화면 미연결, 캡처보드 USB 전원 미연결, HDCP 차단</td><td>캡처보드 OUT을 아케이드 화면 입력에 다시 연결, USB를 PC에 연결해 전원 공급, 패스스루 지원 · HDCP 대응 캡처보드로 교체</td></tr>
-          <tr><td class="k">배틀 연결 안 됨</td><td>인터넷 미연결, 다른 네트워크</td><td>두 대를 같은 유선 LAN에 연결 후 재시도</td></tr>
-          <tr><td class="k">화면 멈춤 · 딜레이</td><td>공용 와이파이 트래픽</td><td>전용 유선 회선으로 전환</td></tr>
-          <tr><td class="k">미러링 화면 끊김 · 싱크 어긋남</td><td>무선 미러링</td><td>HDMI 직결로 교체</td></tr>
-          <tr><td class="k">QR 영상 다운로드 안 됨</td><td>인터넷 미연결, 공공장소 다운로드 비활성화</td><td>네트워크 확인, 행사 설정 본사 확인</td></tr>
-          <tr><td class="k">곡 검색이 안 됨</td><td>검색은 영문 원제만 지원</td><td>예: 아파트 → <span class="mono">APT.</span>, 첫 만남은 계획대로 되지 않아 → <span class="mono">plot twist</span></td></tr>
-          <tr><td class="k">기기 오류 · 하드웨어 이상</td><td>—</td><td>제품번호·증상·오류 화면 사진을 <a href="#contact">본사 기술 지원</a>으로 접수, 원격 진단 후 조치</td></tr>
-        </tbody>
-      </table></div>
+      <p class="muted">현장에서 자주 생기는 문제를 분야별로 정리했습니다. 문제가 생기면 <b>① 경기 일시 정지 → ② 원인 확인 · 즉시 조치 → ③ 재경기 여부 판단(주최측 규정) → ④ 재개</b> 순서로 대응합니다.</p>
+      <h3 class="tsh">전원 · 기기</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">아케이드가 켜지지 않음</td><td>전원 콘센트 · 멀티탭 차단, 전원 스위치 꺼짐, 차단기 내려감</td><td>콘센트를 직접 바꿔 꽂고 전원 스위치 확인 → 차단기 확인 → 안 되면 본사 기술 지원</td><td>전용 콘센트 · 20A 확보, 멀티탭 문어발 금지, 대당 500W 기준 계산</td></tr><tr><td class="k">경기 중 갑자기 꺼짐 · 재부팅</td><td>전력 과부하(조명 · 스피커와 같은 회로), 멀티탭 접촉 불량, 케이블 발에 걸림</td><td>같은 회로의 조명 · 음향 전원 분리 → 재부팅 후 해당 세트 재경기 여부는 레퍼리가 판단</td><td>아케이드와 조명 · 음향 회로 분리, 케이블 바닥 고정, 무대 동선 밖으로 배선</td></tr><tr><td class="k">화면 멈춤 · 앱 응답 없음</td><td>장시간 연속 구동 · 발열, 네트워크 끊김 후 대기</td><td>해당 매치 일시 정지 → 재부팅(약 2~3분) → 대기 화면 · 네트워크 정상 확인 후 재개</td><td>휴식 시간마다 상태 확인, 통풍 공간 확보(후면 60cm), 예비 시간 확보</td></tr><tr><td class="k">터치 · 버튼 입력 안 됨</td><td>화면 오염 · 장갑, 일시적 입력 오류</td><td>화면 닦기 → 재시도 → 재부팅</td><td>스태프가 곡 선택 · 시작을 대신 조작해 선수 조작 최소화</td></tr></tbody></table></div>
+      <h3 class="tsh">네트워크 · 배틀 연동</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">배틀 연동이 안 됨 · 상대 기기 검색 안 됨</td><td>두 대가 다른 네트워크, 유선 미연결, 와이파이 사용, 방화벽 · 포트 차단</td><td>두 대와 중계 PC를 같은 스위치 허브 · 같은 유선 회선에 연결 → 재부팅 → 배틀 재진입</td><td>유선 LAN 필수, D-1 배틀 연동 테스트, 학교 · 기관은 통신 허용 목록 사전 승인</td></tr><tr><td class="k">경기 중 연결 끊김</td><td>랜선 빠짐 · 접촉 불량, 회선 과부하, 공용망 트래픽</td><td>랜선 재연결 · 교체 → 연결 회복 후 해당 세트 재경기 여부 판단</td><td>랜선 바닥 고정, 예비 랜선 2개, 아케이드 회선을 관람객 와이파이와 분리</td></tr><tr><td class="k">점수 · 결과가 대회 프로그램에 반영 안 됨</td><td>중계 PC 네트워크 끊김, 대회 프로그램 세션 만료</td><td>중계 PC 네트워크 확인 → 대회 프로그램 새로고침 · 재로그인 → 결과는 아케이드 화면 기준으로 수기 기록 후 반영</td><td>중계 PC도 유선 연결, 매치마다 결과 수기 기록지 병행</td></tr><tr><td class="k">QR 영상 다운로드 안 됨</td><td>인터넷 끊김, 공공장소 다운로드 비활성화 설정</td><td>네트워크 확인 → 행사 설정(다운로드 허용 여부) 본사 확인</td><td>행사 전 다운로드 허용 여부 협의</td></tr></tbody></table></div>
+      <h3 class="tsh">카메라 · 동작 인식</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">점수가 비정상적으로 낮음</td><td>거리 부족 · 초과, 전신 미노출, 배경 · 의상 색 겹침, 2인 이상 인식</td><td>플레이 위치 재표시(2.2–2.5m) → 뒤쪽 사람 이동 → 의상 · 배경 확인 → 재시도</td><td>바닥 위치 테이프, 플레이 존 뒤 비우기, 참가자 권장 복장 사전 안내</td></tr><tr><td class="k">인식이 자주 끊김 · 캐릭터가 흔들림</td><td>역광 · 강한 조명, 무빙 · 스트로브 조명, 화면 반사</td><td>조명 방향 바꾸기, 무빙 조명 끄기, 정면 LED 보강</td><td>창문 · LED월을 등지지 않게 배치, 경기 중 무대 조명 효과 금지</td></tr><tr><td class="k">플레이어가 어둡게 보임</td><td>저조도, 역광</td><td>핀조명 · LED 패널 추가, 배치 방향 변경</td><td>D-1 리허설 때 실제 조명 상태로 테스트</td></tr><tr><td class="k">관중이 인식됨</td><td>카메라 시야(정면 2.5m · 좌우) 안에 관중 · 스태프</td><td>안전바를 뒤로 이동, 스태프 위치 조정</td><td>카메라 시야 밖으로 관람 동선 설계</td></tr></tbody></table></div>
+      <h3 class="tsh">영상 · 캡처 · 중계 화면</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">캡처보드 연결 후 아케이드 화면이 꺼짐</td><td>캡처보드 HDMI OUT → 아케이드 화면 미연결, 캡처보드 USB 전원 미연결, HDCP 차단</td><td>캡처보드 OUT을 아케이드 화면 입력에 다시 연결 → USB를 PC에 연결해 전원 공급 → 안 되면 캡처보드를 빼고 본체 → 화면 직결로 복구 후 경기 진행</td><td>패스스루 지원 · HDCP 대응 캡처보드 사용, D-1 왕복 연결 테스트</td></tr><tr><td class="k">OBS에 캡처 화면이 검게 나옴</td><td>캡처 장치 선택 오류, 다른 프로그램이 장치 점유, 해상도 불일치, HDCP</td><td>소스 속성에서 장치 다시 선택 → 장치 비활성화 후 재활성화 → 해상도를 1080p로 맞춤 → USB 포트 변경</td><td>캡처보드마다 다른 USB 3.0 포트, OBS 외 캡처 프로그램 종료</td></tr><tr><td class="k">관중 모니터 화면 끊김 · 늦게 나옴</td><td>무선 미러링, 긴 HDMI 케이블 신호 감쇠</td><td>HDMI 직결로 교체, 10m 이상은 액티브 케이블 · 익스텐더</td><td>부조 위치와 거리 사전 확인, 예비 HDMI 케이블</td></tr><tr><td class="k">화면 깜빡임 · 노이즈</td><td>케이블 접촉 불량, 분배기 · 익스텐더 전원 부족</td><td>케이블 재연결 · 교체, 분배기 전원 어댑터 연결</td><td>고품질 HDMI 2.0 케이블, 연결부 테이프 고정</td></tr><tr><td class="k">세로 화면 비율이 깨짐</td><td>OBS 소스 크기 · 변환 설정 오류</td><td>소스 우클릭 → 변환 → 화면에 맞추기 후 높이 1080으로 재배치</td><td>장면 컬렉션을 미리 저장해 현장에서 불러오기</td></tr></tbody></table></div>
+      <h3 class="tsh">음향</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">험 노이즈 · 웅 소리</td><td>그라운드 루프(아케이드 · PC · 믹서 전원이 다른 회로)</td><td>3.5mm 라인에 그라운드 루프 아이솔레이터 연결, 같은 전원 회로로 정리</td><td>아이솔레이터 예비 준비</td></tr><tr><td class="k">하울링(삐 소리)</td><td>마이크가 스피커를 향함, 마이크 음량 과다</td><td>마이크 방향 · 위치 조정, 믹서 게인 낮춤</td><td>스피커를 진행자보다 앞쪽에 배치</td></tr><tr><td class="k">음악이 두 번 들리거나 엇박</td><td>배틀 중 두 아케이드 소리를 모두 PA로 출력</td><td>아케이드 B 볼륨을 낮추고 A 한 대만 PA로</td><td>리허설에서 PA 소스를 1대로 고정</td></tr><tr><td class="k">음악이 마이크 · 메인 무대 소리에 묻힘</td><td>메인 무대 PA가 더 큼, 스피커 방향</td><td>경기 중 마이크 −6dB, PA 방향을 관중석으로</td><td>메인 무대 일정과 경기 시간 조율</td></tr><tr><td class="k">방송 · 녹화 소리가 안 나옴</td><td>OBS 오디오 장치 미선택, 믹서 USB 출력 꺼짐</td><td>OBS 설정 → 오디오에서 믹서 USB 선택, 믹서 USB 출력 확인</td><td>녹화 테스트 후 재생 확인</td></tr></tbody></table></div>
+      <h3 class="tsh">OBS · 송출 · 녹화</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">송출이 끊기거나 버퍼링</td><td>업로드 대역폭 부족, 아케이드와 같은 회선 사용</td><td>비트레이트 낮춤(예: 8 → 5Mbps), 송출 회선 분리</td><td>송출 전용 유선 회선, 비트레이트의 1.5배 이상 업로드 여유</td></tr><tr><td class="k">‘인코딩 과부하’ · 프레임 드롭</td><td>PC 사양 부족, 소프트웨어 인코딩</td><td>인코더를 NVENC로, 출력 30fps로, 미사용 소스 숨김</td><td>RAM 16GB+ · 외장 GPU PC, 사전 장시간 테스트</td></tr><tr><td class="k">송출이 차단됨 · 음소거</td><td>K-POP 음원 저작권 정책</td><td>녹화 후 편집 업로드로 대체, 플랫폼 정책 확인</td><td>플랫폼 사전 테스트 송출, 송출 범위 협의</td></tr><tr><td class="k">녹화 파일이 깨짐</td><td>녹화 중 PC 종료 · 오류(mp4 형식)</td><td>mkv로 녹화했다면 ‘파일 → 리먹스’로 복구 · 변환</td><td>녹화 형식 mkv, 외장 SSD 여유 공간 확보</td></tr></tbody></table></div>
+      <h3 class="tsh">진행 · 기타</h3>
+      <div class="tbl"><table><thead><tr><th>증상</th><th>주요 원인</th><th>현장 즉시 조치</th><th>예방</th></tr></thead><tbody><tr><td class="k">곡 검색이 안 됨</td><td>검색은 영문 원제만 지원</td><td>예: 아파트 → <span class="mono">APT.</span>, 첫 만남은 계획대로 되지 않아 → <span class="mono">plot twist</span></td><td>송리스트를 영문 곡명으로 출력해 스태프에게 배포</td></tr><tr><td class="k">기기 오류로 경기가 중단됨</td><td>하드웨어 · 네트워크 장애</td><td>경기 일시 정지 → 원인 조치 → 재경기 여부는 주최측 규정 · 레퍼리 판단 → 장시간이면 예비 일정으로 순서 조정</td><td>대회 규정에 기기 오류 시 처리 기준을 미리 공지, 타임테이블에 예비 시간 15~30분</td></tr><tr><td class="k">하드웨어 이상 · 해결 안 됨</td><td>—</td><td>제품번호 · 증상 · 오류 화면 사진을 찍어 <a href="#contact">본사 기술 지원</a>으로 접수 → 원격 진단</td><td>행사 당일 본사 기술 지원 연락처 · 담당자 공유</td></tr></tbody></table></div>
+      <h3 class="tsh">현장 예비 장비</h3>
+      <ul class="list"><li>HDMI 케이블 2 · 랜선 2 · 멀티탭 1 · 스위치 허브 1</li><li>캡처보드 1 · 그라운드 루프 아이솔레이터 1 · 3.5mm 오디오 케이블 1</li><li>무선 마이크 배터리 · 케이블 타이 · 바닥 고정 테이프</li><li>결과 수기 기록지 · 볼펜 (대회 프로그램 장애 대비)</li></ul>
     </div>
   
   </div>
@@ -1360,12 +1425,12 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
   <div class="vh"><span class="eyebrow">10 · Online vs Offline</span><h1>온·오프라인 토너먼트 비교</h1><p>온라인은 규모와 유입, 오프라인은 현장성과 공정한 판정에 강합니다. 대부분의 행사는 둘을 묶은 하이브리드가 가장 효과적입니다.</p></div>
   <div class="vs">
     <div class="panel"><h3><span class="pill p-rec">ONLINE</span>APP 토너먼트</h3>
-      <div class="pc pro"><ul><li>장소·국가 제약 없이 대규모 모집 (최대 1024강)</li><li>신청부터 결과까지 웹 툴킷으로 자동 진행</li><li>현장 비용 없음, 장기간 랭킹전 가능</li><li>참가자 연습 → 앱 신규 유입·리텐션 효과</li><li>선수 영상·CSV 우승자 데이터 자동 확보</li></ul></div>
+      <div class="pc pro"><ul><li>장소·국가 제약 없이 대규모 모집 (최대 1024강)</li><li>본사가 개설 · 집계, 신청부터 결과까지 자동 진행</li><li>현장 비용 없음, 장기간 랭킹전 가능</li><li>참가자 연습 → 앱 신규 유입·리텐션 효과</li><li>선수 영상·CSV 우승자 데이터 자동 확보</li></ul></div>
       <div class="pc con"><ul><li>신청 대비 실제 참여율이 낮음</li><li>모바일 네트워크·기기 환경에 따라 중도 이탈</li><li>시차·일정 조율 필요 (동기 방식)</li><li>현장 관람 콘텐츠가 없어 화제성은 홍보에 의존</li></ul></div>
     </div>
     <div class="panel"><h3><span class="pill p-req">OFFLINE</span>아케이드 대회</h3>
       <div class="pc pro"><ul><li>대형 화면·중계·관중이 만드는 관람 콘텐츠</li><li>같은 장비·같은 조건에서 판정 → 공정성 높음</li><li>복장·접속 문제를 심판이 현장에서 통제</li><li>지자체·학교·브랜드 행사 연계, 체험존 동시 운영</li></ul></div>
-      <div class="pc con"><ul><li>장비 운반·무대·중계·인력 비용</li><li>참가 인원이 시간에 묶임 (32강 하루 약 4시간)</li><li>공간·전원·조명·인터넷 조건이 맞아야 함</li><li>지역 참가자 중심으로 모집 범위가 좁음</li></ul></div>
+      <div class="pc con"><ul><li>장비 운반·무대·중계·인력 비용</li><li>참가 인원이 시간에 묶임 (32강 하루 약 4시간)</li><li>공간 · 전원 · 조명 조건과 유선 LAN 인터넷이 필수</li><li>지역 참가자 중심으로 모집 범위가 좁음</li></ul></div>
     </div>
     <div class="panel"><h3><span class="pill p-ok">HYBRID</span>앱 예선 + 현장 본선</h3>
       <div class="pc pro"><ul><li>넓게 모집하고 상위 N명만 현장 초청</li><li>예선 기간 내내 앱 연습 → 본선 경기력 상승</li><li>현장 비용을 본선 규모에 맞춰 통제</li><li>예선 홍보 + 본선 중계로 두 번의 노출 기회</li></ul></div>
@@ -1378,12 +1443,12 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <div class="tbl"><table>
       <thead><tr><th>조건</th><th>온라인 APP 토너먼트</th><th>오프라인 아케이드 대회</th></tr></thead>
       <tbody>
-        <tr><td class="k">계정 · 승인</td><td>비즈니스 계정 승인 + 개최 신청 본사 검토 승인</td><td>본사 협업 확정 (장비 · 운영 범위)</td></tr>
+        <tr><td class="k">개설 · 협의</td><td>본사 협의 후 본사가 앱 예선 개설 (셀프 개설 미오픈)</td><td>본사 협업 확정 (장비 · 운영 범위)</td></tr>
         <tr><td class="k">일정</td><td>접수 시작은 신청 후 24시간 이후, 예선 최소 24시간, 첫 라운드는 대진 공개 후 24시간 이후</td><td>반입·설치·리허설 D-1 확보, 본선 32강 하루 약 4시간</td></tr>
-        <tr><td class="k">상금 · 상품</td><td>수량·내용을 명확히 기재 (모호하면 반려), 지급은 주최측</td><td>동일 + 현장 시상 준비</td></tr>
+        <tr><td class="k">상금 · 상품</td><td>수량 · 내용을 명확히 공지, 지급은 주최측</td><td>동일 + 현장 시상 준비</td></tr>
         <tr><td class="k">참가자 조건</td><td>유효한 STEPIN 계정, 스마트폰, 안정적인 네트워크 (와이파이 권장)</td><td>유효한 STEPIN 계정, 본인 확인, 미성년자 보호자 동의, AI 판정용 복장</td></tr>
         <tr><td class="k">경연곡</td><td>5~30곡 지정</td><td>최소 25곡 풀 (개인전·팀전 각각)</td></tr>
-        <tr><td class="k">장소 · 장비</td><td>없음</td><td>아케이드 2대, 6×3m 무대, 20A 전원, 유선 LAN, 중계 PC · 캡처보드, 관중 모니터</td></tr>
+        <tr><td class="k">장소 · 장비</td><td>없음</td><td>아케이드 2대, 6×3m 무대, 20A 전원, 유선 LAN 인터넷 (필수), 중계 PC · 캡처보드, 관중 모니터</td></tr>
         <tr><td class="k">인력</td><td>참가자 관리 (프라이빗 시 승인·거절), 문의 대응</td><td>슈퍼바이저, 레퍼리, 오퍼레이터, 스태프 2+, 반입 인력</td></tr>
         <tr><td class="k">개인정보</td><td>우승자 CSV(이름·국적·연락처·이메일) 관리, 미성년자 법정대리인 정보</td><td>현장 부속합의서 · 입상자 정보 수집 동의</td></tr>
       </tbody>
@@ -1420,6 +1485,13 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
   </div>
   <div class="tabpanel" data-panel="assets:design" hidden>
     <div class="note"><b>사용 범위.</b> 포스터·광고 이미지는 과거 대회 레퍼런스입니다. 새 대회 포스터는 일정·상금·QR을 바꿔 제작하고, 사용 전 본사에 시안을 공유해 주세요. ECA 포스터의 대회 KV는 KeSPA 자산이므로 참고용으로만 사용합니다.</div>
+    <div class="block">
+      <h2 class="sec">브랜드 디자인 에셋</h2>
+      <p class="muted">홍보물 · 중계 그래픽 · 현장 설치물에 쓰는 STEPIN 공식 로고와 캐릭터 그래픽입니다. 로고는 비율을 바꾸거나 색을 임의로 바꾸지 말고, 주변에 로고 높이의 1/2 이상 여백을 두세요.</p>
+      <div class="row"><button class="btn pri" type="button" data-dl="STEPIN_Design_Assets.zip" data-name="STEPIN_Design_Assets.zip">전체 에셋 한 번에 받기 (ZIP · 5.4MB)</button></div>
+      <div id="brandAssets"></div>
+    </div>
+    <h2 class="sec">홍보 소스 · 이미지</h2>
     <div class="gal" id="gal"></div>
   </div>
   <div class="tabpanel" data-panel="assets:raw" hidden>
@@ -1442,7 +1514,6 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
   <div class="block">
     <h2 class="sec">웹사이트</h2>
     <div class="row">
-      <a class="btn sm" href="https://tournament.stepin.ai" target="_blank" rel="noopener">토너먼트 개최 tournament.stepin.ai ↗</a>
       <a class="btn sm" href="https://www.stepin.ai/ko" target="_blank" rel="noopener">STEPIN 앱 ↗</a>
       <a class="btn sm" href="https://arcade.stepin.ai/" target="_blank" rel="noopener">STEPIN 아케이드 ↗</a>
       <a class="btn sm" href="https://sidewalkplay.com/ko/" target="_blank" rel="noopener">싸이드워크엔터테인먼트 ↗</a>
@@ -1547,15 +1618,16 @@ const DEF={
  ],
  faq:[
   {cat:"대회",q:"기기 1대로도 대회를 할 수 있나요?",a:"가능합니다. 참가자가 순서대로 챌린지를 하고 점수 랭킹으로 시상합니다. 마지막에 상위 4인을 뽑아 2대로 결승 배틀을 하면 관람 재미가 커집니다."},
+  {cat:"대회",q:"앱 예선은 어떻게 개설하나요?",a:"현재 파트너가 직접 앱 토너먼트를 개설하는 기능(비즈니스 계정)은 오픈되어 있지 않습니다. 본사와 예선 방식 · 본선 진출 기준 · 지정곡 · 일정을 협의하면 본사가 앱에 예선을 개설하고 결과를 집계합니다. 학교대항전은 학교 단위로 참가 신청을 받은 뒤 학교별로 선수를 등록해 진행합니다."},
+  {cat:"대회",q:"학교대항전 본선 진출 학교는 어떻게 정하나요?",a:"대회마다 협의로 정합니다. 예선에 1회 이상 참여한 학생 수가 많은 순으로 상위 n개교를 뽑거나, 학교별 참여 학생의 곡별 최고점을 합산해 평가하거나, 학교마다 교내 상위 n명을 대표로 보내는 방식이 있습니다. 앱 참여가 어려운 학생을 위해 현장 예선을 함께 여는 경우도 있습니다."},
   {cat:"대회",q:"예선 없이 바로 본선을 할 수 있나요?",a:"네. 앱 토너먼트에서 예선을 끄면 신청자 중 주최측이 진출자를 직접 고르고, 오프라인 대회는 현장 접수로 바로 진행할 수 있습니다."},
   {cat:"대회",q:"본선 참가 인원이 8명보다 많으면요?",a:"9~11명은 2개 조, 12~16명은 4개 조 그룹 스테이지 후 8강 더블 엘리미네이션입니다. 17명 이상은 앱 예선으로 압축하거나 싱글 엘리미네이션(예: 32강)으로 진행합니다."},
   {cat:"대회",q:"동점이면 어떻게 하나요?",a:"동률 처리 기준은 대회마다 주최측이 정해 대회 전에 공지합니다. 앱 예선 동점은 공지한 기준(예: 먼저 득점한 순)을 따릅니다."},
   {cat:"대회",q:"미성년자 참가자는 어떻게 처리하나요?",a:"부모·법정대리인 동의가 필요합니다. 앱 우승자 목록에 법정대리인 정보 버튼이 표시되고, 본선 연락은 보호자와 먼저 합니다."},
   {cat:"대회",q:"상금은 누가 지급하나요?",a:"주최측이 직접 지급합니다. 우승자 이름·국적·연락처·이메일을 CSV로 받을 수 있습니다. 보너스 상품 수상자도 주최측이 정합니다."},
   {cat:"대회",q:"앱 대회 중 튕기면 어떻게 되나요?",a:"게임을 전혀 하지 않으면 No Show(패배), 절반 미만만 하면 FF로 처리됩니다. 참가자에게 와이파이 등 안정적인 환경에서 참여하도록 미리 안내하세요."},
-  {cat:"대회",q:"앱 토너먼트 개최 신청이 반려되면요?",a:"상금·상품이 모호하거나, 사전 협의 없는 취소 이력·참가자 민원 이력이 있으면 반려될 수 있습니다. 신청 현황에서 사유를 확인하고 수정해 재신청합니다."},
   {cat:"대회",q:"송리스트는 누가 정하나요?",a:"본사가 앱 플레이 데이터와 저작권 상황을 기준으로 제안하고 주최측과 확정합니다. 본선은 25곡 내외 풀에서 매치마다 랜덤 선곡하는 방식을 권장하며, 지역·국가 서비스 제한곡은 제외합니다."},
-  {cat:"셋팅",q:"인터넷이 꼭 필요한가요?",a:"배틀과 대회, 영상 다운로드에는 유선 인터넷이 필요합니다. 연결 없이 쓸 수 있는 것은 챌린지와 프랙티스입니다. 라이브 송출을 하면 송출용 회선을 따로 준비합니다."},
+  {cat:"셋팅",q:"인터넷이 꼭 필요한가요?",a:"네. 아케이드로 현장 대회를 할 때는 유선 LAN 인터넷 연결이 필수입니다. 배틀 연동, 대회 프로그램, 점수 집계, 영상 다운로드가 모두 인터넷으로 동작하며 와이파이 · 핫스팟은 대회용으로 쓸 수 없습니다. 아케이드 대당 유선 1포트와 중계 PC 1포트를 준비하고, 라이브 송출을 하면 송출 전용 회선을 따로 준비합니다."},
   {cat:"셋팅",q:"설치에 필요한 공간은요?",a:"STANDARD 1대 최소 3×3m, 2대 대회 무대 6×3m 이상입니다. 천장 3m, 후면 60cm, 카메라와 플레이어 사이 2.2~2.5m를 확보합니다."},
   {cat:"셋팅",q:"점수가 이상하게 낮게 나와요.",a:"거리(2.2~2.5m), 전신이 화면에 다 들어오는지, 배경·의상 색이 겹치지 않는지, 뒤에 다른 사람이 잡히지 않는지 확인하세요. 역광이면 조명을 추가합니다."},
   {cat:"셋팅",q:"관중 화면이 끊기거나 늦게 나와요.",a:"무선 미러링 대신 HDMI 직결로 바꾸고, 10m가 넘으면 액티브 케이블이나 HDMI 익스텐더를 씁니다. 캡처 화면이 안 나오면 분배기·캡처보드의 HDCP 지원을 확인하세요."},
@@ -1568,10 +1640,9 @@ const DEF={
  contacts:[
   {label:"대회 협업 · 운영 문의",value:"marketing@sidewalkplay.com",desc:"싸이드워크 IMC팀 · 대회 기획, 제작물 시안, 원본 소스 요청"},
   {label:"대표 전화",value:"070-4117-0113",desc:"본사 IMC팀"},
-  {label:"앱 토너먼트 개최 · 계정 승인",value:"cs@sidewalkplay.com",desc:"비즈니스 계정 승인, 개최 신청, 우승자 관련"},
+  {label:"앱 예선 · 우승자 관련",value:"cs@sidewalkplay.com",desc:"앱 예선 참가자 문의, 우승자 정보 관련"},
   {label:"현장 기술 지원",value:"support@sidewalkplay.com",desc:"아케이드 · 대회 프로그램 오류 (제품번호 · 증상 · 사진)"},
-  {label:"이스포츠 대회 일반",value:"info@sidewalkplay.com",desc:"대회 개최 일반 문의"},
-  {label:"토너먼트 개최 웹",value:"tournament.stepin.ai",desc:"비즈니스 계정으로 로그인"}
+  {label:"이스포츠 대회 일반",value:"info@sidewalkplay.com",desc:"대회 개최 일반 문의"}
  ],
  log:[]
 };
@@ -1712,7 +1783,7 @@ const BT={
    {id:"lan",x:300,y:90,w:160,h:56,t:"유선 LAN · 전원",s:"220V · 대당 500W",c:""},
    {id:"qr",x:570,y:30,w:170,h:56,t:"참가자 스마트폰",s:"QR 영상 다운로드",c:"out"},{id:"ld",x:570,y:150,w:170,h:56,t:"랭킹 보드",s:"화이트보드 · 모니터",c:"out"}],
    edges:[{f:"lan",t:"a",fs:"l",ts:"r",k:"net"},{f:"lan",t:"b",fs:"l",ts:"r",k:"net"},{f:"lan",t:"qr",k:"net",l:"인터넷"},{f:"lan",t:"ld",l:"점수 기록"}]},
-  gear:[["아케이드","1~2대","본사"],["전원 콘센트","대당 1구","파트너"],["유선 LAN","1회선","파트너 (권장)"],["안내 스태프","대당 1인","파트너"],["X배너 · POP 아크릴","1 · 2~3","시안 협조"],["랭킹 보드","1","파트너"],["안전바","2+","파트너"]],
+  gear:[["아케이드","1~2대","본사"],["전원 콘센트","대당 1구","파트너"],["유선 LAN (필수)","대당 1포트","파트너"],["안내 스태프","대당 1인","파트너"],["X배너 · POP 아크릴","1 · 2~3","시안 협조"],["랭킹 보드","1","파트너"],["안전바","2+","파트너"]],
   steps:["플레이 위치 바닥 표시 (2.2–2.5m)","관람객은 플레이 공간 좌우·후면, 카메라 시야 밖","스태프가 곡 선택·순서 안내, 점수 기록","마감 30분 전 상위 4인 호출 → 2대로 4강 배틀 (선택)","공공장소 영상 다운로드 허용 여부 본사 확인"],
   av:[["사운드","아케이드 내장 스피커. 넓은 공간·소음이 큰 곳은 3.5mm → 액티브 스피커 추가"],["영상","별도 송출 없음. 아케이드 화면이 곧 관람 화면"],["조명","저조도·야간이면 핀조명 1~2, 역광 금지"],["인력","대당 안내 1, 운반 대당 2 (반입·반출일)"]]},
  t2:{title:"TYPE 2 · 현장 중계 (관중용 대형 화면)",desc:"대회의 기본 구성입니다. 관중이 카메라에 잡히지 않게 플레이 존 뒤를 비우고, 관중은 중계 모니터로 경기를 봅니다. 중계 PC가 두 아케이드 화면과 대진표를 합성해 관중 모니터로 내보냅니다.",
@@ -1891,10 +1962,10 @@ function typeOf(a){
   return {k:"B",n:"B. 오프라인 단독 대회",lead:21};
 }
 const SCHED={
- C:[[35,"형태·규모·상금·장소 확정, 본사 협업 범위 합의"],[30,"비즈니스 계정 승인, 앱 개최 신청서 제출 (본사 검토)"],[28,"송리스트·규정 확정, 포스터 제작, 사전 노출 시작"],[21,"참가 접수 + 예선 랭킹전 시작 (14일 권장)"],[14,"중계·장비 구성 확정, 제작물 발주"],[7,"예선 마감 → 진출자 확정 · 참석 확인 · 대체 진출"],[3,"선수 정보 수집 (닉네임 · 프로필), 큐시트 확정"],[1,"아케이드 반입 · 설치 · 중계 테스트 · 리허설"],[0,"대회 운영 · 현장 촬영"],[-7,"상금·상품 지급, 결과 공지, 소스 공유"]],
+ C:[[35,"형태·규모·상금·장소 확정, 본사 협업 범위 합의"],[30,"본사와 예선 방식 · 본선 진출 기준 · 지정곡 협의, 앱 예선 개설 요청"],[28,"송리스트·규정 확정, 포스터 제작, 사전 노출 시작"],[21,"참가 접수 + 예선 랭킹전 시작 (14일 권장)"],[14,"중계·장비 구성 확정, 제작물 발주"],[7,"예선 마감 → 진출자 확정 · 참석 확인 · 대체 진출"],[3,"선수 정보 수집 (닉네임 · 프로필), 큐시트 확정"],[1,"아케이드 반입 · 설치 · 중계 테스트 · 리허설"],[0,"대회 운영 · 현장 촬영"],[-7,"상금·상품 지급, 결과 공지, 소스 공유"]],
  B:[[21,"형태·규정·송리스트 확정, 참가 모집 시작"],[14,"중계·장비 확정, 제작물 발주"],[7,"참가자 확정, 대진 방식 공지"],[3,"큐시트 확정, 선수 정보 수집"],[1,"반입 · 설치 · 중계 테스트 · 리허설"],[0,"대회 운영 · 현장 촬영"],[-7,"상금·상품 지급, 결과 공지, 소스 공유"]],
  A:[[14,"일정·장소 확정, 아케이드 일정·운반 예약, 송리스트 확정"],[7,"제작물 발주 (X배너 · POP · 굿즈), 현장 예선 방식 공지"],[3,"스태프 교육 자료 공유, 큐시트 확정"],[1,"반입 · 설치 · 리허설"],[0,"현장 예선 → 본선 운영"],[-7,"상품 지급, 결과 공지, 소스 공유"]],
- D:[[21,"규모·상금 확정, 비즈니스 계정 승인 · 개최 신청"],[14,"사전 노출 · 홍보 시작"],[10,"참가 접수 시작"],[7,"예선 랭킹전 (최소 24시간, 5~7일 권장)"],[2,"진출자 선정 · 대진 공개 (첫 라운드는 24시간 이후)"],[0,"본선 라운드 진행"],[-7,"상금 지급, 결과 공지"]],
+ D:[[21,"규모 · 상금 확정, 본사와 앱 토너먼트 방식 협의 · 개설 요청"],[14,"사전 노출 · 홍보 시작"],[10,"참가 접수 시작"],[7,"예선 랭킹전 (최소 24시간, 5~7일 권장)"],[2,"진출자 선정 · 대진 공개 (첫 라운드는 24시간 이후)"],[0,"본선 라운드 진행"],[-7,"상금 지급, 결과 공지"]],
  E:[[56,"국가·참가 규모 확정, 협회 간 R&R · 규정 합의"],[45,"국가별 앱 예선 개설 · 홍보"],[30,"국가별 예선 진행 · 대표 확정"],[21,"선수단 비자 · 체류, 방송사 3자 미팅"],[14,"중계·장비 확정, 제작물 발주"],[7,"선수 정보 · 팀명 · 프로필 수집"],[1,"반입 · 설치 · 리허설"],[0,"대회 운영 (2~3일)"],[-7,"결과 공지, 소스 공유"]]
 };
 const WD=["일","월","화","수","목","금","토"];
@@ -1945,9 +2016,9 @@ function renderPlan(){
   txt+=`\n준비 일정 (최소 D-${T.lead})\n`+sc.map(s=>`- ${dstr(base,s[0])}: ${s[1]}`).join("\n")+"\n";
   // ---- required conditions
   const req=[];
-  if(a.qual==="app"||!off)req.push(["앱 토너먼트","비즈니스 계정 승인 + 개최 신청 승인, 상금·상품 수량·내용 명확히"]);
+  if(a.qual==="app"||!off)req.push(["앱 예선","본사 협의로 예선 방식 · 진출 기준 · 지정곡 확정 → 본사가 앱에 개설"+(a.host==="school"?" (학교대항전: 학교 단위 참가 신청 → 학교별 선수 등록 → 학교 랭킹)":"")+", 상금 · 상품 수량 · 내용 명확히"]);
   if(off){
-    req.push(["아케이드",MODELN[a.model]+(model==="wide"?" · 1대에서 2인 배틀":"")],["플레이 공간",model==="wide"?"4×3.5m 이상 + 관중·부조 공간":"6×3m 이상 무대 + 관중·부조 공간 (카메라–플레이어 "+(model==="wide"?"2.8–3.2m":"2.2–2.5m")+")"],["전원","접지 AC 220V, 현장 20A 이상, 멀티탭 3 (1개 10m)"],["유선 인터넷",bc==="t4"?"아케이드용 1회선 + 송출 전용 1회선 (업로드 송출의 1.5배 이상)":"RJ-45 유선, ↓5/↑2Mbps 권장"],["반입","대당 성인 2인 · 카트 · 지상 하역장 · 계단 없는 동선"+(model==="portable"?" (포터블은 8kg, 직원 휴대 가능)":"")]);
+    req.push(["아케이드",MODELN[a.model]+(model==="wide"?" · 1대에서 2인 배틀":"")],["플레이 공간",model==="wide"?"4×3.5m 이상 + 관중·부조 공간":"6×3m 이상 무대 + 관중·부조 공간 (카메라–플레이어 "+(model==="wide"?"2.8–3.2m":"2.2–2.5m")+")"],["전원","접지 AC 220V, 현장 20A 이상, 멀티탭 3 (1개 10m)"],["유선 인터넷 (필수)",bc==="t4"?"아케이드 대당 유선 1포트 + 송출 전용 1회선 (업로드 송출의 1.5배 이상). 와이파이 불가":"아케이드 대당 RJ-45 유선 1포트 + 중계 PC 1포트, ↓5/↑2Mbps 이상. 와이파이 불가"],["반입","대당 성인 2인 · 카트 · 지상 하역장 · 계단 없는 동선"+(model==="portable"?" (포터블은 8kg, 직원 휴대 가능)":"")]);
     if(bc!=="t1")req.push(["부조 공간","무대 옆 4×3m, 책상 2 · 의자 4, 무대가 보이는 위치"],["관중 모니터","65인치 이상 + 스탠드"],["진행 인력","슈퍼바이저 1 · 레퍼리 1 · 오퍼레이터 1 · 스태프 2+"],["선수 대기 공간","무대 근처, 본선 인원만큼 의자"],["안전바","벨트형 4~6"]);
     if(a.venue!=="indoor")req.push(["실외 대비","캐노피 · 방수 커버 · 평탄한 바닥 · 강풍 대책, 직사광선·역광이 카메라에 들지 않게"+(a.venue==="open"?" · 지붕 없는 장소는 우천 시 대체 실내 공간 확보 필수":"")]);
     req.push(["조명",a.venue==="indoor"?"저조도·역광이면 LED 패널 2 (5600K)":"야간·저조도 대비 핀조명 · LED 패널 2 필수"]);
@@ -2012,9 +2083,9 @@ renderRec();
 
 /* ---------- checklist ---------- */
 const CK=[
- ["D-30","기획 · 계약",[["대회 방식 결정 (체험존 / 오프라인 / 하이브리드)","주최"],["일정 · 장소 · 상금 · 참가 자격 확정","주최"],["본사 협업 범위 · 장비 지원 확정","공동"],["중계 형태 결정 (TYPE 1~4)","주최"],["앱 비즈니스 계정 신청 · 승인 요청","주최"],["Floor plan 본사 공유","주최"]]],
- ["D-21","예선 · 홍보 준비",[["앱 토너먼트 개최 신청 (경연곡 · 일정 · 상금)","STEPIN"],["송리스트 확정 (본선 25곡, 서비스 제한곡 확인)","STEPIN"],["포스터 제작 (앱 QR 필수) · 본사 시안 확인","공동"],["학교 · 동아리 · 지역 홍보물 배포, 공문 발송","주최"],["앱 내 배너 · 푸시 · 공식 SNS 공지 요청","STEPIN"]]],
- ["D-14","현장 섭외",[["슈퍼바이저 · 레퍼리 · 스태프 배정","공동"],["유선 인터넷 회선 · 전원 20A 확보","주최"],["중계 모니터 · 스피커 · 마이크 · HDMI 준비","주최"],["방송 송출 시 3자 미팅 (방송팀 · 테크팀 · 슈퍼바이저)","공동"],["기술 인력 숙소 · 체류 지원 확인","주최"]]],
+ ["D-30","기획 · 계약",[["대회 방식 결정 (체험존 / 오프라인 / 하이브리드)","주최"],["일정 · 장소 · 상금 · 참가 자격 확정","주최"],["본사 협업 범위 · 장비 지원 확정","공동"],["중계 형태 결정 (TYPE 1~4)","주최"],["본사와 앱 예선 방식 · 본선 진출 기준 협의","공동"],["Floor plan 본사 공유","주최"]]],
+ ["D-21","예선 · 홍보 준비",[["앱 예선 개설 (학교대항전 섹션 등록 또는 앱 토너먼트, 지정곡 · 일정)","STEPIN"],["학교 단위 참가 신청 접수 (구글폼 · 담당 선생님 연락처)","주최"],["송리스트 확정 (본선 25곡, 서비스 제한곡 확인)","STEPIN"],["포스터 제작 (앱 QR 필수) · 본사 시안 확인","공동"],["학교 · 동아리 · 지역 홍보물 배포, 공문 발송","주최"],["앱 내 배너 · 푸시 · 공식 SNS 공지 요청","STEPIN"]]],
+ ["D-14","현장 섭외",[["슈퍼바이저 · 레퍼리 · 스태프 배정","공동"],["유선 LAN 인터넷 확보 (아케이드 대당 1포트 + 중계 PC, 와이파이 불가) · 전원 20A","주최"],["중계 모니터 · 스피커 · 마이크 · HDMI 준비","주최"],["방송 송출 시 3자 미팅 (방송팀 · 테크팀 · 슈퍼바이저)","공동"],["기술 인력 숙소 · 체류 지원 확인","주최"]]],
  ["D-7","본선 확정",[["예선 마감 · 진출자 확정","STEPIN"],["진출자 전원 유선 참석 확인 (미성년자 보호자 우선)","공동"],["불참 인원만큼 차순위 진출 처리","공동"],["선수 닉네임 · 프로필 사진 수집","주최"],["신분증 지참 · 부속합의서 안내","주최"],["하역장 · 화물 엘리베이터 · 트럭 출입 예약","주최"]]],
  ["D-1","반입 · 리허설",[["아케이드 반입 (대당 2인, 세워서 운반)","공동"],["플레이 위치 바닥 표시 2.2–2.5m","STEPIN"],["조명 · 역광 확인, 핀조명 설치","주최"],["2대 배틀 연동 · QR 다운로드 테스트","STEPIN"],["캡처보드 IN · OUT(패스스루 → 아케이드 화면) 연결 확인","STEPIN"],["중계 화면 HDMI 직결 · 음향 밸런스 확인","공동"],["진행 큐시트 리허설","공동"]]],
  ["D-day","대회 운영",[["선수 등록 · 본인 확인 · 부속합의서 서명","주최"],["복장 확인 (얼굴 가림 · 헐렁한 의상)","STEPIN"],["조 추첨 · 대진 공개","STEPIN"],["경기 진행 · 결과 기록 · 판정","공동"],["시상 · TOP3 인터뷰 · 기념 촬영","주최"],["현장 사진 · 스케치 영상 촬영","주최"]]],
@@ -2094,11 +2165,22 @@ const GAL=[
  ["ad_rpd_battle_1","광고 소재 · RPD 댄스배틀 1","1024×1536 PNG"],
  ["ad_rpd_battle_2","광고 소재 · RPD 댄스배틀 2","1024×1536 PNG"],
  ["video_frame_sample_1080x1920","영상 프레임 샘플","1080×1920 PNG"],
- ["logo_stepin_black","로고 · STEPIN (블랙)","569×100 PNG · 투명 배경"],
- ["logo_stepin_white","로고 · STEPIN (화이트)","569×100 PNG · 투명 배경 · 어두운 배경용"],
+ ["logo_stepin_black","로고 · STEPIN 가로형 (블랙)","2799×479 PNG · 투명 배경"],
+ ["logo_stepin_white","로고 · STEPIN 가로형 (화이트)","5820×1024 PNG · 투명 배경 · 어두운 배경용"],
  ["logo_sidewalk_black","로고 · SIDEWALK ENTERTAINMENT","PNG (블랙)"]
 ];
 $("#gal").innerHTML=GAL.map(g=>`<div class="gitem"><div class="ph" style="background-image:url('img/${g[0]}.jpg')" role="img" aria-label="${esc(g[1])}"></div><div class="meta"><b>${esc(g[1])}</b><small class="mono">${esc(g[2])}</small><div class="row"><button class="btn sm" type="button" data-dl="${g[0]}.png" data-name="STEPIN_${g[0]}.png">원본 받기</button><a class="btn sm" href="img/${g[0]}.jpg" target="_blank" rel="noopener">미리보기</a></div></div></div>`).join("");
+
+/* ---------- brand assets ---------- */
+const BRAND=[
+ {g:"STEPIN 로고 · 블랙 (밝은 배경용)",bg:"#ffffff",items:[["brand_stepin_horizontal_black","가로형",["svg","png"]],["brand_stepin_vertical_black","세로형",["svg","png"]],["brand_stepin_icon_black","아이콘",["svg"]],["brand_stepin_text_black","워드마크",["svg"]]]},
+ {g:"STEPIN 로고 · 화이트 (어두운 배경용)",bg:"#15161c",items:[["brand_stepin_horizontal_white","가로형",["svg","png","ai"]],["brand_stepin_vertical_white","세로형",["svg","png","ai"]],["brand_stepin_icon_white","아이콘",["svg"]],["brand_stepin_text_white","워드마크",["svg"]]]},
+ {g:"SIDEWALK ENTERTAINMENT 로고",bg:"#ffffff",items:[["logo_sidewalk_black","블랙",["png"],"img/logo_sidewalk_black.jpg"],["brand_sidewalk_black","블랙 원본",["ai"],"img/logo_sidewalk_black.jpg"],["brand_sidewalk_white","화이트 원본",["ai"],null]]},
+ {g:"캐릭터 · 그래픽 (벡터)",bg:"#f1eef9",items:[["brand_char_vector_cheer","응원 단체",["svg"]],["brand_char_vector_cat","고양이",["svg"]],["brand_char_vector_cat_sunglass","고양이 · 선글라스",["svg"]],["brand_char_vector_haetae","해태",["svg"]],["brand_char_vector_blueb","블루",["svg"]],["brand_char_vector_pinkb","핑크",["svg"]],["brand_char_vector_redb","레드",["svg"]],["brand_char_vector_yellowa","옐로",["svg"]]]},
+ {g:"캐릭터 · 그래픽 (픽셀)",bg:"#f1eef9",items:[["brand_char_pixel_cat","고양이",["svg"]],["brand_char_pixel_hatae","해태",["svg"]],["brand_char_pixel_greenjelly","그린 젤리",["svg"]],["brand_char_pixel_pinkjelly","핑크 젤리",["svg"]],["brand_char_pixel_heart","하트",["svg"]],["brand_char_pixel_star","별",["svg"]],["brand_char_pixel_dia","다이아",["svg"]],["brand_char_pixel_block","블록",["svg"]],["brand_char_pixel_cloud1","구름 1",["svg"]],["brand_char_pixel_cloud2","구름 2",["svg"]]]}
+];
+$("#brandAssets").innerHTML=BRAND.map(gr=>`<h3 class="tsh">${esc(gr.g)}</h3><div class="bgal">${gr.items.map(it=>{const prev=it[3]!==undefined?it[3]:("/dl/"+it[0]+"."+(it[2].includes("svg")?"svg":"png"));const name=it[0]==="logo_sidewalk_black"?"logo_sidewalk_black":it[0];
+  return `<div class="bitem"><div class="bph" style="background:${gr.bg}">${prev?`<img src="${prev}" alt="${esc(gr.g+" "+it[1])}" loading="lazy">`:`<span>AI 원본</span>`}</div><div class="meta"><b>${esc(it[1])}</b><div class="row">${it[2].map(ext=>`<button class="btn sm" type="button" data-dl="${name}.${ext}" data-name="STEPIN_${name.replace(/^brand_/,"")}.${ext}">${ext.toUpperCase()}</button>`).join("")}</div></div></div>`}).join("")}</div>`).join("");
 
 /* ---------- raw videos ---------- */
 const RAW=[
@@ -2108,6 +2190,7 @@ const RAW=[
  ["Kylie 협업 영상","EN · DE · PT · ES · TH","각 약 108MB","출연자 초상권"],
  ["메이크유댄스 토너먼트 리캡","EN · DE · PT · ES · TH","33~51MB","협업 학원 표기"],
  ["STEPIN 로고 모션","logo · logo + bg","14~18MB","오프닝 · 엔딩 삽입용"],
+ ["백월 디자인 원본 (Backwall.ai)","Adobe Illustrator","약 82MB","백월 · 현장 설치물 제작용"],
  ["미국 K박람회 STEPIN 1분 영상","KR","약 72MB","전시 · 제안"],
  ["STEPIN School Esports","KR","약 62MB","학교 제안"],
  ["2026 찾아가는 교내 이스포츠 대회 예고","KR","약 38MB","학교 홍보"],
