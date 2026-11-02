@@ -1865,7 +1865,7 @@ function renderSetCalc(){
    맞춤 대회 설계 (위저드)
    ===================================================================== */
 const PQ=[
- {id:"host",t:"주최 유형을 골라 주세요",h:"제안 자료와 홍보 방법 추천에 씁니다.",type:"single",opts:[["gov","지자체 · 공공기관","축제, 지역 대회"],["school","학교 · 교육청","교내 대회, 학교 대항전"],["fed","협회 · 연맹","대표 선발, 국제 대회"],["brand","브랜드 · 스폰서","팬 이벤트, 캠페인"],["etc","기타","대회 운영사 등"]]},
+ {id:"host",t:"주최 유형을 골라 주세요",h:"주최 기관에 맞는 제안 포인트 · 제안 자료 · 홍보 방법을 추천합니다.",type:"single",opts:[["gov","지자체 · 공공기관","축제, 지역 대회"],["school","학교 · 교육청","교내 대회, 학교 대항전"],["fed","협회 · 연맹","대표 선발, 국제 대회"],["brand","브랜드 · 스폰서","팬 이벤트, 캠페인"],["etc","기타","대회 운영사 등"]]},
  {id:"qual",t:"예선은 어떻게 진행하나요?",type:"single",opts:[["app","온라인 APP 예선","앱 랭킹전으로 넓게 모집 → 상위권 현장 초청"],["arcade","현장 아케이드 예선","체험존 챌린지 점수로 당일 선발"],["none","예선 없음","초청 · 사전 선발 · 현장 접수"]]},
  {id:"qsize",t:a=>a.qual==="app"?"예선 참가 예상 규모는?":"현장 예선 참가 예상 인원은?",h:a=>a.qual==="app"?"홍보 방법과 앱 토너먼트 규모를 정하는 기준입니다.":"아케이드 1대가 1시간에 약 60명을 받습니다 (1인 1곡 · 준비 포함 약 1분).",type:"range",when:a=>a.qual!=="none",
   cfg:a=>a.qual==="app"?{min:30,max:3000,step:10,def:300,unit:"명",presets:[100,300,1000,3000]}:{min:20,max:600,step:10,def:120,unit:"명",presets:[50,120,300,600]}},
@@ -1972,6 +1972,17 @@ function renderPlan(){
   if(off){sum.push(["종목",{indiv:"개인전",team:"팀전",both:"개인전 + 팀전"}[a.event]],["장소",VENUEN[a.venue]],["아케이드",MODELN[a.model]],["중계",BT[bc].title.replace(/^TYPE \d · /,"")])}
   html+=`<div class="tbl"><table><tbody>${sum.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div>`;
   let txt=`[STEPIN 맞춤 대회 운영 가이드]\n운영 형태: ${T.n}\n`+sum.map(r=>`${r[0]}: ${r[1]}`).join("\n")+"\n";
+  // ---- host-specific proposal pack
+  const HP={
+   gov:{goal:"청소년 대상 신규 e스포츠 프로그램, 축제 집객, 지역 대표 선발 → 상위 대회 연계",fmt:"앱 예선 + 현장 본선 + 체험존",pts:["청소년 체력 · 스마트폰 과의존 지표와 함께 ‘몸을 움직이는 e스포츠’로 제안","ECA 2년 연속 종목 · WDSF 공식 플랫폼으로 공신력 강조","체험존 동시 운영으로 축제 방문객까지 참여 대상 확대"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:"지역 대회"},
+   school:{goal:"학교 체육 · e스포츠 프로그램, 학교 대항전, 동아리 활성화",fmt:"교내 체험존 + 4강 토너먼트 / 학교 대항전",pts:["구기 · 경쟁 활동에 부담을 느끼는 학생(특히 여학생)의 참여가 높은 종목","AI가 같은 기준으로 채점해 판정 시비가 적고 결과를 점수로 설명","KeSPA 찾아가는 교내 이스포츠 대회 종목, 제주 · 춘천 학교 대항전 사례"],docs:[["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"],["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"학교"},
+   fed:{goal:"국가 대표 선발, 국제 대회 종목 운영 (ECA, WDSF)",fmt:"국가별 앱 예선 + 국제 본선",pts:["국가별 앱 예선으로 선발 과정을 투명하게 기록","개인전 · 팀전 포맷과 더블 엘리미네이션 운영 사례 (ECA 진주)","선수단 비자 · 체류 일정을 고려해 8주 이상 준비"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"국제"},
+   brand:{goal:"K-POP 팬덤 접점, 앱 내 브랜딩, 참가 영상의 브랜디드 숏폼 활용",fmt:"글로벌 앱 토너먼트 64~512강",pts:["177개국 · 11개 언어 서비스, 10~20대 · 여성 이용자 비중이 높은 팬덤","앱 토너먼트 티켓 · 배너 브랜딩, 참가 영상의 숏폼 2차 활용","64강 1회에 댄스 영상 416개 생성 (브랜디드 콘텐츠 소스)"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"온라인"},
+   etc:{goal:"행사 목적에 맞춰 예선 · 본선 · 체험존을 조합",fmt:"앱 예선 + 현장 본선 (기본 구조)",pts:["대회 목적 · 대상 · 예산을 정리해 본사와 협의","비슷한 규모의 레퍼런스를 함께 제시","AI 공정 판정과 관람 콘텐츠를 핵심 장점으로 설명"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:""}
+  }[a.host]||null;
+  const hostTxt=HP?`\n주최 제안 포인트 (${HOSTN[a.host]})\n기대 효과: ${HP.goal}\n추천 구성: ${HP.fmt}\n`+HP.pts.map(x=>`- ${x}`).join("\n")+"\n추천 자료: "+HP.docs.map(d=>d[2]).join(", ")+"\n":"";
+  if(HP)html+=`<div class="plan-sec"><h2 class="sec">주최 제안 포인트 <span class="tag">${esc(HOSTN[a.host])}</span></h2><div class="grid g2"><div class="panel block"><h3>기대 효과</h3><p>${esc(HP.goal)}</p><p style="margin-top:8px"><span class="pill p-rec">${esc(HP.fmt)}</span></p><ul class="list" style="margin-top:10px">${HP.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div class="panel block"><h3>제안할 때 쓰는 자료</h3><div class="row" style="flex-wrap:wrap;gap:8px">${HP.docs.map(d=>`<button class="btn sm${d===HP.docs[0]?" pri":""}" type="button" data-dl="${esc(d[0])}" data-name="${esc(d[1])}">${esc(d[2])}</button>`).join("")}</div><div class="row no-print" style="margin-top:10px;flex-wrap:wrap;gap:8px"><a class="btn sm" href="#why">왜 STEPIN 대회인가 (근거 · 숫자)</a><a class="btn sm" href="#refs"${HP.ref?` data-refcat="${esc(HP.ref)}"`:""}>비슷한 대회 레퍼런스${HP.ref?` · ${esc(HP.ref)}`:""}</a></div></div></div></div>`;
+  txt+=hostTxt;
   // ---- structure & time
   let offMin=null;
   if(off){
@@ -2121,6 +2132,7 @@ function renderRefs(){
   requestAnimationFrame(equalizeRefs);
 }
 $("#refFilter").addEventListener("click",e=>{const b=e.target.closest("[data-rf]");if(b){rf=b.dataset.rf;renderRefs()}});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-refcat]");if(b){rf=b.dataset.refcat;renderRefs()}});
 
 let vf="전체";
 function renderVids(){
