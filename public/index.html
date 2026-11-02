@@ -887,6 +887,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <div class="block">
       <h2 class="sec">춘천시 중학교 e스포츠 학교 대항전 (2026)</h2>
       <p class="muted">춘천교육지원청 · 한국이스포츠협회 공동 주관 · 관내 20개 중학교 대상 · 결승 춘천중학교 강당</p>
+      <div class="note warn"><b>연기 · 재기획 중.</b> 대회가 12월 중순으로 연기되어 일정을 다시 정하고 있습니다. 아래 표는 최초 계획 일정입니다.</div>
       <div class="split">
         <img class="split-img" src="/img/case_chuncheon_poster.jpg" alt="2026 춘천시 중학교 e스포츠 학교 대항전 포스터" style="aspect-ratio:auto" loading="lazy">
         <div class="tbl"><table>
@@ -1567,6 +1568,9 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 const DEF={
  partners:[],
  notices:[
+  {date:"2026.11",text:"현장 문제 해결 보강 (업데이트 · 배틀 연동 · 패스스루 · 운반), 상단 화면 재연결 시 STEPIN ARCADE 재실행 안내",view:"broadcast:check",label:"중계 셋팅"},
+  {date:"2026.11",text:"기본 연결 · 중계 형태별 구성도를 실사 장비 사진으로 교체, 유선 LAN 연결 방향(인터넷 회선 → 허브 → 각 기기) 정리",view:"broadcast:connect",label:"중계 셋팅"},
+  {date:"2026.11",text:"중계 형태를 TYPE 1 체험존 · TYPE 2 현장 중계 · 녹화로 정리 (라이브 송출은 지원 범위에서 제외)",view:"broadcast:types",label:"중계 셋팅"},
   {date:"2026.10",text:"맞춤 대회 설계 메뉴 추가: 선택만으로 셋업 항목 · 중계 셋팅 · 현장 소요 시간 안내",view:"planner",label:"맞춤 설계"},
   {date:"2026.10",text:"가이드 개편: STEPIN 대회 협업 파트너 전용으로 정리, 방송·중계 셋팅 상세 추가",view:"broadcast",label:"중계 셋팅"},
   {date:"2026.10",text:"대회 운영 템플릿 (중계 장비 체크 · D-day 일정) 추가",view:"production:docs",label:"제작물"},
