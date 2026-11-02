@@ -3,8 +3,8 @@
   {
    "date": "2026.11",
    "text": "현장 문제 해결 보강 (업데이트 · 배틀 연동 · 패스스루 · 운반), 상단 화면 재연결 시 STEPIN ARCADE 재실행 안내",
-   "view": "broadcast:check",
-   "label": "중계 셋팅"
+   "view": "help:faq",
+   "label": "FAQ · 문제 해결"
   },
   {
    "date": "2026.11",
