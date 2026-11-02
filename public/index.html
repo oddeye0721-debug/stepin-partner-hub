@@ -1947,8 +1947,8 @@ const MODELN={standard:"STANDARD 2대",wide:"WIDE 1대",auto:"본사 추천 (기
 const VENUEN={indoor:"실내",roof:"실외 · 지붕 있음",open:"실외 · 지붕 없음"};
 function typeOf(a){
   const off=mainOf(a)==="offline";
-  if(!off)return {k:"D",n:"D. 온라인 단독 앱 토너먼트",lead:21};
-  if(a.host==="fed"&&a.event==="both")return {k:"E",n:"E. 국제 · 다국가 대회형",lead:56};
+  if(!off)return a.qual==="app"?{k:"D",n:"D. 온라인 단독 앱 토너먼트",lead:21}:{k:"D0",n:"D. 온라인 단독 앱 토너먼트 (예선 없음)",lead:14};
+  if(a.host==="fed"&&a.event==="both"&&a.qual==="app")return {k:"E",n:"E. 국제 · 다국가 대회형",lead:56};
   if(a.qual==="app")return {k:"C",n:"C. 앱 예선 + 오프라인 본선",lead:35};
   if(a.qual==="arcade")return {k:"A",n:"A. 현장 예선(챌린지 랭킹전) + 본선",lead:+a.nsize>8?21:14};
   return {k:"B",n:"B. 오프라인 단독 대회",lead:21};
@@ -1957,6 +1957,7 @@ const SCHED={
  C:[[35,"형태·규모·상금·장소 확정, 본사 협업 범위 합의"],[30,"본사와 예선 방식 · 본선 진출 기준 · 지정곡 협의, 앱 예선 개설 요청"],[28,"송리스트·규정 확정, 포스터 제작, 사전 노출 시작"],[21,"참가 접수 + 예선 랭킹전 시작 (14일 권장)"],[14,"중계·장비 구성 확정, 제작물 발주"],[7,"예선 마감 → 진출자 확정 · 참석 확인 · 대체 진출"],[3,"선수 정보 수집 (닉네임 · 프로필), 큐시트 확정"],[1,"아케이드 반입 · 설치 · 중계 테스트 · 리허설"],[0,"대회 운영 · 현장 촬영"],[-7,"상금·상품 지급, 결과 공지, 소스 공유"]],
  B:[[21,"형태·규정·송리스트 확정, 참가 모집 시작"],[14,"중계·장비 확정, 제작물 발주"],[7,"참가자 확정, 대진 방식 공지"],[3,"큐시트 확정, 선수 정보 수집"],[1,"반입 · 설치 · 중계 테스트 · 리허설"],[0,"대회 운영 · 현장 촬영"],[-7,"상금·상품 지급, 결과 공지, 소스 공유"]],
  A:[[14,"일정·장소 확정, 아케이드 일정·운반 예약, 송리스트 확정"],[7,"제작물 발주 (X배너 · POP · 굿즈), 현장 예선 방식 공지"],[3,"스태프 교육 자료 공유, 큐시트 확정"],[1,"반입 · 설치 · 리허설"],[0,"현장 예선 → 본선 운영"],[-7,"상품 지급, 결과 공지, 소스 공유"]],
+ D0:[[14,"규모 · 상금 확정, 본사와 앱 토너먼트 방식 협의 · 개설 요청"],[10,"사전 노출 · 홍보 시작"],[7,"참가 접수 시작"],[2,"접수 마감 → 주최측이 진출자 직접 선정 · 대진 공개 (첫 라운드는 24시간 이후)"],[0,"본선 라운드 진행"],[-7,"상금 지급, 결과 공지"]],
  D:[[21,"규모 · 상금 확정, 본사와 앱 토너먼트 방식 협의 · 개설 요청"],[14,"사전 노출 · 홍보 시작"],[10,"참가 접수 시작"],[7,"예선 랭킹전 (최소 24시간, 5~7일 권장)"],[2,"진출자 선정 · 대진 공개 (첫 라운드는 24시간 이후)"],[0,"본선 라운드 진행"],[-7,"상금 지급, 결과 공지"]],
  E:[[56,"국가·참가 규모 확정, 협회 간 R&R · 규정 합의"],[45,"국가별 앱 예선 개설 · 홍보"],[30,"국가별 예선 진행 · 대표 확정"],[21,"선수단 비자 · 체류"],[14,"중계·장비 확정, 제작물 발주"],[7,"선수 정보 · 팀명 · 프로필 수집"],[1,"반입 · 설치 · 리허설"],[0,"대회 운영 (2~3일)"],[-7,"결과 공지, 소스 공유"]]
 };
@@ -1973,15 +1974,18 @@ function renderPlan(){
   html+=`<div class="tbl"><table><tbody>${sum.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div>`;
   let txt=`[STEPIN 맞춤 대회 운영 가이드]\n운영 형태: ${T.n}\n`+sum.map(r=>`${r[0]}: ${r[1]}`).join("\n")+"\n";
   // ---- host-specific proposal pack
+  const hasApp=a.qual==="app"||!off;
   const HP={
-   gov:{goal:"청소년 대상 신규 e스포츠 프로그램, 축제 집객, 지역 대표 선발 → 상위 대회 연계",fmt:"앱 예선 + 현장 본선 + 체험존",pts:["청소년 체력 · 스마트폰 과의존 지표와 함께 ‘몸을 움직이는 e스포츠’로 제안","ECA 2년 연속 종목 · WDSF 공식 플랫폼으로 공신력 강조","체험존 동시 운영으로 축제 방문객까지 참여 대상 확대"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:"지역 대회"},
-   school:{goal:"학교 체육 · e스포츠 프로그램, 학교 대항전, 동아리 활성화",fmt:"교내 체험존 + 4강 토너먼트 / 학교 대항전",pts:["구기 · 경쟁 활동에 부담을 느끼는 학생(특히 여학생)의 참여가 높은 종목","AI가 같은 기준으로 채점해 판정 시비가 적고 결과를 점수로 설명","KeSPA 찾아가는 교내 이스포츠 대회 종목, 제주 · 춘천 학교 대항전 사례"],docs:[["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"],["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"학교"},
-   fed:{goal:"국가 대표 선발, 국제 대회 종목 운영 (ECA, WDSF)",fmt:"국가별 앱 예선 + 국제 본선",pts:["국가별 앱 예선으로 선발 과정을 투명하게 기록","개인전 · 팀전 포맷과 더블 엘리미네이션 운영 사례 (ECA 진주)","선수단 비자 · 체류 일정을 고려해 8주 이상 준비"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"국제"},
-   brand:{goal:"K-POP 팬덤 접점, 앱 내 브랜딩, 참가 영상의 브랜디드 숏폼 활용",fmt:"글로벌 앱 토너먼트 64~512강",pts:["177개국 · 11개 언어 서비스, 10~20대 · 여성 이용자 비중이 높은 팬덤","앱 토너먼트 티켓 · 배너 브랜딩, 참가 영상의 숏폼 2차 활용","64강 1회에 댄스 영상 416개 생성 (브랜디드 콘텐츠 소스)"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"온라인"},
-   etc:{goal:"행사 목적에 맞춰 예선 · 본선 · 체험존을 조합",fmt:"앱 예선 + 현장 본선 (기본 구조)",pts:["대회 목적 · 대상 · 예산을 정리해 본사와 협의","비슷한 규모의 레퍼런스를 함께 제시","AI 공정 판정과 관람 콘텐츠를 핵심 장점으로 설명"],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:""}
+   gov:{goal:"청소년 대상 신규 e스포츠 프로그램, 축제 집객, 지역 대표 선발 → 상위 대회 연계",pts:[["청소년 체력 · 스마트폰 과의존 지표와 함께 ‘몸을 움직이는 e스포츠’로 제안"],["ECA 2년 연속 종목 · WDSF 공식 플랫폼으로 공신력 강조"],["앱 예선으로 지역 청소년을 넓게 모집하고 상위권만 현장에 초청","qoff"],["체험존 동시 운영으로 축제 방문객까지 참여 대상 확대","off"]],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:"지역 대회"},
+   school:{goal:"학교 체육 · e스포츠 프로그램, 학교 대항전, 동아리 활성화",pts:[["구기 · 경쟁 활동에 부담을 느끼는 학생(특히 여학생)의 참여가 높은 종목"],["AI가 같은 기준으로 채점해 판정 시비가 적고 결과를 점수로 설명"],["KeSPA 찾아가는 교내 이스포츠 대회 종목, 제주 · 춘천 학교 대항전 사례"]],docs:[["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"],["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"학교"},
+   fed:{goal:"국가 대표 선발, 국제 대회 종목 운영 (ECA, WDSF)",pts:[["ECA 2년 연속 종목 · WDSF 공식 플랫폼"],["앱 예선으로 선발 과정을 투명하게 기록","qapp"],["개인전 · 팀전 포맷과 더블 엘리미네이션 운영 사례 (ECA 진주)","off"],["선수단 비자 · 체류 일정을 고려해 8주 이상 준비","E"]],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"국제"},
+   brand:{goal:"K-POP 팬덤 접점, 브랜드 노출, 대회 영상의 브랜디드 숏폼 활용",pts:[["177개국 · 11개 언어 서비스, 10~20대 · 여성 이용자 비중이 높은 팬덤"],["앱 토너먼트 티켓 · 배너 브랜딩, 참가 영상의 숏폼 2차 활용","app"],["64강 1회에 댄스 영상 416개 생성 (브랜디드 콘텐츠 소스)","app"],["현장 부스 · 백월 브랜딩과 대형 화면 배틀로 관람 콘텐츠 확보","off"]],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"]],ref:"온라인"},
+   etc:{goal:"행사 목적과 대상에 맞춘 STEPIN 대회 구성",pts:[["대회 목적 · 대상 · 예산을 정리해 본사와 협의"],["비슷한 규모의 레퍼런스를 함께 제시"],["AI 공정 판정과 관람 콘텐츠를 핵심 장점으로 설명"]],docs:[["STEPIN_Introduction_Deck_Jul2026.pdf","STEPIN Introduction Deck_July 2026.pdf","STEPIN 소개서 (PDF · EN)"],["STEPIN_Esports_for_School.pdf","STEPIN_학교 대회 제안서.pdf","학교 STEPIN 대회 제안서 (PDF · KR)"]],ref:""}
   }[a.host]||null;
-  const hostTxt=HP?`\n주최 제안 포인트 (${HOSTN[a.host]})\n기대 효과: ${HP.goal}\n추천 구성: ${HP.fmt}\n`+HP.pts.map(x=>`- ${x}`).join("\n")+"\n추천 자료: "+HP.docs.map(d=>d[2]).join(", ")+"\n":"";
-  if(HP)html+=`<div class="plan-sec"><h2 class="sec">주최 제안 포인트 <span class="tag">${esc(HOSTN[a.host])}</span></h2><div class="grid g2"><div class="panel block"><h3>기대 효과</h3><p>${esc(HP.goal)}</p><p style="margin-top:8px"><span class="pill p-rec">${esc(HP.fmt)}</span></p><ul class="list" style="margin-top:10px">${HP.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div class="panel block"><h3>제안할 때 쓰는 자료</h3><div class="row" style="flex-wrap:wrap;gap:8px">${HP.docs.map(d=>`<button class="btn sm${d===HP.docs[0]?" pri":""}" type="button" data-dl="${esc(d[0])}" data-name="${esc(d[1])}">${esc(d[2])}</button>`).join("")}</div><div class="row no-print" style="margin-top:10px;flex-wrap:wrap;gap:8px"><a class="btn sm" href="#why">왜 STEPIN 대회인가 (근거 · 숫자)</a><a class="btn sm" href="#refs"${HP.ref?` data-refcat="${esc(HP.ref)}"`:""}>비슷한 대회 레퍼런스${HP.ref?` · ${esc(HP.ref)}`:""}</a></div></div></div></div>`;
+  const okPt=c=>!c||(c==="app"&&hasApp)||(c==="qapp"&&a.qual==="app")||(c==="qoff"&&a.qual==="app"&&off)||(c==="off"&&off)||(c==="E"&&T.k==="E");
+  if(HP)HP.pts=HP.pts.filter(x=>okPt(x[1])).map(x=>x[0]);
+  const hostTxt=HP?`\n주최 제안 포인트 (${HOSTN[a.host]})\n기대 효과: ${HP.goal}\n`+HP.pts.map(x=>`- ${x}`).join("\n")+"\n추천 자료: "+HP.docs.map(d=>d[2]).join(", ")+"\n":"";
+  if(HP)html+=`<div class="plan-sec"><h2 class="sec">주최 제안 포인트 <span class="tag">${esc(HOSTN[a.host])}</span></h2><div class="grid g2"><div class="panel block"><h3>기대 효과</h3><p>${esc(HP.goal)}</p><ul class="list" style="margin-top:10px">${HP.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div class="panel block"><h3>제안할 때 쓰는 자료</h3><div class="row" style="flex-wrap:wrap;gap:8px">${HP.docs.map(d=>`<button class="btn sm${d===HP.docs[0]?" pri":""}" type="button" data-dl="${esc(d[0])}" data-name="${esc(d[1])}">${esc(d[2])}</button>`).join("")}</div><div class="row no-print" style="margin-top:10px;flex-wrap:wrap;gap:8px"><a class="btn sm" href="#why">왜 STEPIN 대회인가 (근거 · 숫자)</a><a class="btn sm" href="#refs"${HP.ref?` data-refcat="${esc(HP.ref)}"`:""}>비슷한 대회 레퍼런스${HP.ref?` · ${esc(HP.ref)}`:""}</a></div></div></div></div>`;
   txt+=hostTxt;
   // ---- structure & time
   let offMin=null;
@@ -2005,7 +2009,7 @@ function renderPlan(){
       ${dayMin>480?`<div class="note warn"><b>하루 8시간을 넘습니다.</b> 개인전·팀전을 이틀로 나누거나 세트 수를 줄이는 것을 권장합니다.</div>`:""}
       <h3>당일 타임테이블</h3><div class="tbl"><table><thead><tr><th>시간</th><th>내용</th><th>소요</th></tr></thead><tbody>${tl}</tbody></table></div>
       ${parts.map(p=>`<h3>${p[0]} 본선 구조 · ${p[1]}</h3><p class="muted">${esc(p[2].desc)} · 총 ${p[3].matches}매치 · 일반 ${o.s1}세트 / 결승 ${o.s2}세트 · 1세트 평균 ${o.sec}초 (준비·교체 포함)</p>${stageTable(p[3])}`).join("")}
-      <p class="src">곡당 플레이 약 30초 + 준비·교체 = 1세트(1인 1곡) 약 1분, 현장 예선은 1인 1곡 기준, 단계 사이 휴식 15분, 설치는 모델·중계 형태·장소에 따라 계산한 최소값입니다. 실제 일정은 본사와 확정해 주세요.</p></div>`;
+      <p class="src">곡당 플레이 약 30초 + 준비·교체 = 1세트(1인 1곡) 약 1분${a.qual==="arcade"?", 현장 예선은 1인 1곡 기준":""}, 단계 사이 휴식 15분, 설치는 모델·중계 형태·장소에 따라 계산한 최소값입니다. 실제 일정은 본사와 확정해 주세요.</p></div>`;
     txt+=`\n현장 최소 소요: 설치·리허설 ${fmtMin(setupMin+rehearsal)} / 당일 운영 ${fmtMin(dayMin)} / 철수 ${fmtMin(teardown)}\n`+blocks.map(b=>`- ${b[0]}: ${fmtMin(b[1])}`).join("\n")+"\n";
   }else{
     const N=+a.nsize;const rounds=Math.round(Math.log2(N));
@@ -2019,42 +2023,50 @@ function renderPlan(){
   txt+=`\n준비 일정 (최소 D-${T.lead})\n`+sc.map(s=>`- ${dstr(base,s[0])}: ${s[1]}`).join("\n")+"\n";
   // ---- required conditions
   const req=[];
-  if(a.qual==="app"||!off)req.push(["앱 예선","본사 협의로 예선 방식 · 진출 기준 · 지정곡 확정 → 본사가 앱에 개설"+(a.host==="school"?" (학교대항전: 학교 단위 참가 신청 → 학교별 선수 등록 → 학교 랭킹)":"")+", 상금 · 상품 수량 · 내용 명확히"]);
+  if(a.qual==="app")req.push(["앱 예선","본사 협의로 예선 방식 · 진출 기준 · 지정곡 확정 → 본사가 앱에 개설"+(a.host==="school"?" (학교대항전: 학교 단위 참가 신청 → 학교별 선수 등록 → 학교 랭킹)":"")+", 상금 · 상품 수량 · 내용 명확히"]);
+  if(!off)req.push(["앱 본선","본사 협의로 "+(+a.nsize)+"강 규모 · 동기/비동기 방식 · 지정곡 확정 → 본사가 앱 토너먼트 개설"+(a.qual==="app"?"":" (신청자 중 주최측이 진출자 직접 선정)")]);
+  if(a.qual==="arcade")req.push(["현장 예선","체험존 챌린지 점수로 당일 선발, 지정곡 · 진출 인원 · 동점 처리 기준 사전 공지"]);
+  if(!off||a.qual!=="none")req.push(["상금 · 상품","수량 · 내용을 대회 요강에 명확히 공지, 지급은 주최측"]);
   if(off){
-    req.push(["아케이드",MODELN[a.model]+(model==="wide"?" · 1대에서 2인 배틀":"")],["플레이 공간",model==="wide"?"4×3.5m 이상 + 관중·부조 공간":"6×3m 이상 무대 + 관중·부조 공간 (카메라–플레이어 "+(model==="wide"?"2.8–3.2m":"2.2–2.5m")+")"],["전원","접지 AC 220V, 현장 20A 이상, 멀티탭 3 (1개 10m)"],["유선 인터넷 (필수)","아케이드 대당 RJ-45 유선 1포트 + 중계 PC 1포트, ↓5/↑2Mbps 이상. 와이파이 불가"],["반입","대당 3인 이상 · 긴 운반 카트 · 지상 하역장 · 계단 없는 동선"+(model==="portable"?" (포터블은 8kg, 직원 휴대 가능)":"")]);
+    req.push(["아케이드",MODELN[a.model]+(model==="wide"?" · 1대에서 2인 배틀":"")],["플레이 공간",(model==="wide"?"4×3.5m 이상":"6×3m 이상 무대")+(bc!=="t1"?" + 관중 · 부조 공간":" + 관람 동선")+" (카메라–플레이어 "+(model==="wide"?"2.8–3.2m":"2.2–2.5m")+")"],["전원","접지 AC 220V, 현장 20A 이상, 멀티탭 3 (1개 10m)"],["유선 인터넷 (필수)","아케이드 대당 RJ-45 유선 1포트 + 중계 PC 1포트, ↓5/↑2Mbps 이상. 와이파이 불가"],["반입","대당 3인 이상 · 긴 운반 카트 · 지상 하역장 · 계단 없는 동선"]);
     if(bc!=="t1")req.push(["부조 공간","무대 옆 4×3m, 책상 2 · 의자 4, 무대가 보이는 위치"],["관중 모니터","65인치 이상 + 스탠드"],["진행 인력","슈퍼바이저 1 · 레퍼리 1 · 오퍼레이터 1 · 스태프 2+"],["선수 대기 공간","무대 근처, 본선 인원만큼 의자"],["안전바","벨트형 4~6"]);
     if(a.venue!=="indoor")req.push(["실외 대비","캐노피 · 방수 커버 · 평탄한 바닥 · 강풍 대책, 직사광선·역광이 카메라에 들지 않게"+(a.venue==="open"?" · 지붕 없는 장소는 우천 시 대체 실내 공간 확보 필수":"")]);
     req.push(["조명",a.venue==="indoor"?"저조도·역광이면 LED 패널 2 (5600K)":"야간·저조도 대비 핀조명 · LED 패널 2 필수"]);
+    if(a.qual==="none")req.push(["상금 · 상품","수량 · 내용을 대회 요강에 명확히 공지, 지급은 주최측"]);
     if(ex.includes("zone"))req.push(["체험존","아케이드 추가 1~2대 또는 경기 전후 시간 분리 운영, 대당 안내 스태프 1, 고득점 굿즈"]);
   }
   html+=`<div class="plan-sec"><h2 class="sec">필수 셋업 항목</h2><div class="tbl"><table><thead><tr><th>항목</th><th>기준</th></tr></thead><tbody>${req.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div></div>`;
   txt+=`\n필수 셋업\n`+req.map(r=>`- ${r[0]}: ${r[1]}`).join("\n")+"\n";
   // ---- broadcast
   if(off){
-    const B=BT[bc];const note=model==="wide"?"WIDE는 1대에서 2인이 배틀하므로 캡처보드는 1개입니다. 본체 HDMI 출력 → 캡처보드 IN, 캡처보드 OUT → 아케이드 화면으로 다시 연결합니다.":"STANDARD 2대는 LAN으로 연결해 배틀하고, 각 본체 HDMI 출력을 캡처보드 IN으로 받은 뒤 캡처보드 OUT(패스스루)을 다시 아케이드 화면에 연결합니다.";
-    html+=`<div class="plan-sec"><h2 class="sec">방송 · 중계 셋팅 — ${esc(B.title)}</h2><p class="muted">${esc(B.desc)}</p><div class="note">${esc(note)}</div><div class="diagram" id="plDg"></div>
+    const B=clone(BT[bc]);
+    if(model==="wide"){const W=x=>x.replace(/아케이드 A·B/g,"아케이드").replace(/캡처보드 A·B/g,"캡처보드").replace(/ \(각각 다른 포트\)/g,"").replace(/캡처 A·B/g,"캡처").replace(/아케이드 2대/g,"아케이드 WIDE 1대").replace(/아케이드 A 3\.5mm/g,"아케이드 3.5mm");B.steps=B.steps.map(W);B.av=B.av.map(r=>[r[0],r[0]==="사운드"?"WIDE 1대의 음원을 믹서로 받아 PA로 출력. 녹음은 믹서 USB 라인으로":W(r[1])]);B.gear=B.gear.map(g=>[W(g[0]).replace("아케이드당 2:","").replace("(아케이드당 2: ","("),/^아케이드$/.test(g[0])?"1대":g[1],g[2]])}
+    const note=bc==="t1"?"":model==="wide"?"WIDE는 1대에서 2인이 배틀하므로 캡처보드는 1개입니다. 본체 HDMI 출력 → 캡처보드 IN, 캡처보드 OUT → 아케이드 화면으로 다시 연결합니다.":"STANDARD 2대는 LAN으로 연결해 배틀하고, 각 본체 HDMI 출력을 캡처보드 IN으로 받은 뒤 캡처보드 OUT(패스스루)을 다시 아케이드 화면에 연결합니다.";
+    html+=`<div class="plan-sec"><h2 class="sec">방송 · 중계 셋팅 — ${esc(B.title)}</h2><p class="muted">${esc(B.desc)}</p>${note?`<div class="note">${esc(note)}</div>`:""}<div class="diagram" id="plDg"></div>
       <div class="grid g2"><div class="panel block"><h3>장비 목록</h3><div class="tbl" style="border:0"><table><thead><tr><th>장비</th><th>수량</th><th>준비</th></tr></thead><tbody>${B.gear.map(g=>`<tr><td>${esc(g[0])}</td><td class="num">${esc(model==="wide"&&/캡처보드/.test(g[0])?"1":g[1])}</td><td>${esc(g[2])}</td></tr>`).join("")}</tbody></table></div></div>
       <div class="panel block"><h3>연결 순서</h3><ol class="steps">${B.steps.map(x=>`<li><div>${esc(x)}</div></li>`).join("")}</ol></div></div>
       <div class="tbl"><table><thead><tr><th>구분</th><th>셋팅 기준</th></tr></thead><tbody>${B.av.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div>
-      <div class="row no-print"><a class="btn sm" href="#broadcast" data-tab-go="broadcast:gear">브릿지 장비 상세</a><a class="btn sm" href="#broadcast" data-tab-go="broadcast:obs">OBS 셋팅 방법</a><a class="btn sm" href="#broadcast" data-tab-go="broadcast:av">사운드 · 영상 · 조명</a></div></div>`;
-    txt+=`\n중계: ${B.title}\n`+B.gear.map(g=>`- ${g[0]} × ${g[1]} (${g[2]})`).join("\n")+"\n";
+      <div class="row no-print">${bc!=="t1"?`<a class="btn sm" href="#broadcast" data-tab-go="broadcast:gear">브릿지 장비 상세</a><a class="btn sm" href="#broadcast" data-tab-go="broadcast:obs">OBS 셋팅 방법</a>`:""}<a class="btn sm" href="#broadcast" data-tab-go="broadcast:av">사운드 · 영상 · 조명</a></div></div>`;
+    txt+=`\n중계: ${B.title}\n`+B.gear.map(g=>`- ${g[0]} × ${model==="wide"&&/캡처보드/.test(g[0])?"1":g[1]} (${g[2]})`).join("\n")+"\n";
   }
   // ---- activation & production
   const act=[];
   if(a.qual==="app"){act.push("앱 내 배너 · 푸시 · 사전 노출 ‘알림 받기’ (본사)","송리스트 사전 공개 + 연습 독려 메시지, 와이파이 참여 안내");if(+a.qsize>=1000)act.push("숏폼 광고(틱톡 · 메타) · 인플루언서 협의 — 대규모 모집");if(+a.qsize<=300)act.push("지역 댄스학원 · 동아리 · 협업 기관 채널 직접 안내")}
+  if(!off&&a.qual!=="app")act.push("앱 내 배너 · 푸시 · 사전 노출 ‘알림 받기’ (본사)","참가 신청 기간에 송리스트 공개 + 연습 독려, 와이파이 참여 안내");
+  if(off&&a.qual==="none")act.push("참가 모집 공지 (학교 · 기관 · 지역 채널), 송리스트 사전 공개로 연습 유도");
   if(a.qual==="arcade")act.push("체험존 고득점 굿즈 · 앱 다운로드 인증 이벤트로 예선 참여 유도","X배너로 예선 방식 · 본선 진출 기준 안내");
-  if(a.host==="school")act.push("학교 공문 · 댄스부 우선 안내, 선발 학생 앱 사전 가입·연습 요청");
+  if(a.host==="school")act.push("학교 공문 · 댄스부 우선 안내"+(hasApp?", 참가 학생 앱 사전 가입 · 연습 요청":""));
   if(a.host==="gov")act.push("지역 대학 · 청소년 기관 포스터 배포, 지역 축제 채널 공동 공지");
-  if(a.host==="brand")act.push("앱 토너먼트 티켓 페이지 브랜딩, 참가 영상 브랜디드 숏폼 활용");
+  if(a.host==="brand")act.push(hasApp?"앱 토너먼트 티켓 페이지 브랜딩, 참가 영상 브랜디드 숏폼 활용":"현장 부스 · 백월 브랜딩, 대회 영상 브랜디드 숏폼 활용");
   if(off)act.push("현장: 선수 스토리 소개, 경기 사이 앱 QR · 송리스트 노출","사후: TOP3 인터뷰 · 하이라이트 숏폼 · 결과 공지");
-  const prod=["대회 포스터 (앱 QR 필수)","앱 토너먼트 포스터 270×312 · 배너 343×484 (본사)","SNS 피드 · 스토리 공지"];
+  const prod=["대회 포스터 (앱 QR 필수)"];if(hasApp)prod.push("앱 토너먼트 포스터 270×312 · 배너 343×484 (본사)");prod.push("SNS 피드 · 스토리 공지");
   if(off)prod.push("백월 6×3m~7×4m (의상과 다른 색)","X배너 1~2 · POP 아크릴 A4 2~3","플레이 위치 바닥 테이프","참가 신청 · 개인정보 동의서, 대회 부속합의서","진행 큐시트 · 송리스트 안내물");
   if(off&&bc!=="t1")prod.push("중계 그래픽: 대기 화면 · 경기 오버레이 · 선수 소개 카드 · 하단 자막");
   html+=`<div class="plan-sec"><div class="grid g2"><div class="panel block"><h3>활성화 추천</h3><ul class="list">${act.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><a class="btn sm" href="#boost">활성화 방법 전체</a></div><div class="panel block"><h3>제작물 체크</h3><ul class="list">${prod.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><a class="btn sm" href="#production">제작물 가이드</a></div></div>
-    <div class="row no-print"><button class="btn sm" data-dl="STEPIN_Tournament_Ops_Templates.xlsx" data-name="STEPIN_대회 운영 템플릿.xlsx">운영 템플릿 받기</button><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_대회 현장 준비사항.pdf">현장 준비사항 시트</button><a class="btn sm" href="#contact">본사에 이 설계로 문의</a></div></div>`;
+    <div class="row no-print">${off?`<button class="btn sm" data-dl="STEPIN_Tournament_Ops_Templates.xlsx" data-name="STEPIN_대회 운영 템플릿.xlsx">운영 템플릿 받기</button><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_대회 현장 준비사항.pdf">현장 준비사항 시트</button>`:""}<a class="btn sm" href="#contact">본사에 이 설계로 문의</a></div></div>`;
   txt+=`\n활성화\n`+act.map(x=>`- ${x}`).join("\n")+`\n\n제작물\n`+prod.map(x=>`- ${x}`).join("\n");
   const out=$("#planOut");out.innerHTML=html;out.hidden=false;
-  if(off){const d=clone(BT[bc].dg);d.key="pl"+bc;$("#plDg").innerHTML=svgDiagram(d)}
+  if(off){const d=clone(BT[bc].dg);d.key="pl"+bc;if(model==="wide"){d.nodes=d.nodes.filter(n=>n.id!=="b"&&n.id!=="cb").map(n=>n.id==="a"?{...n,t:"아케이드 WIDE",s:"1대 · 2인 배틀"}:n.id==="ca"?{...n,t:"캡처보드"}:n);d.edges=d.edges.filter(e=>!["b","cb"].includes(e.f)&&!["b","cb"].includes(e.t));if(d.nodes.some(n=>n.id==="ld")&&!d.edges.some(e=>e.t==="ld"))d.edges.push({f:"a",t:"ld",l:"점수 기록"})}$("#plDg").innerHTML=svgDiagram(d)}
   $("#plCopy").onclick=()=>copyText(txt,null);$("#plPrint").onclick=()=>window.print();
 }
 renderWiz();
