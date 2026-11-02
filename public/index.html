@@ -1199,7 +1199,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div class="note warn"><b>캡처보드는 아케이드 화면으로 다시 연결해야 합니다.</b> 아케이드 본체 HDMI 출력을 캡처보드 <b>HDMI IN</b>에 꽂으면 아케이드 화면으로 가던 영상이 캡처보드로 넘어갑니다. 캡처보드 <b>HDMI OUT(패스스루)</b>을 다시 아케이드 화면(디스플레이) HDMI 입력에 연결해야 선수가 화면을 보고 플레이할 수 있습니다. 순서: ① 아케이드 HDMI 출력 → 캡처보드 IN ② 캡처보드 OUT → 아케이드 화면 입력 ③ 캡처보드 USB → 중계 PC</div>
       <div class="diagram" id="dg-base"></div>
       <div class="legend"><span><i class="hd"></i>HDMI (영상)</span><span><i></i>USB · 오디오</span><span><i class="net"></i>LAN (인터넷 회선 → 허브 → 각 기기)</span></div>
-      <p class="src" id="dgCredit">장비 사진은 이해를 돕기 위한 예시입니다. 사진 출처 Wikimedia Commons: 벽 LAN 단자 Tony Webster (CC BY 2.0), 스위치 허브 Simon A. Eugster (CC BY-SA 3.0), 중계 PC Terraflorin (CC BY-SA 4.0), 관중 모니터 Samsung Belgium (CC BY 2.0), 오디오 믹서 deepsonic (CC BY-SA 2.0).</p>
+      <p class="src" id="dgCredit">장비 사진은 이해를 돕기 위한 예시입니다. 사진 출처: Unsplash, Wikimedia Commons (벽 LAN 단자 Tony Webster · CC BY 2.0, 스위치 허브 Simon A. Eugster · CC BY-SA 3.0, 오디오 믹서 deepsonic · CC BY-SA 2.0).</p>
     </div>
     <div class="block">
       <h2 class="sec">STANDARD · WIDE (일체형)</h2>
@@ -1265,7 +1265,8 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <h2 class="sec" id="btTitle"></h2>
       <p class="muted" id="btDesc"></p>
       <div class="diagram" id="dg-broadcast"></div>
-      <div class="legend"><span><i class="hd"></i>HDMI · SDI (영상)</span><span><i></i>USB · 오디오 · 마이크</span><span><i class="net"></i>LAN · 인터넷</span></div>
+      <div class="legend"><span><i class="hd"></i>HDMI (영상)</span><span><i></i>USB · 오디오 · 마이크</span><span><i class="net"></i>LAN (인터넷 회선 → 허브 → 각 기기)</span></div>
+      <p class="src">장비 사진은 이해를 돕기 위한 예시입니다. 사진 출처: Unsplash, Wikimedia Commons (벽 LAN 단자 Tony Webster · CC BY 2.0, 스위치 허브 Simon A. Eugster · CC BY-SA 3.0, 오디오 믹서 deepsonic · CC BY-SA 2.0).</p>
       <div class="grid g2">
         <div class="panel block"><h3>장비 목록</h3><div class="tbl" style="border:0"><table id="btGear"><thead><tr><th>장비</th><th>수량</th><th>준비</th></tr></thead><tbody></tbody></table></div></div>
         <div class="panel block"><h3>연결 순서</h3><ol class="steps" id="btSteps"></ol></div>
@@ -1754,35 +1755,47 @@ $("#dg-base").innerHTML=svgDiagram({key:"base",label:"대회 기본 신호 흐�
  {id:"sw",x:220,y:225,w:170,h:150,t:"스위치 허브",s:"유선 LAN 분배",img:"/img/dg/switch.jpg"},
  {id:"a",x:220,y:20,w:170,h:170,t:"아케이드 A",s:"본체 HDMI 출력 · 상단 화면",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
  {id:"b",x:220,y:410,w:170,h:170,t:"아케이드 B",s:"본체 HDMI 출력 · 상단 화면",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
- {id:"ca",x:530,y:70,w:160,h:70,t:"캡처보드 A",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
- {id:"cb",x:530,y:460,w:160,h:70,t:"캡처보드 B",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
- {id:"pc",x:750,y:225,w:170,h:150,t:"중계 PC",s:"대회 프로그램 + OBS",img:"/img/dg/pc.jpg",c:"ctl"},
+ {id:"ca",x:530,y:30,w:160,h:150,t:"캡처보드 A",s:"HDMI IN · OUT(패스스루)",img:"/img/dg/capture.jpg",c:"ctl"},
+ {id:"cb",x:530,y:420,w:160,h:150,t:"캡처보드 B",s:"HDMI IN · OUT(패스스루)",img:"/img/dg/capture.jpg",c:"ctl"},
+ {id:"pc",x:750,y:225,w:170,h:150,t:"중계 PC (노트북)",s:"대회 프로그램 + OBS",img:"/img/dg/laptop.jpg",c:"ctl"},
  {id:"mx",x:750,y:420,w:170,h:150,t:"오디오 믹서",s:"아케이드 3.5mm + 마이크",img:"/img/dg/mixer.jpg"},
- {id:"mon",x:950,y:225,w:160,h:150,t:"관중 모니터",s:"65\" · HDMI",img:"/img/dg/tv.jpg",c:"out"},
- {id:"pa",x:950,y:460,w:160,h:70,t:"PA 스피커 ×2",s:"메인 출력",c:"out"}],
+ {id:"mon",x:950,y:225,w:160,h:150,t:"무대 대형 모니터",s:"관중용 · HDMI",img:"/img/dg/stage_screen.jpg",c:"out"},
+ {id:"pa",x:950,y:420,w:160,h:150,t:"PA 스피커 ×2",s:"메인 출력",img:"/img/dg/speaker.jpg",c:"out"}],
  edges:[{f:"net",t:"sw",k:"net",l:"LAN"},{f:"sw",t:"a",fs:"t",ts:"b",k:"net",l:"LAN"},{f:"sw",t:"b",fs:"b",ts:"t",k:"net",l:"LAN"},{f:"sw",t:"pc",k:"net",l:"LAN"},
  {f:"a",t:"ca",k:"hd",l:"① HDMI → IN",dy:-14},{f:"ca",t:"a",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},{f:"b",t:"cb",k:"hd",l:"① HDMI → IN",dy:-14},{f:"cb",t:"b",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},
  {f:"ca",t:"pc",ts:"t",l:"USB"},{f:"cb",t:"pc",dy2:30,l:"USB"},{f:"mx",t:"pc",fs:"t",ts:"b",l:"USB"},{f:"pc",t:"mon",k:"hd",l:"HDMI"},{f:"mx",t:"pa",l:"MAIN"}]});
 const BT={
  t1:{title:"TYPE 1 · 체험존 · 현장 랭킹전 (중계 없음)",desc:"참가자가 순서대로 플레이하고, 관람객은 플레이 공간 좌우·후면에서 아케이드 화면을 봅니다. 점수는 스태프가 기록해 랭킹 보드에 올립니다.",
-  dg:{key:"t1",label:"체험존 구성도",w:760,h:240,nodes:[
-   {id:"a",x:20,y:30,w:170,h:56,t:"아케이드 A",s:"체험 · 자유곡",c:"arc"},{id:"b",x:20,y:150,w:170,h:56,t:"아케이드 B",s:"대회 송리스트 연습",c:"arc"},
-   {id:"lan",x:300,y:90,w:160,h:56,t:"유선 LAN · 전원",s:"220V · 대당 500W",c:""},
-   {id:"qr",x:570,y:30,w:170,h:56,t:"참가자 스마트폰",s:"QR 영상 다운로드",c:"out"},{id:"ld",x:570,y:150,w:170,h:56,t:"랭킹 보드",s:"화이트보드 · 모니터",c:"out"}],
-   edges:[{f:"lan",t:"a",fs:"l",ts:"r",k:"net"},{f:"lan",t:"b",fs:"l",ts:"r",k:"net"},{f:"lan",t:"qr",k:"net",l:"인터넷"},{f:"lan",t:"ld",l:"점수 기록"}]},
+  dg:{key:"t1",label:"체험존 구성도",w:900,h:400,nodes:[
+   {id:"net",x:20,y:125,w:160,h:150,t:"외부 인터넷 회선",s:"벽 LAN 단자",img:"/img/dg/wall_lan.jpg"},
+   {id:"sw",x:230,y:125,w:160,h:150,t:"스위치 허브",s:"유선 LAN 분배",img:"/img/dg/switch.jpg"},
+   {id:"a",x:460,y:15,w:170,h:170,t:"아케이드 A",s:"체험 · 자유곡",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+   {id:"b",x:460,y:215,w:170,h:170,t:"아케이드 B",s:"대회 송리스트 연습",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+   {id:"qr",x:720,y:15,w:160,h:150,t:"참가자 스마트폰",s:"QR 영상 다운로드",img:"/img/dg/phone.jpg",c:"out"},
+   {id:"ld",x:720,y:225,w:160,h:150,t:"랭킹 보드",s:"스태프가 점수 기록",img:"/img/dg/board.jpg",c:"out"}],
+   edges:[{f:"net",t:"sw",k:"net",l:"LAN"},{f:"sw",t:"a",k:"net",l:"LAN"},{f:"sw",t:"b",k:"net",l:"LAN"},{f:"a",t:"qr",l:"QR"},{f:"b",t:"ld",l:"점수 기록"}]},
   gear:[["아케이드","1~2대","본사"],["전원 콘센트","대당 1구","파트너"],["유선 LAN (필수)","대당 1포트","파트너"],["안내 스태프","대당 1인","파트너"],["X배너 · POP 아크릴","1 · 2~3","시안 협조"],["랭킹 보드","1","파트너"],["안전바","2+","파트너"]],
   steps:["플레이 위치 바닥 표시 (2.2–2.5m)","관람객은 플레이 공간 좌우·후면, 카메라 시야 밖","스태프가 곡 선택·순서 안내, 점수 기록","마감 30분 전 상위 4인 호출 → 2대로 4강 배틀 (선택)","공공장소 영상 다운로드 허용 여부 본사 확인"],
   av:[["사운드","아케이드 내장 스피커. 넓은 공간·소음이 큰 곳은 3.5mm → 액티브 스피커 추가"],["영상","별도 중계 없음. 아케이드 화면이 곧 관람 화면"],["조명","저조도·야간이면 핀조명 1~2, 역광 금지"],["인력","대당 안내 1, 운반 대당 2 (반입·반출일)"]]},
  t2:{title:"TYPE 2 · 현장 중계 · 녹화 (관중용 대형 화면)",desc:"대회의 기본 구성입니다. 관중이 카메라에 잡히지 않게 플레이 존 뒤를 비우고, 관중은 중계 모니터로 경기를 봅니다. 중계 PC가 두 아케이드 화면과 대진표를 합성해 관중 모니터로 내보내고, 필요하면 실사 카메라를 더해 하이라이트 · SNS용으로 녹화합니다.",
-  dg:{key:"t2",label:"현장 중계 · 녹화 구성도",w:780,h:390,nodes:[
-   {id:"a",x:20,y:20,w:160,h:52,t:"아케이드 A",s:"선수 1",c:"arc"},{id:"b",x:20,y:120,w:160,h:52,t:"아케이드 B",s:"선수 2",c:"arc"},
-   {id:"ca",x:280,y:20,w:150,h:52,t:"캡처보드 A",s:"IN · OUT(패스스루)",c:"ctl"},{id:"cb",x:280,y:120,w:150,h:52,t:"캡처보드 B",s:"IN · OUT(패스스루)",c:"ctl"},
-   {id:"pc",x:475,y:90,w:150,h:90,t:"중계 PC",s:"대회 프로그램 + OBS",c:"ctl"},
-   {id:"mon",x:650,y:20,w:120,h:52,t:"관중 모니터",s:"65\" 이상",c:"out"},{id:"stf",x:650,y:95,w:120,h:46,t:"스태프 모니터",s:"16\" 이상",c:"out"},
-   {id:"mic",x:20,y:225,w:160,h:52,t:"무선 마이크",s:"UHF",c:""},{id:"mx",x:280,y:225,w:150,h:52,t:"오디오 믹서",s:"아케이드 3.5mm + 마이크",c:""},{id:"spk",x:650,y:240,w:120,h:52,t:"PA 스피커 ×2",s:"150~300W",c:"out"},
-   {id:"cam",x:20,y:320,w:160,h:52,t:"실사 카메라",s:"녹화 시 · 클린 HDMI",c:""},{id:"cc",x:280,y:320,w:150,h:52,t:"캡처보드 C",s:"카메라용 (녹화 시)",c:"ctl"},{id:"file",x:650,y:165,w:120,h:50,t:"녹화 파일",s:"mkv → mp4",c:"out"}],
-   edges:[{f:"a",t:"ca",k:"hd",l:"HDMI 출력 → IN",dy:-10},{f:"ca",t:"a",fs:"l",ts:"r",k:"hd",l:"OUT → 화면",dy:10,lb:1},{f:"b",t:"cb",k:"hd",l:"HDMI 출력 → IN",dy:-10},{f:"cb",t:"b",fs:"l",ts:"r",k:"hd",l:"OUT → 화면",dy:10,lb:1},{f:"ca",t:"pc",l:"USB"},{f:"cb",t:"pc"},{f:"pc",t:"mon",k:"hd",l:"HDMI"},{f:"pc",t:"stf",k:"hd"},{f:"mic",t:"mx"},{f:"mx",t:"spk",l:"MAIN"},{f:"mx",t:"pc",fs:"r",ts:"b",l:"USB"},{f:"cam",t:"cc",k:"hd",l:"HDMI"},{f:"cc",t:"pc",fs:"r",ts:"b"},{f:"pc",t:"file"}]},
-  gear:[["아케이드","2대","본사"],["중계 PC (RAM 16GB+, Windows)","1","본사 또는 파트너"],["HDMI 캡처보드 (USB 3.0, 1080p60, HDMI OUT 패스스루)","2","파트너"],["HDMI 케이블 (아케이드당 2: 본체 → 캡처 IN, 캡처 OUT → 아케이드 화면 / 중계 PC → 모니터는 길이 확인)","6","파트너"],["스위치 허브 + LAN 케이블","1 · 3","파트너"],["관중용 모니터 65\"+ · 스탠드","1","파트너"],["스태프 모니터 16\"+","1","파트너"],["오디오 믹서 (4~8ch)","1","파트너"],["무선 마이크 (UHF 2ch)","1~2","파트너"],["PA 스피커 + 스탠드","2","파트너"],["부조 공간 4×3m · 책상 2 · 의자 4","1","파트너"],["(녹화 시) 실사 카메라 · 삼각대 · 더미 배터리","1~2","파트너"],["(녹화 시) 카메라용 캡처보드","1~2","파트너"],["(녹화 시) 녹화용 외장 SSD 500GB+","1","파트너"]],
+  dg:{key:"t2",label:"현장 중계 · 녹화 구성도",w:1120,h:1010,nodes:[
+   {id:"net",x:20,y:230,w:160,h:150,t:"외부 인터넷 회선",s:"벽 LAN 단자",img:"/img/dg/wall_lan.jpg"},
+   {id:"sw",x:220,y:230,w:170,h:150,t:"스위치 허브",s:"유선 LAN 분배",img:"/img/dg/switch.jpg"},
+   {id:"a",x:220,y:20,w:170,h:170,t:"아케이드 A",s:"선수 1",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+   {id:"b",x:220,y:420,w:170,h:170,t:"아케이드 B",s:"선수 2",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+   {id:"ca",x:510,y:30,w:160,h:150,t:"캡처보드 A",s:"IN · OUT(패스스루)",img:"/img/dg/capture.jpg",c:"ctl"},
+   {id:"cb",x:510,y:430,w:160,h:150,t:"캡처보드 B",s:"IN · OUT(패스스루)",img:"/img/dg/capture.jpg",c:"ctl"},
+   {id:"pc",x:735,y:230,w:170,h:150,t:"중계 PC (노트북)",s:"대회 프로그램 + OBS",img:"/img/dg/laptop.jpg",c:"ctl"},
+   {id:"mon",x:950,y:20,w:160,h:150,t:"무대 대형 모니터",s:"관중용",img:"/img/dg/stage_screen.jpg",c:"out"},
+   {id:"stf",x:950,y:230,w:160,h:150,t:"스태프 모니터",s:"진행 확인용",img:"/img/dg/monitor.jpg",c:"out"},
+   {id:"file",x:950,y:430,w:160,h:150,t:"녹화 파일",s:"외장 SSD · mkv → mp4",img:"/img/dg/ssd.jpg",c:"out"},
+   {id:"mic",x:20,y:650,w:160,h:150,t:"무선 마이크",s:"진행 · 인터뷰",img:"/img/dg/mic.jpg"},
+   {id:"mx",x:510,y:650,w:160,h:150,t:"오디오 믹서",s:"아케이드 3.5mm + 마이크",img:"/img/dg/mixer.jpg"},
+   {id:"spk",x:950,y:650,w:160,h:150,t:"PA 스피커 ×2",s:"메인 출력",img:"/img/dg/speaker.jpg",c:"out"},
+   {id:"cam",x:20,y:850,w:160,h:150,t:"실사 카메라",s:"녹화 시 · 클린 HDMI",img:"/img/dg/camera.jpg"},
+   {id:"cc",x:510,y:850,w:160,h:150,t:"캡처보드 C",s:"카메라용 (녹화 시)",img:"/img/dg/capture.jpg",c:"ctl"}],
+   edges:[{f:"net",t:"sw",k:"net",l:"LAN"},{f:"sw",t:"a",fs:"t",ts:"b",k:"net",l:"LAN"},{f:"sw",t:"b",fs:"b",ts:"t",k:"net",l:"LAN"},{f:"sw",t:"pc",k:"net",l:"LAN"},{f:"a",t:"ca",k:"hd",l:"① HDMI → IN",dy:-14},{f:"ca",t:"a",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},{f:"b",t:"cb",k:"hd",l:"① HDMI → IN",dy:-14},{f:"cb",t:"b",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},{f:"ca",t:"pc",ts:"t",l:"USB"},{f:"cb",t:"pc",dy2:30,l:"USB"},{f:"pc",t:"mon",k:"hd",l:"HDMI"},{f:"pc",t:"stf",k:"hd"},{f:"pc",t:"file"},{f:"mic",t:"mx"},{f:"mx",t:"spk",l:"MAIN"},{f:"mx",t:"pc",fs:"r",ts:"b",l:"USB"},{f:"cam",t:"cc",k:"hd",l:"HDMI"},{f:"cc",t:"pc",fs:"r",ts:"b"}]},
+  gear:[["아케이드","2대","본사"],["중계 PC (노트북, Windows)","1","본사 또는 파트너"],["HDMI 캡처보드 (USB 3.0, 1080p60, HDMI OUT 패스스루)","2","파트너"],["HDMI 케이블 (아케이드당 2: 본체 → 캡처 IN, 캡처 OUT → 아케이드 화면 / 중계 PC → 모니터는 길이 확인)","6","파트너"],["스위치 허브 + LAN 케이블","1 · 3","파트너"],["무대 대형 모니터 (관중용) · 스탠드","1","파트너"],["스태프 모니터 16\"+","1","파트너"],["오디오 믹서 (4~8ch)","1","파트너"],["무선 마이크 (UHF 2ch)","1~2","파트너"],["PA 스피커 + 스탠드","2","파트너"],["부조 공간 4×3m · 책상 2 · 의자 4","1","파트너"],["(녹화 시) 실사 카메라 · 삼각대 · 더미 배터리","1~2","파트너"],["(녹화 시) 카메라용 캡처보드","1~2","파트너"],["(녹화 시) 녹화용 외장 SSD 500GB+","1","파트너"]],
   steps:["아케이드 2대 위치 고정 · 플레이 위치 표시 (전원은 아직 켜지 않음)","외부 인터넷 회선 → 스위치 허브 → 아케이드 A·B와 중계 PC에 유선 LAN 연결","아케이드 A·B 본체 HDMI 출력 → 캡처보드 A·B HDMI IN","캡처보드 A·B HDMI OUT(패스스루) → 아케이드 A·B 상단 화면 입력으로 다시 연결 (연결하지 않으면 아케이드 화면이 꺼짐)","캡처보드 A·B USB → 중계 PC USB 3.0 포트 (각각 다른 포트)","중계 PC HDMI → 관중 모니터 · 스태프 모니터, 아케이드 A 3.5mm → 믹서 채널 1·2, 마이크 → 채널 5, 믹서 메인 → PA 스피커","(녹화 시) 카메라 HDMI → 캡처보드 C → 중계 PC, 믹서 USB → 중계 PC","<b>모든 연결이 끝났는지 확인한 뒤</b> 아케이드 전원을 켜고 STEPIN ARCADE 게임 실행","중계 PC에서 STEPIN 대회 프로그램 실행 → 대진 · 현황 화면 확인","OBS에 캡처 A·B + 대진표 (+ 카메라) 소스 추가 → 경기 장면 구성, 전체 화면 프로젝터로 관중 모니터 출력","리허설: 1매치 전체를 실제 세트 수로 돌려 화면 · 음향 · 집계 · 녹화 파일 확인"],
   av:[["사운드","배틀 중 두 대가 같은 곡을 재생하므로 아케이드 A 한 대만 PA로. 아케이드 B는 볼륨을 줄여 선수 모니터용으로만. 녹음은 믹서 USB 라인으로"],["영상","캡처 1080p로 통일, 관중 모니터는 HDMI 직결. 무선 미러링 금지. 녹화 시 카메라 1080p · 화이트밸런스 5600K 고정"],["중계","OBS 장면: 대기 · 경기(좌우 분할) · 대진표 · 휴식 (+ 카메라). 오퍼레이터 1인이 전환. 녹화는 mkv"],["조명","플레이어 정면 좌우 45°에 LED 패널 2. 관중 모니터 · 카메라에 플레이어 얼굴이 어둡지 않게"],["인력","슈퍼바이저 1, 레퍼리 1, 오퍼레이터 1, 스태프 2 (+ 녹화 시 촬영 1). 슈퍼바이저와 오퍼레이터는 무전기로 큐 공유"]]}
 };
