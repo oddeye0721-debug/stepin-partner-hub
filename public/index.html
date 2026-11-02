@@ -207,6 +207,7 @@ svg .n{fill:var(--sunk);stroke:var(--line);stroke-width:1.2}
 svg .n.arc{fill:var(--accent-soft);stroke:var(--accent)}
 svg .n.ctl{fill:var(--cyan-soft);stroke:var(--cyan)}
 svg .n.out{fill:var(--surface);stroke:var(--ink)}
+svg .ph{fill:#fff;stroke:var(--line)}
 svg .t{fill:var(--ink);font-family:var(--f-body);font-size:13px;font-weight:600}
 svg .ts{fill:var(--muted);font-family:var(--f-body);font-size:11px}
 svg .e{stroke:var(--muted);stroke-width:1.6;fill:none}
@@ -1194,10 +1195,11 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
   <div class="tabpanel" data-panel="broadcast:connect" hidden>
     <div class="block">
       <h2 class="sec">대회 기본 신호 흐름</h2>
-      <p class="muted">교내 대회 · 경남 오픈 등에서 쓰는 기본 구성입니다. 두 아케이드는 LAN으로 연결해 배틀을 하고, 각 아케이드의 HDMI 영상을 캡처보드로 중계 PC에 넣어 OBS에서 대진표와 함께 합성합니다.</p>
+      <p class="muted">교내 대회 · 경남 오픈 등에서 쓰는 기본 구성입니다. 외부 인터넷 회선을 스위치 허브에 연결하고, 허브에서 두 아케이드와 중계 PC로 유선 LAN을 나눠 연결합니다. 각 아케이드의 HDMI 영상을 캡처보드로 중계 PC에 넣어 OBS에서 대진표와 함께 합성합니다.</p>
       <div class="note warn"><b>캡처보드는 아케이드 화면으로 다시 연결해야 합니다.</b> 아케이드 본체 HDMI 출력을 캡처보드 <b>HDMI IN</b>에 꽂으면 아케이드 화면으로 가던 영상이 캡처보드로 넘어갑니다. 캡처보드 <b>HDMI OUT(패스스루)</b>을 다시 아케이드 화면(디스플레이) HDMI 입력에 연결해야 선수가 화면을 보고 플레이할 수 있습니다. 순서: ① 아케이드 HDMI 출력 → 캡처보드 IN ② 캡처보드 OUT → 아케이드 화면 입력 ③ 캡처보드 USB → 중계 PC</div>
       <div class="diagram" id="dg-base"></div>
-      <div class="legend"><span><i class="hd"></i>HDMI (영상)</span><span><i></i>USB · 오디오</span><span><i class="net"></i>LAN (네트워크)</span></div>
+      <div class="legend"><span><i class="hd"></i>HDMI (영상)</span><span><i></i>USB · 오디오</span><span><i class="net"></i>LAN (인터넷 회선 → 허브 → 각 기기)</span></div>
+      <p class="src" id="dgCredit">장비 사진은 이해를 돕기 위한 예시입니다. 사진 출처 Wikimedia Commons: 벽 LAN 단자 Tony Webster (CC BY 2.0), 스위치 허브 Simon A. Eugster (CC BY-SA 3.0), 중계 PC Terraflorin (CC BY-SA 4.0), 관중 모니터 Samsung Belgium (CC BY 2.0), 오디오 믹서 deepsonic (CC BY-SA 2.0).</p>
     </div>
     <div class="block">
       <h2 class="sec">STANDARD · WIDE (일체형)</h2>
@@ -1736,23 +1738,31 @@ function svgDiagram(spec){
   });
   spec.nodes.forEach(n=>{
     s+=`<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="9" class="n ${n.c||""}"/>`;
+    if(n.img){const ph=n.h-(n.s?50:34);const cid=`c-${spec.key}-${n.id}`;
+      s+=`<clipPath id="${cid}"><rect x="${n.x+6}" y="${n.y+6}" width="${n.w-12}" height="${ph-6}" rx="6"/></clipPath><rect x="${n.x+6}" y="${n.y+6}" width="${n.w-12}" height="${ph-6}" rx="6" class="ph"/><image href="${n.img}" x="${n.x+6}" y="${n.y+6}" width="${n.w-12}" height="${ph-6}" preserveAspectRatio="${n.fit||"xMidYMid slice"}" clip-path="url(#${cid})"/>`;
+      s+=`<text x="${n.x+n.w/2}" y="${n.y+ph+(n.s?16:18)}" text-anchor="middle" class="t">${esc(n.t)}</text>`;
+      if(n.s)s+=`<text x="${n.x+n.w/2}" y="${n.y+ph+33}" text-anchor="middle" class="ts">${esc(n.s)}</text>`;
+      return}
     const cx=n.x+n.w/2;const lines=n.t.split("\n");const base=n.y+n.h/2-(lines.length-1)*8+(n.s?-6:4);
     lines.forEach((ln,i)=>s+=`<text x="${cx}" y="${base+i*16}" text-anchor="middle" class="t">${esc(ln)}</text>`);
     if(n.s)s+=`<text x="${cx}" y="${base+(lines.length-1)*16+16}" text-anchor="middle" class="ts">${esc(n.s)}</text>`;
   });
   return s+"</svg>";
 }
-$("#dg-base").innerHTML=svgDiagram({key:"base",label:"대회 기본 신호 흐름",w:900,h:340,nodes:[
- {id:"a",x:20,y:20,w:170,h:64,t:"아케이드 A",s:"본체 HDMI 출력 · 화면 입력",c:"arc"},
- {id:"sw",x:20,y:140,w:170,h:56,t:"스위치 허브",s:"유선 LAN · 인터넷",c:""},
- {id:"b",x:20,y:256,w:170,h:64,t:"아케이드 B",s:"본체 HDMI 출력 · 화면 입력",c:"arc"},
- {id:"ca",x:320,y:20,w:150,h:64,t:"캡처보드 A",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
- {id:"cb",x:320,y:256,w:150,h:64,t:"캡처보드 B",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
- {id:"pc",x:540,y:100,w:180,h:76,t:"중계 PC",s:"대회 프로그램 + OBS",c:"ctl"},
- {id:"mx",x:540,y:256,w:180,h:64,t:"오디오 믹서",s:"아케이드 3.5mm + 마이크",c:""},
- {id:"mon",x:760,y:110,w:130,h:56,t:"관중 모니터",s:"65\" · HDMI",c:"out"},
- {id:"pa",x:760,y:260,w:130,h:56,t:"PA 스피커 ×2",s:"메인 출력",c:"out"}],
- edges:[{f:"a",t:"ca",k:"hd",l:"① HDMI 출력 → IN",dy:-14},{f:"ca",t:"a",fs:"l",ts:"r",k:"hd",l:"② OUT → 아케이드 화면",dy:14,lb:1},{f:"b",t:"cb",k:"hd",l:"① HDMI 출력 → IN",dy:-14},{f:"cb",t:"b",fs:"l",ts:"r",k:"hd",l:"② OUT → 아케이드 화면",dy:14,lb:1},{f:"ca",t:"pc",l:"USB"},{f:"cb",t:"pc"},{f:"a",t:"sw",fs:"b",ts:"t",k:"net"},{f:"b",t:"sw",fs:"t",ts:"b",k:"net"},{f:"sw",t:"pc",k:"net",l:"LAN"},{f:"mx",t:"pc",fs:"t",ts:"b",l:"USB"},{f:"pc",t:"mon",k:"hd",l:"HDMI"},{f:"mx",t:"pa",l:"MAIN"}]});
+$("#dg-base").innerHTML=svgDiagram({key:"base",label:"대회 기본 신호 흐름",w:1120,h:600,nodes:[
+ {id:"net",x:20,y:225,w:160,h:150,t:"외부 인터넷 회선",s:"벽 LAN 단자",img:"/img/dg/wall_lan.jpg"},
+ {id:"sw",x:220,y:225,w:170,h:150,t:"스위치 허브",s:"유선 LAN 분배",img:"/img/dg/switch.jpg"},
+ {id:"a",x:220,y:20,w:170,h:170,t:"아케이드 A",s:"본체 HDMI 출력 · 상단 화면",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+ {id:"b",x:220,y:410,w:170,h:170,t:"아케이드 B",s:"본체 HDMI 출력 · 상단 화면",img:"/img/dg/arcade.png",fit:"xMidYMid meet",c:"arc"},
+ {id:"ca",x:530,y:70,w:160,h:70,t:"캡처보드 A",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
+ {id:"cb",x:530,y:460,w:160,h:70,t:"캡처보드 B",s:"HDMI IN · OUT(패스스루)",c:"ctl"},
+ {id:"pc",x:750,y:225,w:170,h:150,t:"중계 PC",s:"대회 프로그램 + OBS",img:"/img/dg/pc.jpg",c:"ctl"},
+ {id:"mx",x:750,y:420,w:170,h:150,t:"오디오 믹서",s:"아케이드 3.5mm + 마이크",img:"/img/dg/mixer.jpg"},
+ {id:"mon",x:950,y:225,w:160,h:150,t:"관중 모니터",s:"65\" · HDMI",img:"/img/dg/tv.jpg",c:"out"},
+ {id:"pa",x:950,y:460,w:160,h:70,t:"PA 스피커 ×2",s:"메인 출력",c:"out"}],
+ edges:[{f:"net",t:"sw",k:"net",l:"LAN"},{f:"sw",t:"a",fs:"t",ts:"b",k:"net",l:"LAN"},{f:"sw",t:"b",fs:"b",ts:"t",k:"net",l:"LAN"},{f:"sw",t:"pc",k:"net",l:"LAN"},
+ {f:"a",t:"ca",k:"hd",l:"① HDMI → IN",dy:-14},{f:"ca",t:"a",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},{f:"b",t:"cb",k:"hd",l:"① HDMI → IN",dy:-14},{f:"cb",t:"b",fs:"l",ts:"r",k:"hd",l:"② OUT → 상단 화면",dy:14,lb:1},
+ {f:"ca",t:"pc",ts:"t",l:"USB"},{f:"cb",t:"pc",dy2:30,l:"USB"},{f:"mx",t:"pc",fs:"t",ts:"b",l:"USB"},{f:"pc",t:"mon",k:"hd",l:"HDMI"},{f:"mx",t:"pa",l:"MAIN"}]});
 const BT={
  t1:{title:"TYPE 1 · 체험존 · 현장 랭킹전 (중계 없음)",desc:"참가자가 순서대로 플레이하고, 관람객은 플레이 공간 좌우·후면에서 아케이드 화면을 봅니다. 점수는 스태프가 기록해 랭킹 보드에 올립니다.",
   dg:{key:"t1",label:"체험존 구성도",w:760,h:240,nodes:[
