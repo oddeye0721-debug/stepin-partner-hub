@@ -60,7 +60,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 #gate form{display:flex;flex-direction:column;gap:10px}
 #gate label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9EA1BE;font-family:var(--f-display)}
 .code-row{display:flex;gap:8px}
-#codeInput{flex:1;min-width:0;background:#141526;border:1.5px solid #34365A;border-radius:10px;color:#fff;font-family:var(--f-mono);font-size:18px;letter-spacing:.08em;padding:14px 16px;text-transform:uppercase}
+#codeInput{flex:1;min-width:0;background:#141526;border:1.5px solid #34365A;border-radius:10px;color:#fff;font-family:var(--f-mono);font-size:18px;letter-spacing:.04em;padding:14px 16px}
 #codeInput:focus{border-color:#43DDEE;outline:none}
 #codeBtn{background:#FF4F9C;color:#1A0A12;border:0;border-radius:10px;padding:0 20px;font-weight:700}
 #codeMsg{min-height:1.4em;font-size:13px;color:#FF9C95}
@@ -360,9 +360,10 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <form id="gateForm" autocomplete="off">
       <label for="codeInput">Partner Code</label>
       <div class="code-row">
-        <input id="codeInput" name="code" placeholder="STP-XXX-0000" spellcheck="false" aria-describedby="codeMsg">
+        <input id="codeInput" name="code" type="password" placeholder="파트너 코드" autocomplete="current-password" autocapitalize="off" spellcheck="false" aria-describedby="codeMsg">
         <button id="codeBtn" type="submit">입장</button>
       </div>
+      <label style="display:flex;gap:6px;align-items:center;font-size:12px;letter-spacing:0;text-transform:none;font-family:inherit;cursor:pointer"><input type="checkbox" id="codeShow" style="accent-color:#43DDEE"> 코드 보기 · 대소문자를 구분합니다</label>
       <div id="codeMsg" role="status"></div>
     </form>
     <details class="adm-login"><summary>본사 관리자 로그인</summary>
@@ -398,6 +399,7 @@ document.getElementById("adminForm").addEventListener("submit",async e=>{
   finally{btn.disabled=false}
 });
 document.getElementById("codeInput").focus();
+document.getElementById("codeShow").addEventListener("change",e=>{document.getElementById("codeInput").type=e.target.checked?"text":"password"});
 })();
 </script>
 </body>

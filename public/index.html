@@ -1524,10 +1524,10 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
         <h2 class="sec">새 파트너 코드 발급</h2>
         <div class="adm-fields">
           <label class="fld"><span>파트너 이름 (화면 표시)</span><input id="npName" placeholder="예: ○○시 e스포츠 대회 운영사"></label>
-          <label class="fld"><span>코드</span><input id="npCode" class="mono" placeholder="비우면 자동 생성" style="text-transform:uppercase"></label>
+          <label class="fld"><span>코드 (비밀번호처럼 자유롭게)</span><input id="npCode" class="mono" placeholder="비우면 자동 생성 · 6~64자 · 대소문자 구분" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
           <label class="fld"><span>구분</span><select id="npType"><option>대회 운영사</option><option>지자체·공공기관</option><option>학교·교육청</option><option>협회·연맹</option><option>브랜드·스폰서</option><option>본사</option><option>기타</option></select></label>
         </div>
-        <div class="row"><button class="btn pri" id="npAdd" type="button">코드 발급 · 저장</button><span class="muted" style="font-size:13px">코드는 암호화(해시)되어 저장되므로 발급 직후에만 전체 코드를 볼 수 있습니다.</span></div>
+        <div class="row"><button class="btn pri" id="npAdd" type="button">코드 발급 · 저장</button><span class="muted" style="font-size:13px">코드는 비밀번호처럼 원하는 문자로 만들 수 있으며 대소문자를 구분합니다. 암호화(해시)되어 저장되므로 발급 직후에만 전체 코드를 볼 수 있습니다.</span></div>
         <div id="npOut" hidden></div>
       </div>
       <div data-editor="partners"></div>
@@ -2282,15 +2282,15 @@ async function saveKey(k,items,what){
 }
 function renderLog(){const el=$("#admLog");if(!el)return;el.innerHTML=DATA.log.length?DATA.log.map(l=>`<div><span class="mono muted">${esc(new Date(l.at).toLocaleString("ko-KR",{hour12:false}))}</span><span>${esc(l.what)}</span></div>`).join(""):'<div><span class="muted">—</span><span class="muted">아직 변경 이력이 없습니다.</span></div>'}
 /* new partner code */
-function genCode(type){const pre={"대회 운영사":"EVT","지자체·공공기관":"GOV","학교·교육청":"EDU","협회·연맹":"FED","브랜드·스폰서":"BRD","본사":"SWE","기타":"PTN"}[type]||"PTN";const A="ABCDEFGHJKLMNPQRSTUVWXYZ";const r=n=>Array.from(crypto.getRandomValues(new Uint32Array(n))).map(x=>x);const [a,b,c]=r(3);return `STP-${pre}${A[a%24]}-${String(1000+b%9000)}${A[c%24]}`}
+function genCode(){const A="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";return Array.from(crypto.getRandomValues(new Uint32Array(12))).map(x=>A[x%A.length]).join("")}
 $("#npAdd").addEventListener("click",async()=>{
-  const name=$("#npName").value.trim(),type=$("#npType").value;let code=$("#npCode").value.trim().toUpperCase().replace(/\s+/g,"");
+  const name=$("#npName").value.trim(),type=$("#npType").value;let code=$("#npCode").value.trim().normalize("NFC");
   if(!name){toast("파트너 이름을 입력해 주세요.");$("#npName").focus();return}
-  if(!code)code=genCode(type);
-  if(!/^[A-Z0-9-]{6,32}$/.test(code)){toast("코드는 영문 대문자·숫자·하이픈 6~32자로 입력해 주세요.");return}
+  if(!code)code=genCode();
+  if(code.length<6||code.length>64){toast("코드는 6~64자로 입력해 주세요. (영문 대소문자 · 숫자 · 특수문자 · 한글 모두 가능, 대소문자 구분)");return}
   const hash=await sha("stepin-partner:"+code);
   if(DATA.partners.some(p=>p.hash===hash)){toast("이미 등록된 코드입니다.");return}
-  const parts=code.split("-");const hint=parts.length>1?parts.slice(0,-1).join("-")+"-****":code.slice(0,3)+"****";
+  const hint=code.slice(0,2)+"****";
   const next=[...DATA.partners,{hash,name,type,hint,active:true,createdAt:new Date().toISOString()}];
   try{await saveKey("partners",next,`파트너 코드 발급: ${name}`);
     $("#npOut").hidden=false;$("#npOut").innerHTML=`<div class="newcode"><span>발급 완료 · <b>${esc(name)}</b></span><span class="v" id="npCodeShow">${esc(code)}</span><button class="btn sm" type="button" id="npCopy">코드 복사</button><span class="muted" style="font-size:12.5px">이 화면을 벗어나면 전체 코드를 다시 볼 수 없습니다.</span></div>`;
