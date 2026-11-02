@@ -20,7 +20,15 @@
    "type": "학교·교육청",
    "hint": "STP-EDU-****",
    "active": true
+  },
+  {
+   "hash": "0fd7fefcadb546e28ed1d8e337c5ae33b89f79d8191ed219b4857b1a4dc9d25c",
+   "name": "테스트",
+   "type": "기타",
+   "hint": "wn****",
+   "active": true,
+   "createdAt": "2026-11-02T02:38:04.000Z"
   }
  ],
- "updatedAt": "2026-10-27T12:00:00.000Z"
+ "updatedAt": "2026-11-02T02:38:04.000Z"
 }
