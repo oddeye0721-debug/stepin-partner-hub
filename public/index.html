@@ -475,6 +475,10 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
  table.mcard td.c0.rs{color:var(--accent);border-bottom:0;margin-bottom:0}
  table.mcard td[data-label=""]{padding-left:0}table.mcard td[data-label=""]::before{display:none}
 }
+.cmp-tbl td.adv{background:color-mix(in srgb,#16a34a 9%,transparent)}
+.cmp-tbl td.adv::after,.adv-key::after{content:"";}
+.cmp-tbl td.adv::before,.adv-key{display:inline-block;font-size:11px;font-weight:700;color:#15803d;background:color-mix(in srgb,#16a34a 16%,transparent);border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.cmp-tbl td.adv::before{content:"유리"}
 </style>
 </head>
 <body>
@@ -718,30 +722,22 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <div class="row"><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_대회 현장 준비사항.pdf">현장 준비사항 시트 (PDF)</button><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.xlsx" data-name="STEPIN_대회 현장 준비사항.xlsx">편집용 엑셀</button><a class="btn sm" href="#checklist">단계별 체크리스트</a></div>
   </div>
   <div class="tabpanel" data-panel="plan:compare" hidden>
-    <p class="muted">앱 대회와 아케이드 대회는 <b>어디서, 무엇으로 겨루는가</b>의 차이입니다. 예선 · 본선을 어떻게 조합할지는 <a href="#plan" data-tab-go="plan:overview">운영 형태 한눈에</a> 탭을 참고하세요.</p>
-    <div class="tbl"><table>
+    <p class="muted">앱 대회와 아케이드 대회는 <b>어디서, 무엇으로 겨루는가</b>의 차이입니다. <span class="adv-key">유리</span> 표시는 해당 항목에서 더 유리한 쪽입니다. 예선 · 본선 조합은 <a href="#plan" data-tab-go="plan:overview">운영 형태 한눈에</a> 탭을 참고하세요.</p>
+    <div class="tbl cmp-tbl"><table>
       <thead><tr><th>구분</th><th>앱 대회</th><th>아케이드 대회</th></tr></thead>
       <tbody>
         <tr><td class="k">겨루는 방법</td><td>참가자가 각자 스마트폰 STEPIN 앱으로 플레이</td><td>대회장에 설치한 아케이드 기기에서 플레이</td></tr>
-        <tr><td class="k">장소</td><td>제한 없음 (집 · 학교 어디서나)</td><td>대회장 필요 (무대 6×3m · 전원 · 유선 LAN)</td></tr>
-        <tr><td class="k">참여 범위</td><td>지역 · 국가 제한 없이 글로벌 · 대규모 (최대 1024강)</td><td>대회장에 올 수 있는 참가자 중심</td></tr>
-        <tr><td class="k">비용</td><td>낮음 (장비 · 무대 · 운반 비용 없음)</td><td>높음 (장비 운반 · 무대 · 중계 · 인력)</td></tr>
-        <tr><td class="k">운영 기간</td><td>며칠 ~ 수 주에 걸쳐 진행</td><td>하루 안에 진행</td></tr>
-        <tr><td class="k">판정 환경</td><td>개인 기기 · 네트워크 · 조명 환경이 제각각</td><td>같은 장비 · 같은 조건, 심판이 현장 통제</td></tr>
-        <tr><td class="k">관람 · 화제성</td><td>현장 관람 없음, 홍보 · SNS에 의존</td><td>대형 화면 배틀 · 중계 · 관중이 콘텐츠</td></tr>
-        <tr><td class="k">부가 효과</td><td>앱 설치 · 연습으로 신규 유입, 참가 영상 · 우승자 데이터 자동 확보</td><td>체험존 · 행사 연계로 관람객 참여, 지자체 · 학교 · 브랜드 행사와 결합</td></tr>
+        <tr><td class="k">장소</td><td class="adv">제한 없음, 집 · 학교 어디서나 참여</td><td>대회장 필요 (무대 6×3m · 전원 · 조명 · 유선 LAN)</td></tr>
+        <tr><td class="k">참여 범위</td><td class="adv">지역 · 국가 제한 없이 글로벌 · 대규모 (최대 1024강)</td><td>대회장에 올 수 있는 참가자 중심으로 범위가 좁음</td></tr>
+        <tr><td class="k">비용</td><td class="adv">낮음 (장비 · 무대 · 운반 비용 없음)</td><td>높음 (장비 운반 · 무대 · 중계 · 인력)</td></tr>
+        <tr><td class="k">진행 방식</td><td class="adv">본사가 개설 · 집계, 결과까지 자동 진행</td><td>심판 · 오퍼레이터 등 현장 인력이 진행</td></tr>
+        <tr><td class="k">일정</td><td>며칠 ~ 수 주, 여러 시간대 참가자는 일정 조율 필요</td><td>하루 안에 진행, 참가자가 시간 · 장소에 묶임</td></tr>
+        <tr><td class="k">참여율</td><td>신청 대비 실제 참여율이 낮거나, 네트워크 · 기기 문제로 중도 이탈 가능</td><td class="adv">현장 참가라 이탈이 적음</td></tr>
+        <tr><td class="k">공정성</td><td>개인 기기 · 네트워크 · 조명 환경이 제각각</td><td class="adv">같은 장비 · 같은 조건 판정, 복장 · 기기 문제를 심판이 현장 통제</td></tr>
+        <tr><td class="k">관람 · 화제성</td><td>현장 관람 콘텐츠가 없어 홍보 · SNS에 의존</td><td class="adv">대형 화면 배틀 · 중계 · 관중이 콘텐츠</td></tr>
+        <tr><td class="k">부가 효과</td><td>앱 설치 · 연습이 신규 유입 · 리텐션으로, 참가 영상 · 우승자 데이터 자동 확보</td><td>체험존 동시 운영, 지자체 · 학교 · 브랜드 행사 · 축제와 연계 쉬움</td></tr>
       </tbody>
     </table></div>
-    <div class="vs">
-      <div class="panel"><h3><span class="pill p-rec">앱</span>앱 대회</h3>
-        <div class="pc pro"><ul><li>장소 제한이 없어 누구나 참여</li><li>운영 비용이 적게 듦</li><li>글로벌 · 광범위한 참여 가능</li><li>본사가 개설 · 집계, 결과까지 자동 진행</li><li>참가자 연습이 앱 유입 · 리텐션으로 이어짐</li></ul></div>
-        <div class="pc con"><ul><li>신청 대비 실제 참여율이 낮을 수 있음</li><li>모바일 네트워크 · 기기 환경에 따라 중도 이탈</li><li>여러 시간대 참가자는 일정 조율 필요</li><li>현장 관람 콘텐츠가 없어 화제성은 홍보에 의존</li></ul></div>
-      </div>
-      <div class="panel"><h3><span class="pill p-req">아케이드</span>아케이드 대회</h3>
-        <div class="pc pro"><ul><li>대형 화면 · 중계 · 관중이 만드는 관람 콘텐츠</li><li>같은 장비 · 같은 조건 판정으로 공정성 높음</li><li>복장 · 기기 문제를 심판이 현장에서 통제</li><li>체험존 동시 운영, 행사 · 축제와 연계 쉬움</li></ul></div>
-        <div class="pc con"><ul><li>장비 운반 · 무대 · 중계 · 인력 비용</li><li>공간 · 전원 · 조명 · 유선 LAN 조건 필요</li><li>참가자가 대회 시간 · 장소에 묶임</li><li>대회장 근처 참가자 중심으로 모집 범위가 좁음</li></ul></div>
-      </div>
-    </div>
     <div class="note">두 방식을 함께 쓰면 각각의 장점을 살릴 수 있습니다. <b>앱으로 넓게 모으고, 아케이드로 무대를 만드는</b> 조합이 가장 많이 쓰입니다 (운영 형태 ① 앱 예선 → 아케이드 본선).</div>
 
   <div class="block">
