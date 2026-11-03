@@ -479,6 +479,21 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 .cmp-tbl td.adv::after,.adv-key::after{content:"";}
 .cmp-tbl td.adv::before,.adv-key{display:inline-block;font-size:11px;font-weight:700;color:#15803d;background:color-mix(in srgb,#16a34a 16%,transparent);border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px}
 .cmp-tbl td.adv::before{content:"유리"}
+.pflow{list-style:none;padding:0;margin:14px 0 6px;display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:14px 20px;counter-reset:pf}
+@media(max-width:1180px){.pflow{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:640px){.pflow{grid-template-columns:1fr}}
+.pflow li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 12px;counter-increment:pf;display:flex;flex-direction:column;gap:4px;word-break:keep-all}
+.pflow li::before{content:counter(pf,decimal-leading-zero);font-family:var(--f-mono);font-size:11.5px;color:var(--accent);font-weight:700}
+.pflow li:not(:last-child)::after{content:"›";position:absolute;right:-15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px;line-height:1}
+.pflow b{font-size:13.5px;line-height:1.35}
+.pflow span{font-size:12.5px;color:var(--muted);line-height:1.45}
+.pflow .who{align-self:flex-start;font-style:normal;font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;background:var(--sunk);color:var(--ink);margin-top:auto}
+.pflow .who.hq{background:var(--accent-soft);color:var(--accent)}
+.pflow .who.co{background:color-mix(in srgb,#0891b2 14%,transparent);color:#0e7490}
+@media(max-width:640px){.pflow li:not(:last-child)::after{content:"⌄";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}}
+details.more{border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-top:14px}
+details.more>summary{cursor:pointer;padding:12px 16px;font-weight:600}
+details.more>div{padding:4px 16px 16px}
 </style>
 </head>
 <body>
@@ -535,10 +550,10 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <h2 class="sec">대회 진행 흐름 <span class="tag">D-35 → D+7</span></h2>
     <div class="flow">
       <a href="#plan"><span class="d">STEP 1</span><b>형태 · 일정 확정</b><span>운영 형태, 규모, 상금, 본사 협업 범위</span></a>
-      <a href="#run"><span class="d">STEP 2</span><b>예선 운영 (선택)</b><span>앱 예선 · 아케이드 예선 또는 생략, 송리스트</span></a>
+      <a href="#run" data-tab-go="run:flow"><span class="d">STEP 2</span><b>예선 운영 (선택)</b><span>앱 예선 · 아케이드 예선 또는 생략</span></a>
       <a href="#promo"><span class="d">STEP 3</span><b>모객 · 제작물</b><span>홍보, 연습 독려, 포스터 · 백월</span></a>
       <a href="#broadcast"><span class="d">STEP 4</span><b>현장 셋팅</b><span>설치, 중계 장비, 리허설</span></a>
-      <a href="#run" data-tab-go="run:rules"><span class="d">STEP 5</span><b>본선 운영</b><span>그룹 스테이지, 토너먼트, 중계</span></a>
+      <a href="#run" data-tab-go="run:main"><span class="d">STEP 5</span><b>아케이드 본선</b><span>경기 진행 · 판정, 대진, 중계</span></a>
       <a href="#assets"><span class="d">STEP 6</span><b>사후 홍보</b><span>결과 공지, 하이라이트, 소스 공유</span></a>
     </div>
   </div>
@@ -552,18 +567,6 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div><span class="v">유선 LAN</span><span class="l">아케이드 현장 대회 필수 조건 (와이파이 X)</span></div>
       <div><span class="v num">≈ 1분</span><span class="l">1세트 평균 (플레이 30초 + 준비·교체)</span></div>
       <div><span class="v num">D-35</span><span class="l">① 앱 예선 → 아케이드 본선 최소 준비 기간</span></div>
-    </div>
-  </div>
-
-  <div class="block">
-    <h2 class="sec">바로가기</h2>
-    <div class="grid g3">
-      <a class="qcard" href="#about"><span class="k">01</span><b>STEPIN 대회 소개</b><span>제안 근거와 숫자, ECA · 경남 오픈 · 교내 대회 레퍼런스</span></a>
-      <a class="qcard hot" href="#planner"><span class="k">★ 맞춤 대회 설계</span><b>몇 가지만 고르면 운영 가이드 완성</b><span>주최 · 대회 구성 · 규모 · 중계를 고르면 셋업 항목, 일정, 현장 소요 시간을 정리합니다</span></a>
-      <a class="qcard" href="#plan"><span class="k">02</span><b>대회 기획 · 운영 형태</b><span>형태별 구성 · 필수 조건 · 일정 · 역할 분담을 한 표로</span></a>
-      <a class="qcard" href="#run"><span class="k">03</span><b>예선 · 본선 운영</b><span>앱 · 아케이드 예선, 본선 구조, 타임테이블, 운영 사례</span></a>
-      <a class="qcard" href="#broadcast"><span class="k">05</span><b>현장 셋팅 · 중계</b><span>설치 공간, 기기 연결, 중계 장비, 문제 해결</span></a>
-      <a class="qcard" href="#assets"><span class="k">07</span><b>다운로드 · 홍보영상</b><span>로고 · 포스터 디자인 소스, 홍보 영상 URL</span></a>
     </div>
   </div>
 
@@ -656,7 +659,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== PLANNER ======== -->
 <section class="view" data-view="planner" hidden>
-  <div class="vh"><span class="eyebrow">★ Tournament Planner</span><h1>맞춤 대회 설계</h1><p>운영 형태 · 본선 인원 · 현장 중계 여부만 고르면 우리 대회에 맞는 운영 가이드가 완성됩니다. 주최 기관은 선택 사항이며, 날짜는 결과 화면에서 입력합니다.</p></div>
+  <div class="vh"><span class="eyebrow">★ Tournament Planner</span><h1>맞춤 대회 설계</h1><p>운영 형태 · 본선 인원 · 중계 여부를 고르면 우리 대회 운영 가이드가 만들어집니다.</p></div>
   <div class="gloss">
       <div class="gloss-h"><b>용어 정의</b><span><b>예선</b> = 본선 진출자를 가리는 단계 · <b>본선</b> = 우승자를 가리는 단계. 같은 앱 대회 안에서도 예선(랭킹전)과 본선(토너먼트)은 구분합니다.</span></div>
       <div class="gloss-g">
@@ -675,7 +678,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== PLAN ======== -->
 <section class="view" data-view="plan" hidden>
-  <div class="vh"><span class="eyebrow">02 · Plan</span><h1>대회 기획 · 운영 형태</h1><p>운영 형태는 <b>예선 → 본선</b> 조합 4가지입니다. 기본 권장은 <b>① 앱 예선 → 아케이드 본선</b>입니다. 형태별 구성, 필수 조건, 최소 준비 일정, 역할 분담을 한 표에서 확인하세요.</p></div>
+  <div class="vh"><span class="eyebrow">02 · Plan</span><h1>대회 기획 · 운영 형태</h1><p><b>예선 → 본선</b> 조합으로 운영 형태를 고르고, 앱 대회와 아케이드 대회의 차이를 확인합니다. 기본 권장은 <b>① 앱 예선 → 아케이드 본선</b>입니다.</p></div>
   <div class="tabs" role="tablist" data-tabs="plan">
     <button role="tab" data-tab="overview">운영 형태 한눈에</button>
     <button role="tab" data-tab="compare">앱 · 아케이드 비교</button>
@@ -702,22 +705,8 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <div class="panel block"><h3>국제 · 다국가 대회</h3><p>별도 형태가 아니라 <b>① 앱 예선 → 아케이드 본선</b>을 국가 단위로 확장한 규모입니다. 국가별 앱 예선 → 국가 대표 → 국제 아케이드 본선으로 진행하고, 무대 7×3m · 다국어 안내 · 선수단 체류 협의가 더해져 <b>D-56 이상</b> 준비합니다.</p></div>
       <div class="panel block"><h3>부대 프로그램 · 체험존 랭킹전</h3><p>예선 · 본선이 없는 <b>체험 이벤트</b>입니다. 아케이드 1~2대로 관람객이 순서대로 챌린지하고 점수 순위로 시상합니다 (1대 3×3m, 대당 스태프 1, D-14). 대회와 함께 열면 관람객을 참여자로 바꾸고, 마지막에 상위 4인 결승 배틀을 붙일 수도 있습니다.</p></div>
     </div>
-    <div class="grid g2">
-      <div class="panel block"><h3>아케이드 대회 공통 필수 조건</h3><ul class="list">
-        <li>전원: 접지 AC 220V, 현장 20A 이상 (대당 500W), 멀티탭 3</li>
-        <li>인터넷: 아케이드 대당 유선 LAN 1포트 + 중계 PC 1포트 (와이파이 · 핫스팟 불가)</li>
-        <li>반입: 대당 3인 이상, 긴 운반 카트, 지상 하역장, 계단 없는 동선</li>
-        <li>상금 · 상품: 수량 · 내용을 대회 요강에 공지, 지급은 주최측</li>
-        <li>실외: 캐노피 · 방수 커버 · 평탄한 바닥 · 강풍 대책</li>
-      </ul></div>
-      <div class="panel block"><h3>준비 일정 공통 흐름</h3><ol class="steps">
-        <li><div><b>협의 · 확정</b> — 형태 · 규모 · 상금 · 장소, 본사 협업 범위</div></li>
-        <li><div><b>홍보 · 접수 · 예선</b> — 앱 예선은 14일 내외</div></li>
-        <li><div><b>D-7 진출자 확정</b> — 참석 확인 · 대체 진출</div></li>
-        <li><div><b>D-1 반입 · 설치 · 리허설</b></div></li>
-        <li><div><b>D-day 대회 → D+7 결과 공지 · 소스 공유</b></div></li>
-      </ol></div>
-    </div>
+    <div class="block"><h3>준비 일정 공통 흐름</h3><ol class="pflow" style="--n:6"><li><b>협의 · 확정</b><span>형태 · 규모 · 상금 · 장소, 본사 협업 범위</span></li><li><b>홍보 · 접수 · 예선</b><span>앱 예선은 14일 내외</span></li><li><b>D-7 진출자 확정</b><span>참석 확인 · 대체 진출</span></li><li><b>D-1 반입 · 설치</b><span>리허설까지 완료</span></li><li><b>D-day 대회</b><span></span></li><li><b>D+7 결과 공지</b><span>하이라이트 · 소스 공유</span></li></ol></div>
+    <p class="src">전원 · 인터넷 · 반입 · 실외 조건은 <a href="#broadcast" data-tab-go="broadcast:space">현장 셋팅 · 중계 &gt; 공간 · 설치</a>, 형태별 세부 일정은 <a href="#checklist">운영 체크리스트</a>에서 확인하세요.</p>
     <p class="src">실제 일정과 역할 분담은 대회별 협의로 확정합니다.</p>
     <div class="row"><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.pdf" data-name="STEPIN_대회 현장 준비사항.pdf">현장 준비사항 시트 (PDF)</button><button class="btn sm" data-dl="STEPIN_Arcade_Event_Prep_Checklist.xlsx" data-name="STEPIN_대회 현장 준비사항.xlsx">편집용 엑셀</button><a class="btn sm" href="#checklist">단계별 체크리스트</a></div>
   </div>
@@ -741,23 +730,6 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
     <div class="note">두 방식을 함께 쓰면 각각의 장점을 살릴 수 있습니다. <b>앱으로 넓게 모으고, 아케이드로 무대를 만드는</b> 조합이 가장 많이 쓰입니다 (운영 형태 ① 앱 예선 → 아케이드 본선).</div>
 
   <div class="block">
-    <h2 class="sec">준비 조건 비교</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>조건</th><th>앱 대회</th><th>아케이드 대회</th></tr></thead>
-      <tbody>
-        <tr><td class="k">개설 · 협의</td><td>본사 협의 후 본사가 앱 토너먼트 개설 (셀프 개설 미오픈)</td><td>본사 협업 확정 (장비 · 운영 범위)</td></tr>
-        <tr><td class="k">일정</td><td>접수 시작은 개설 후 24시간 이후, 랭킹전 최소 24시간, 토너먼트 첫 라운드는 대진 공개 후 24시간 이후</td><td>반입 · 설치 · 리허설 D-1 확보, 32강 하루 약 4시간</td></tr>
-        <tr><td class="k">상금 · 상품</td><td>수량 · 내용을 명확히 공지, 지급은 주최측</td><td>동일 + 현장 시상 준비</td></tr>
-        <tr><td class="k">참가자 조건</td><td>유효한 STEPIN 계정, 스마트폰, 안정적인 네트워크 (와이파이 권장)</td><td>유효한 STEPIN 계정, 본인 확인, 미성년자 보호자 동의, AI 판정용 복장</td></tr>
-        <tr><td class="k">경연곡</td><td>5~30곡 지정</td><td>20곡 내외 협의 선정 · 사전 공지</td></tr>
-        <tr><td class="k">장소 · 장비</td><td>없음</td><td>아케이드 2대, 6×3m 무대, 20A 전원, 유선 LAN 인터넷 (필수), 중계 PC · 캡처보드, 관중 모니터</td></tr>
-        <tr><td class="k">인력</td><td>참가자 관리 (프라이빗 시 승인·거절), 문의 대응</td><td>슈퍼바이저, 레퍼리, 오퍼레이터, 스태프 2+, 반입 인력</td></tr>
-        <tr><td class="k">개인정보</td><td>우승자 CSV(이름·국적·연락처·이메일) 관리, 미성년자 법정대리인 정보</td><td>현장 부속합의서 · 입상자 정보 수집 동의</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <div class="block">
     <h2 class="sec">우리 행사에 맞는 방식 찾기</h2>
     <p class="muted">가장 중요한 목표를 하나 이상 고르세요.</p>
     <div class="chips" id="goalChips">
@@ -777,35 +749,30 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== RUN ======== -->
 <section class="view" data-view="run" hidden>
-  <div class="vh"><span class="eyebrow">03 · Qualifier & Main Event</span><h1>예선 · 본선 운영</h1><p>운영 형태를 정한 뒤 실제로 예선을 열고 본선을 치르는 방법입니다. 예선 개설 절차, 앱 설정, 본선 경기 방식, 당일 타임테이블 · 인력, 운영 사례를 다룹니다. 용어와 형태 조합은 <a href="#plan" data-tab-go="plan:overview">대회 기획 · 운영 형태</a>를 참고하세요.</p></div>
+  <div class="vh"><span class="eyebrow">03 · Qualifier & Main Event</span><h1>예선 · 본선 운영</h1><p>앱 예선 개설부터 <b>아케이드 본선</b> 경기 진행 · 판정, 대진 구조, 당일 타임테이블까지 실제 운영 방법입니다.</p></div>
   <div class="tabs" role="tablist" data-tabs="run">
-    <button role="tab" data-tab="flow">예선 진행 순서</button>
-    <button role="tab" data-tab="open">앱 예선 · 앱 본선 설정</button>
-    <button role="tab" data-tab="rules">본선 구조 · 경기 방식</button>
+    <button role="tab" data-tab="flow">예선 운영</button>
+    <button role="tab" data-tab="main">아케이드 본선 운영</button>
+    <button role="tab" data-tab="rules">대진 구조 · 포맷</button>
     <button role="tab" data-tab="day">타임테이블 · 인력</button>
     <button role="tab" data-tab="cases">학교대항전 · 운영 사례</button>
   </div>
   <div class="tabpanel" data-panel="run:flow">
-  <div class="note warn"><b>앱 토너먼트 셀프 개설(비즈니스 계정)은 현재 오픈되지 않은 서비스입니다.</b> 파트너가 직접 개설하지 않고, 본사와 협의해 예선 형태 · 일정 · 지정곡 · 선발 기준을 정하면 본사가 앱에 예선을 열고 결과를 집계해 드립니다.</div>
+    <div class="note warn"><b>앱 예선은 파트너가 직접 열지 않습니다.</b> 셀프 개설(비즈니스 계정)은 아직 오픈 전이라, 본사와 기준을 협의하면 본사가 앱에 예선을 열고 결과를 집계합니다.</div>
     <div class="block">
       <h2 class="sec">앱 예선 진행 순서</h2>
-      <ol class="steps">
-        <li><div><b>본사 협의 요청</b><p class="muted">대회 개요(주최 · 대상 · 일정 · 장소 · 상금)를 정리해 <span class="mono">marketing@sidewalkplay.com</span> 으로 보내 주세요.</p></div></li>
-        <li><div><b>예선 형태 결정</b><p class="muted">앱 예선(랭킹전)을 학교 단위(학교대항전 · 학교 랭킹) 또는 개인 단위(개인 랭킹)로 열지 정하고, 앱 참여가 어려운 참가자를 위해 아케이드 예선(챌린지)을 함께 열지 고릅니다.</p></div></li>
-        <li><div><b>본선 진출 기준 · 지정곡 · 일정 확정</b><p class="muted">진출 학교 · 선수 수, 점수 집계 방식, 동점 처리, 예선 기간, 지정곡(송리스트)을 협의해 확정하고 참가 안내에 공지합니다.</p></div></li>
-        <li><div><b>참가 신청 접수</b><p class="muted">학교 대항전은 학교 단위로 신청(구글폼 등)을 받고, 오픈 대회는 앱에서 바로 참가 신청을 받습니다.</p></div></li>
-        <li><div><b>본사가 앱에 예선 개설</b><p class="muted">신청 학교를 앱 학교대항전 섹션에 등록하거나 앱 토너먼트를 개설하고, 참가 안내 페이지 · 가이드를 함께 준비합니다.</p></div></li>
-        <li><div><b>예선 진행 · 활성화</b><p class="muted">본사가 주차별 참여 데이터를 공유합니다. 참여가 적은 학교 · 지역은 앱 푸시, 담당자 유선 연락, 공문 재전달, SNS 게시로 독려합니다.</p></div></li>
-        <li><div><b>본선 진출 확정 · 발표</b><p class="muted">협의한 기준으로 진출 학교 · 선수를 확정하고 공문 · 이메일 · 문자 · 앱 푸시로 안내합니다. 현장 참석 여부를 유선으로 확인합니다.</p></div></li>
-      </ol>
+      <ol class="pflow" style="--n:7"><li><b>본사 협의 요청</b><span>주최 · 대상 · 일정 · 장소 · 상금 정리해 본사 메일로</span><em class="who">파트너</em></li><li><b>예선 방식 결정</b><span>학교 단위 · 개인 단위, 아케이드 예선 병행 여부</span><em class="who co">공동</em></li><li><b>기준 확정</b><span>진출 인원 · 점수 집계 · 동점 · 기간 · 지정곡</span><em class="who co">공동</em></li><li><b>참가 접수</b><span>학교: 신청 폼 · 공문 / 개인: 앱에서 바로 신청</span><em class="who">파트너</em></li><li><b>앱에 예선 개설</b><span>참가 안내 페이지 · 가이드 함께 준비</span><em class="who hq">본사</em></li><li><b>진행 · 독려</b><span>본사가 주차별 참여 데이터 공유, 저조 시 푸시 · 연락 · 공문 · SNS</span><em class="who co">공동</em></li><li><b>진출 확정 · 발표</b><span>공문 · 문자 · 앱 푸시 안내, 참석 여부 유선 확인</span><em class="who">파트너</em></li></ol>
+      <p class="src">협의 요청: <span class="mono">marketing@sidewalkplay.com</span> · 학교대항전의 학생 참여 화면 · 선발 기준 예시는 <a href="#run" data-tab-go="run:cases">운영 사례</a> 탭에 있습니다.</p>
       <div class="note"><b>아케이드 예선(챌린지)을 함께 열 때</b> · 대회 당일 체험존에서 지정곡 1곡씩 받아 점수 순으로 진출자를 뽑습니다. 아케이드 1대가 1시간에 약 60명을 받으므로 예상 인원에 맞춰 대수 · 시간을 잡고, 지정곡 · 진출 인원 · 동점 처리 기준은 미리 공지합니다.</div>
     </div>
     <div class="block">
-      <h2 class="sec">협의할 항목</h2>
+      <h2 class="sec">본사와 협의할 항목</h2>
       <div class="tbl"><table>
-        <thead><tr><th>항목</th><th>정할 내용</th><th>예시</th></tr></thead>
+        <thead><tr><th>항목</th><th>정할 내용</th><th>예시 · 팁</th></tr></thead>
         <tbody>
           <tr><td class="k">참가 단위</td><td>개인 / 학교(팀) / 지역</td><td>학교 단위 신청 후 학교별 선수 등록</td></tr>
+          <tr><td class="k">모집 방식</td><td>오픈 / 프라이빗 (승인 · 초대)</td><td>지역 · 학교 한정 대회는 프라이빗</td></tr>
+          <tr><td class="k">참가 국가</td><td>글로벌 / 국가 선택</td><td>국내 대회는 대한민국만</td></tr>
           <tr><td class="k">예선 기간</td><td>시작 · 종료 일시, 신청 마감, 추가 접수 여부</td><td>교내 예선 약 1~3주</td></tr>
           <tr><td class="k">지정곡</td><td>곡 수, 곡 목록, 본선 송리스트와 연계 여부</td><td>지정곡 10곡 중 곡별 최고점 합산</td></tr>
           <tr><td class="k">점수 집계</td><td>개인 점수 기준, 학교 점수 기준</td><td>곡별 최고점 합산 · 참여 학생 수 · 교내 상위 n명 합산</td></tr>
@@ -813,38 +780,23 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
           <tr><td class="k">동점 처리</td><td>먼저 득점한 순, 현장 진출전 등</td><td>참여 학생 수 동점 시 현장 진출전</td></tr>
           <tr><td class="k">아케이드 예선 병행</td><td>앱 참여가 어려운 학생(연령 · 기기)을 위한 아케이드 예선</td><td>본선 당일 아케이드 예선으로 추가 선발</td></tr>
           <tr><td class="k">보호자 동의 · 개인정보</td><td>만 14세 미만 보호자 동의, 수집 항목</td><td>성명 · 학년 · 반, 담당 교사 연락처</td></tr>
+          <tr><td class="k">앱 포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>본사 디자인 협조 가능</td></tr>
           <tr><td class="k">공개 범위</td><td>학교 랭킹 · 점수 공개 여부</td><td>학교별 합산 점수 비공개</td></tr>
         </tbody>
       </table></div>
       <p class="src">협의 결과는 대회 요강 · 공문 · 참가 안내 페이지에 같은 내용으로 공지해 주세요.</p>
-    </div>
-  </div>
-  <div class="tabpanel" data-panel="run:open" hidden>
-    <div class="block">
-      <h2 class="sec">오픈 앱 토너먼트 (개인 랭킹전)</h2>
-      <p class="muted">지역 · 국가 단위로 개인을 넓게 모집할 때 쓰는 방식입니다. 본사가 협의한 내용으로 앱 토너먼트를 개설합니다.</p>
-      <div class="tbl"><table>
-        <thead><tr><th>협의 항목</th><th>선택지</th><th>운영 팁</th></tr></thead>
-        <tbody>
-          <tr><td class="k">모집 방식</td><td>오픈 / 프라이빗</td><td>지역 · 학교 한정 대회는 프라이빗 (승인 · 초대)</td></tr>
-          <tr><td class="k">참가 국가</td><td>글로벌 / 국가 선택</td><td>국내 대회는 대한민국만</td></tr>
-          <tr><td class="k">예선 (랭킹전)</td><td>기간 · 지정곡 · 집계 기준</td><td>지정곡 제한 + 곡별 최고점 합산 권장</td></tr>
-          <tr><td class="k">앱 본선</td><td>8강 ~ 1024강, 동기 / 비동기</td><td>아케이드 본선이 있으면 앱 예선 상위 n명만 초청</td></tr>
-          <tr><td class="k">일정</td><td>사전 노출 · 신청 · 예선 · 본선</td><td>신청 시작은 개설 확정 후 24시간 이후, 예선 최소 24시간</td></tr>
-          <tr><td class="k">포스터 · 배너</td><td class="mono">270×312 · 343×484 (JPG/PNG, 10MB)</td><td>본사 디자인 협조 가능</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-    <div class="block">
-      <h2 class="sec">앱 본선 경기 규칙</h2>
-      <div class="grid g2">
-        <div class="panel block"><h3>매치당 게임 수</h3><ul class="list"><li>1024강 ~ 16강: <b>3게임</b></li><li>8강 ~ 결승: <b>5게임</b></li><li>매치 종료 후 평가 시간 20분 고정</li><li>라운드 간 휴식 5분 ~ 7일</li></ul></div>
-        <div class="panel block"><h3>미참여 처리</h3><ul class="list"><li><b>No Show</b>: 게임을 전혀 하지 않음 → 해당 매치 패배</li><li><b>FF (기권)</b>: 게임의 절반 미만만 플레이</li><li>마지막 라운드 종료 즉시 FINISHED (휴식 없음)</li></ul></div>
-      </div>
-    </div>
-    <div class="block">
-      <h2 class="sec">상금 · 상품 설정</h2>
-      <div class="tbl"><table>
+      <details class="more"><summary>앱 시스템 기준값 · 상금 설정 (본사 개설 시 적용)</summary><div>
+        <h3>단계별 최소 시간</h3>
+        <div class="tbl"><table><thead><tr><th>단계</th><th>최소</th><th>최대</th></tr></thead><tbody>
+        <tr><td class="k">사전 노출 (UPCOMING)</td><td class="mono">5분</td><td>—</td></tr>
+        <tr><td class="k">참가 신청 (REGISTER)</td><td class="mono">30분 (시작은 신청 후 24시간 이후)</td><td class="mono">14일</td></tr>
+        <tr><td class="k">예선 (QUALIFIER)</td><td class="mono">24시간</td><td>—</td></tr>
+        <tr><td class="k">진출자 선정 (SELECTING)</td><td class="mono">30분</td><td class="mono">30일</td></tr>
+        <tr><td class="k">첫 라운드 시작</td><td class="mono">대진 공개 후 24시간</td><td>—</td></tr>
+        <tr><td class="k">본선 라운드</td><td class="mono">라운드당 30분</td><td>—</td></tr>
+      </tbody></table></div>
+        <h3 style="margin-top:16px">상금 · 상품 설정</h3>
+        <div class="tbl"><table>
         <thead><tr><th>유형</th><th>설정</th></tr></thead>
         <tbody>
           <tr><td class="k">현금</td><td>USD / KRW / EUR / IDR, 최대 8자리 (소수점 불가)</td></tr>
@@ -855,20 +807,55 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
         </tbody>
       </table></div>
       <p class="muted">상금·상품은 주최측이 직접 지급합니다. 우승자 목록(이름·국적·연락처·이메일)은 CSV로 받을 수 있고, 미성년자는 법정대리인 정보 버튼이 표시됩니다.</p>
+      </div></details>
     </div>
-    <div class="block"><h3>앱 토너먼트 시스템 최소값</h3>
-      <div class="tbl"><table><thead><tr><th>단계</th><th>최소</th><th>최대</th></tr></thead><tbody>
-        <tr><td class="k">사전 노출 (UPCOMING)</td><td class="mono">5분</td><td>—</td></tr>
-        <tr><td class="k">참가 신청 (REGISTER)</td><td class="mono">30분 (시작은 신청 후 24시간 이후)</td><td class="mono">14일</td></tr>
-        <tr><td class="k">예선 (QUALIFIER)</td><td class="mono">24시간</td><td>—</td></tr>
-        <tr><td class="k">진출자 선정 (SELECTING)</td><td class="mono">30분</td><td class="mono">30일</td></tr>
-        <tr><td class="k">첫 라운드 시작</td><td class="mono">대진 공개 후 24시간</td><td>—</td></tr>
-        <tr><td class="k">본선 라운드</td><td class="mono">라운드당 30분</td><td>—</td></tr>
-      </tbody></table></div></div>
+  </div>
+  <div class="tabpanel" data-panel="run:main" hidden>
+    <p class="muted">아케이드 본선은 STEPIN 대회의 기본 본선입니다. 아케이드 2대로 1:1 배틀을 하고, 같은 장비 · 같은 조건에서 AI 점수로 승패를 가립니다.</p>
+    <div class="block">
+      <h2 class="sec">매치 진행 순서</h2>
+      <ol class="pflow" style="--n:7"><li><b>선수 등록</b><span>본인 확인 · 부속합의서 서명 · 닉네임 확인</span><em class="who">스태프</em></li><li><b>선수 호출</b><span>대기 구역에서 다음 매치 선수 호출</span><em class="who">슈퍼바이저</em></li><li><b>복장 · 위치 확인</b><span>권장 복장, 플레이 위치 2.2–2.5m, 화면 안 1명</span><em class="who">레퍼리</em></li><li><b>선곡</b><span>공지한 송리스트에서 매치마다 랜덤</span><em class="who">오퍼레이터</em></li><li><b>세트 수행</b><span>정한 세트 수를 중단 없이 연속 플레이</span><em class="who">선수</em></li><li><b>결과 확인 · 발표</b><span>아케이드 화면에 표시된 AI 점수 기준</span><em class="who">레퍼리</em></li><li><b>대진 반영</b><span>대회 프로그램이 다음 매치 · 중계 화면에 자동 반영</span><em class="who">오퍼레이터</em></li></ol>
+    </div>
+    <div class="block">
+      <h2 class="sec">판정 · 현장 규정 <span class="tag">대회 전 공지</span></h2>
+      <div class="tbl"><table>
+        <thead><tr><th>항목</th><th>기준</th><th>정하는 곳</th></tr></thead>
+        <tbody>
+          <tr><td class="k">승패 기준</td><td>아케이드 화면에 표시된 AI 점수. 대회 프로그램 장애 시에도 아케이드 화면 기준으로 수기 기록</td><td>레퍼리</td></tr>
+          <tr><td class="k">세트 수</td><td>3 · 5 · 7 · 9세트 중 선택, 결승은 더 길게 (1세트 약 1분)</td><td>주최측 · 본사 협의</td></tr>
+          <tr><td class="k">선곡</td><td>사전 공지한 송리스트에서 매치마다 랜덤</td><td>주최측 · 본사 협의</td></tr>
+          <tr><td class="k">장비 · 네트워크 문제</td><td>경기 일시 정지 → 원인 조치 → 해당 세트 재경기 여부 판단</td><td>레퍼리</td></tr>
+          <tr><td class="k">동점</td><td>대회마다 처리 기준을 정해 사전 공지</td><td>주최측</td></tr>
+          <tr><td class="k">복장 · 참가 환경</td><td>아래 AI 판정 권장사항을 사전 안내, 착용 제한 · 제재 기준은 별도 공지</td><td>주최측</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">대진 방식 · 인원별 포맷은 <a href="#run" data-tab-go="run:rules">대진 구조 · 포맷</a>, 당일 시간 배분과 인력은 <a href="#run" data-tab-go="run:day">타임테이블 · 인력</a> 탭을 참고하세요.</p>
+    </div>
+    <div class="block">
+      <h2 class="sec">송리스트 운영 (권장)</h2>
+      <ul class="list">
+        <li><b>20곡 내외</b> 풀에서 주최측과 본사가 협의해 송리스트를 선정한 뒤 사전에 공지하고, 공지한 송리스트를 <b>매치마다 랜덤으로 플레이</b>하는 방식을 권장합니다.</li>
+        <li>STEPIN 앱 플레이 수 상위곡 중심으로 고르면 참가자가 연습하기 쉽습니다. 개인전·팀전을 함께 열면 공통곡과 종목별 곡을 나눕니다.</li>
+        <li>곡당 하이라이트 구간은 약 30초입니다. 국가·지역 서비스 제한곡은 사전에 본사와 확인합니다.</li>
+        <li>송리스트를 앱 예선 경연곡과 맞추고 중계 화면에도 노출하면 다음 대회 준비에 도움이 됩니다.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h2 class="sec">AI 판정을 위한 권장 복장 · 참가 환경</h2>
+      <p class="muted">AI는 카메라 한 대로 머리·어깨·팔꿈치·손목·골반·무릎·발목 위치를 찾아 안무와 비교해 점수를 냅니다. 아래 권장사항을 참가자에게 미리 안내하면 점수 오류와 현장 이의 제기를 줄일 수 있습니다. 착용 제한·제재 기준은 주최측이 정합니다.</p>
+      <div class="recs">
+        <details class="qa rec"><summary><span>얼굴과 머리 윤곽이 보이는 차림</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">AI는 머리와 얼굴 위치를 몸 전체의 기준점으로 삼아 방향과 자세를 판단합니다. 마스크·모자·선글라스처럼 얼굴을 가리는 착용물이 있으면 기준점이 흔들려 팔다리 위치 인식까지 부정확해지고, 실제 동작보다 점수가 낮게 나올 수 있습니다. 중계 화면에서 선수 얼굴이 보여야 관람 몰입도도 높아집니다.</div></details>
+        <details class="qa rec"><summary><span>몸에 맞는 옷</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">관절 위치는 옷의 윤곽으로 추정합니다. 소매·바지가 지나치게 넓거나 긴 옷은 팔꿈치·무릎 위치를 가려 동작이 맞아도 각도가 다르게 인식될 수 있습니다. 활동하기 편하면서 팔다리 선이 드러나는 옷이 가장 정확합니다.</div></details>
+        <details class="qa rec"><summary><span>배경 · 바닥과 다른 색 옷</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">사람과 배경을 색 차이로 구분합니다. 검은 벽 앞에서 검은 옷을 입는 것처럼 색이 겹치면 팔다리 경계가 사라져 인식이 끊길 수 있습니다. 주최측은 백월·바닥 색을 미리 공지하고, 참가자는 그와 대비되는 색을 고르도록 안내합니다.</div></details>
+        <details class="qa rec"><summary><span>미끄럽지 않은 운동화</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">빠른 스텝과 회전이 많아 미끄러지면 부상 위험이 있고, 균형이 무너지면 동작이 흐트러져 점수에도 영향을 줍니다. 바닥 재질에 맞는 실내용 운동화를 권장합니다.</div></details>
+        <details class="qa rec"><summary><span>플레이 위치 지키기 (카메라에서 2.2–2.5m)</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">카메라와 너무 가까우면 팔다리를 뻗었을 때 손발이 화면 밖으로 나가 인식이 끊기고, 너무 멀면 관절이 작게 잡혀 정확도가 떨어집니다. 바닥에 표시한 위치에서 시작하고, 동작 중에도 그 구역 안에 머물도록 안내합니다.</div></details>
+        <details class="qa rec"><summary><span>화면 안에는 선수 한 명만</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">카메라에 두 사람 이상이 잡히면 AI가 다른 사람을 선수로 인식할 수 있습니다. 대기 선수·스태프·관중이 플레이 존 뒤나 옆에 서지 않도록 동선을 나누고, 배틀은 아케이드마다 한 명씩 섭니다.</div></details>
+      </div>
+    </div>
   </div>
   <div class="tabpanel" data-panel="run:rules" hidden>
     <div class="block">
-      <h2 class="sec">본선 구조 형태별 설명</h2>
+      <h2 class="sec">대진 구조 형태별 설명</h2>
       <p class="muted">대회 인원과 일정에 맞춰 아래 구조를 하나 또는 둘 이상 이어서 씁니다. 예를 들어 12명이면 <b>그룹 스테이지 → 8강 더블 엘리미네이션</b>, 32명이면 <b>싱글 엘리미네이션</b>으로 진행합니다.</p>
       <div class="grid g2">
         <div class="panel block fmtx"><span class="eyebrow">ROUND ROBIN</span><h3>그룹 스테이지 (풀 라운드 로빈)</h3>
@@ -916,24 +903,11 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
       <ul class="list"><li>세트 수(홀수)를 정하면 팀원 A·B가 절반씩 나눠 수행하고, 마지막 1세트는 A 또는 B가 수행합니다 (예: 7세트 = A 3 + B 3 + 1)</li><li>득점: 승 1점 · 패 0점</li></ul>
     </div>
     <div class="block">
-      <h2 class="sec">송리스트 운영 (권장)</h2>
-      <ul class="list">
-        <li><b>20곡 내외</b> 풀에서 주최측과 본사가 협의해 송리스트를 선정한 뒤 사전에 공지하고, 공지한 송리스트를 <b>매치마다 랜덤으로 플레이</b>하는 방식을 권장합니다.</li>
-        <li>STEPIN 앱 플레이 수 상위곡 중심으로 고르면 참가자가 연습하기 쉽습니다. 개인전·팀전을 함께 열면 공통곡과 종목별 곡을 나눕니다.</li>
-        <li>곡당 하이라이트 구간은 약 30초입니다. 국가·지역 서비스 제한곡은 사전에 본사와 확인합니다.</li>
-        <li>송리스트를 앱 예선 경연곡과 맞추고 중계 화면에도 노출하면 다음 대회 준비에 도움이 됩니다.</li>
-      </ul>
-    </div>
-    <div class="block">
-      <h2 class="sec">AI 판정을 위한 권장 복장 · 참가 환경</h2>
-      <p class="muted">AI는 카메라 한 대로 머리·어깨·팔꿈치·손목·골반·무릎·발목 위치를 찾아 안무와 비교해 점수를 냅니다. 아래 권장사항을 참가자에게 미리 안내하면 점수 오류와 현장 이의 제기를 줄일 수 있습니다. 착용 제한·제재 기준은 주최측이 정합니다.</p>
-      <div class="recs">
-        <details class="qa rec"><summary><span>얼굴과 머리 윤곽이 보이는 차림</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">AI는 머리와 얼굴 위치를 몸 전체의 기준점으로 삼아 방향과 자세를 판단합니다. 마스크·모자·선글라스처럼 얼굴을 가리는 착용물이 있으면 기준점이 흔들려 팔다리 위치 인식까지 부정확해지고, 실제 동작보다 점수가 낮게 나올 수 있습니다. 중계 화면에서 선수 얼굴이 보여야 관람 몰입도도 높아집니다.</div></details>
-        <details class="qa rec"><summary><span>몸에 맞는 옷</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">관절 위치는 옷의 윤곽으로 추정합니다. 소매·바지가 지나치게 넓거나 긴 옷은 팔꿈치·무릎 위치를 가려 동작이 맞아도 각도가 다르게 인식될 수 있습니다. 활동하기 편하면서 팔다리 선이 드러나는 옷이 가장 정확합니다.</div></details>
-        <details class="qa rec"><summary><span>배경 · 바닥과 다른 색 옷</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">사람과 배경을 색 차이로 구분합니다. 검은 벽 앞에서 검은 옷을 입는 것처럼 색이 겹치면 팔다리 경계가 사라져 인식이 끊길 수 있습니다. 주최측은 백월·바닥 색을 미리 공지하고, 참가자는 그와 대비되는 색을 고르도록 안내합니다.</div></details>
-        <details class="qa rec"><summary><span>미끄럽지 않은 운동화</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">빠른 스텝과 회전이 많아 미끄러지면 부상 위험이 있고, 균형이 무너지면 동작이 흐트러져 점수에도 영향을 줍니다. 바닥 재질에 맞는 실내용 운동화를 권장합니다.</div></details>
-        <details class="qa rec"><summary><span>플레이 위치 지키기 (카메라에서 2.2–2.5m)</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">카메라와 너무 가까우면 팔다리를 뻗었을 때 손발이 화면 밖으로 나가 인식이 끊기고, 너무 멀면 관절이 작게 잡혀 정확도가 떨어집니다. 바닥에 표시한 위치에서 시작하고, 동작 중에도 그 구역 안에 머물도록 안내합니다.</div></details>
-        <details class="qa rec"><summary><span>화면 안에는 선수 한 명만</span><span class="why">왜 필요한가요? 자세히 보기</span></summary><div class="a">카메라에 두 사람 이상이 잡히면 AI가 다른 사람을 선수로 인식할 수 있습니다. 대기 선수·스태프·관중이 플레이 존 뒤나 옆에 서지 않도록 동선을 나누고, 배틀은 아케이드마다 한 명씩 섭니다.</div></details>
+      <h2 class="sec">앱 본선으로 진행할 때 <span class="tag">본사 협의</span></h2>
+      <p class="muted">현장 없이 앱에서 라운드를 진행합니다 (8강 ~ 1024강). 아케이드 본선이 있으면 앱 예선 상위 n명만 초청합니다.</p>
+      <div class="grid g2">
+        <div class="panel block"><h3>매치당 게임 수</h3><ul class="list"><li>1024강 ~ 16강: <b>3게임</b></li><li>8강 ~ 결승: <b>5게임</b></li><li>매치 종료 후 평가 시간 20분 고정</li><li>라운드 간 휴식 5분 ~ 7일</li></ul></div>
+        <div class="panel block"><h3>미참여 처리</h3><ul class="list"><li><b>No Show</b>: 게임을 전혀 하지 않음 → 해당 매치 패배</li><li><b>FF (기권)</b>: 게임의 절반 미만만 플레이</li><li>마지막 라운드 종료 즉시 FINISHED (휴식 없음)</li></ul></div>
       </div>
     </div>
   </div>
@@ -1073,7 +1047,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== PROMO ======== -->
 <section class="view" data-view="promo" hidden>
-  <div class="vh"><span class="eyebrow">04 · Promotion & Production</span><h1>홍보 · 제작물</h1><p>참가자를 모으고 실제로 플레이하게 만드는 방법과, 대회에 필요한 홍보물 · 현장 설치물 · 중계 그래픽 · 서류입니다. <span class="pill p-rec">시안 협조</span> 표시는 본사가 디자인 시안을 지원할 수 있는 항목입니다.</p></div>
+  <div class="vh"><span class="eyebrow">04 · Promotion & Production</span><h1>홍보 · 제작물</h1><p>참가자를 모으는 방법과 대회에 필요한 홍보물 · 설치물 · 중계 그래픽 · 서류입니다.</p></div>
   <div class="tabs" role="tablist" data-tabs="promo">
     <button role="tab" data-tab="boost">대회 활성화</button>
     <button role="tab" data-tab="promo">홍보물</button>
@@ -1439,7 +1413,7 @@ footer.foot{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;c
 
 <!-- ======== HELP ======== -->
 <section class="view" data-view="help" hidden>
-  <div class="vh"><span class="eyebrow">08 · Help</span><h1>FAQ · 본사 문의</h1><p>자주 받는 질문, 리허설 점검, 현장 문제 해결 방법과 문의 유형별 본사 연락처입니다. 키워드를 누르면 관련 항목만 보입니다.</p></div>
+  <div class="vh"><span class="eyebrow">08 · Help</span><h1>FAQ · 본사 문의</h1><p>자주 받는 질문, 리허설 점검, 현장 문제 해결과 문의 유형별 본사 연락처입니다.</p></div>
   <div class="tabs" role="tablist" data-tabs="help">
     <button role="tab" data-tab="faq">FAQ · 문제 해결</button>
     <button role="tab" data-tab="contact">본사 문의</button>
@@ -1678,7 +1652,7 @@ new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes){if(n.no
 labelTables();
 /* ---------- routing ---------- */
 const VIEWS=["home","about","planner","plan","run","promo","broadcast","checklist","assets","help","admin"];
-const ALIAS={why:["about","why"],refs:["about","refs"],formats:["plan","overview"],compare:["plan","compare"],online:["run","flow"],offline:["run","rules"],boost:["promo","boost"],production:["promo","promo"],faq:["help","faq"],contact:["help","contact"]};
+const ALIAS={why:["about","why"],refs:["about","refs"],formats:["plan","overview"],compare:["plan","compare"],online:["run","flow"],offline:["run","main"],boost:["promo","boost"],production:["promo","promo"],faq:["help","faq"],contact:["help","contact"]};
 const isView=v=>VIEWS.includes(v)||!!ALIAS[v];
 function show(view,tab){
   if(view==="broadcast"&&tab==="check"){view="help";tab="faq"}
@@ -2263,7 +2237,7 @@ const SCHEMA={
  partners:{title:"파트너 코드 목록",note:"이름·구분 수정, 사용 중지·재개, 삭제가 가능합니다. 코드 자체는 다시 볼 수 없으니 분실 시 새로 발급하세요.",noAdd:true,
   fields:[{k:"name",l:"파트너 이름"},{k:"type",l:"구분",t:"select",o:["대회 운영사","지자체·공공기관","학교·교육청","협회·연맹","브랜드·스폰서","본사","기타"]},{k:"hint",l:"코드 힌트",ro:true},{k:"active",l:"상태",t:"bool"}]},
  notices:{title:"공지 · 업데이트",note:"홈 화면 ‘최근 업데이트’에 위에서부터 표시됩니다.",blank:{date:"",text:"",view:"home",label:"홈"},
-  fields:[{k:"date",l:"날짜"},{k:"label",l:"링크 이름"},{k:"view",l:"연결 위치",t:"select",o:["home","about","about:refs","planner","plan","plan:compare","run","run:school","run:rules","run:cases","promo","promo:docs","broadcast","broadcast:connect","broadcast:types","checklist","assets","help","help:contact"]},{k:"text",l:"내용",wide:true}]},
+  fields:[{k:"date",l:"날짜"},{k:"label",l:"링크 이름"},{k:"view",l:"연결 위치",t:"select",o:["home","about","about:refs","planner","plan","plan:compare","run","run:flow","run:main","run:rules","run:day","run:cases","promo","promo:docs","broadcast","broadcast:connect","broadcast:types","checklist","assets","help","help:contact"]},{k:"text",l:"내용",wide:true}]},
  refs:{title:"대회 레퍼런스",note:"‘대회 레퍼런스’ 페이지에 위에서부터 표시됩니다. 분류는 필터 칩이 됩니다.",blank:{date:"",title:"",img:"",cat:"지역 대회",host:"",format:"",scale:"",place:"",url:""},
   fields:[{k:"date",l:"시기"},{k:"cat",l:"분류",t:"select",o:["지역 대회","학교","국제","온라인","협업","해외","기타"]},{k:"title",l:"대회명",wide:true},{k:"host",l:"주최 · 운영"},{k:"place",l:"장소"},{k:"format",l:"방식",t:"area",wide:true},{k:"scale",l:"규모 · 성과",wide:true},{k:"url",l:"영상 URL (선택)",wide:true},{k:"img",l:"대표 이미지 경로 (예: /img/ref_xxx.jpg)",wide:true}]},
  videos:{title:"홍보 영상 URL",note:"‘홍보 소스’의 영상 목록에 표시됩니다. 분류는 자유롭게 입력할 수 있습니다.",blank:{cat:"대회",title:"",desc:"",url:"https://"},
